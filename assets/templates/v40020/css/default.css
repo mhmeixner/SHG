@@ -1,0 +1,1317 @@
+* {
+	margin: 0; /* Reset */
+	padding: 0; /* Reset */
+}
+@font-face {
+	font-family: 'Conv_ufonts.com_arial-rounded-mt-bold-2';
+	src: url('Arial_Rounded_MT_Bold.eot');
+	src: local('☺'), url('Arial_Rounded_MT_Bold.woff') format('woff'), url('Arial_Rounded_MT_Bold.ttf') format('truetype'), url('Arial_Rounded_MT_Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/*** 
+ *	The following is the styling required for a fluid layout with our templates.
+ *	Change to match the template layout widths. 
+ *	Padding is only placed on the top and/or bottom of the divs.
+ *	The elements or child divs within these divs have padding on their sides. 
+ *	This saves you from any "box model math".
+ *	Keep in mind, if you add any side padding or border to the containing div itself, it will be added to the width you define to create the *total* width.
+ *	You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+***/
+#contentWrap {
+	width: 100%; /* Forces content to fill the screen horizontally. Default is 100% */
+	/* a max-width is set to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration but really, who cares. */
+	min-width: 750px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+}
+#center {
+	width: 100%; /* This is set to force the content area to fill the screen horizontally */
+}
+#left {
+	width: 200px; /* Left Sidebar width */
+	right: 200px; /* Left Sidebar width */
+	margin-left: -100%; /* Sice the middle content appears first in the html, we pull the left sidebar all the way across the center column with a 100% negative margin. Remember that the 100% refers to the central width of the container, which is also exactly the width of the center div. If the middle div is changed to a fixed width, this margin must also be changed to match it. */
+}
+#right {
+	width: 200px; /* Right Sidebar width */
+	margin-right: -100%; /* Sice the middle content appears first in the html, we pull the right sidebar all the way across the center column with a 100% negative margin. Remember that the 100% refers to the central width of the container, which is also exactly the width of the middle div. If the middle div is changed to a fixed width, this margin must also be changed to match it. */
+	min-height: 100%; /* This is set to force the page to fill the screen vertically */
+}
+/*** End editable width settings ***/
+
+/*** The following is the styling required for a fluid layout with our templates. Change at your own risk..but there is really no reason to!!! ***/
+html, body, #wrap, #contentWrap, #container, #center, #left, #right {
+	min-height: 100%; /* This is set to force the page to fill the screen vertically */
+}
+#wrap, #contentWrap {
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. */
+}
+#container .section {
+	position: relative; /* Relative positioning is used to set offsets for the sidebar widths. */
+	float: left;
+}
+#contentWrap {
+	top: -30px;
+}
+#left {
+	padding-top: 20px;
+}
+#leftBG {
+}
+#leftBanner {
+	width: auto;
+}
+#center {
+}
+#rightBG {
+}
+#right {
+	padding-top: 20px;
+}
+#footer {
+	clear: both; /* Clears the content floats and places the footer below them */
+}
+/*** End fluid layout settings ***/
+
+
+#footer {
+	position: relative; /* 
+  					   * #footer contains the declaration position:relative; to give Internet Explorer 6 hasLayout for the #footer and cause it to clear correctly. 
+  					   * If you're not required to support IE6, you may remove it.
+					  */
+}
+/*** End essential styles - Everything below this is just fluff. ***/
+
+/* Resets */
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+li {
+	list-style-position: inside;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+}
+/*** Sitewide link styles ***/
+
+.nodec {
+	text-decoration: none;
+}
+img, a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+
+
+
+/*a:: Controls the way the all Links without an associated style display before a user clicks or mouses over them.*/ 	 
+a, a:link {
+	color: #390600;
+	text-decoration: none;
+	font-weight: normal;
+}
+/*a:visited:: After a user has visited that section.*/ 
+a:visited {
+	color: #390600;
+	font-size: 11px;
+	font-style: normal;
+	text-decoration: none;
+}
+/*a:hover:: When a user passes  their mouse over them.*/ 	 	
+a:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/*a:visited:hover:: When a user hovers over a section they have visited.*/ 	 
+a:visited:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: underline;
+}
+/*a.link:: Controls the way Secondary Links display before a user clicks or mouses over on them.*/ 	 
+a.link {
+	color: #390600;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/*a.link:over:: After a user has visited that section.*/ 	
+a.link:visited {
+	color: #390600;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/*a.link:over:: When a user passes their mouses over them.*/ 	
+a.link:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/*a.link:visited:over:: When a user hovers over a section they have visited.*/ 		
+a.link:visited:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/*a.details: Controls the way the More Details links display in the left or right navigation bars before a user clicks or mouses over them.*/ 	 
+a.details {
+	color: #6d6d6d;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+/*a.details:visited:: After a user has visited that section.*/ 
+a.details:visited {
+	color: #6d6d6d;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+/*a.details:hover:: When a user passes their mouse over them.*/ 	
+a.details:hover {
+	color: #a12b1d;
+	font-size: 10px;
+	text-decoration: underline;
+}
+/*a.details:visited:hover:: When a user hovers over a section they have visited.*/ 	 
+a.details:visited:hover {
+	color: #a12b1d;
+	font-size: 10px;
+	text-decoration: underline;
+}
+/*a.menu:: Controls the way the Links display in the top navigation before a user clicks or mouses over on them.*/ 	 
+a.menu {
+	color: #ffffff;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	text-transform: capitalize;
+	padding: 10px;
+	position: relative;
+	top: 8px;
+}
+#topMenu img {
+	position: relative;
+	top: 8px;
+}
+/*a.menu:over:: After a user has visited that section.*/ 	
+a.menu:visited {
+	color: #ffffff;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-transform: capitalize;
+	text-decoration: none;
+	padding: 0 10px;
+}
+/*a.menu:over:: When a user passes their mouses over them.*/ 	
+a.menu:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+/*a.menu:visited:over:: A user hovers over a section they have visited.*/ 		
+a.menu:visited:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+/*a.menu-bottom:: Controls the way the Links in the footer display before a user clicks or mouses over on them.*/ 	 
+a.menu-bottom {
+	color: #ffffff;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/*a.menu-bottom:over:: After a user has visited that section.*/ 	
+a.menu-bottom:visited {
+	color: #ffffff;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/*a.menu-bottom:over:: When a user passes their mouses over them.*/ 	
+a.menu-bottom:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+/*a.menu-bottom:visited:over:: When a user hovers over a section they have visited.*/ 		
+a.menu-bottom:visited:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+/*a.cat:: Controls the way the Category Links display in the left or right navigation bars before a user clicks or mouses over them.*/ 	 
+a.cat {
+	color: #390600;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/*a.cat:visited:: After a user has visited that section.*/ 
+a.cat:visited {
+	color: #390600;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/*a.cat:hover:: When a user passes  their mouse over them.*/ 	
+a.cat:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/*a.cat:visited:hover:: When a user hovers over a section they have visited.*/ 	 
+a.cat:visited:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/*a.subcat:: Controls the way the Sub-Category Links display in the left or right navigation bars before a user clicks or mouses over them.*/ 	 
+a.subcat {
+	color: #390600;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+}
+/*a.subcat:visited:: After a user has visited that section.*/ 
+a.subcat:visited {
+	color: #390600;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+}
+/*a.subcat:hover:: When a user passes  their mouse over them.*/ 	
+a.subcat:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/*a.subcat:visited:hover:: When a user hovers over a section they have visited.*/ 	 
+a.subcat:visited:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+a.login, a.login:visited {
+	color: #ffffff;
+	font-size: 11px;
+	text-decoration: underline;
+	font-weight: normal;
+	padding-right: 3px;
+}
+a.login:hover, a.login:visited:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+/*** End link styles ***/
+
+
+
+/*** General settings ***/
+.padding10 {
+	padding: 10px;
+}
+.padding5_15 {
+	padding: 5px 15px;
+}
+.clear {
+	clear: both;
+	height: 0px;
+}
+#headerWrap {
+	position: relative;
+	width: 100%;
+	height: 166px;
+	background: url(../images/header_bg.jpg) top left repeat-x;
+	display: inline-block;
+	margin-top: 0px;
+}
+#header {
+	height: 136px;
+	margin: 0 auto;
+}
+#footer {
+	height: 110px;
+	width: 100%;
+	margin-top: 20px;
+	clear: both;
+	background: url(../images/footer_bg.jpg) bottom left repeat-x;
+}
+#footerContent {
+	margin: 0 auto;
+	width: 752px;
+	height: 62px;
+	background: url(../images/footer_content_bg.png) top center no-repeat;
+}
+#footerMenu {
+	padding-top: 10px;
+}
+ul.menu-bottom {
+	display: inline;
+	text-indent: 0;
+	text-align: center;
+}
+li.menu-bottom {
+	display: inline;
+	list-style-type: none;
+	color: #ffffff;
+	font-size: 12px;
+	list-style-position: inside;
+	margin: 0 15px 0 0;
+}
+#copyright {
+	width: 100%;
+	color: #db9511;
+	font-size: 11px;
+	margin-top: 5px;
+	text-align: center;
+}
+#globalFooter {
+	color: #ffffff;
+	padding: 15px 0 0 0;
+	width: 100%;
+	text-align: center;
+}
+/* Sidebar items hover effects. Delete these 4 css blocks if not using. */
+
+.sidebarText {
+	padding: 3px 10px;
+}
+.sidebar_items {
+	padding-bottom: 5px;
+}
+.sidebarCats {
+	line-height: 1.2em;
+	width: 160px;
+}
+.sidebarCats span {
+	display: inline;
+	padding: 0;
+	position: relative;
+	width: 155px;
+}
+.listItem {
+	display: inline;
+	width: 155px;
+	float: right;
+}
+/* General Styles */
+#categoryBar {
+	line-height: 1.2em;
+	padding-bottom: 10px;
+	position: relative;
+}
+#categoryBar ul li a {
+	line-height: 1.2em;
+	padding: 0;
+}
+#categoryBar ul li a, #categoryBar ul li a:visited {
+	font-weight: normal;
+	text-decoration: none;
+	color: #390600;
+	width: 150px;
+	text-align: left;
+	font-size: 12px;
+}
+#categoryBar ul li a:hover, #categoryBar ul li a:visited:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/* Top Level */
+#categoryBar ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	width: 180px;
+}
+/* Top level list item */
+#categoryBar ul li {
+	background-repeat: no-repeat;
+	float: left;
+	position: relative;
+	padding-bottom: 5px;
+}
+/* Second Level */
+#categoryBar ul li ul {
+	/* When installing SubMenu CSS, change display to none */
+	display: block;
+	background-image: none;
+}
+/* delete when installing SubMenu CSS */
+#categoryBar ul li ul li {
+	background-image: none;
+	width: 140px;
+	padding: 0 0 0 25px;
+}
+#categoryBar ul li ul li a {
+	font-size: 12px;
+	padding-top: 3px;
+}
+/*
+ * SubMenu CSS is available in the prebuilt templates folder on the network drive. 
+ * To include the file, copy the file to the template folder and include the link in the head of the frame.
+ */
+ 
+
+
+
+
+
+/*******************************************************************************************************/
+/*          STYLES USED ON THE FRAME OF THE WEBSITE (HEADER, LEFT NAV, RIGHT NAV AND FOOTER)        */
+/*******************************************************************************************************/
+
+#headerLeft {
+	display: inline;
+	float: left;
+	text-align: right;
+	max-width: 30%;
+}
+#headerRight {
+	display: inline;
+	float: right;
+	margin-left: 5px;
+}
+#headerRightTop {
+	text-align: right;
+	float: right;
+	height: 89px;
+	width: 575px;
+}
+#headerRightBottom {
+	height: 45px;
+	position: relative;
+}
+#logoContainer {
+	float: left;
+	height: 89px;
+}
+#logoBG {
+	float: left;
+	display: inline;
+	background: #a12b1d;
+	padding: 10px;
+	margin-top: 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+/*store-name:: Store Name.*/		 
+.store-name {
+	color: #FFFFFF;
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 1em;
+	padding-top: 10px;
+	text-align: left;
+	text-decoration: none;
+	word-wrap: break-word;
+ font-family:Conv_ufonts.com_arial-rounded-mt-bold-2;
+}
+/*store-slogan:: Store Slogan.*/		 
+.store-slogan {
+	font-family: Century Gothic;
+	font-size: 12px;
+	line-height: 1.2em;
+	font-weight: normal;
+	padding-top: 5px;
+	text-transform: uppercase;
+	color: #f9f9f9;
+	text-align: left;
+}
+/*  Top Menu styles */
+#topMenu {
+	height: 43px;
+	float: left;
+}
+#menuLinks {
+	height: 36px;
+	text-align: left;
+	float: left;
+	display: inline;
+	position: relative;
+}
+.menuLinkWrap {
+	float: left;
+	display: inline;
+}
+#menuBG {
+	height: 43px;
+	background: #251714;
+}
+/* End Top Menu Styles */
+
+#userBG {
+	float: right;
+	text-align: right;
+	display: inline;
+	margin-right: 40px;
+	margin-top: 18px;
+}
+#loginContent {
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+span#loginWelcome {
+	font-size: 14px;
+	font-weight: normal;
+	line-height: .8em
+}
+/*cart-text:: Controls the way the text on the mini shopping cart displays. The mini-shopping cart is usually located in the header.*/ 
+.cart-text, a.cart-text {
+	font-size: 13px;
+	font-weight: normal;
+	color: #ffffff;
+	position: relative;
+}
+#cartBG {
+	text-align: right;
+}
+#cartWrap {
+	display: inline-block;
+	margin-top: 5px;
+}
+#cartText {
+	line-height: 1.3em;
+	float: right;
+	font-size: 14px;
+}
+#cartLink {
+	display: inline;
+	position: relative;
+	top: -5px;
+	margin-left: 15px;
+}
+#cartIcon {
+	display: inline;
+	margin-right: 20px;
+}
+span.cartBold {
+	font-size: 14px;
+	font-weight: bold;
+}
+#checkoutLink {
+	height: 30px;
+	display: inline;
+	position: relative;
+	top: -5px;
+	margin-right: 5px;
+}
+/* End header styles */
+
+
+/*frame:: Controls the left and right column background.*/		
+.frame {
+	background: #FFF;
+}
+/*mod_bg:: Controls the left and right column modules background.*/		
+.mod_bg {
+	margin: 0 auto;
+	position: relative;
+	background: #ffffff;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+}
+.mod_bg_repeat {
+	padding: 15px 0;
+}
+/* end fluid sidebar background styles */
+
+
+/*menu-headers:: Controls the way the menu titles background looks. For example: Categories, Browse By Price, Top Sellers, etc.*/ 
+.menu-headers {
+	background: url(../images/menu_header_bg.jpg) 0 0 no-repeat;
+	height: 54px;
+	width: 177px;
+	margin: 0;
+	position: relative;
+}
+/*menu-headers p:: Controls the way the menu titles look. For example: Categories, Browse By Price, Top Sellers, etc.*/
+.menu-headers p {
+	text-align: center;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 16px;
+	color: #3b2221;
+	position: relative;
+ font-family:Conv_ufonts.com_arial-rounded-mt-bold-2;
+	top: 15px;
+	text-shadow: 1px 1px 0px #eab151;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+/*footer::  This style controls the text you type under global footer. Merchants usually use to add security logos, credit card logos, privacy notes, etc.*/		
+.footer, .footer a {
+	font-size: 12px;
+	color: #ffffff;
+}
+/*icon:: Controls the way the menu icons display if they are being used.*/ 
+.icon {
+	font-size: 10px;
+	font-weight: normal;
+	color: #FFF;
+}
+.listingImageWrap {
+}
+.listingImageImage {
+	padding: 4px;
+}
+.homeItem {
+	min-height: 3.5em;
+	padding-top: 5px;
+	text-align: left;
+	padding-left: 10px;
+}
+.listingBG {
+	background-color: #ffffff;
+	padding: 40px 15px;
+	margin: 3px;
+	min-height: 300px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.homePrice {
+	text-align: left;
+	padding-left: 10px;
+}
+.homeReview {
+	width: 100%;
+	height: 20px;
+	margin-top: 3px;
+	text-align: left;
+	padding-left: 10px;
+}
+.homeReview img {
+	padding-top: 3px;
+}
+.addToCart {
+	text-align: center;
+	margin-top: 10px;
+}
+.addToCart .btn {
+	background: #a12b1d; /* Old browsers */
+	color: #ffffff;
+	font-family: Century Gothic;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #ffffff;
+	cursor: pointer;
+	margin: 2px;
+	padding: 6px 15px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.addToCart .btn_over {
+	background: #d78c10; /* Old browsers */
+	color: #ffffff;
+	font-family: Century Gothic;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #ffffff;
+	cursor: pointer;
+	margin: 2px;
+	padding: 6px 15px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+/*new-releases::  Controls the length of the item name of the New Releases section.*/
+.new-releases {
+	white-space: nowrap;
+	width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+}
+/*best-sellers::  Controls the length of the item name of the Top Sellers section.*/
+.top-sellers {
+	white-space: nowrap;
+	width: 70px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+}
+/*top-item-star:: Controls the background image and style for the top ranking item star.*/
+.top-sellers-star {
+	width: 58px;
+	height: 103px;
+	background: url(../images/top_seller_star.png) center center no-repeat;
+	position: relative;
+	top: -18px;
+	left: 135px;
+	font-size: 24px;
+	font-weight: normal;
+	color: #FFF;
+	z-index: 100;
+}
+#topSellerTopItem {
+	position: relative;
+	margin: 0 auto;
+	width: 175px;
+}
+#tsImgContainer {
+	width: 155px;
+	height: 129px;
+	margin: 0 auto;
+}
+#tsImgContainer img {
+	max-width: 146px;
+	max-height: 120px;
+	margin: 4px;
+}
+a.tscat, a.tscat:visited {
+	color: #390600;
+	font-size: 12px;
+}
+a.tscat:hover, a.tscat:visited:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+#topSellerPriceContainer {
+	text-align: center;
+	float: left;
+}
+#tsTopItemRating {
+	width: 45%;
+	float: left;
+	padding-top: 5px;
+}
+#topSellerReviewContainer img {
+	padding-top: 8px;
+}
+.detailsLink {
+	height: 10px;
+	line-height: 1.5em;
+	width: auto;
+	margin: 0 5px 0 0;
+}
+.tsrankingLeft {
+	width: 40%;
+	float: left;
+	margin-left: 10px;
+}
+.tsrankingRight {
+	width: 50%;
+	float: left;
+}
+.rankingImg {
+	float: left;
+	width: 95%;
+	border: none;
+}
+.rankingImg img {
+	width: 55px;
+	margin-top: 4px;
+}
+.detailsContainer {
+	text-align: right;
+	margin-top: 5px;
+}
+#nrTopItem {
+	width: 165px;
+}
+#nrTopItemImg {
+	width: 150px;
+	margin: 0 auto;
+}
+.nr-star {
+	width: 58px;
+	height: 103px;
+	background: url(../images/nr_star.png) center center no-repeat;
+	position: relative;
+	top: -18px;
+	left: 135px;
+	font-size: 24px;
+	font-weight: normal;
+	color: #FFF;
+	z-index: 100;
+}
+#nrTopItemDesc {
+	width: 90%;
+	margin: 0 auto;
+	text-align: left;
+}
+.nrPrice, .nrReview {
+	width: 40%;
+	float: left;
+}
+.nrReview img {
+	padding-left: 5px;
+}
+.hr {
+	height: 10px;
+	margin: 5px auto;
+}
+/*menu-text:: Controls the way the menu (mailing list) text look on the frame.*/ 
+.menu-text {
+	font-size: 11px;
+	color: #444;
+	padding: 5px 5px 5px 0;
+}
+/*price:: Controls the way the product's final price display throughout the site.*/ 
+.price {
+	font-size: 16px;
+	color: #92231a;
+	padding: 5px 0;
+	font-weight: bold;
+	font-family: Century Gothic;
+}
+/*price2:: Controls the way the product's price display in the top sellers and new releases sections.*/ 
+.price2 {
+	font-size: 16px;
+	color: #92231a;
+	padding: 5px;
+	font-weight: bold;
+	font-family: Century Gothic;
+}
+.salePrice, .strikethru {
+	text-decoration: line-through;
+}
+/* Search Elements */
+
+
+#searchContainer {
+	background: url(../images/search_bg.png) 0 0 no-repeat;
+	border: none;
+	height: 32px;
+	width: 220px;
+	margin: 12px auto 0 auto;
+	float: right;
+	display: inline;
+}
+#searchBoxInput {
+	background: none repeat scroll 0 0 transparent;
+	height: 27px;
+	margin: 4px 0 0 20px;
+	float: left;
+	display: inline;
+}
+#searchlight {
+	border: none;
+	background: transparent;
+	font-weight: normal;
+	font-size: 14px;
+	width: 150px;
+	margin-top: 3px;
+	margin-left: 5px;
+	float: left;
+	height: 20px;
+	text-indent: 5px;
+ font-family:Conv_ufonts.com_arial-rounded-mt-bold-2;
+}
+#searchButton {
+	width: auto;
+	display: inline;
+	margin: 0 15px 0 5px;
+	position: relative;
+	top: 6px;
+}
+/*txtSearch:: Controls the style of the Search Box, if different from txtBoxStyle.*/
+.txtBoxSearch {
+	height: 20px;
+	color: #717171;
+	font-size: 14px;
+	border: none;
+	padding: 0px;
+	margin: 0;
+}
+.searchlight-results-wrapper {
+	min-height: 10px;
+}
+li.font3 {
+	text-indent: 0;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+li.font3 img {
+	position: relative;
+	top: -5px;
+	padding-left: 5px;
+}
+/*******************************************************************************************************/
+/*          STYLES USED THROUGHTOUT THE WEBSITE        */
+/*******************************************************************************************************/
+                    
+.mainC {
+	min-height: 100%;
+	word-wrap: break-word;
+}
+/*body:: Controls website background and any other text outside of a table without an associated style.*/ 	
+body {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	color: #390600;
+	font-weight: normal;
+	background: url("../images/body_bg.jpg") 0 0 repeat;
+}
+.column {
+	height: 100%;
+}
+/* .columnWrap - This is for positioning of the sidebar content only. */
+.columnWrap {
+	margin: 0 11px 20px 11px;
+}
+/*td:: Controls all text inside a table without any associated style.*/ 
+td {
+	color: #666666;
+	text-decoration: none;
+	font-size: 12px;
+}
+#center td input, #center td textarea, #center td select {
+	margin: 4px;
+}
+#container { /* If padding this div it is important that you only pad the top and/or bottom and not the sides. This prevents having to do box-model math. */
+	background-color: transparent;/*padding-top:6px;*/ 
+}
+/*data:: Controls the font style of your content on all the pages.*/
+.data {
+	color: #000000;
+	text-decoration: none;
+	font-size: 12px;
+	margin: 0;
+	padding: 10px;
+}
+/*data1:: Controls the category page header and footer layout.*/
+.data1 {
+	color: #252525;
+	font-size: 12px;
+	padding: 10px;
+}
+/*alternative:: Controls the background color of the boxes used throughout the site.*/
+.alternative {
+	background-color: #f8f8f8;
+	padding: 2px 2px 2px 2px;
+	border: 1px solid #d8d8d8;
+}
+.alternativeLogin {
+	background-color: #EAEAEA;
+	border: 1px solid #CCCCCC;
+	padding: 5px;
+}
+/*page_headers:: Controls the title of all your pages.*/
+.page_headers {
+	color: #390600;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: none;
+}
+#homeTop {
+}
+#homeContent {
+}
+#homeInner {
+	padding: 5px;
+}
+/*titles:: Controls the Tiles  of sections within pages on the site such as (Specials, Feature Items, Items, Related Items).*/ 
+.titles {
+	font-size: 22px;
+	line-height: 26px;
+	color: #191514;
+	font-weight: bold;
+	border: none;
+	text-transform: uppercase;
+	text-align: left;
+	height: 40px;
+	padding: 2px 0 5px 5px;
+ font-family:Conv_ufonts.com_arial-rounded-mt-bold-2;
+}
+/*error:: Controls the error messages*/ 
+.error {
+	font-size: 12px;
+	font-weight: normal;
+	color: #e10e04;
+	text-decoration: none;
+}
+/*borders:: Controls the color of the line dividers used throughout the site.*/ 
+.borders {
+	color: #390600;
+	border: 1px dotted #cccccc;
+	border-style: none none dotted;
+}
+/*borders2:: Controls the color of the dotted line dividers used throughout the site.*/ 
+.borders2 {
+	border: 1px dotted #cccccc;
+	border-style: none none dotted;
+}
+.pagingLinksTop {
+	position: relative;
+	top: 13px;
+	right: 15px;
+	width: 200px;
+	text-align: right;
+}
+.pagingLinksBottom {
+	position: relative;
+	top: 3px;
+	right: 15px;
+	width: 200px;
+	margin-bottom: 20px;
+	text-align: right;
+}
+.paging a {
+	color: #390600;
+	font-size: 12px;
+	font-weight: normal;
+}
+/*******************************************************************************************************/
+/*   STYLES ONLY USED ON VIEW CART AND CHECKOUT PAGES      */
+/*******************************************************************************************************/
+
+/*checkout-headers:: Controls the titles of the sections on the checkout pages (Billing Information, Shipping Information etc)*/
+.checkout-headers {
+	font-size: 13px;
+	color: #000;
+	font-weight: bold;
+}
+/*steps:: Controls the way the steps on the checkout pages display.*/
+.steps {
+	font-size: 16px;
+	font-weight: bold;
+	color: #cccccc;
+}
+/*steps_on:: Controls the way the step the customer is currently on displays on the checkout pages.*/
+.steps_on {
+	font-size: 16px;
+	font-weight: bold;
+	color: #66594f;
+}
+/*titles2:: Controls the titles on the view cart page*/ 
+.titles2 {
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	color: #66594f;
+	padding: 4px;
+}
+/*******************************************************************************************************/
+/*   STYLES ONLY USED ON PRODUCT PAGES      */
+/*******************************************************************************************************/
+
+
+
+/*options-titles:: Controls the way the option titles display on the product page.*/
+.options-titles {
+	font-size: 12px;
+	font-weight: bold;
+	color: #390600;
+	border: 1px dotted #cccccc;
+	border-style: none none dotted;
+}
+p.item {
+	min-height: 1.2em;
+}
+/*item:: Controls the item description and item details text.*/ 
+.item, a.item, a.item:visited {
+	font-size: 14px;
+	color: #390600;
+	font-weight: normal;
+	padding: 4px 0 0 0;
+	min-height: 1.2em;
+}
+a.item:hover, a.item:visited:hover {
+	color: #a12b1d;
+	text-decoration: underline;
+}
+/*itemTitle:: Controls the name of the Product.*/ 
+.item-title {
+	font-size: 16px;
+	color: #66594f;
+	font-weight: bold;
+}
+/*price-info:: Controls the way the sub-prices display on the product page, the final price is controlled by the style called "price".*/ 
+.price-info {
+	font-size: 12px;
+	font-weight: Normal;
+	color: #390600;
+}
+/*small-txt:: Controls the way the item id displays.*/ 
+.small-txt {
+	color: #afafae;
+	text-decoration: none;
+	text-align: left;
+	font-size: 10px;
+	vertical-align: bottom;
+}
+/*availability-txt:: Controls the way the availability of the product displays i.e. 'In Stock', 'Back Order'.*/ 
+.availability-txt {
+	color: #FFF;
+	text-decoration: none;
+	text-align: left;
+	font-size: 11px;
+	background-color: #b7144a;
+}
+/*reward-title:: Controls the title of the Reward Points section.*/ 
+.reward-title {
+	color: #66594f;
+	text-decoration: none;
+	text-align: left;
+	line-height: 10px;
+	font-size: 16px;
+	font-style: italic;
+}
+/*******************************************************************************************************/
+/*      FORM FIELDS & BUTTONS THROUGHOUT THE WEBSITE      */
+/*******************************************************************************************************/
+
+/*btn:: Controls the buttons, (ONLY if it is not using an image).*/ 
+.btn {
+	background: #a12b1d; /* Old browsers */
+	border: none;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font-family: Century Gothic;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #ffffff;
+	cursor: pointer;
+	margin: 2px;
+	padding: 6px 8px;
+}
+/*btn_over:: Controls the buttons when a user mouses over them, (ONLY if it is not using an image).*/ 
+.btn_over {
+	border: none;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #d78c10; /* Old browsers */
+	font-family: Century Gothic;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #ffffff;
+	cursor: pointer;
+	margin: 2px;
+	padding: 6px 8px;
+}
+/*txtBoxStyle:: Controls the text and style of the Text Boxes.*/  	
+.txtBoxStyle {
+	border-top: 1px solid #b3b4b5;
+	border-bottom: 1px solid #b3b4b5;
+	border-left: 1px solid #b3b4b5;
+	border-right: 1px solid #b3b4b5;
+	background-color: #ffffff;
+	font-weight: normal;
+	font-size: 12px;
+	color: #717171;
+}
+.data .txtBoxStyle {
+	margin: 3px 0;
+}
+#mailingList {
+	margin: 15px 0 0 0;
+	padding: 0;
+	font-size: 12px;
+	color: #390600;
+}
+#emailInput {
+	padding: 10px 0;
+}
+#emailInput a {
+}
+#emailInput div input {
+	display: inline;
+	float: left;
+}
+#emailTextArea {
+	height: 22px;
+	width: 115px;
+	margin-top: 0px;
+	border: 1px solid #e9e9e9;
+	margin-right: 0px;
+	display: inline;
+	padding-left: 5px;
+}
+#emailSubmit {
+	float: left;
+	display: inline;
+	color: #ffffff;
+}
+.mailinglistText {
+	font-size: 11px;
+	color: #390600;
+	padding: 5px 0;
+}
+span.subscribe {
+	display: block;
+	padding: 3px 5px 3px 0;
+	margin: 0;
+	font-size: 11px;
+	color: #000000;
+}
+.bannerDiv {
+	overflow: hidden;
+	margin-top: 15px;
+}
+/*txtAreaStyle:: Controls the text and style of the Text Areas.*/ 	
+.txtAreaStyle {
+	border-top: 1px solid #C7D5E0;
+	border-bottom: 1px solid #C7D5E0;
+	border-left: 1px solid #C7D5E0;
+	border-right: 1px solid #C7D5E0;
+	background-color: #FBFBFB;
+	font-weight: normal;
+	font-size: 11px;
+	color: #343333;
+}
+/*******************************************************************************************************/
+/*   STYLES USED ONLY ON THE INVOICE        */
+/*******************************************************************************************************/
+
+/*invoice_table:: Controls the background color on your invoices*/ 
+.invoice_table {
+	background-color: #f9f8f8;
+}
+/*invoice_title:: Controls the way the title of the invoices look */ 
+.invoice_title {
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #cbcaca;
+	color: #4f4e4e;
+}
+img, img a {
+	border: none;
+}
+/*************************************************************/
+/*          LEGACY STYLES: STYLES USED PRIOR TO v3.2         */
+/*************************************************************/
+
+
+/*font1:: Primary Screen Font */ 
+.font1 {
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+/*font2:: Secondary Screen Font */ 
+.font2 {
+	font-size: 12px;
+	font-weight: normal;
+	color: #252525;
+}
+.font3 {
+	font-size: 12px;
+	font-weight: normal;
+	color: #390600;
+}
+.font4 {
+	font-size: 12px;
+	font-weight: normal;
+	color: #c32519;
+}

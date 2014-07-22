@@ -1,0 +1,16 @@
+<gallery>
+<!-- The line below sets the path to the folder where the images are stored -->
+<setup path="/">
+	<!-- The the following lines are used to customize the look of the gallery -->
+	<imgWidth>480</imgWidth>
+	<imgHeight>380</imgHeight>
+	<thumbWidth>50</thumbWidth>
+	<thumbHeight>40</thumbHeight>
+	<backgroundColor>#FFFFFF</backgroundColor>
+	<imgBgColor >#FFFFFF</imgBgColor >
+	<transitionType>iris</transitionType>
+	<thumbnailRows>1</thumbnailRows>
+	<thumbPosition>left</thumbPosition>
+	<autoPlay>10</autoPlay>
+</setup>
+<!--STOP HERE-->

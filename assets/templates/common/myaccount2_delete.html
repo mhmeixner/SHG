@@ -1,0 +1,356 @@
+<table width="95%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="page_headers" align="left" colspan="2">My Account</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr class="data">
+		<td colspan="2"><b>[account_welcome] <!--START: username--> [username]</b></td>
+	</tr>
+	<tr>
+		<td class="data" colspan="2">If you're not [username], <a href="logout.asp">click here</a><!--END: username--></td>
+	</tr>
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td class="data" colspan="2">&nbsp;[CONTENT]</td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="checkout-headers" colspan="2">[account_recent-orders] <a href="ordertracking.asp">
+				<img src="assets/templates/common/images/view_all.gif" border="0"></a></td>
+	</tr>
+	<tr>
+		<td align="left" colspan="2">
+			<table border="0" cellpadding="4" cellspacing="0" width="100%" class="alternative">
+				<tr>
+					<td class="titles2">[orderhistory_date]</td>
+					<td class="titles2">[orderhistory_ordernum]</td>
+					<td class="titles2">[orderhistory_amount]</td>
+					<td class="titles2">[orderhistory_status]</td>
+					<td colspan="3" class="titles2">&nbsp;</td>
+				</tr>
+				<!--START: ordertemplate-->
+				<tr>
+					<td class="item">[odate]</td>
+					<td class="item">[invoicenum_prefix][invoicenum]</td>
+					<td class="item">[orderamount]</td>
+					<td class="item">[orderstatus]</td>
+					<td>
+						<input name="reorder" type="button" class="btn" onclick="window.location='ordertracking.asp?action=repeat&amp;id=[orderid]';"
+							value="Reorder" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+					</td>
+					<td>
+						<input name="reorder" type="button" class="btn" onclick="window.location='ordertracking.asp?action=view&amp;id=[orderid]';"
+							value="View Order" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+					</td>
+					<td>
+						<!--START: btnRMA-->
+						<input type="button" class="btn" onclick="window.location.href='#rma'" value="[rma_header-rma-btn-order-alert]" onMouseOver="this.className='btn_over'"
+							onMouseOut="this.className='btn'"> 
+						<!--END: btnRMA-->
+					</td>
+				</tr>
+				<!--END: ordertemplate-->
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr class="alternative">
+		<td width="285" align="left" class="checkout-headers"><strong>[account_billing-info]</strong></td>
+		<td width="392" align="left" class="checkout-headers"><strong>[account_shipping-info]</strong></td>
+	</tr>
+	<tr>
+		<td>
+			<table width="150" height="93" border="0" cellspacing="4" cellpadding="0" class="alternative">
+				<tr>
+					<td><img src="assets/images/spacer.gif" height="2"></td>
+				</tr>
+				<tr>
+					<td align="left" class="item" width="50%">[billing_firstname] [billing_lastname]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[billing_address]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[billing_address2]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[billing_city], [billing_state] [billing_zip] 
+						[billing_country]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[billing_phone]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item"><input type="button" class="btn" onclick="window.location='myaccount.asp?action=updacc';"
+							value=" Update" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<table width="150" border="0" cellspacing="4" cellpadding="0" class="alternative">
+				<tr>
+					<td><img src="assets/images/spacer.gif" height="2"></td>
+				</tr>
+				<tr>
+					<td align="left" class="item" width="50%">[shipping_firstname] [shipping_lastname]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[shipping_address]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[shipping_address2]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[shipping_city], [shipping_state] [shipping_zip] 
+						[shipping_country]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item">[shipping_phone]</td>
+				</tr>
+				<tr>
+					<td align="left" class="item"><input type="button" class="btn" onclick="window.location='myaccount.asp?action=updacc';"
+							value=" Update" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="checkout-headers" colspan="2">[account_addressbook]<img src="assets/templates/common/images/edit.gif" border="0">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+				<tr>
+					<td class="titles2">[account_addressbook-header-alias]</td>
+					<td width="76%" class="titles2">[account_addressbook-header-details]</td>
+				</tr>
+				<!--START: address_book-->
+				<tr class="alternative">
+					<td valign="top" class="item">[address_alias]</td>
+					<td class="item">
+						[shipping_address] [shipping_city], [shipping_state]
+					</td>
+				</tr>
+				<!--END: address_book-->
+				<tr>
+					<td colspan="4" align="right"><input name="button222" type="button" class="btn" onclick="window.location='myaccount.asp?action=addresses';"
+							value="[account_addressbook-add]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="checkout-headers" colspan="2">[account_crm-requests]</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+				<tr>
+					<td class="titles2">[account_crm-requests-header-id]</td>
+					<td class="titles2">[account_crm-requests-header-dept]</td>
+					<td class="titles2">[account_crm-requests-header-date]</td>
+					<td class="titles2">[account_crm-requests-header-subject]</td>
+					<td class="titles2">[account_crm-requests-header-lastact]</td>
+				</tr>
+				<!--START: crmMessagesDetailNoReq-->
+				<tr class="alternative">
+					<td class="item" colspan="5" align="center">[account_crm-requests-norequest]</td>
+				</tr>
+				<!--END: crmMessagesDetailNoReq-->
+				<!--START: crmMessagesDetail-->
+				<tr class="alternative">
+					<td class="item"><a href="crm.asp?mk=[mkey]">[crmId]</a></td>
+					<td class="item"><a href="crm.asp?mk=[mkey]">[dpt]</a></td>
+					<td class="item"><a href="crm.asp?mk=[mkey]">[date]</a></td>
+					<td class="item"><a href="crm.asp?mk=[mkey]">[subject]</a></td>
+					<td class="item"><a href="crm.asp?mk=[mkey]">[lastaction]</a></td>
+				</tr>
+				<!--END: crmMessagesDetail-->
+				<tr>
+					<td colspan="5" align="right"><input name="button222" type="button" class="btn" onclick="window.location='crm.asp?action=add';"
+							value="[account_crm-add-request]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+			<br>
+		</td>
+	</tr>
+	<!--START: points-->
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="checkout-headers" colspan="2">[account_rewards]</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+				<tr class="alternative">
+					<td valign="top" class="item" width="100%">[account_rewards-header-points]: 
+						[points_balance]</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<input name="button222" type="button" class="btn" onclick="window.location='reward_detail.asp';"
+							value="[account_rewards-header-details]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+						<input name="button222" type="button" class="btn" onclick="window.location='redeem.asp';"
+							value="[account_rewards-header-redeem]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+					</td>
+				</tr>
+			</table>
+			<br>
+		</td>
+	</tr>
+	<!--END: points-->
+	<!--START: RMA-->
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="checkout-headers" colspan="2">[account_rma-header]</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<a name="rma">&nbsp;</a>
+			<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+				<tr class="alternative">
+					<td valign="top" class="titles2" width="25%">[rma_header-rmanum]</td>
+					<td valign="top" class="titles2" width="25%">[rma_header-rmadate]</td>
+					<td valign="top" class="titles2" width="25%">[rma_header-rmaorder]</td>
+					<td valign="top" class="titles2" width="25%">[rma_header-rmastatus]</td>
+				</tr>
+				<!--START: RmaItems-->
+				<tr class="alternative">
+					<td valign="top" class="item" width="25%"><a href="my_rma.asp?oid=[OrderId]&amp;r=[idRma]" class="small">[idRma]</a></td>
+					<td valign="top" class="item" width="25%"><a href="my_rma.asp?oid=[OrderId]&amp;r=[idRma]" class="small">[Date]</a></td>
+					<td valign="top" class="item" width="25%"><a href="ordertracking.asp?action=view&amp;id=[OrderId]" class="small">[OrderNum]</a></td>
+					<td valign="top" class="item" width="25%"><a href="my_rma.asp?oid=[OrderId]&amp;r=[idRma]" class="small">[RMAStatus]</a></td>
+				</tr>
+				<!--END: RmaItems-->
+			</table>
+			<br>
+		</td>
+	</tr>
+	<!--END: RMA-->
+	<!--START: affiliateStatistics-->
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="checkout-headers" colspan="2">[account_affiliate-statistics]</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+				<tr>
+					<td class="titles2">[affiliate_summary-header-membersince]</td>
+					<td class="titles2">[affiliate_summary-header-orders]</td>
+					<td class="titles2">[affiliate_summary-header-amount]</td>
+					<td class="titles2">[affiliate_summary-header-commission]</td>
+					<td class="titles2">[affiliate_summary-header-paid]</td>
+					<td class="titles2">[affiliate_summary-header-balance]</td>
+				</tr>
+				<!--START: affiliateStatisticsNoOrders-->
+				<tr class="alternative">
+					<td class="item" colspan="6" align="center">[affiliate_no-history-to-display]</td>
+				</tr>
+				<!--END: affiliateStatisticsNoOrders-->
+				<!--START: affiliateStatisticsDetail-->
+				<tr class="alternative">
+					<td class="item">[memberSince]</td>
+					<td class="item">[orders]</td>
+					<td class="item">[amount]</td>
+					<td class="item">[totalCommission]</td>
+					<td class="item">[paid]</td>
+					<td class="item">[balance]</td>
+				</tr>
+				<!--END: affiliateStatisticsDetail-->
+				<tr>
+					<td colspan="6" align="right"><input name="button222" type="button" class="btn" onclick="window.location='affiliate.asp';"
+							value="[account_button-my-affiliate-page]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+			<br>
+		</td>
+	</tr>
+	<!--END: affiliateStatistics-->
+	<!--START: wishList-->
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="checkout-headers" colspan="2">[account_wishlist]</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+				<tr class="alternative">
+					<td valign="top" class="item" width="100%" colspan="2">
+						[account_wishlist-header-products]: [wishListTotalItems]
+					</td>
+				</tr>
+				<tr>
+					<td class="item">
+						[account_wishlist-header-lastmod]: [wishListLasMod]
+					</td>
+					<td align="right">
+						<input name="button222" type="button" class="btn" onclick="window.location='view_wishlist.asp';"
+							value="[account_wishlist-header-view]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+					</td>
+				</tr>
+			</table>
+			<br>
+		</td>
+	</tr>
+	<!--END: wishList-->
+	
+	<!--START: giftRegistry-->
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr><td class="checkout-headers" colspan="2">[account_giftRegistry]</td></tr>
+	<tr>
+		<td colspan="2">
+			<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+				<tr>
+					<td class="titles2">[giftregistry_header-name]</td>
+					<td class="titles2" align="center">[giftregistry_header-eventdate]</td>
+					<td class="titles2" align="center">[giftregistry_header-expiration]</td>
+					<td class="titles2" align="center">[giftregistry_header-productsdesired]</td>
+					<td class="titles2" align="center">[giftregistry_header-productspurchased]</td>
+				</tr>
+				<tr class="alternative">
+					<td valign="top" class="item" >[regName]</td>
+					<td valign="top" class="item" align="center">[regEvent]</td>
+					<td valign="top" class="item" align="center">[regExpiration]</td>
+					<td valign="top" class="item" align="center">[regProductsDesired]</td>
+					<td valign="top" class="item" align="center">[regProductsPurchased]</td>
+				</tr>							
+				<tr>
+					<td align="right" colspan=5>
+						<input type="button" id="Button3" name="cmdViewList" onclick="javascript:location.href='view_giftregistry.asp?id=[custid]';" class="btn" value="[giftregistry_view-productlist]">
+						<input name="button222" type="button" class="btn" onclick="window.location='giftregistry_edit.asp?action=view';" value="[account_giftRegistry-header-view]"  onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"/>
+					</td>
+				</tr>			
+			</table>		
+			<br>
+		</td>
+	</tr>
+	<!--END: giftRegistry-->
+		
+</table>

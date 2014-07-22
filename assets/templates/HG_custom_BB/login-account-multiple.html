@@ -1,0 +1,101 @@
+<script type="text/javascript" src="../Copy of HG_custom/state_countryjs.asp"></script>
+<table width="400" cellpadding="0" cellspacing="3">
+    <tr>
+        <td align="left" class="item">&nbsp;
+            </td>
+    </tr>
+    <tr>
+        <td align="left" class="item">
+            [login_multipleship-message]
+            <!--START: error_message-->
+            [error_message]
+            <!--END: error_message-->
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;
+            </td>
+    </tr>
+    <tr>
+        <td class="checkout-headers">
+            [login_Header-login]</td>
+    </tr>
+    <form action="../Copy of HG_custom/login.asp?ordertracking=[otrack]" method="post">
+        <tr>
+            <td>
+                <table width="100%" cellpadding="2" cellspacing="0" class="alternative">
+                    <tr>
+                        <td class="item" colspan="2">
+                            [login_Header-loginmessage]</td>
+                    </tr>
+                    <tr>
+                        <td class="item" align="right" width="30%">
+                            <strong>[CustomerInfo_email]:</strong></td>
+                        <td>
+                            <input type="text" size="20" name="email" value="[email]" class="txtBoxStyle"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="item">
+                            <strong>[CustomerInfo_password]:</strong></td>
+                        <td>
+                            <input type="password" size="20" name="password" class="txtBoxStyle"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <input type="submit" value="[login_button]" class="btn" onmouseover="this.className='btn_over'"
+                    onmouseout="this.className='btn'"></td>
+        </tr>
+    </form>
+    <tr>
+        <td class="checkout-headers">
+            [login_Header-forgotpassword]</td>
+    </tr>
+    <form action="../Copy of HG_custom/login.asp?action=forgotpass&amp;ordertracking=[otrack]" method="post">
+        <tr>
+            <td>
+                <table width="100%" cellpadding="2" cellspacing="0" class="alternative">
+                    <tr>
+                        <td align="right" class="item" width="30%">
+                            <strong>[CustomerInfo_email]:</strong></td>
+                        <td>
+                            <input type="text" size="20" name="email" value="[email]" class="txtBoxStyle"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <input type="submit" value="[login_forgotpasswordbutton]" class="btn" onmouseover="this.className='btn_over'"
+                    onmouseout="this.className='btn'"></td>
+        </tr>
+    </form>
+    <tr>
+        <td class="checkout-headers">
+            [registration_Header-createnewaccount]</td>
+    </tr>
+        <tr>
+            <td>
+                <table width="100%" cellpadding="2" cellspacing="2" class="alternative">
+                    <tr>
+                        <td align="left" class="item" width="70%">
+                            <strong>[registration_create-account]</strong></td>
+		    </tr>
+                    <tr>
+                        <td align="right" class="item">
+                <input type="button" value="[registration_button-createaccount]" class="btn" onmouseover="this.className='btn_over'"
+                    onmouseout="this.className='btn'" onclick="window.location='register.asp?cg=0&view_cart=1';">                            
+			</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+
+	    </td>
+        </tr>
+</table>
+

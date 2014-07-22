@@ -1,0 +1,143 @@
+<head>
+	<title>[store_name] | [notify_header]</title>
+	<link rel="stylesheet" href="assets/templates/[template]/css/[stylesheet]" type="text/css" media="screen">
+	<script language="javascript" src="assets/templates/common/js/utilities.js" type="text/javascript"></script>
+	<script language="javascript" type="text/javascript">
+		function addToList(objForm) {
+			var strMsg = "";
+			var listType = "";
+			var drpLists = "";
+
+			if (objForm.optListType.length > 0)
+			{
+				//alert("enter on validate ONLY list block ");
+				for (var i = 0; i < objForm.optListType.length; i++) {
+					if (objForm.optListType[i].checked) {
+						listType = objForm.optListType[i].value.trim();
+						drpLists = objForm.drpLists.value;
+
+						if (objForm.optListType[i].value.trim() == "1" && objForm.drpLists.value == "")
+							strMsg += "[wishlist_multiple-addtolist-select-the-list]";
+
+						if (objForm.optListType[i].value.trim() == "2" && objForm.txtNewList.value == "")
+							strMsg += "[wishlist_multiple-addtolist-enter-the-name-list]";
+					}
+				}
+			}
+			else
+			{
+				if (objForm.txtNewList.value == "")
+					strMsg += "[wishlist_multiple-addtolist-enter-the-name-list]";
+			}
+
+
+			if (strMsg != "") {
+				alert(strMsg);
+				return false;
+			}
+
+			window.opener.add_wishlistcustom(listType, drpLists, objForm.txtNewList.value);
+			window.close();
+		}
+		String.prototype.trim = function () {
+			return this.replace(/^\s+|\s+$/g, "");
+		}
+	</script>
+</head>
+
+<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+	<table width="100%" cellpadding="0" cellspacing="5" class="data">
+		<tr>
+			<td>
+				<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="page_headers">[wishlist_multiple-addtolist-title]</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="borders">
+							<img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="10"></td>
+					</tr>
+					<tr>
+						<td>
+							<!--START: recomendBlock-->
+							<form method="post" action="" class="nomargin" name="frmRecomend" id="frmRecomend">
+								<input type="hidden" name="catalogid" value="[catalogid]">
+								<input type="hidden" name="sitename" value="[sitename]">
+								<input type="hidden" name="siteurl" value="[url]">
+								<table width="100%" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="40%" valign="top">
+											<!--START: thumbnail-->
+											<div align="center" class="price-info">
+												<img src="[thumbnail]" border="1" style="border-color: ced2bf">
+												<!--END: thumbnail-->
+												<br />
+												<span class="item"><strong>[name]</strong></span>
+											</div>
+										</td>
+										<td>
+											<table width="98%" border="0" align="right" cellpadding="4" cellspacing="0">
+												<!--START: wishListCustom-->
+												<tr>
+													<td width="2%"><input type="radio" name="optListType" id="optListType" value="1" checked /></td>
+													<td class="price-info">Existing list: 
+														
+														<select name="drpLists" id="drpLists" style="width: 150px;">
+															<option value="">Select a List</option>
+															<!--START: wishListCustomDetails-->
+															<option value="[wishListId]">[wishListName]</option>
+															<!--END: wishListCustomDetails-->
+														</select>
+														
+													</td>
+												</tr>
+												<!--END: wishListCustom-->
+												<tr>
+													<td><input type="radio" name="optListType" id="optListType" value="2" [varOptListTypeChecked]/></td>
+													<td class="price-info">New list: <input name="txtNewList" id="txtNewList" value="" type="text" size="25" class="txtBoxStyle" maxlength="50"></td>
+												</tr>
+											</table>
+
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="borders"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="right" height="50">
+											<input name="cmdRecommend" type="button" onclick="javascript: addToList(this.form);" value="[wishlist_multiple-addtolist-button]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'">
+										</td>
+									</tr>
+								</table>
+							</form>
+							<!--END: recomendBlock-->
+						</td>
+					</tr>
+
+					<!--START: errorMsg-->
+
+					<tr align="center">
+						<td colspan="4" class="data" align="left">[errorMsg]</td>
+					</tr>
+
+					<tr>
+						<td align="right">
+							<input type="button" value='Click here to continue' class="btn" onclick="history.back(1);" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'"></td>
+					</tr>
+
+					<!--END: errorMsg-->
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+
+
+
+
+
+

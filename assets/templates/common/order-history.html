@@ -1,0 +1,68 @@
+
+
+          <table width="95%" cellpadding="4" cellspacing="0">   
+		   
+			    <tr> 
+                  
+          <td class="page_headers">[orderhistory_header] </td><!--START: myAccount--><td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td><!--END: myAccount-->
+        </tr>
+                
+			 <tr> 
+                  
+          <td class="data" align="left" colspan="2">[orderhistory_message]</td>
+        </tr>
+		<tr><td colspan="2">
+
+						
+              
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="alternative">
+                
+     
+     
+                
+     
+                
+     
+        <tr> 
+                  
+          <td align="center" class="titles2">&nbsp;</td>
+          <td align="left" class="titles2"><b>[orderhistory_date]</b></td>
+          <td align="left" class="titles2"><b>[orderhistory_ordernum]</b></td>
+          <td align="left" class="titles2"><b>[orderhistory_amount]</b></td>
+          <td align="left" class="titles2"><b>[orderhistory_status]</b></td>
+          <td align="left" class="titles2"><b>[orderhistory_details]</b>&nbsp; / &nbsp;<b>RMA</b></td>
+        
+        </tr>
+     
+	
+				
+        <!--START: ordertemplate-->
+				
+        
+                
+        <tr> 
+                  
+          <td align="left" class="item">[num]</td>
+          <td align="left" class="item">[odate]</td>
+          <td align="left" class="item">[invoicenum_prefix][invoicenum]</td>
+          <td align="left" class="item">[orderamount]</td>
+          <td align="left" class="item">[orderstatus]</td>
+          <td align="left" class="item"><a href="ordertracking.asp?action=view&id=[orderid]">[orderhistory_vieworderlink]</a>	<!--START: btnRMA-->
+			&nbsp;/&nbsp;<a href="my_rma.asp?oid=[orderid]&r=[idRma]">View RMA</a>
+					<!--END: btnRMA--></td>
+          
+        
+        </tr>
+			<tr><td colspan="7" class="options-titles"><img src="assets/images/spacer.gif" height="1"></td></tr>
+                
+        <!--END: ordertemplate-->
+                
+     
+      </table>
+
+
+</td></tr>
+
+</table>
+
+

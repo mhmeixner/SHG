@@ -1,0 +1,354 @@
+<!-- //3dcart v2.2//frame.html//Rev. #1 10/31/2006-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[TITLE]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	margin-top: 10px;
+}
+-->
+</style>
+<link href="/assets/templates/HG_custom/css/hg_new2.css" rel="stylesheet" type="text/css">
+[META]
+<script language="JavaScript" src="/assets/templates/common/js/utilities.js" type="text/JavaScript"></script>
+<LINK REL="StyleSheet" HREF="/assets/templates/[template]/css/[stylesheet]" TYPE="text/css" MEDIA="screen">
+<LINK REL="StyleSheet" HREF="/assets/templates/common/js/tabs.css" TYPE="text/css" MEDIA="screen">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+
+
+<!-- Google Analytics Tracking Script -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15437023-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl': 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body onLoad="MM_preloadImages('/assets/templates/[template]/images/btn_home_over.gif','/assets/templates/[template]/images/btn_about_over.gif','/assets/templates/[template]/images/btn_contact_over.gif','/assets/templates/[template]/images/btn_account_over.gif','/assets/templates/HG/images/hg_custom/btn_home_over.jpg','/assets/templates/HG/images/hg_custom/btn_shop_over2.jpg','/assets/templates/HG/images/hg_custom/btn_easy_recipes_over.jpg','/assets/templates/HG/images/hg_custom/btn_community_over.jpg','/assets/templates/HG/images/hg_custom/btn_about_over.jpg','/assets/templates/HG/images/hg_custom/btn_faq_over_end.jpg')">
+<p>
+  <script type="text/javascript" language="JavaScript">
+
+var file='/stats/count.asp';
+
+var stats_d=new Date(); 
+var stats_s=stats_d.getSeconds(); 
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';} 
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';} 
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; 
+
+stats_h=screen.height; 
+stats_v=navigator.appName; 
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + 
+
+'&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width=1 height=1 border=0>');
+</script>
+</p>
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <th width="4" background="/assets/templates/HG_custom/images/new_frame/top_left_corner.gif" bgcolor="#F3F3F3" scope="col"> </th>
+    <th width="1179" bgcolor="#F3F3F3" scope="col"> </th>
+    <th width="1" scope="col"><img src="/assets/templates/HG_custom/images/new_frame/top_right_corner.gif" width="14" height="20"></th>
+  </tr>
+  <tr>
+    <td colspan="4"><table width="[screenwidth]" border="0" align="center" cellpadding="0" cellspacing="0"  class="data">
+      <tr bgcolor="#F3F3F3">
+        <td bgcolor="#F3F3F3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td rowspan="2"><!--START: global_header-->
+                <p><span class="store-name">[storename]</span><br>
+                    <span class="store-slogan">[storeslogan]</span>
+                    <!--END: global_header-->
+                      </td>
+            <td align="right"><!--START: FRAME_SEARCH-->
+                <form method="get" action="/search.asp" STYLE="margin: 0px; padding: 0px,0px,0px,0px;" ID="Form1">
+                  <div id="search-nudge">
+                    <table border="0" align="right" cellpadding="5" cellspacing="0"  ID="Table2">
+                      <tr>
+                        <td align="center" class="font3"><strong> Search: </strong></td>
+                        <td align="center"><input  type="text" size="20" name="keyword" class="txtBoxStyle" ID="Text1"></td>
+                        <td><input  type="submit" name="search" value="GO" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Submit1"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" align="center" class="font3"><span class="font4"><a href="/view_cart.asp" class="font4"><img src="/assets/templates/[template]/images/spacer.gif" width="5" height="1" border="0"></a><a href="/myaccount.asp">My Account</a> | <a href="/crm.asp?action=contactus">Contact Us</a></span></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" align="center" class="font3"><img src="/common_images/credit-cards.gif" width="186" height="22" alt="We take all major credit cards"></td>
+                      </tr>
+                    </table>
+                  </div>
+                </form>
+              <!--END: FRAME_SEARCH--></td>
+          </tr>
+          <tr>
+            <td height="32" align="right"><div id="cart-nudge">
+                <table border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                  <tr>
+                    <td class="cart-text"><img src="/assets/templates/HG_custom/images/cart_left.gif" width="5" height="32"></td>
+                    <td class="cart-text"> </td>
+                    <td class="cart-text"><img src="/assets/templates/HG_custom/images/hg_custom/cart.jpg" width="24" height="32"></td>
+                    <td align="center" nowrap class="cart-text"><strong>[ITEMSINCART] ITEM(S)
+                      IN YOUR BAG / TOTAL:[SUBTOTAL]</strong></span></td>
+                    <td align="center" nowrap class="font4"><a href="/view_cart.asp" class="font4"><img src="/assets/templates/[template]/images/spacer.gif" width="5" height="1" border="0">View cart</a> | <a href="/checkout.asp" class="font4">Checkout</a></td>
+                    <td align="center" nowrap class="font4"><div id="ssl-icon-nudge"><a href="/checkout.asp"><img src="/common_images/secure-checkout-icon.png" alt="secure checkout" width="15" height="18" border="0"></a></div></td>
+                    <td align="center" nowrap class="font4"> </td>
+                    <td align="right"><img src="/assets/templates/HG_custom/images/cart_right.gif" width="5" height="32"></td>
+                  </tr>
+                </table>
+            </div></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td bgcolor="#F3F3F3"><img src="/assets/templates/[template]/images/spacer.gif" width="1" height="10"></td>
+      </tr>
+      <tr bgcolor="#F3F3F3">
+        <td><a href="infopage.asp?page=1"><img src="/assets/templates/HG/images/hg_custom/btn_home_up.jpg" alt="Home" width="163" height="55" border="0" id="Image3" onMouseOver="MM_swapImage('Image3','','/assets/templates/HG/images/hg_custom/btn_home_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a><a href="/Shop-Homemade-Gourmet_ep_42.html"><img src="/assets/templates/HG/images/hg_custom/btn_shop_up2.jpg" alt="Shop Here" width="156" height="55" border="0" id="Image4" onMouseOver="MM_swapImage('Image4','','/assets/templates/HG/images/hg_custom/btn_shop_over2.jpg',1)" onMouseOut="MM_swapImgRestore()"></a><a href="/easy-recipes.html"><img src="/assets/templates/HG/images/hg_custom/btn_easy_recipes_up.jpg" alt="Easy Recipes" width="156" height="55" border="0" id="Image5" onMouseOver="MM_swapImage('Image5','','/assets/templates/HG/images/hg_custom/btn_easy_recipes_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a><a href="/Community_ep_41.html"><img src="/assets/templates/HG/images/hg_custom/btn_community_up.jpg" alt="Community" width="156" height="55" border="0" id="Image6" onMouseOver="MM_swapImage('Image6','','/assets/templates/HG/images/hg_custom/btn_community_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a><a href="/About-Us_ep_7.html"><img src="/assets/templates/HG/images/hg_custom/btn_about_up.jpg" alt="About Us" width="156" height="55" border="0" id="Image7" onMouseOver="MM_swapImage('Image7','','/assets/templates/HG/images/hg_custom/btn_about_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a><a href="/FAQs_ep_44.html"><img src="/assets/templates/HG/images/hg_custom/btn_faq_up_end.jpg" alt="FAQ" width="161" height="55" border="0" id="Image8" onMouseOver="MM_swapImage('Image8','','/assets/templates/HG/images/hg_custom/btn_faq_over_end.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+      </tr>
+      <tr>
+        <td bgcolor="#F3F3F3"><div id="greetingnudge">
+          <table  border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+              <td nowrap ><!--START: username-->
+                <br>
+                <span class="font3"> <strong>[account_greeting]</strong> [username]</span>
+                <!--END: username--></td>
+              </tr>
+          </table>
+        </div></td>
+      </tr>
+      <tr>
+        <td bgcolor="#F3F3F3"><img src="/assets/templates/[template]/images/spacer.gif" width="" height="10"></td>
+      </tr>
+      <tr>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center" valign="top" background="/assets/templates/[template]/images/bg_3c.gif" bgcolor="#F3F3F3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr bgcolor="#CCCCCC">
+                <td colspan="3" align="left" valign="top"><img src="/assets/templates/HG/images/frame_top_left.gif" width="16" height="6"></td>
+                </tr>
+              <tr>
+                <td background="/assets/templates/[template]/images/bg_frame_left.gif"><img src="assets/templates/[template]/images/bg_frame_left.gif" width="16" height="1"></td>
+                <!--start left column-->
+                <td align="center" bgcolor="#CCCCCC"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F8F8F8">
+                  <tr bgcolor="#D2D0C3">
+                    <td height="55" valign="top" bgcolor="#CCCCCC" ><!--START: FRAME_CATEGORY-->
+                      <table width="100%" border="0" cellpadding="0" cellspacing="0" ID="Table5">
+                        <tr>
+                          <td class="menu-headers"><strong>[frame_categories]</strong></td>
+                          </tr>
+                        <!--START: CATEGORIES-->
+                        <!--START: CATEGORY_FORMAT-->
+                        <tr>
+                          <TD ALIGN="LEFT"><table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td nowrap class="font3"><font color="#999999">•</font> <a href="/view_category.asp?cat=CATID" class="cat"><strong>CATEGORY</strong></a></td>
+                              </tr>
+                            </table></TD>
+                          </tr>
+                        <!--END: CATEGORY_FORMAT-->
+                        <!--START: SUB_CATEGORY_FORMAT-->
+                        <tr>
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <TD ALIGN="LEFT"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td class="font3">  <font color="#999999">›</font> <a href="/view_category.asp?cat=CATID" class="cat">CATEGORY</a></td>
+                                  </tr>
+                                </table></TD>
+                              </tr>
+                            </table></td>
+                          </tr>
+                        <!--END: SUB_CATEGORY_FORMAT-->
+                        <!--END: CATEGORIES-->
+                        </table>
+                      <!--END: FRAME_CATEGORY-->
+                      <!--START: FRAME_BYPRICE-->
+                      <!--END: FRAME_BYPRICE-->
+                      <!--START: FRAME_MANUFACTURER-->
+                      <!--END: FRAME_MANUFACTURER-->
+                      <!--START: NEW_RELEASES_BLOCK-->
+                      <!--END: NEW_RELEASES_BLOCK-->
+                      <!--START: LEFT_BANNER-->
+                      <table width="100%"  cellspacing="0" cellpadding="4" border="0">
+                        <tr>
+                          <td align="center">[LEFT_BANNER]</td>
+                          
+                          </tr>
+                        </table>
+                      
+                      <!--END: LEFT_BANNER-->	
+  </td>
+                    </tr>
+                  </table><a href="/Shop-Homemade-Gourmet_ep_42.html"><br>
+                  </a></td>
+                <!--end left column-->
+                <td bgcolor="#CCCCCC"><img src="/assets/templates/[template]/images/spacer.gif" width="9" height="1"></td>
+                </tr>
+              <tr bgcolor="#F3F3F3">
+                <td colspan="3" valign="bottom" bgcolor="#CCCCCC"><img src="/assets/templates/HG/images/frame_bott_left.gif" width="16" height="6"></td>
+              </tr>
+              <tr>
+                <td colspan="3" background="/assets/templates/[template]/images/bg_frame_left.gif"> </td>
+                </tr>
+              <tr>
+                <td background="/assets/templates/[template]/images/bg_frame_left.gif"> </td>
+                <td align="center"><table width="100%"  cellspacing="0" cellpadding="4" border="0">
+                  <tr>
+                    <td class="menu-headers"><a href="/4-Meals-in-4-Minutes_ep_43-1.html"><img src="/assets/images/dinner-is-ready-banner.jpg" alt="Homemade Gourmet" width="165" height="195" border="0"></a></td>
+                  </tr>
+                  <tr>
+                    <td class="menu-headers"> </td>
+                  </tr>
+                  <tr>
+                    <td class="menu-headers"><strong>[frame_links]</strong></td>
+                    </tr>
+                  <!--START: LINKS-->
+                  <!--START: LINK_FORMAT-->
+                  <tr>
+                    <td><span class="icon">› </span><a href="infopage.asp?page=[link_id]&extra=1" class="cat" target="[link_target]"><strong>[link_name]</strong></a></td>
+                    </tr>
+                  <!--END: LINK_FORMAT-->
+                  <!--END: LINKS-->
+                  </table></td>
+                <td> </td>
+                </tr>
+              </table></td>
+            <!--end left column-->
+            <td bgcolor="#F3F3F3"><img src="/assets/templates/[template]/images/spacer.gif" width="9"></td>
+            <!--start middle column-->
+            <td width="100%" align="center" valign="top" class="data"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+              <tr>
+                <td align="center">MIDDLE</td>
+                </tr>
+              </table></td>
+            <!--end middle column-->
+            <td bgcolor="#F3F3F3"><img src="/assets/templates/[template]/images/spacer.gif" width="7" height="1"></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td bgcolor="#F3F3F3"><img src="/assets/templates/[template]/images/spacer.gif" width="1" height="10"></td>
+      </tr>
+      <tr>
+        <td background="/assets/templates/HG_custom/images/new_frame/bottom_middle.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="129" align="left"><img src="/assets/templates/HG_custom/images/new_frame/bottom_left.jpg" width="31" height="129"></td>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><table width="100%" border="0" align="left" cellpadding="5" cellspacing="0">
+                  <tr>
+                    <td bgcolor="#BF0F35"><span class="footerfont"><strong>[store_name] </strong><br>
+[store_address1]
+                      [store_address2]<br>
+[store_city],[store_state], [store_zip]<br>
+[store_phone] | <a href="mailto:shop@homemadegourmet.com" class="footerfont">[store_email]</a></span></td>
+                  </tr>
+                </table></td>
+                <td align="right"><!--START: FRAME_MAILLIST-->
+                  <table width="70%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F3F3F3">
+                    <tr>
+                      <td><img src="/assets/templates/HG/images/news_left.gif" width="45" height="32"></td>
+                      <td><form STYLE="margin: 0px; padding: 0px;" method="post" name="mailing" action="/mailing_list.asp?action=add" onSubmit="return mailing_list();" ID="Form2">
+                        <table width="100%" cellspacing="0" cellpadding="5" border="0" ID="table9">
+                          <tr>
+                            <td colspan="2" nowrap class="menu-headers2">[frame_mailinglist]</td>
+                            <td nowrap  class="menu-text"><input type="radio" name="subscribe" value="1" checked ID="Radio1">
+                              [mailinglist_subscribe]</td>
+                            <td nowrap  class="menu-text"><input type="radio" name="subscribe" value="0" ID="Radio2">
+                              [mailinglist_unsubscribe]</td>
+                            <td nowrap><input type="text" size="16" name="email" class="txtBoxStyle" id="Text2"></td>
+                            <td nowrap><input type="submit" name="www" value="[mailinglist_button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Submit2"></td>
+                          </tr>
+                        </table>
+                      </form></td>
+                      <td align="right"><img src="/assets/templates/HG/images/news_right.gif" width="7" height="32"></td>
+                    </tr>
+                  </table>
+                  <!--END: FRAME_MAILLIST--></td>
+              </tr>
+            </table></td>
+            <td align="right"><img src="/assets/templates/HG_custom/images/new_frame/bottom_right.jpg" width="31" height="129"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> </td>
+      </tr>
+      <tr>
+        <td align="center"><table border="0" cellpadding="5" cellspacing="0" >
+          <tr>
+            <td align="center" class="footer">[frame_copyright1]</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+s
+<noscript>
+<p><img src="/stats/count.asp" width=90 height=30 border=0>	</p>
+</noscript>
+
+  <!--END: 3dcart stats-->
+
+</body>
+</html>
+
+
+
+

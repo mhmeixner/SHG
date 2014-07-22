@@ -1,0 +1,204 @@
+<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" class="data">
+<script>
+	function closeWindow()
+	{
+		try
+		{
+			window.parent.hs.close();
+		}
+		catch(err)
+		{
+			window.close();
+		}		
+	}
+
+</script>
+<!--START: qapage-->
+<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="data">
+	<tr>
+		<td><table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="page_headers" colspan="2">[productqa_titlenew][productqa_titlenew-answer]</td>
+				</tr>
+				<tr>
+					<td valign="top" class="item"><h2>[name]</h2></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="borders"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td>
+				</tr>
+			</table>
+			<br>
+<!--START: qaForm-->
+			<form name="frmQA" method="post" action="productqa.asp?action=[productqa_action]&catalogid=[catalogid]">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td colspan="4"><table width="100%" cellpadding="3" cellspacing="2">
+								<tr>
+									<td width="70" class="price-info">[productqa_name]: </td>
+									<td class="price-info" width="150">
+ 										<input type="text" value="[custName]" name="user_name" maxlength="50" class="txtBoxStyle" size="20">
+										&nbsp;<img src="assets/templates/common/images/error2.gif" width="12" height="12">
+ 									</td>
+									<td class="price-info" width="30">[CustomerInfo_email]: </td>
+									<td class="price-info">
+ <!--START: q_user_emailBlock-->
+										<input type="text" value="[custEmail]" name="user_email" maxlength="50" class="txtBoxStyle" size="20">
+										&nbsp;<img src="assets/templates/common/images/error2.gif" width="12" height="12"> <em>([productqa_email-disclaimer])</em>
+ <!--END: q_user_emailBlock-->
+
+ <!--START: q_user_emailHdn-->
+										[custEmail]&nbsp;<em>([productqa_email-disclaimer])</em>
+ <!--END: q_user_emailHdn-->
+									</td>
+								</tr>
+
+<!--START: questionDisplayBlock-->									
+								<tr>
+								    <td>[productqa_question]:</td>
+									<td colspan="3"><strong itemprop="name">[question]</strong></td>
+								</tr>
+ <!--END: questionDisplayBlock-->									
+
+<!--START: questionBlock-->									
+								<tr>
+									<td class="price-info" style="vertical-align:top;"><b>[productqa_enter-question]</b>:</td>
+									<td colspan="3">
+ 									<textarea style="width:450px;height:5em;" name="question" id="question"></textarea>&nbsp;<img src="assets/templates/common/images/error2.gif" width="12" height="12">
+									</td>
+								</tr>
+ <!--END: questionBlock-->									
+
+ <!--START: answerDisplayBlock-->									
+								<tr>
+								    <td>[productqa_answer]:</td>
+									<td colspan="3">[answser]</td>
+								</tr>
+ <!--END: answerDisplayBlock-->									
+
+ <!--START: answerBlock-->									
+								<tr>
+									<td class="price-info" style="vertical-align:top;"><b>[productqa_enter-answer]</b>:</td>
+									<td colspan="3">
+									<textarea cols="54" rows="5" name="answer" id="answer">[answer]</textarea>&nbsp;<img src="assets/templates/common/images/error2.gif" width="12" height="12">
+									<input type="hidden" name="qa_id" id="qa_id" value="[qa_id]" />
+									</td>
+								</tr>
+
+ <!--END: answerBlock-->									
+
+<!--START: captcha-->
+								<tr>
+									<td class="price-info">Verification:</td>
+									<td class="price-info"><img src="admin/image_pw.asp" border="0" width="148"> <br>
+										Type the word above...<br>
+										<input type="text" name="ramdomWord" id="ramdomWord" autocomplete="off" value="" size="25" maxlength="30" class="txtBoxStyle">
+										&nbsp;<img src="assets/templates/common/images/error2.gif" width="12" height="12"> </td>
+								</tr>
+<!--END: captcha-->
+<!--START: recaptcha-->
+					            <tr>
+						            <td class="price-info">Verification:</td>
+						            <td class="price-info" colspan="3">
+                                        <script type="text/javascript">var RecaptchaOptions = { theme: '[recaptcha_theme]' };</script>
+                                        <script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k=[recaptcha_key]"></script>
+                                        <noscript>
+                                        <iframe src="//www.google.com/recaptcha/api/noscript?k=[recaptcha_key]" height="300" width="500" frameborder="0"></iframe><br>
+                                        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                                        <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+                                        </noscript>
+						            </td>
+					            </tr>
+ <!--END: recaptcha-->
+							</table>
+							<br>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="borders"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td>
+					</tr>
+					<tr>
+						<td height="50"><span class="error"><img src="assets/templates/common/images/error2.gif"> = [required]</span></td>
+						<td align="right"><input type="submit" value="[productqa_titlenew][productqa_titlenew-answer]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ></td>
+					</tr>
+			</table>
+			</form>
+<script type="text/javascript" id="jsValidate">
+//You should create the validator only after the definition of the HTML form
+	var frmvalidator = new Validator("frmQA");
+
+	bolCheckSubmitted_validation = true;//Global variable defined in utilities.js
+	frmvalidator.setAddnlValidationFunction("validateQ");
+	
+//<!--START: validateNameEmail-->
+	frmvalidator.addValidation("q_user_name", "req", "[productqa_validate-name]");
+	frmvalidator.addValidation("q_user_name", "maxlen=50", "[productqa_validate-name-length]");
+	frmvalidator.addValidation("q_user_email", "maxlen=100", "[productqa_validate-email-length]");
+	frmvalidator.addValidation("q_user_email","email");
+	frmvalidator.addValidation("q_user_email", "req", "[productqa_validate-email]");
+//<!--END: validateNameEmail-->	
+
+//<!--START: validateQuestion-->
+	frmvalidator.addValidation("question", "maxlen=5000", "[productqa_validate-answer-length]");
+	frmvalidator.addValidation("question", "req", "[productqa_validate-question]");
+	function validateQ() {
+		if (document.getElementById('question').value.search(/\?/) < 0) {
+			alert('[productqa_validate-qmark]');
+			return (false);
+		}
+		return (true);
+	}
+//<!--END: validateQuestion-->
+
+//<!--START: validateAnswer-->
+	frmvalidator.addValidation("answer", "maxlen=10000", "[productqa_validate-question-length]");
+	frmvalidator.addValidation("answer", "req", "[productqa_validate-answer]");
+//<!--END: validateAnswer-->
+
+//<!--START: captchascript-->
+	frmvalidator.addValidation("ramdomWord","maxlen=20");
+	frmvalidator.addValidation("ramdomWord", "req", "[productqa_validate-captha]");
+//<!--END: captchascript-->
+</script>
+<!--END: qaForm-->
+ 
+<!--START: qaThankYouBlock-->
+			<table width="100%" cellpadding="2" cellspacing="0" border="0">
+				<tr>
+					<td align="left"><table width="100%" cellspacing="5" cellpadding="0" border="0" id="Table5">
+							<tr align="center">
+								<td colspan="4" class="item" align="left">[qaMessage]</td>
+							</tr>
+						</table></td>
+				</tr>
+				<tr>
+					<td align="right"><input type="button" value='Click here to continue' class="btn" onClick="closeWindow();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+<!--END: qaThankYouBlock-->
+
+<!--START: errorMsg-->
+			<table width="100%" border="0" cellspacing="3" cellpadding="0" id="Table3">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="left"><table width="100%" cellspacing="5" cellpadding="0" border="0" >
+							<tr align="center">
+								<td colspan="4" class="item" align="left">[errorMsg]</td>
+							</tr>
+						</table></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="borders"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td>
+				</tr>
+				<tr>
+					<td align="right"><input type="button" value='Click here to continue' class="btn" onClick="history.back(1);" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+<!--END: errorMsg-->
+		</td>
+	</tr>
+</table>
+<!--END: qapage-->
+</body>
+</html>

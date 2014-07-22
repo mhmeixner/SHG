@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>Downloads</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+/*invoice_title:: Controls the Body Tiles such as (Specials, Feature Items, Items, Related Items)*/ 
+.invoice_title {
+	font-family :   Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+	background-color : #cbcaca;
+	color : #4f4e4e;
+	
+} 
+
+/*invoice_table:: Controls the Body Tiles such as (Specials, Feature Items, Items, Related Items)*/ 
+.invoice_table {
+    background-color : #f9f8f8;
+	background-color : #f9f8f8;
+	font-family :Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : Normal;
+	color : #585C5F;
+	
+} 
+
+ 
+/*item:: Controls the Item, Name, Description, Price, Savings, Cost,Font and Color  (Default Size is 12)*/ 
+.item {
+	font-family :Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : Normal;
+	color : #585C5F;
+	text-decoration: none;
+}
+
+/*borders2:: Controls the color of  the borders on forms*/ 
+.borders2 {
+		border : #cbcaca;
+		background-color : #cbcaca;
+		
+ } 
+ 
+
+ /*checkout-headers:: Controls body default fonts and colors  (Default Font Size is 12)*/
+.checkout-headers {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 16px;
+	font-weight : bold;
+	color : #4f4e4e;
+	background-color : #ffffff;
+} 
+
+
+</style>
+
+</head>
+
+<body>
+
+
+<table width="95%" cellpadding="0" cellspacing="0">
+
+   <tr><td colspan="3" class="page_headers" align="left">Download Page (Order  [invoicenum_prefix][invoicenum]) </td></tr>
+
+  <tr><td colspan="3">&nbsp;</td></tr>
+ <tr><td colspan="3" class="invoice_title" align="center">
+   <!------ START: Confirmation ---------------------------------->
+This links will expire on [expiration_date]
+ </td></tr>
+ <tr><td>&nbsp;</td></tr>
+ <tr><td colspan="2">
+ <table width="100%" cellpadding="2" border="0" cellspacing="0">
+
+
+ 
+   <!--START: items-->
+    <tr class="invoice_table">
+      <td valign="top" align="left"  class="item" width="20%"><!--START: itemid-->[itemid]<!--END: itemid--></td>
+      <td valign="top" align="left" class="item" width="70%">[itemname]</td>
+      <td width="5%">&nbsp;</td>
+    </tr>
+    <tr class="invoice_table">
+      <td width="20%">&nbsp;</td>
+      <td valign="top" align="left" class="item" ><b>[eproduct_file]</b><br /><a href="edownload.asp?eid1=[catalogid]&eid2=[orderkey]&file=[file_count]" target="_blank">Click here to download</a></td>
+      <td width="5%">&nbsp;</td>
+    </tr>
+<!--START: serial-->    
+    <tr class="invoice_table">
+      <td width="20%">&nbsp;</td>
+      <td valign="top" align="left" class="item" >Serial: [serial]</td>
+      <td width="5%">&nbsp;</td>
+    </tr>
+<!--END: serial-->    
+<!--START: eproduct_instructions-->
+    <tr class="invoice_table">
+      <td width="20%">&nbsp;</td>
+      <td valign="top" align="left" class="item" >[eproduct_instructions]</td>
+      <td width="5%">&nbsp;</td>
+    </tr>
+<!--END: eproduct_instructions-->
+<tr><td>&nbsp;</td></tr>
+   <!--END: items-->
+
+ </table>
+ 
+ 
+ </td></tr>
+ <tr><td colspan="2" class="invoice_table">
+ 
+ 
+ 
+
+    <!------ END: Confirmation ------------------------------------>
+ </td></tr>
+</table>
+</center>					
+</body>
+</html>

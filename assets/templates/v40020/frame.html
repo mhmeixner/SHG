@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>[TITLE]</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+[META]
+<script type="text/javascript" src="assets/templates/common/js/utilities.js"></script>
+<link rel="StyleSheet" href="assets/templates/[template]/css/[stylesheet]" type="text/css" media="screen" />
+<!--START: FRAME_RSSFEEDS -->
+<link rel="alternate" type="application/rss+xml" title="Featured Items (RSS 2.0)" href="[store_url]/rss.asp?type=home" />
+<link rel="alternate" type="application/rss+xml" title="Products On Sale (RSS 2.0)" href="[store_url]/rss.asp?type=onsale" />
+<link rel="alternate" type="application/rss+xml" title="New Releases (RSS 2.0)" href="[store_url]/rss.asp?type=newreleases" />
+<link rel="alternate" type="application/rss+xml" title="Best Sellers (RSS 2.0)" href="[store_url]/rss.asp?type=bestsellers" />
+<link rel="alternate" type="application/rss+xml" title="Latest Blog Posts (RSS 2.0)" href="[store_url]/rss.asp?type=blog" />
+<!--START: RSSFEEDS_CATEGORIES-->
+<link rel="alternate" type="application/rss+xml" title="[category_name] (RSS 2.0)" href="[store_url]/rss.asp?type=category&amp;catid=[catid]" />
+<!--END: RSSFEEDS_CATEGORIES-->
+<!--END: FRAME_RSSFEEDS -->
+<!--START: quicksearch-->
+<script type="text/javascript" src="assets/templates/common/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/templates/common/quicksearch/jquery.quicksearch.js"></script>
+<link rel="stylesheet" href="assets/templates/common/quicksearch/quicksearch.css" />
+<script type="text/javascript">
+jQuery(function() {
+	jQuery('#searchlight').searchlight('/search_quick.asp');
+});
+</script>
+<!--END: quicksearch-->
+<!-- Set columns to equal height -->
+<script type="text/javascript">
+//<![CDATA[
+/*
+ * Usage: $(object).equalHeights([minHeight], [maxHeight]);
+ * 
+ * Example 1: $(".height").equalHeights(); Sets all columns to the same height.
+ * Example 2: $(".height").equalHeights(4000); Sets all cols to at least 4000px tall.
+ * Example 3: $(".height").equalHeights(1000,3000); Cols are at least 1000 but no more
+ * than 3000 pixels tall. Elements with too much content will gain a scrollbar.
+ * 
+ */
+(function($) {
+	jQuery.fn.equalHeights = function(lowHeight, maxHeight) {
+		tallest = (lowHeight) ? minHeight: 0;
+		this.each(function() {
+			if(jQuery(this).height() > tallest) {
+				tallest = jQuery(this).height();
+			}
+		});
+		
+		if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
+		return this.each(function() {
+			jQuery(this).height(tallest).css({'height': tallest});
+		});		
+	}
+})(jQuery);
+// If single page checkout is selected, don't fire the equalHeights or setSidebars functions. 
+// It will be called upon ajax success via the checkout page to allow for content height and width adjustment.
+var href = jQuery(location).attr('href');
+var checkOut = href.indexOf('checkout_one.asp');
+if (checkOut == -1) {
+	jQuery(window).load(function() {
+		jQuery(".height").equalHeights();
+	});
+}
+</script>
+<!-- end height adjustment script -->
+</head><body>
+<div id="headerWrap">
+  <div id="header" style="width:[screenwidth]px;">
+    <div id="headerLeft">
+      <div id="logoContainer">
+        <div class="logo" onmouseover="this.style.cursor='pointer'; this.title='Return to [storename] home page';" onclick="window.location.href='/';"> 
+          <!--START: global_header-->
+          <div id="logoBG">
+            <div class="store-name">[storename]</div>
+            <div class="store-slogan">[storeslogan]</div>
+          </div>
+          <!--END: global_header--> 
+        </div>
+        <!-- end logo --> 
+      </div>
+      <!-- end logoContainer -->
+      
+      <div class="clear"></div>
+    </div>
+    <!-- end headerLeft -->
+    <div id="headerRight" style="position:relative;">
+      <div id="headerRightTop"> 
+        <!--START: FRAME_SEARCH-->
+        <div id="searchContainer">
+          <form name="searchForm" method="get" action="search.asp" style="margin: 0px; padding: 0px;">
+            <div id="searchBoxInput">
+              <input name="keyword" id="searchlight" class="txtBoxSearch" type="text" onfocus="if (document.searchForm.keyword.value=='Search') {document.searchForm.keyword.value='';};"  onblur="if(this.value.length == 0) this.value = 'Search'" value="Search" />
+            </div>
+            <div id="searchButton">
+              <input type="image" src="assets/templates/[template]/images/search_input.png" onmouseover="this.title='Submit Search';" name="search" />
+            </div>
+          </form>
+        </div>
+        <!-- end searchContainer --> 
+        <!--END: FRAME_SEARCH-->
+        
+        <div id="userBG"> 
+          <!--START: username-->
+          <div id="loginContent"><span id="loginWelcome">[account_greeting]</span> [username],&nbsp;<a href="logout.asp" class="login" title="logout"><strong>Logout</strong></a></div>
+          <!--END: username--> 
+        </div>
+        <!-- end userBG--> 
+        
+      </div>
+      <!-- end headerRightTop -->
+      <div class="clear"></div>
+      <div id="headerRightBottom">
+        <div id="menuBG">
+          <div id="topMenu" align="center"> 
+            <!--START: FRAME_MENU-->
+            <div id="menuLinks"> 
+              <!--START: menuitems_view--> 
+              <!--START: TOP_LINK_FORMAT-->
+              <div class="menuLinkWrap">
+                <div class="menuMain"> <a href="infopage.asp?page=[link_id]" class="menu" target="[link_target]" title="[link_name]">[link_name]</a> <img src="assets/templates/[template]/images/menu_li.png" alt="menu li" /> </div>
+                <div class="clear"></div>
+              </div>
+              <!--END: TOP_LINK_FORMAT--> 
+              <!--END: menuitems_view--> 
+            </div>
+            <!--END: FRAME_MENU--> 
+          </div>
+          <!-- end topMenu -->
+          
+          <div id="cartWrap"> 
+            <!--START: shopping_cart-->
+            <div id="cartBG">
+              <div id="cartText">
+                <div id="cartLink"> <a id="cart_link" href="view_cart.asp" title="View Cart" class="cart-text" rel="nofollow"><span class="cartBold">[ITEMSINCART]</span> item(s) <span class="cartBold">[SUBTOTAL]</span> </a>&nbsp;&nbsp;&nbsp;&nbsp; </div>
+                <div id="checkoutLink"> <a href="view_cart.asp" title="View Cart" class="cart-text" rel="nofollow" style="color:#a12b1d;font-family:Conv_ufonts.com_arial-rounded-mt-bold-2; font-weight:bold;">VIEW</a> </div>
+                <div id="cartIcon"><img src="assets/templates/[template]/images/cart_icon.png" alt="cart icon" /></div>
+              </div>
+              <!-- end cartText --> 
+            </div>
+            <!-- end cartBG --> 
+            <!--END: shopping_cart--> 
+          </div>
+          <!-- end cartWrap --> 
+          
+        </div>
+        <!-- end menuBG --> 
+        
+      </div>
+      <!-- end headerRightBottom --> 
+    </div>
+    <!-- end headerRight --> 
+  </div>
+  <!-- end header --> 
+</div>
+<!-- end headerWrap -->
+
+<div class="clear"></div>
+<!-- 
+The site is wrapped in a table to prevent blowouts due to tables being inserted via the system files.
+This also allows for instant reactions from fluid width changes via the admin panel.
+While I am not a fan of tables in development, in this case, it is a necessary evil.
+The highlight of it all though is that IE7 will lose it's layout properties when wrapped in a 
+table. Floats and negative margins will just not cooperate. Hence the conditional fix below.
+-->
+<table id="wrap" width="[screenwidth]" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td><!--[if lte IE 7]>
+</td></tr></table>
+<div id="wrap" style="width:980px;" align="left">
+<![endif]-->
+      
+      <div id="contentWrap" style="position:relative;">
+        <div class="clear"></div>
+        <div class="mainC">
+          <div id="container">
+            <div id="center" class="section height">
+              <div> 
+                <!-- middle content starts here-->
+                <div id="midContent">
+                  <div class="data">MIDDLE</div>
+                </div>
+                <!--middle content ends here--> 
+              </div>
+            </div>
+            
+            <!--START: LEFT BAR-->
+            <div id="left" class="section height"><!-- This div must remain here for the fluid layout to function! -->
+              <div id="leftBG">
+                <div class="column" id="column1"> 
+                  <!--START: LEFT_BAR_BLOCKS--><!--START: TOP_SELLERS_BLOCK-->
+                  <div id="topSellers" class="columnWrap">
+                    <div align="left" class="menu-headers">
+                      <p>[frame_top-sellers]</p>
+                      <div class="top-sellers-star"><!--[ranking]--></div>
+                    </div>
+                    <div class="mod_bg">
+                      <div class="mod_bg_repeat"><!--START: topsellers--> 
+                        <!--START: topsellers_topitem-->
+                        <div>
+                          <div><!--item content-->
+                            <div>
+                              <div id="topSellerTopItem">
+                                <div id="tsImgContainer" align="center"> <a href="product.asp?itemid=[catalogid]" title="[name]"><img src="thumbnail.asp?file=[thumbnail]&amp;maxx=146&amp;maxy=120" alt="[name]" border="0" /></a> </div>
+                                <div class="item" align="left" style="width:153px; margin-left:12px;"> <a href="product.asp?itemid=[catalogid]" class="tscat" title="[name]">[name]</a> </div>
+                                <div style="width:40%; padding-top:0; padding-right:0; float:left; margin-left:8px;">
+                                  <div id="topSellerPriceContainer" align="center" class="price2"><!--START: ITEMPRICE--> 
+                                    [ITEMPRICE]<br />
+                                    <!--END: ITEMPRICE--> 
+                                    <!--START: SALEPRICE--> 
+                                    <span class="strikethru">[ITEMPRICE]</span><br />
+                                    [ITEMSALEPRICE] 
+                                    <!--END: SALEPRICE--></div>
+                                </div>
+                                <div style="width:40%; float:left; padding:5px 0 0 5px;"><!--START: product_review_average--> 
+                                  <img src="assets/templates/[template]/images/star[review_average].png" border="0" alt="review average" /> 
+                                  <!--END: product_review_average--></div>
+                                <div class="clear"></div>
+                              </div>
+                              <!-- end topSellerTopItem -->
+                              
+                              <div class="clear"></div>
+                            </div>
+                          </div>
+                          <!--item content--> 
+                        </div>
+                        <!--END: topsellers_topitem--> 
+                        <!--START: topsellers_item-->
+                        <div style="padding:10px 0;" align="center"> <img src="assets/templates/[template]/images/hr.png" alt="hr" /> </div>
+                        <div>
+                          <div class="tsrankingLeft">
+                            <div class="rankingImg"> <a href="product.asp?itemid=[catalogid]" title="[name]"><img src="thumbnail.asp?file=[thumbnail]&#38;maxx=55&#38;maxy=0" alt="[name]" hspace="5" border="0" /></a> </div>
+                            <div class="clear"></div>
+                          </div>
+                          <div class="tsrankingRight" align="left">
+                            <div class="item"> <a href="product.asp?itemid=[catalogid]" class="tscat" title="[name]">[name]</a> </div>
+                            <div class="price"><!--START: ITEMPRICE--> 
+                              [ITEMPRICE]<br />
+                              <!--END: ITEMPRICE--> 
+                              <!--START: SALEPRICE--> 
+                              <s>[ITEMPRICE]</s><br />
+                              [ITEMSALEPRICE] 
+                              <!--END: SALEPRICE--></div>
+                            <div><!--START: product_review_average--> 
+                              <img src="assets/templates/[template]/images/star[review_average].png" border="0" alt="review average" /> 
+                              <!--END: product_review_average--></div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <!--END: topsellers_item--> 
+                        <!--END: topsellers--> 
+                        
+                      </div>
+                      <!-- end mod_bg_repeat -->
+                      
+                      <div class="clear"></div>
+                    </div>
+                    <!-- end mod_bg --> 
+                    
+                  </div>
+                  <!--END: TOP_SELLERS_BLOCK--><!--START: FRAME_MANUFACTURER-->
+                  <div class="columnWrap">
+                    <div class="menu-headers">
+                      <p>[frame_manufacturer]</p>
+                    </div>
+                    <div class="mod_bg">
+                      <div class="mod_bg_repeat">
+                        <form name="mfg" id="mfg" method="get" action="search_groups.asp" style="margin: 0px; padding: 0 0 10px 0;">
+                          <!--START: manufacturer_format-->
+                          <div class="sidebar_items">
+                            <div class="listItem"><a href="search_groups.asp?manf=[mfgid]" class="cat" title="[manufacturer]"><span style="display:inline;" class="sidebarCats"><span>[manufacturer]</span></span></a></div>
+                            <div class="clear"></div>
+                          </div>
+                          
+                          <!--END: manufacturer_format--> 
+                          
+                          <!--
+                            <div align="center" style="padding-top:10px;">
+                            	<select name="manf" onChange="this.form.submit();" ID="Select1"  class="txtBoxStyle" style="width:140px;">
+                                    <option value=0 selected class="txtBoxStyle">Manufacturer</option>
+                                    <!-START: manufacturer_format->
+                                    <option value=[mfgid] class="txtBoxStyle">[manufacturer]</option>
+                                    <!-END: manufacturer_format->
+                            	</select>
+                            </div>
+                             -->
+                          
+                        </form>
+                      </div>
+                      <!-- end mod_bg_repeat -->
+                      
+                      <div class="clear"></div>
+                    </div>
+                    <!-- end mod_bg --> 
+                    
+                  </div>
+                  <!--END: FRAME_MANUFACTURER--><!--START: FRAME_CATEGORY-->
+                  <div class="columnWrap">
+                    <div class="menu-headers">
+                      <p>[frame_categories]</p>
+                    </div>
+                    <div class="mod_bg">
+                      <div class="mod_bg_repeat">
+                        <div id="categoryBar">
+                          <ul id="categoriesdfs">
+                            <!--START: CATEGORIES--> 
+                            <!--START: CATEGORY_FORMAT-->
+                            <li class="categoryListing">
+                              <div class="listItem" style="width:160px;"><a href="view_category.asp?cat=CATID" class="cat" title="CATEGORY">CATEGORY</a></div>
+                              <!--END: CATEGORY_FORMAT-->
+                              <ul class="subCat">
+                                <!--START: SUB_CATEGORY_FORMAT-->
+                                <li class="subcatListing"><a href="view_category.asp?cat=CATID" class="subcat" title="CATEGORY">CATEGORY</a></li>
+                                <!--END: SUB_CATEGORY_FORMAT-->
+                                <li></li>
+                              </ul>
+                            </li>
+                            <!--END: CATEGORIES-->
+                          </ul>
+                          <div class="clear"></div>
+                        </div>
+                        <!-- end categoryBar --> 
+                      </div>
+                      <!-- end mod_bg_repeat -->
+                      
+                      <div class="clear"></div>
+                    </div>
+                    <!-- end mod_bg --> 
+                    
+                  </div>
+                  <!--END: FRAME_CATEGORY--><!--START: LEFT_BANNER-->
+                  <div id="leftBanner" class="bannerDiv">
+                    <div class="mod_bg" align="left" style="overflow:hidden;">
+                      <div class="mod_bg_repeat" align="left">
+                        <div style="padding:3px;">[LEFT_BANNER]</div>
+                      </div>
+                    </div>
+                    <div><img src="assets/templates/common/images/spacer.gif" width="1" height="15px" alt="spacer" /></div>
+                  </div>
+                  <!-- end leftBanner bannerDiv --> 
+                  <!--END: LEFT_BANNER--><!--END: LEFT_BAR_BLOCKS--> 
+                </div>
+              </div>
+              <!-- end leftBG --> 
+            </div>
+            <!-- This div must remain here for the fluid layout to function! --> 
+            <!--END: LEFT BAR--> 
+            
+            <!--START: RIGHT BAR-->
+            <div id="right" class="section height"><!-- This div must remain here for the fluid layout to function! -->
+              <div id="rightBG">
+                <div class="column" id="column2"> 
+                  <!--START: RIGHT_BAR_BLOCKS--><!--START: NEW_RELEASES_BLOCK-->
+                  
+                  <div id="newReleases" class="columnWrap">
+                    <div class="menu-headers">
+                      <p>[frame_new-releases]</p>
+                      <div class="nr-star"> </div>
+                    </div>
+                    <div class="mod_bg">
+                      <div class="mod_bg_repeat"> 
+                        
+                        <!--START: newreleases--> 
+                        <!--START: newreleases_topitem-->
+                        <div id="nrTopItem">
+                          <div id="nrTopItemImg"> <a href="product.asp?itemid=[catalogid]" title="[name]"><img src="thumbnail.asp?file=[thumbnail]&amp;maxx=150&amp;maxy=0" alt="[name]" border="0" /></a> </div>
+                          <div id="nrTopItemDesc">
+                            <div class="item"> <a href="product.asp?itemid=[catalogid]" class="tscat" title="[name]">[name]</a> </div>
+                            <div class="nrPrice price"> 
+                              <!--START: ITEMPRICE--> 
+                              [ITEMPRICE]<br />
+                              <!--END: ITEMPRICE--> 
+                              <!--START: SALEPRICE--> 
+                              <s>[ITEMPRICE]</s><br />
+                              [ITEMSALEPRICE] 
+                              <!--END: SALEPRICE--> 
+                            </div>
+                            <div class="nrReview" style="padding-top:5px;"> 
+                              <!--START: product_review_average--> 
+                              <img src="assets/templates/[template]/images/star[review_average].png" alt="review average" /> 
+                              <!--END: product_review_average--> 
+                            </div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                        <!--END: newreleases_topitem--> 
+                        <!--START: newreleases_item-->
+                        <div style="padding:10px 0;" align="center"> <img src="assets/templates/[template]/images/hr.png" alt="hr" /> </div>
+                        <div style=" width:90%; margin:0 auto; padding:0 10px; text-align:left;">
+                          <div class="item"> <a href="product.asp?itemid=[catalogid]" class="tscat" title="[name]">[name]</a> </div>
+                          <div class="price" style="width:45%; float:left;"><!--START: ITEMPRICE--> 
+                            [ITEMPRICE]<br />
+                            <!--END: ITEMPRICE--> 
+                            <!--START: SALEPRICE--> 
+                            <s>[ITEMPRICE]</s><br />
+                            [ITEMSALEPRICE] 
+                            <!--END: SALEPRICE--></div>
+                          <div class="nrItemreview" style="width:50%; float:left; padding-top:5px;"><!--START: product_review_average--> 
+                            <img src="assets/templates/[template]/images/star[review_average].png" border="0" alt="review average" /> 
+                            <!--END: product_review_average--></div>
+                          <div class="clear"></div>
+                        </div>
+                        <!--END: newreleases_item--> 
+                        <!--END: newreleases--> 
+                      </div>
+                      <!-- end mod_bg_repeat -->
+                      
+                      <div class="clear"></div>
+                    </div>
+                    <!-- end mod_bg --> 
+                    
+                  </div>
+                  <!--END: NEW_RELEASES_BLOCK--><!--START: FRAME_BYPRICE-->
+                  <div class="columnWrap">
+                    <div class="menu-headers">
+                      <p>[frame_byprice]</p>
+                    </div>
+                    <div class="mod_bg">
+                      <div class="mod_bg_repeat"> 
+                        
+                        <!--START: byprice_format-->
+                        <div class="sidebar_items">
+                          <div class="listItem"><a href="search_groups.asp?keyword=[id]&byprice=[id]" class="cat" title="[title]"><span style="display:inline;" class="sidebarCats"><span>[title]</span></span></a></div>
+                          <div class="clear"></div>
+                        </div>
+                        <!--END: byprice_format--> 
+                        
+                      </div>
+                      <!-- end mod_bg_repeat -->
+                      
+                      <div class="clear"></div>
+                    </div>
+                    <!-- end mod_bg --> 
+                    
+                  </div>
+                  <!--END: FRAME_BYPRICE--><!--START: FRAME_MAILLIST-->
+                  <div class="columnWrap">
+                    <div class="menu-headers">
+                      <p>MAILING LIST</p>
+                    </div>
+                    <div class="mod_bg">
+                      <div class="mod_bg_repeat">
+                        <form method="post" name="mailing" action="mailing_list.asp?action=add" onsubmit="return mailing_list();" style="margin: 0px 10px; padding: 0px;">
+                          <p class="mailinglistText">[mailinglist_text]</p>
+                          <div id="emailInput">
+                            <div>
+                              <input id="emailTextArea" name="email" type="text" class="txtBoxStyle" onfocus="if (this.value=='Enter e-mail') {this.value='';};"  onblur="if(this.value == '') this.value = 'Enter e-mail'" value="Enter e-mail" />
+                              <input type="submit" name="www" value="" style="background:url(assets/templates/[template]/images/email_submit.png) 0 0 no-repeat; height:24px; width:27px; border:none;" />
+                            </div>
+                            <div class="clear"></div>
+                          </div>
+                          <span class="subscribe">
+                          <input name="subscribe" value="1" checked="checked" type="radio" />
+                          &nbsp;[mailinglist_subscribe]</span> <span class="subscribe">
+                          <input name="subscribe" value="0" type="radio" />
+                          &nbsp;[mailinglist_unsubscribe]</span>
+                          <div class="clear"></div>
+                        </form>
+                      </div>
+                      <!-- end mod_bg_repeat -->
+                      
+                      <div class="clear"></div>
+                    </div>
+                    <!-- end mod_bg --> 
+                    
+                  </div>
+                  <!--END: FRAME_MAILLIST--><!--START: RIGHT_BANNER-->
+                  <div id="rightBanner" class="bannerDiv">
+                    <div class="mod_bg" align="left" style="overflow:hidden;">
+                      <div class="mod_bg_repeat" align="left">
+                        <div style="padding:3px;">[RIGHT_BANNER]</div>
+                      </div>
+                    </div>
+                    <div><img src="assets/templates/common/images/spacer.gif" width="1" height="15px" alt="spacer" /></div>
+                  </div>
+                  <!-- end rightBanner bannerDiv --> 
+                  <!--END: RIGHT_BANNER--><!--END: RIGHT_BAR_BLOCKS--> 
+                </div>
+              </div>
+              <!-- end rightBG --> 
+            </div>
+            <!-- This div must remain here for the fluid layout to function! --> 
+            <!--END: RIGHT BAR-->
+            <div class="clear"></div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!-- end #contentWrap --><!--[if lte IE 7]>
+</div>
+<table><tr><td>
+<![endif]--></td>
+  </tr>
+</table>
+<!-- end #wrap -->
+<div id="footer">
+  <div id="footerContent">
+    <div id="footerTop">
+      <div id="footerMenu" align="center"> 
+        <!--START: FRAME_LINKS-->
+        <ul class="menu-bottom">
+          <!--START: LINKS--> 
+          <!--START: LINK_FORMAT-->
+          <li class="menu-bottom"><a href="infopage.asp?page=[link_id]&extra=1" class="menu-bottom" target="[link_target]" title="[link_name]">[link_name]</a></li>
+          <!--END: LINK_FORMAT--> 
+          <!--END: LINKS-->
+          
+        </ul>
+        <!--END: FRAME_LINKS-->
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+      <div id="copyright">[frame_copyright1]</div>
+      <div id="globalFooter">[GLOBAL_FOOTER]</div>
+    </div>
+    <!-- end footerBottom -->
+    <div class="clear"></div>
+  </div>
+  <!-- end footerContent --> 
+</div>
+<!-- end footer --> 
+<!--START: 3dcart stats--> 
+<script type="text/javascript" language="javascript">
+//<![CDATA[
+var file='/stats/count.asp';
+var stats_d=new Date();
+var stats_s=stats_d.getSeconds();
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';}
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';}
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; stats_h=screen.min-height;
+stats_v=navigator.appName;
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width="1px"  style="min-height:30px;" border="0" alt="stats" />');
+//]]>
+</script>
+<noscript>
+<img src="/stats/count.asp" width="90px" style="min-height:30px;" border="0" alt="stats" />
+</noscript>
+<!--END: 3dcart stats--> 
+
+<script type="text/javascript">
+//<![CDATA[
+// If any of the ID's or widths below are changed in the template, 
+// they must also be changed here to prevent the template from breaking.
+
+// If you get confused...ask Wayne. He's the one who designed this template.
+// If you don't know him or he doesn't work here anymore, get some
+// training in web development because this stuff is really basic.
+
+// Edit these settings if modifying the structure of the frame.
+/**/ var id = "left"; // ID of sidebar1
+/**/ var id2 = "right"; // ID of sidebar2
+/**/ var rw = "200px"; // Must match the width of the Right Sidebar
+/**/ var lw = "200px"; // Must match the width of the Left Sidebar
+/**/ var c = "container"; // ID of content containing div
+
+/************************************************************************************************/
+// Do not edit below this line unless you know what you are doing. It will break the site layout.
+/************************************************************************************************/
+var l = document.getElementById(id); // ID of sidebar1
+var r = document.getElementById(id2); // ID of sidebar2
+if (r) {
+	el = document.getElementById(c);
+	el.style.paddingRight = rw; // Must match the width of the Right Sidebar
+} else {
+	el = document.getElementById(c);
+	el.style.paddingRight = '0px';
+}
+
+if (l) {
+	el = document.getElementById(c);
+	el.style.paddingLeft = lw;
+} else {
+	el = document.getElementById(c);
+	el.style.paddingLeft = '0px';
+}
+//]]>
+</script> 
+<!-- end page width adjustment script -->
+</body>
+</html>

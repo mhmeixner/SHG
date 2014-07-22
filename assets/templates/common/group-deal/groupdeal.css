@@ -1,0 +1,73 @@
+.clear {
+	clear: both;
+}
+.timer {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 18px;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+	white-space: nowrap;
+	letter-spacing: -1px;
+}
+.countdownBG {
+	background: #353535;
+}
+.countdown-text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	font-weight: normal;
+	text-align: center;
+}
+.priceText {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 14px;
+	color: #353535;
+	font-weight: bold;
+}
+.salePrice {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 28px;
+	color: #d31111;
+	font-weight: bold;
+}
+.small-txt {
+	font-size: 10px;
+	color: #353535;
+	font-weight: normal;
+	text-align: center;
+}
+#gdItemsSold {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 24px;
+	color: #353535;
+	font-weight: bold;
+}
+#gdItemsSold div {
+	width: 50px;
+	float: left;
+	text-align: center;
+	margin: 15px 10px;
+}
+#gdItemsSold span {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 12px;
+	color: #353535;
+	font-weight: normal;
+}
+#savings {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 24px;
+	color: #353535;
+	font-weight: bold;
+	text-align: center;
+	float: left;
+	margin: 15px 0px 15px 10px;
+}
+#savings span {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 12px;
+	color: #353535;
+	font-weight: normal;
+}

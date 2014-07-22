@@ -1,0 +1,83 @@
+<p align="center">An account in our database with your email already exists.<br>
+Please log in using your email and password, or use the forgot password utility 
+to retrieve your password.<br>
+<!------ START  Log in ------------------------------------>
+	 <br>
+&nbsp;<div align="center">
+	 <table width="90%" border="0" cellspacing="1" cellpadding="0"  class="borders">
+		 <tr>
+		 <td class="alternative">
+		 
+              <table  width="100%" cellspacing="0" cellpadding="0" border="0">
+				<form action="login.asp?ordertracking=[otrack]" method="post">		
+				<tr>
+					 <td class="titles">&nbsp;[login_Header-login]&nbsp;</td>
+				</tr>
+				
+				<tr>
+	  				<td align="center">
+					     <span class="font1">[login_Header-loginmessage]</span>
+	       			</td>
+				</tr>
+				
+				<tr>
+				<td align="center" height="36" class="font2">&nbsp;[CustomerInfo_email]: <input type="text" size="20" name="email" value="[email]"> </td>
+				</tr>				
+				
+				<tr>
+
+				<td align="center" height="36" class="font2">[CustomerInfo_password]: <input type="password" size="12" name="password"> &nbsp;</td>
+				</tr>				
+				<tr>
+	  				<td align="center">&nbsp;</td>
+				</tr>
+				
+				<tr>
+	  				<td align="center"><input type="submit" value="[login_button]"></td>
+				</tr>
+				
+				</form>
+			  </table>
+			  
+			</td>
+			</tr>
+		</table>
+</div>
+<!------ END Log in ------------------------------------>
+
+<p><br>
+
+<!------ START  Log in ------------------------------------>
+	 <div align="center">
+	 <table width="90%" border="0" cellspacing="1" cellpadding="0"  class="borders">
+		 <tr>
+		 <td class="alternative">
+		 
+              <table  width="100%" cellspacing="0" cellpadding="0" border="0">
+		
+				<tr>
+					 <td class="titles">&nbsp;[login_Header-forgotpassword]&nbsp;</td>
+				</tr>
+				
+				<tr>
+				<form action="login.asp?action=forgotpass&ordertracking=[otrack]" method="post">
+				<td align="center" height="36" class="font2">&nbsp;[CustomerInfo_email]: 
+				<input type="text" size="20" name="email" value="[email]"> </td>
+				</tr>				
+				<tr>
+	  				<td align="center">&nbsp;</td>
+				</tr>
+				
+				<tr>
+	  				<td align="center"><input type="submit" value="[login_forgotpasswordbutton]"></td>
+				</tr>
+				
+				</form>
+			  </table>
+			  
+			</td>
+			</tr>
+		</table>
+</div>
+<!------ END Log in ------------------------------------>	
+	

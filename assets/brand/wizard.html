@@ -1,0 +1,803 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link href="templates/css/styles.css" rel="stylesheet" type="text/css" />
+<title>Wizard</title>
+<script language="javascript" src="./templates/js/validation.js"></script>
+<script type="text/javascript" src="state_countryjs.asp"></script>
+<script language="javascript" src="templates/js/detection.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script language="javascript" src="templates/js/3dcart.js"></script>
+<script language='javascript'>
+			checkDoubleSlashURL();
+		</script>
+<script language="javascript">			
+			function validateForm(step){
+				switch (step){
+					case 2:{
+					
+						var campos=new Array ("company","address1","address2","city","zip","phone1","phone2","url","email","cSymbol","invoice_prefix","invoice_number");
+						var tipos=new Array (0,0,0,0,0,0,0,0,4,0,0,1);
+						var nulos=new Array (false,false,true,false,false,false,true,true,true,true);
+						var msjs=new Array ("Company Name","Address 1","Address 2","City","Zip","Phone","Alternate Phone","URL","E-mail","Currency Symbol","Prefix Invoice","Number Invoice");
+						if (validar(campos,tipos,nulos,msjs,'formu')){
+							wizard(step);
+						}
+						break;
+					}
+					//case 5:
+					case '4a':{
+						var campos=new Array ("id","name","price","weight","description");
+						var tipos=new Array (0,0,1,1,0);
+						var nulos=new Array (false,false,false,false,true);
+						var msjs=new Array ("Product Code","Product Name","Product Price","Product Weight","Product Description");
+						if (validar(campos,tipos,nulos,msjs,'formu')){
+							if(document.formu.price.value <= 0){alert("The field 'Product Price' must be greater than 0"); document.formu.price.focus(); return;}
+							if(document.formu.weight.value <= 0){alert("The field 'Product Weight' must be greater than 0"); document.formu.weight.focus(); return;}
+							wizard(step);
+						}
+						break;
+					}
+					
+					case 7:{
+						if(!document.formu.ntax.checked){
+							
+							//***********************************************************************
+							
+							if(IsNumeric(document.formu.tax.value)){
+								wizard(step);}
+							else{
+								alert("The field 'Tax' has to be a number")
+								document.formu.tax.focus();
+							
+							}
+						}
+						else{wizard(step);}
+						
+						break;
+					}
+					
+					case 8:{
+						if(document.formu.pp.checked){
+						
+							var campos=new Array ("pp_mail","pp_mail");
+							var tipos=new Array (4,4);
+							var nulos=new Array (false,false);
+							var msjs=new Array ("E-mail","E-mail");
+							if (!validar(campos,tipos,nulos,msjs,'formu')){
+								document.formu.pp_mail.focus();
+								return;							
+							}
+						}
+						if(document.formu.gg.checked){
+						
+							var campos=new Array ("gg_user", "gg_pass");
+							var tipos=new Array (0,0);
+							var nulos=new Array (false,false);
+							var msjs=new Array ("Merchant ID","Merchant Key");
+							if (!validar(campos,tipos,nulos,msjs,'formu')){
+								document.formu.gg_user.focus();
+								return;							
+							}
+						}
+						if(document.formu.an.checked){
+						
+							var campos=new Array ("an_user", "an_pass");
+							var tipos=new Array (0,0);
+							var nulos=new Array (false,false);
+							var msjs=new Array ("API Login","Transaction Key");
+							if (!validar(campos,tipos,nulos,msjs,'formu')){
+								document.formu.an_user.focus();
+								return;							
+							}
+						}
+						if(document.formu.uep.checked){
+						
+							var campos=new Array ("uep_key", "uep_key");
+							var tipos=new Array (0,0);
+							var nulos=new Array (false,false);
+							var msjs=new Array ("Key","Key");
+							if (!validar(campos,tipos,nulos,msjs,'formu')){
+								document.formu.uep_key.focus();
+								return;							
+							}
+						}
+						
+						wizard(step);
+						break;
+					}
+				}
+			
+			}
+			
+		
+			function wizard(step, opt){
+				if (step == -1 && (opt == undefined || opt == 'undefined'))
+				{
+					cancelWizard();
+					return void(0);
+				}
+				document.formu.wizard_step.value = step;
+				document.formu.submit();
+			}
+			
+			var divCancel = "block";
+			function cancelWizard()
+			{
+				window.document.getElementById('divCancel').style.display=divCancel;
+				if (divCancel == "block")
+					divCancel = "none";
+				else
+					divCancel = "block";
+			}
+			
+			function popup(filename,width,height){
+				result = window.open(filename, "popped1", "width="+ width + ", height="+height+", location=no, menubar=no, status=no, toolbar=no, scrollbars=yes, resizable=no");
+				if (result != null) html = "is not blocking";
+				else alert("Your Browser is blocking popups which is preventing a window to appear.");
+			}
+			
+			
+			
+			var sw = true;
+			
+			function checkBrowser(){
+				
+				if(navigator.appName == "Netscape" ){
+				
+					try {
+						//alert(document.Errors.error.value)
+						if(document.Errors.error.value == 'no') {alert ("The functions of this page may not display properly in this browser!");return false;}
+					} catch (e) {
+						sw = false;
+					} finally {
+						if(!sw)
+							return true;
+						else
+							return false;
+					}
+					
+					
+				}
+				else {return true;}
+			
+			}
+			/*
+			
+			function checkBrowser(){
+				if( (navigator.appName == "Netscape") && (document.Errors.error.value == 'no') ){alert ("The functions of this page may not display properly in this browser!");return false;}
+				else {return true;}
+			}*/
+			
+			function showlayer(showme) {
+				if( checkBrowser() ){
+				
+					if (document.getElementById(showme).style.display == "none") {
+						if (navigator.appName == "Microsoft Internet Explorer") {
+							document.getElementById(showme).style.display = "inline";
+						}
+						else {
+							if(sw)
+								document.getElementById(showme).display="inline";
+							else
+								document.getElementById(showme).style.display = "inline";
+						}
+					}
+					else {
+						if (navigator.appName == "Microsoft Internet Explorer") {
+							document.getElementById(showme).style.display = "none";
+						}
+						else {
+							if(sw)
+								document.getElementById(showme).display="none";
+							else
+								document.getElementById(showme).style.display = "none";
+						}
+					}
+					
+				}else {alert(3)}
+			}
+			
+		function change_theme(im, css, sampleImage){
+			document.formu.wizard_step.value = 2;
+			document.ThemeImg.src = sampleImage;
+			document.formu.theme.value = im;
+			document.formu.stylesheet.value = css;
+		}
+		
+		function previewTemplate()
+		{
+			var templatePreview = "";
+			
+			if (document.formu.themeSelect)
+			{
+				if (document.formu.themeSelect.length) 
+				{
+					for (var x=0; x<document.formu.themeSelect.length; x++) 
+					{
+						if (document.formu.themeSelect[x].checked==true)
+							templatePreview = document.formu.themeSelect[x].value;
+					}
+				}
+				else
+				{
+					if (document.formu.themeSelect.checked==true)
+						templatePreview = document.formu.themeSelect.value;
+				}
+			}
+			
+			if (templatePreview == "")
+			{
+				alert('Please, select the theme you want to preview.');
+				return void(0);
+			}
+			else
+			{
+				var templateArr = templatePreview.split("-_-");
+				document.formTemplate.action = "wizard_template_preview.asp?templateName=" + templateArr[0] + '&cssName=' + templateArr[1];
+				document.formTemplate.submit();
+			}
+				
+		}		
+		
+		function AddCat(){
+			document.formu.wizard_step.value = 3;
+			document.formu.action = "wizard.asp"
+			document.formu.submit();
+		
+		}
+		
+		function changeCountry(op){
+			document.formu.wizard_step.value = op;
+			document.formu.action = "wizard.asp"
+			document.formu.submit();
+		}
+	</script>
+<style>
+<!--
+.style1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+}
+.style3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #558048;
+}
+.divCancelIE {
+	z-index:999;
+	position:relative;
+	left:-354px;
+	top:20px;
+	display:none;
+	width:350px;
+	border:1px solid black;
+	text-align:center;
+}
+.divCancel {
+	z-index:999;
+	position:relative;
+	left:-138px;
+	top:2px;
+	display:none;
+	width:250px;
+	border:1px solid black;
+	text-align:center;
+}
+-->
+</style>
+</head>
+<body style="background:#ffffff;backgruond-color:#ffffff" background="" calss="cells" bgcolor="#ffffff">
+<table cellpadding="0" cellspacing="5" border="0" width="600" align="center" bgcolor="White" >
+  <tr>
+    <td align="center" valign="top"><form name="formu" id="formu" action="wizard.asp" method="post" class="nomargin">
+        <input type="hidden" name="wizard_step" id="wizard_step" value="">
+        <input type="hidden" name="company_id" id="company_id" value="[company_id]">
+        <input type="hidden" name="nCat" id="nCat" value="[nCat]">
+        <input type="hidden" name="methods" id="methods" value="[methods]">
+        <table width="600" cellpadding="0" cellspacing="0" border=0>
+          <tr>
+            <td valign="bottom" align="left" class="xbig"><img src="templates/images/ic_settings.gif" border="0">&nbsp;Welcome</td>
+            <td valign="bottom" align="right"><!--START: Buttons-->
+              <table cellpadding="0" cellspacing="0" border=0>
+                <tr class="cell">
+                  <td align="right" valign="top" colspan="2"><!--START: btn1-->
+                    <button type="button" class="scalable back gray" onClick="[click1]"  value=""><span>[btn1]</span></button>
+                    <!--END: btn1-->
+                    <!--START: btn2-->
+                    <button type="button" class="scalable forward gray" onClick="[click2]"  value=""><span>[btn2]</span></button>
+                    <!--END: btn2-->
+                    <div style="z-index:999;position:absolute;" id="divCancelContainer">
+                      <script>
+												if (BrowserDetect.browser == "Explorer" || BrowserDetect.browser == "MSIE" || BrowserDetect.browser == "IE" || BrowserDetect.browser == "Internet Explorer")
+													document.write('<div id="divCancel" class="divCancelIE">');
+												else
+													document.write('<div id="divCancel" class="divCancel">');
+											</script>
+                      <table bgcolor="#ffffff" width="100%" ID="Table3">
+                        <tr>
+                          <td valign="top"><table width="100%" border="0" cellspacing="10" cellpadding="0" ID="Table4">
+                              <tr>
+                                <td width="5%" align="left"></td>
+                                <td width="50%" align="center" class="medium"><b>This wizard will show up every time you login into your store.
+                                  However, you have the option to turn it off.</b> <br>
+                                  <br>
+                                  <input type="checkbox" name="cancelW" value="1">
+                                  [notShow] <br>
+                                  <br>
+                                  <button type="button" class="scalable save gray" onClick="wizard(-1,true);"><span>Continue</span></button></td>
+                                <td width="5%" align="right"></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table>
+                    </div>
+                    </div></td>
+                <tr>
+              </table>
+              <!--END: Buttons--></td>
+          </tr>
+          <tr>
+            <td colspan="2" background="templates/images/hr.gif" class="cells" height="8"></td>
+          </tr>
+        </table>
+        <!--START: Wizard-->
+        <table cellpadding="3" width="600" cellspacing="0" border="0">
+          <tr class="cell">
+            <td align="left" width="112"><!--a href="javascript:wizard(0);">[btn_step1]</a>&nbsp;|&nbsp;<a href="javascript:wizard(1);">[btn_step2]</a>&nbsp;|&nbsp;<a href="javascript:wizard(2);">[btn_step3]</a>&nbsp;|&nbsp;<a href="javascript:wizard(3);">[btn_step4]</a>&nbsp;|&nbsp;<a href="javascript:wizard(4);">[btn_step5]</a>&nbsp;|&nbsp;<a href="javascript:wizard(5);">[btn_step6]</a>&nbsp;|&nbsp;<a href="javascript:wizard(6);">[btn_step7]</a>&nbsp;|&nbsp;<a href="javascript:wizard(7);">[btn_step8]</a>&nbsp;|&nbsp;<a href="javascript:wizard(8);">[btn_step9]</a>&nbsp;|&nbsp;<font face="Arial" size="1" style="color:#ffffff;text-decoration:none;">&nbsp;</font-->
+              <table width="100%" cellpadding="0" cellspacing="0" ID="Table5">
+                <tr>
+                  <td><a href="javascript:wizard(0);"><img src="templates/images/wizard_step1.jpg" width="80" height="63" border="0" alt="Wizard Step 1"></a></td>
+                  <td><a href="javascript:wizard(1);"><img src="templates/images/wizard_step2.jpg" width="65" height="63" border="0" alt="Wizard Step 2"></a></td>
+                  <td><a href="javascript:wizard(2);"><img src="templates/images/wizard_step3.jpg" width="67" height="63" border="0" alt="Wizard Step 3"></a></td>
+                  <td><a href="javascript:wizard(3);"><img src="templates/images/wizard_step4.jpg" width="69" height="63" border="0" alt="Wizard Step 4"></a></td>
+                  <td><a href="javascript:wizard(4);"><img src="templates/images/wizard_step5.jpg" width="65" height="63" border="0" alt="Wizard Step 5"></a></td>
+                  <td><a href="javascript:wizard(5);"><img src="templates/images/wizard_step6.jpg" width="69" height="63" border="0" alt="Wizard Step 6"></a></td>
+                  <td><a href="javascript:wizard(6);"><img src="templates/images/wizard_step7.jpg" width="59" height="63" border="0" alt="Wizard Step 7"></a></td>
+                  <td><a href="javascript:wizard(7);"><img src="templates/images/wizard_step8.jpg" width="63" height="63" border="0" alt="Wizard Step 8"></a></td>
+                  <td><a href="javascript:wizard(8);"><img src="templates/images/wizard_step9.jpg" width="73" height="63" border="0" alt="Wizard Step 9"></a></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table>
+        <div style="width:630px;height:410px;overflow:auto;">
+        <table cellpadding="0" cellspacing="0" border="0" width="600" bgcolor="White">
+          <tr>
+            <td valign="top" width="600"><table width="600" cellpadding="2" cellspacing="0" border="0">
+                <!--START: title-->
+                <tr class="headrow">
+                  <td><b>[title_1]</b></td>
+                </tr>
+                <!--END: title-->
+                <tr>
+                  <td width="600" class="medium" valign="top">[MSG1]</td>
+                </tr>
+                <!--START: TheForm1-->
+                <!-- Begin Company Info-->
+                <tr>
+                  <td width="600" class="small" valign="top"><table width="590" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="120" class="fieldname">Company Name:</td>
+                        <td class="cell" colspan="3"><input type="text" name="company"  id="company" size="30" value="[company]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">Address1:</td>
+                        <td class="cell" colspan="3"><input type="text" name="address1" id="address1" size="30" value="[address1]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td width="110" class="fieldname">Address2:</td>
+                        <td class="cell" colspan="3"><input type="text" name="address2" id="address2" size="30"  value="[address2]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">City:</td>
+                        <td width="230" class="cell"><input type="text" name="city" id="city" size="20" value="[city]" class="txtBoxStyle2"></td>
+                        <td width="100" class="fieldname ">State:</td>
+                        <td width="138" class="cell"><!--[state]-->
+                          <select name='state'  id='state'class="dropBox">
+                          </select></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">Zip:</td>
+                        <td width="230" class="cell"><input type="text" size="6" name="zip" id="zip" value="[zip]" class="txtBoxStyle2"></td>
+                        <td width="100" class="fieldname ">Country:</td>
+                        <td width="138" class="cell"><!--select name="country" id="country" onChange="changeCountry(1)" class="txtBoxStyle2">[CountryDropDown]</select-->
+                          <select name='country' id='country' onChange="populateState('state','country')" class="dropBox" />
+                          </select></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">Phone:</td>
+                        <td width="230" class="cell"><input type="text" name="phone1" id="phone1" size="15" value="[phone1]" class="txtBoxStyle2"></td>
+                        <td width="100" class="fieldname">Alternate Phone:</td>
+                        <td width="138" class="cell"><input type="text" name="phone2" id="phone2" size="15" value="[phone2]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">Fax:</td>
+                        <td class="cell" colspan="3"><input type="text" name="fax"  id="fax" size="15" value="[fax]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">URL:</td>
+                        <td class="cell" colspan="3"><input type="text" name="url" id="url" size="30" value="[url]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">Email:</td>
+                        <td class="cell" colspan="3"><input type="text" name="email" id="email" size="30" value="[email]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">Currency Symbol:</td>
+                        <td class="cell" colspan="3"><input type="text" name="cSymbol" id="cSymbol" size="30" value="[cSymbol]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="4"><br>
+                          <div style="height:1px;background:#cfcfcf;overflow:hidden;">&nbsp;</div>
+                          <br></td>
+                      </tr>
+                      <tr>
+                        <td class="fieldname" valign="top" colspan="4"><a href="javascript:showlayer('invoice');">Edit invoice settings</a></td>
+                      </tr>
+                      <tr>
+                        <td colspan="4"><div id="invoice" style="display: none">
+                            <table width="588" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="120" class="fieldname" valign="top">Invoice Terms:</td>
+                                <td width="468" class="cell"><textarea name="invoice_terms" id="invoice_terms" cols="30" rows="8" class="txtBoxStyle4">[invoice_terms]</textarea></td>
+                              </tr>
+                              <tr>
+                                <td width="120" class="fieldname" style="border:0px;">Invoice Logo:</td>
+                                <td width="468" class="cell" style="border:0px;"><input type="text" size="35" name="invoicelogo" id="invoicelogo" value="[invoicelogo]" class="txtBoxStyle2">
+                                  &nbsp;&nbsp;&nbsp; <a href="#images" onClick="popup('file_manager.asp?fileaction=formu.invoicelogo',600,500)" class="sm">Browse</a> - <a href="#" onClick="window.open('../'+document.formu.invoicelogo.value);" class="sm">Preview</a></td>
+                              </tr>
+                              <tr>
+                                <td width="120" class="fieldname" style="border:0px;">Invoice Number:</td>
+                                <td width="468" class="cell" style="border:0px;"> Prefix
+                                  <input type="text" size="15" name="invoice_prefix" id="invoice_prefix" value="[invoice_prefix]" class="txtBoxStyle2">
+                                  &nbsp;&nbsp;&nbsp;
+                                  Number
+                                  <input type="text" size="15" name="invoice_number" id="invoice_number" value="[invoice_number]" class="txtBoxStyle2"></td>
+                              </tr>
+                            </table>
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td colspan="4"><br>
+                          <div style="height:1px;background:#cfcfcf;overflow:hidden;">&nbsp;</div>
+                          <br></td>
+                      </tr>
+                      <tr>
+                        <td width="120" class="fieldname">Time Zone (GMT/UTC):</td>
+                        <td class="cell" colspan="3"><select name="time_zone" id="time_zone">
+                            <!--START: time_zone_drop-->
+                            <option value="0" [selected_time_zone_0]>(GMT+0:00) Greenwich Mean Time (GMT): London</option>
+                            <option value="-12" [selected_time_zone_-12]>(GMT-12:00) Eniwetok, Kwajalein</option>
+                            <option value="-11" [selected_time_zone_-11]>(GMT-11:00) Midway Island, Samoa</option>
+                            <option value="-10" [selected_time_zone_-10]>(GMT -10:00) Hawaii</option>
+                            <option value="-9" [selected_time_zone_-9]>(GMT -9:00) Alaska</option>
+                            <option value="-8" [selected_time_zone_-8]>(GMT-8:00) Pacific Time (US & Canada), Tijuana</option>
+                            <option value="-7" [selected_time_zone_-7]>(GMT-7:00) Mountain Time (US & Can), Arizona</option>
+                            <option value="-6" [selected_time_zone_-6]>(GMT-6:00) Cen America, Central Time (US & Can)</option>
+                            <option value="-5" [selected_time_zone_-5]>(GMT-5:00) Eastern Time (US & Canada), Bogota</option>
+                            <option value="-4" [selected_time_zone_-4]>(GMT-4:00) Atlantic Time (Canada), Caracas</option>
+                            <option value="-3" [selected_time_zone_-3]>(GMT-3:00) Brasilia, Buenos Aires, Greenland</option>
+                            <option value="-2" [selected_time_zone_-2]>(GMT -2:00) Mid-Atlantic</option>
+                            <option value="-1" [selected_time_zone_-1]>(GMT-1:00) Azores, Cape Verde Islands</option>
+                            <option value="1" [selected_time_zone_1]>(GMT+1:00) Amsterdam, Berlin, Brussels, C&acute;hagen</option>
+                            <option value="2" [selected_time_zone_2]>(GMT+2:00) Athens, Cairo, Jerusalem, Pretoria</option>
+                            <option value="3" [selected_time_zone_3]>(GMT+3:00) Kuwait, Moscow, Nairobi, Riyadh</option>
+                            <option value="4" [selected_time_zone_4]>(GMT+4:00) Abu Dhabi, Baku, Muscat, Tbilisi</option>
+                            <option value="5" [selected_time_zone_5]>(GMT+5:00) Islamabad, Karachi, Tashkent</option>
+                            <option value="6" [selected_time_zone_6]>(GMT+6:00) Almaty, Astana, Dhaka</option>
+                            <option value="7" [selected_time_zone_7]>(GMT+7:00) Bangkok, Hanoi, Jakarta</option>
+                            <option value="8" [selected_time_zone_8]>(GMT+8:00) Hong Kong, KL, Perth, Singapore</option>
+                            <option value="9" [selected_time_zone_9]>(GMT+9:00) Osaka, Seoul, Tokyo</option>
+                            <option value="10" [selected_time_zone_10]>(GMT+10:00) Brisbane, Canberra, M&acute;bourne, Sydney</option>
+                            <option value="11" [selected_time_zone_11]>(GMT+11:00) New Caledonia, Solomon Islands</option>
+                            <option value="12" [selected_time_zone_12]>(GMT+12:00) Auckland, Fiji, Wellington</option>
+                            <!--END: time_zone_drop-->
+                          </select></td>
+                      </tr>
+                    </table></td>
+                  <td widht="5">&nbsp;</td>
+                </tr>
+                <script type="text/javascript">initCountry('[country]','[state]','state','country');</script>
+                <!-- End Company Info-->
+                <!--END: TheForm1-->
+                <!--START: TheForm2-->
+                <!-- Begin Theme -->
+                <tr>
+                  <td width="600" class="small" valign="top">
+                  <br>
+                  <table width="600" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td class="small" colspan="2" valign="top"><b>Theme</b><br>
+                        <input type="hidden" name="theme" id="theme" value="[theme]">
+                        <input type="hidden" name="stylesheet" id="stylesheet" value="[css]">
+                        <div style="width:250;text-align: left;margin: 0px auto;padding: 0px;border:0;><div style="float:left;"></div>
+                        <!--START: Themes-->
+                        <div style="float:left; padding:5px;"><a href="#" ><img  border=0 src="[sample-image]" width="80"/></a><br />
+                          <input type="radio" id="themeSelect" name="themeSelect" value="[themes]-_-[css]" onClick="change_theme('[themes]','[css]','[sample-image]');" [!--checked--]>
+                          [themes]</div>
+                        <!--END: Themes-->
+                    </div>
+                    
+                    </td>
+                    
+                    <td class="cell" align="center"  valign="top"><table cellpadding="0" cellspacing="0" border="0" ID="Table20" width="180">
+                          <tr>
+                            <td class="headers2" style="border:1px solid #aaaaaa;height:110px;width:160px;text-align:center;vertical-align:middle;"><img name="ThemeImg" id="ThemeImg" src="../assets/templates/common/images/spacer.gif" border="0"></td>
+                          </tr>
+                        </table>
+                        <br>
+                        <button  type="button" onClick="previewTemplate();" class="scalable gray"><span>Preview</span></button></td>
+                    </tr>
+                  </table>
+                </tr>
+                <!-- End Theme -->
+                <!--END: TheForm2-->
+                <!--START: TheForm3-->
+                <!-- Begin Categories -->
+                <tr>
+                  <td width="600" class="small" valign="top"><table width="600" cellspacing="0" cellpadding="0" id="table1" class="tablenooutline" border="0">
+                      <!--START: CateFields-->
+                      <tr>
+                        <td align="left" class="small"><input type="text" size="60" name="catname_[num]" id="catname_[num]" value="[catname]" class="txtBoxStyle2">
+                          <input type="hidden" size="5" name="catid_[num]" id="catid_[num]" value="[catid]" class="txtBoxStyle2">
+                          <!--START: catRemoveCheckbox-->
+                          <input type="checkbox" name="removecat_[num]" value="1">
+                          Delete
+                          <!--END: catRemoveCheckbox--></td>
+                      </tr>
+                      <!--END: CateFields-->
+                      <tr>
+                        <td align="left"class="cells"><button type="button" class="scalable add gray fixed" onClick="AddCat();" value=""><span>Add More</span></button></td>
+                      </tr>
+                    </table>
+                    <br></td>
+                </tr>
+                <!-- End Categories -->
+                <!--END: TheForm3-->
+                <!--START: TheForm4-->
+                <!-- Begin Products -->
+                <tr>
+                  <td width="600" class="small" valign="top"><table width="590" border="0" cellspacing="0" cellpadding="0" class="tablenooutline">
+                      <tr>
+                        <td colspan="2"><font color="red" face="Arial, Verdana" size="2">[added]</font></td>
+                      </tr>
+                      <tr>
+                        <td align="left" colspan="2">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td class="cell" align="right" width="150"><b>Product Code</b></td>
+                        <td><input type="text" size="30" name="id" id="id" value="[id]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td class="cell" align="right" width="150"><b>Product Name</b></td>
+                        <td><input type="text" size="30" name="name" id="name" value="[name]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td class="cell" align="right" width="150"><b>Product Price</b></td>
+                        <td><input type="text" size="30" name="price" id="price" value="[price]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td class="cell" align="right" width="150"><b>Category</b></td>
+                        <td><select name="category" id="category" class="txtBoxStyle2">
+                            [categories]
+                          </select></td>
+                      </tr>
+                      <tr>
+                        <td class="cell" align="right" width="150"><b>Product Weight (lbs)</b></td>
+                        <td><input type="text" size="30" name="weight" id="weight" value="[weight]" class="txtBoxStyle2"></td>
+                      </tr>
+                      <tr>
+                        <td class="cell" align="right" width="150"><b>Product Image</b></td>
+                        <td class="cell"><!--input type="file" size="30" name="image1" id="image1" value="" class="txtBoxStyle2"-->
+                          <input type="text" size="30" name="image1" id="image1" value="[image1]" class="txtBoxStyle2">
+                          <button type="button" class="scalable gray" onClick="popup('file_manager.asp?fileaction=formu.image1',600,500)" value=""><span>Browse</span></button></td>
+                      </tr>
+                      <tr>
+                        <td class="cell" align="right" valign="top" width="150"><b>Product Description</b></td>
+                        <td><textarea name="description" id="description" class="txtBoxStyle2" cols="35" rows="5">[description]</textarea></td>
+                      </tr>
+                      <tr>
+                        <td align="right" colspan="2" class="cells"><button type="button" class="scalable gray" onClick="[click3]" value=""><span>[btn3]</span></button></td>
+                      </tr>
+                    </table>
+                    <br></td>
+                </tr>
+                <!-- End Products -->
+                <!--END: TheForm4-->
+                <!--START: TheForm5-->
+                <!-- Begin Shipping Methods -->
+                <tr>
+                  <td width="600" class="small" valign="top"><table width="590" border="0" cellspacing="0" cellpadding="0" class="tablenooutline">
+                      <tr>
+                        <td align="left" colspan="2">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" colspan="2" class="subrow"><b>Shipping Origin</b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><table width=100% cellspacing="0" cellpadding="0"  border="0">
+                            <tr>
+                              <td class="cell fieldname">Country</td>
+                              <td class="cell"><!--select name="country" id="country" onChange="changeCountry(5)" class="txtBoxStyle2">
+																			[CountryDropDown]
+																		</select-->
+                                <select name='country' id="country" onChange="populateState('state','country')" class="txtBoxStyle2" />
+                                </select></td>
+                              <td class="cell fieldname">City</td>
+                              <td class="cell"><input type="text" name="city" id="city" value="[city]" class="txtBoxStyle2" size="15"></td>
+                            </tr>
+                            <tr>
+                              <td class="cell fieldname">State</td>
+                              <td class="cell"><!--[state]-->
+                                <select name='state' id="state" class="txtBoxStyle2">
+                                </select></td>
+                              <td class="cell fieldname">Zip</td>
+                              <td class="cell"><input type="text" name=zip size="7" value="[zip]" class="txtBoxStyle2"></td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                      <tr>
+                        <td class="subrow" align="left" width="150" colspan="2"><b>Company</b></td>
+                      </tr>
+                      <!--START: Shipping-->
+                      <input type="hidden" name="methods_[numc]" id="methods_[numc]" value="[methods]">
+                      <!--Number of options in a method-->
+                      <tr>
+                        <td align="center" width="10"><input type="checkbox" name="company_[numc]" id="company_[numc]" onClick="showlayer('[ship_name]');" [Shipchecked]>
+                          <input type="hidden" name="cid_[numc]" id="cid_[numc]" value="[shipid]"></td>
+                        <td align=left width="100%"><img src="./templates/images/[ship_name]_logo_small.jpg" border="0"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><div id="[ship_name]" style="display: [ship_display]">
+                            <table align="center" border="0" width="300" cellspacing="0" cellpadding="0">
+                              <!--START: ShippingMethods-->
+                              <tr bgcolor="#cfcfcf">
+                                <td align="center" bgcolor="#efefef"><input type="checkbox" name="method_[numc]_[num]" id="method_[numc]_[num]" [Methodchecked]>
+                                  <input type="hidden" name="mid_[numc]_[num]" id="mid_[numc]_[num]" value="[methid]"></td>
+                                <td class="cell" bgcolor="#efefef">[method_name]</td>
+                              </tr>
+                              <!--END: ShippingMethods-->
+                            </table>
+                          </div></td>
+                      </tr>
+                      <!--END: Shipping-->
+                    </table>
+                    <br>
+                </tr>
+                <script type="text/javascript">initCountry('[country]','[state]','state','country');</script>
+                <!-- End Shipping Methods -->
+                <!--END: TheForm5-->
+                <!--START: TheForm6-->
+                <!-- Begin Tax -->
+                <tr>
+                  <td width="600" class="small" valign="top"><table width="600" cellspacing="0" cellpadding="0" class="tablenooutline" border="0">
+                      <tr>
+                        <td align="left" colspan="2" class="medium"><input type="checkbox" name="ntax" id="ntax" onClick="showlayer('tax');" [taxchecked]>
+                          I don't use Tax </td>
+                      </tr>
+                    </table>
+                    <div id="tax" style="display: [tax_display]">
+                      <table width="600" cellspacing="0" cellpadding="0" class="tablenooutline" border="0">
+                        <tr>
+                          <td align="left" width="350" class="medium">Country: [country]</font></td>
+                          <td align="left" width="350" class="medium"> State:[state]</font>
+                            <input type="hidden" name="country" id="country" value="[countrycode]">
+                            <input type="hidden" name="state" id="state" value="[statecode]"></td>
+                        </tr>
+                        <tr>
+                          <td align="left" colspan="2" class="medium"> Enter tax:
+                            <input type="text" size="5" name="tax" id="tax" value="[tax]" class="txtBoxStyle2">
+                            %</font></td>
+                        </tr>
+                      </table>
+                    </div>
+                    <br></td>
+                </tr>
+                <!-- End Tax -->
+                <!--END: TheForm6-->
+                <!--START: TheForm7-->
+                <!-- Begin Payments -->
+                <tr>
+                  <td width="600" class="small" valign="top"><br>
+                    <table width="600" cellspacing="0" cellpadding="0" class="tablenooutline" border="0">
+                      <tr>
+                        <td align="left" width="20" valign="top"><input type="checkbox" name="pp" id="pp" onClick="showlayer('dpp');" [dpp_checked]>
+                          <input type="hidden" name="pp_pay_id" id="pp_pay_id" value="2"></td>
+                        <td align="left"><font face="Arial, Verdana" size="2">Paypal</font>
+                          <div id="dpp" style="display: [dpp_display]">
+                            <table width="400" cellspacing="0" cellpadding="0" border="0">
+                              <tr>
+                                <td align="right" width="150" style="border:0px;"><font face="Arial, Verdana" size="2">E-mail:</font></td>
+                                <td align="left" style="border:0px;"><font face="Arial, Verdana" size="2">
+                                  <input type="text" name="pp_mail" id="pp_mail" value="[pp_mail]" class="txtBoxStyle2" size="35">
+                                  </font></td>
+                              </tr>
+                            </table>
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td align="left" width="20" valign="top"><input type="checkbox" name="mo" id="mo" [mo_checked]>
+                          <input type="hidden" name="mo_pay_id" id="mo_pay_id" value="-1"></td>
+                        <td align="left"><font face="Arial, Verdana" size="2">Check / Money Order</font></td>
+                      </tr>
+                      <tr>
+                        <td align="left" width="20" valign="top"><input type="checkbox" name="gg" id="gg" onClick="showlayer('dgg');" [gg_checked]>
+                          <input type="hidden" name="gg_pay_id" id="gg_pay_id" value="35"></td>
+                        <td align="left"><font face="Arial, Verdana" size="2">Google Checkout</font>
+                          <div id="dgg" style="display: [gg_display]">
+                            <table width="400" cellspacing="0" cellpadding="0" class="tablenooutline" border="0">
+                              <tr>
+                                <td align="right" width="150" style="border:0px;"><font face="Arial, Verdana" size="2">Merchant ID:</font></td>
+                                <td align="left" style="border:0px;"><font face="Arial, Verdana" size="2">
+                                  <input type="text" name="gg_user" id="gg_user" value="[gg_user]" class="txtBoxStyle2" size="35">
+                                  </font></td>
+                              </tr>
+                              <tr>
+                                <td align="right" width="150" style="border:0px;"><font face="Arial, Verdana" size="2">Merchant Key:</font></td>
+                                <td align="left" style="border:0px;"><font face="Arial, Verdana" size="2">
+                                  <input type="password" name="gg_pass" id="gg_pass" value="[gg_pass]" class="txtBoxStyle2" size="35">
+                                  </font></td>
+                              </tr>
+                            </table>
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td align="left" width="20" valign="top"><input type="checkbox" name="an" id="an" onClick="showlayer('dan');" [an_checked]>
+                          <input type="hidden" name="an_pay_id" id="an_pay_id" value="1"></td>
+                        <td align="left"><font face="Arial, Verdana" size="2">AuthorizeNet</font>
+                          <div id="dan" style="display: [an_display]">
+                            <table width="400" cellspacing="0" cellpadding="0" class="tablenooutline" border="0" ID="Table2">
+                              <tr>
+                                <td align="right" width="150" style="border:0px;"><font face="Arial, Verdana" size="2">API Login:</font></td>
+                                <td align="left" style="border:0px;"><font face="Arial, Verdana" size="2">
+                                  <input type="text" name="an_user" id="an_user" value="[an_user]" class="txtBoxStyle2" size="35">
+                                  </font></td>
+                              </tr>
+                              <tr>
+                                <td align="right" width="150" style="border:0px;"><font face="Arial, Verdana" size="2">Transaction Key:</font></td>
+                                <td align="left" style="border:0px;"><font face="Arial, Verdana" size="2">
+                                  <input type="password" name="an_pass" id="an_pass" value="[an_pass]" class="txtBoxStyle2" size="35">
+                                  </font></td>
+                              </tr>
+                            </table>
+                          </div></td>
+                      </tr>
+                      <tr>
+                        <td align="left" width="20" valign="top"><input type="checkbox" name="uep" id="uep" onClick="showlayer('duep');" [uep_checked]>
+                          <input type="hidden" name="uep_pay_id" id="uep_pay_id" value="16"></td>
+                        <td align="left"><font face="Arial, Verdana" size="2">Usa ePay</font>
+                          <div id="duep" style="display: [uep_display]">
+                            <table width="400" cellspacing="0" cellpadding="0" class="tablenooutline" border="0">
+                              <tr>
+                                <td align="right" width="150" style="border:0px;"><font face="Arial, Verdana" size="2">Key:</font></td>
+                                <td align="left" style="border:0px;"><font face="Arial, Verdana" size="2">
+                                  <input type="text" name="uep_key" id="uep_key" value="[uep_key]" class="txtBoxStyle2" size="35">
+                                  </font></td>
+                              </tr>
+                            </table>
+                          </div></td>
+                      </tr>
+                    </table>
+                    <br></td>
+                </tr>
+                <!-- Begin Payments -->
+                <!--END: TheForm7-->
+                <!--START: TheForm8-->
+                <!-- Begin Finish Wizard -->
+                <!--END: TheForm8-->
+              </table></td>
+          </tr>
+        </table>
+        </div>
+      </form>
+      <!--END: Wizard--></td>
+  </tr>
+  <form action="" name="formTemplate" id="formTemplate" method="post" target="_blank">
+  </form>
+</table>
+</body>
+</html>
+

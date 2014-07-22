@@ -1,0 +1,604 @@
+<script language="javascript">
+function do_act()
+{
+	//return true;
+}
+
+function copy_ship_info()
+{
+
+if (!(document.billing.check1.checked))
+{
+document.billing.billing_firstname.value="";
+document.billing.billing_lastname.value="";
+document.billing.billing_company.value="";
+document.billing.billing_address.value="";
+document.billing.billing_address2.value="";
+document.billing.billing_city.value="";
+document.billing.billing_phone.value="";
+document.billing.billing_zip.value="";
+}
+else
+{
+document.billing.billing_firstname.value="[shipping_firstname]";
+document.billing.billing_lastname.value="[shipping_lastname]";
+document.billing.billing_company.value="[shipping_company]";
+document.billing.billing_address.value="[shipping_address]";
+document.billing.billing_address2.value="[shipping_address2]";
+document.billing.billing_city.value="[shipping_city]";
+document.billing.billing_phone.value="[shipping_phone]";
+
+country_object="document.billing.billing_country";
+state_object="document.billing.billing_state";
+
+document.billing.billing_state.value="[shipping_state]";
+
+document.billing.billing_zip.value="[shipping_zip]";
+select_field(country_object,"[shipping_country]");
+document.billing.action="checkout3.asp?step=3&action=updatecountry&billing_state=[shipping_state]";
+document.billing.submit();
+}
+
+
+}
+</script>
+
+
+<form name="billing" method="post" action="checkout4.asp?step=4">
+<table width="95%" cellpadding="0" cellspacing="0">
+<tr><td class="page_headers">Checkout</td><td align="right" class="steps">[checkout1_step][checkout2_step]<span class="steps_on">[checkout3_step] </span> [checkout4_step]</td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2">
+<!--START: CATEGORY_HEADER-->              
+<table width="100%" cellspacing="0" cellpadding="2" border="0">
+<tr><td class="data">[CONTENT]</td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+<!--END: CATEGORY_HEADER-->
+</td></tr>
+ <tr>
+    <td class="checkout-headers" colspan="2">[checkout3_Header-ordersummary]</td>
+  </tr>
+<tr><td colspan="2">
+
+<table width="100%" cellpadding="0" cellspacing="2" class="alternative">
+          <tr>
+            <td class="item" valign="top"><strong>[shoppingcart_subtotal]</strong><br />[SUBTOTAL]</td>
+       
+            <td class="item" valign="top"><strong>[shoppingcart_discount]</strong><br />- [DISCOUNT]</td>
+          
+        
+            <td class="item" valign="top" ><strong>[shoppingcart_shipping]</strong><br />[SHIPPING]</td>
+          
+            <td class="item" valign="top"><strong>[shoppingcart_taxes]</strong><br />[TAX]</td>
+           	 <!--START: GIFTCERTS-->
+        
+            <td class="item" valign="top"><strong>[shoppingcart_total]</strong><br />[TOTAL]</td>
+           
+       
+	
+
+	
+            <td class="item" valign="top"><strong>[shoppingcart_giftcertificate]</strong><br />-[GIFTCERTS]</td>
+         	<!--END: GIFTCERTS-->  
+     
+            <td class="item" valign="top"><strong>[shoppingcart_balance]</strong><br /><span class="price">[BALANCE]</span></td>
+           
+          </tr>
+
+
+
+        </table>
+
+
+</td></tr> 
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2">
+<table width="100%" cellpadding="2" cellspacing="0">
+<tr>
+<!--column left-->
+<td valign="top"  width="50%">
+<table width="100%" cellpadding="0" cellspacing="0">
+
+
+<!--START: allow_different_billing-->
+
+<tr><td class="checkout-headers">[checkout3_Header-billingaddress]</td></tr>
+<tr><td>
+
+
+<table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+<tr><td align="left" class="item" valign="top" colspan="2">[checkout3_billingcomment]</td></tr>
+<tr><td height="21" colspan="2" class="item"><input type="checkbox" name="check1" value="1" onClick="copy_ship_info()" [BCHECKED]><span class="font2"><strong>[checkout3_billingsameasshipping]</strong></span></td>
+</tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_firstname]</strong></td>
+<td><input name="billing_firstname" type="text" id="shipping_firstname2" value="[billing_firstname]" size="15" class="txtBoxStyle"><!--START: req_billing_firstname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_firstname--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_lastname]</strong></td>
+<td><input name="billing_lastname" type="text" id="shipping_lastname3" value="[billing_lastname]" size="15" class="txtBoxStyle"><!--START: req_billing_lastname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_lastname--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_company]</strong></td>
+<td><input name="billing_company" type="text" id="shipping_company2" value="[billing_company]" size="25" class="txtBoxStyle"><!--START: req_billing_company--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_company--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_phone]</strong></td>
+<td><input name="billing_phone" type="text" id="shipping_phone2" value="[billing_phone]" size="25" class="txtBoxStyle"><!--START: req_billing_phone--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_phone--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_address]</strong></td>
+<td><input name="billing_address" type="text" id="shipping_address3" value="[billing_address]" size="25" class="txtBoxStyle"><!--START: req_billing_address--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_address--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_address2]</strong></td>
+<td><input name="billing_address2" type="text" id="shipping_address22" value="[billing_address2]" size="25" class="txtBoxStyle"><!--START: req_billing_address2--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_address2--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_city]</strong></td>
+<td><input name="billing_city" type="text" id="shipping_city2" value="[billing_city]" size="25" class="txtBoxStyle"><!--START: req_billing_city--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_city--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_country]</strong></td>
+<td><select name="billing_country" onChange="document.billing.action='checkout3.asp?step=3&action=updatecountry';document.billing.submit();" class="txtBoxStyle">
+				[CountryDropDown]
+			     </select><!--START: req_billing_country--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_country--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_state]</strong></td>
+<td>[state]<!--START: req_billing_state--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_state--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_zip]</strong></td>
+<td><input name="billing_zip" type="text" id="billing_zip" value="[billing_zip]" size="10" class="txtBoxStyle"><!--START: req_shipping_zip--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_zip--></td></tr>
+</table>
+
+</td></tr>
+
+
+
+   <!--END: allow_different_billing-->
+
+
+  <!--START: samebilling_billing-->
+<!--start billing same as shipping-->
+<!--START: showsamebillingasshipping-->
+<br />
+
+<tr><td class="checkout-headers">[checkout3_Header-billingaddress]</td></tr>
+<tr><td>
+
+
+<table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+<tr><td class="item">[billing_firstname] [billing_lastname]</td></tr>
+<!--START: billing_company-->
+<tr><td class="item">[billing_company]</td></tr>
+<!--END: billing_company-->
+<tr><td class="item">[billing_address]</td></tr>
+<!--START: billing_address2-->
+<tr><td class="item">[billing_address2]</td></tr>
+<!--END: billing_address2-->
+<tr><td class="item">[billing_city], [billing_state] [billing_zip] [billing_country]</td></tr>
+<tr><td><a href="checkout.asp?step=1">[checkout2_shippinginfochange]</a></td></tr>
+</table>
+
+</td></tr>
+
+<!--END: showsamebillingasshipping-->
+<input name="billing_firstname" type="hidden" id="shipping_firstname2" value="[shipping_firstname]">
+<input name="billing_lastname" type="hidden" id="shipping_lastname3" value="[shipping_lastname]">
+<input name="billing_company" type="hidden" id="shipping_company2" value="[shipping_company]" size="25" >
+<input name="billing_phone" type="hidden" id="shipping_phone2" value="[shipping_phone]" size="25" >
+<input name="billing_address" type="hidden" id="shipping_address3" value="[shipping_address]" size="25" >
+<input name="billing_address2" type="hidden" id="shipping_address22" value="[shipping_address2]" size="25" >
+<input name="billing_city" type="hidden" id="shipping_city2" value="[shipping_city]" size="25" >
+<input name="billing_country" type="hidden" value="[shipping_country]">
+<input name="billing_state" type="hidden" id="billing_zip" value="[shipping_state]">
+<input name="billing_zip" type="hidden" id="billing_zip" value="[shipping_zip]">
+<!--end billing same as shipping-->
+<!--END: samebilling_billing-->
+
+<!--START: GIFTCERTIFICATES-->
+
+<tr>
+<td  class="checkout-headers"> [viewcart_giftcertificates-header]</td>
+</tr>
+<tr><td>
+<!--START: DISPLAY_GIFTCERTIFICATES-->
+
+
+<table width="100%" cellpadding="5" cellspacing="0" class="alternative">
+
+<input type="hidden" name="coupon" value="[id]">
+<tr>
+<td class="item" width="40%"> <b>[certificate_name]</b></td><td class="item" width="60%" align="left"><b>Amount:</b> [discount_amount]<br>Balance after this order: [discount_balance] </td><td></td>
+</tr>
+
+
+</table>
+
+<!--END: DISPLAY_GIFTCERTIFICATES-->
+</td></tr>
+
+<!--END: GIFTCERTIFICATES-->
+
+<tr><td>&nbsp;</td></tr>
+
+<tr><td class="checkout-headers">[checkout3_methodofpaymentselect]</td></tr>
+<tr><td valign="top">
+
+
+
+<table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+
+<!--START: CHECKGATEWAY-->
+	<tr><td class="titles" colspan="2" height="15">&nbsp;[payment_description] </td></tr>
+	<tr><td class="item" colspan="2">[payment_description_message]</td></tr>
+	<tr><td height="21" colspan="2" class="item"><input name="payment" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED] id="Radio1"> [payment_description]</td></tr>
+	<tr>
+		<td class="item" align="right"><b>[CustomerInfo_check-type]</b></td>
+		<td>
+			<select name="ff[id]_ochecktype" class="txtBoxStyle">
+				[checktypelist]
+			</select>
+			<img src="assets/templates/common/images/error2.gif" width="12" height="12">
+		</td>
+	</tr>
+	<tr>
+		<td class="item" align="right"><b>[CustomerInfo_check-acct-type]</b></td>
+		<td>
+			<select name="ff[id]_ocheckaccttype" class="txtBoxStyle" id="Select2">
+				[checkaccttypelist]
+			</select>
+			<img src="assets/templates/common/images/error2.gif" width="12" height="12">
+		</td>
+	</tr>
+	<tr>
+		<td  class="item" align="right"><b>[CustomerInfo_check-routing]</b></td>
+		<td class="item"><input type="text" name="ff[id]_ocheckrouting" maxlength="9" size="10" class="txtBoxStyle"> <img src="assets/templates/common/images/error2.gif" width="12" height="12"></td>
+	</tr>
+	<tr>
+		<td  class="item" align="right"><b>[CustomerInfo_check-acct]</b></td>
+		<td class="item"><input type="text" name="ff[id]_ocheckaccount" maxlength="30" size="10" class="txtBoxStyle"> <img src="assets/templates/common/images/error2.gif" width="12" height="12"></td>
+	</tr>
+<!--END: CHECKGATEWAY-->
+
+					<!--START: CCGATEWAY-->
+					<tr><td class="titles" colspan="2" height="15">&nbsp;[payment_description] </td></tr>
+					<tr><td class="item" colspan="2">[payment_description_message]</td></tr>
+					<tr><td height="21" colspan="2" class="item"><input name="payment" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED]>
+										[payment_description]</td></tr>
+					<tr><td class="item" align="right"><b>[CustomerInfo_creditcardnumber]</b></td><td><input type="text" name="ff[id]_ocardno" size="30" class="txtBoxStyle"><img src="assets/templates/common/images/error2.gif" width="12" height="12"></td></tr>
+					<!--START: ccStartDate-->
+					<tr>
+						<td  class="item" align="right"><b>[CustomerInfo_creditstartdate]</b></td>
+						<td class="item"><select name="ff[id]_ocardstartmonth" class="txtBoxStyle" id="Select3"><option value=""></option>[monthlist]</select>
+						<select name="ff[id]_ocardstartyear" class="txtBoxStyle" id="Select8"><option value=""></option>[yearlistdtstart]</select>
+						(Maestro, Solo and Amex only)
+						</td>
+					</tr>
+					<!--END: ccStartDate-->
+					<tr><td  class="item" align="right"><b>[CustomerInfo_creditexpiration]</b></td><td><select name="ff[id]_ocardexpiresmonth" class="txtBoxStyle">
+			          [monthlist]
+			        </select>
+			        <select name="ff[id]_ocardexpiresyear" class="txtBoxStyle">
+			          [yearlist]
+			        </select><img src="assets/templates/common/images/error2.gif" width="12" height="12"></td></tr>
+					<tr><td  class="item" align="right"><b>[CustomerInfo_cardtype]</b></td>
+					<td><select name="ff[id]_ocardtype" class="txtBoxStyle">
+					[cctype]
+			        </select><img src="assets/templates/common/images/error2.gif" width="12" height="12"></td></tr>
+                    <!--START: ccIssueNumber-->
+                    <tr>
+                        <td  class="item" align="right"><b>[CustomerInfo_creditissuenumber]</b></td>
+                        <td class="item"><input type="text" name="ff[id]_ocardissue" maxlength="10" size="3" class="txtBoxStyle" id="Text4">
+						(Maestro and Solo only)
+                        </td>
+                    </tr>                                
+                    <!--END: ccIssueNumber-->  			        
+					<tr><td  class="item" align="right"><b>CVV2</b></td><td><input type="text" name="ff[id]_ocardcvv2" size="3" class="txtBoxStyle"> <img src="assets/templates/common/images/error2.gif" width="12" height="12"> <a href="#" onclick="javascript:window.open('assets/templates/common/images/cvv2.gif','new','menubars=no, resizable=no, statusbar=no, titlebar=no, width=300, height=500');">What's this?</a></td></tr>
+					<!--END: CCGATEWAY-->
+				
+				
+                    <!--START: AUTHNETCIMBLOCK-->
+					<tr><td class="titles" colspan="2" height="15">&nbsp;[payment_description] </td></tr>
+					<tr><td height="21" colspan="2" class="item"><input name="payment" type="radio" value="online-[id]-CIM" [FIRSTOPTIONCHECKED] id="payment">
+										[payment_description]</td></tr>
+                    <tr>
+                        <td class="item" colspan="2">
+                            <table width="100%" cellpadding="0" cellspacing="3" id="Table16">
+							<!--START: authCIMBlock-->
+							<tr>
+								<td class="item" colspan="2"><b>[checkout3_use-creditcard-on-file]</b></td>
+							</tr>
+							<tr>
+								<td class="item" colspan="2">
+									<select name="authCIMProfileID" id="authCIMProfileID" class="txtBoxStyle">
+										<!--START: authCIMPaymentProfileItem-->
+											<option value="authCIMProfileID_[custProfId]_[custPmntProfId]_[authCIMProfileID_cardlastdigits]_[authCIMProfileID_cardexp]">
+												[checkout3_creditcard-last-digits]: [authCIMProfileID_cardlastdigits]
+												/ [CustomerInfo_creditexpiration]: [authCIMProfileID_cardexp]
+											</option>
+										<!--END: authCIMPaymentProfileItem-->
+									</select>
+								</td>
+							</tr>															
+							<!--END: authCIMBlock-->
+                            </table>
+                        </td>
+                    </tr>
+                    <!--END: AUTHNETCIMBLOCK-->					
+					
+					
+					<!--START: LINKGATEWAY-->
+					<tr><td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td></tr>
+					<tr><td colspan="2" class="item">[payment_description_message]</td></tr>
+					<tr><td colspan="2" class="item"><input name="payment" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED]> Pay [payment_description]</td></tr>
+					<!--END: LINKGATEWAY-->
+
+					<!--START: PPEXPRESS-->
+					<tr><td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td></tr>
+					<tr><td colspan="2" class="item">[payment_description_message]</td></tr>
+					<tr><td colspan="2" class="item"><input name="payment" onClick="window.location.href='paypal_express.asp?ch=3';" type="radio" value="online-[id]"><img src="https://www.paypal.com/en_US/i/IntegrationCenter/scr/scr_ppAcceptMark_68x43.jpg" height=35 border="0"></a>  [payment_description]</td></tr>
+					<!--END: PPEXPRESS-->
+
+					<!--START: CUSTOM-->
+					 
+					<tr><td class="titles" colspan="2" height="15"><b>[payment_type]</b></td></tr>
+					<tr><td colspan="2" class="item">[payment_description]</td></tr>
+					<tr><td colspan="2"> <input name="payment" type="radio" value="offline-[id]" [FIRSTOPTIONCHECKED]>
+			          <span class="item">[payment_type]</span></tr>
+					 
+					  <!--START: CUSTOM_FIELD-->
+			    <tr> 
+			     
+			      <td class="item"><b>[InputName]</b></span></td>
+			    
+			      <td class="item" >[field]</td>
+		
+			    </tr>
+			
+					<!--END: CUSTOM_FIELD-->
+						<tr><td colspan="2"><table cellpadding="0" cellspacing="0" width="100%">
+						<tr><td class="titles2" colspan="2"><img src="assets/images/spacer.gif" width="100%" height="1"></td></tr></table></td></tr>
+					  <!--END: CUSTOM-->    
+</table>
+</br>
+</td></tr>
+
+
+
+ <!--START: checkout_questions-->
+
+<tr><td class="checkout-headers">[checkout3_checkoutquestions]</td></tr>
+<tr><td>
+
+<table width="100%" cellpadding="2" cellspacing="0" class="alternative">
+   <tr>
+   <td> 
+   
+            
+           <!--START: questions-->           
+           [questions]
+   		   <!--END: questions-->  
+            
+
+</td>
+   </tr>
+</table>
+
+
+
+</td></tr>
+<tr><td>&nbsp;<span class="error"><img src="assets/templates/common/images/error2.gif"> = Required</span><br /><br /></td></tr>
+ <!--END: checkout_questions-->
+
+<tr><td>
+
+
+<!--START: checkout_questions_templates-->
+
+									<!--START: textarea-format-->
+									<table>
+				              		<tr> 
+              						<td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--><b>[question]</b></td>
+              						<td><textarea cols="30" rows="5" name="cq[id]"   class="txtBoxStyle">[answer]</textarea></td>
+           							</tr>
+           							</table>
+           							<!--END: textarea-format-->
+				              							              			
+				              			<!--START: text-format-->	
+				              		<table>			              			
+									<tr> 
+              						<td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12">&nbsp;<!--END: req[id]--><b>[question]</b></td>
+              						<td><input type="text" size="30" name="cq[id]" value="[answer]"  class="txtBoxStyle"></td>
+           							</tr>
+           							</table>
+				              			<!--END: text-format-->
+
+				              			<!--START: file-format-->				              		
+				              			[question]<br>
+				              		    <input type="file" name="file[oname]" size="20"><br>
+				              			<!--END: file-format-->
+										
+				              			
+				              			<!--START: checkbox-format-->
+				              		<table>								
+				              		<tr> 
+				              		<td><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--><input type="checkbox" name="cq[id]" class="txtBoxStyle" value="[answer]" [selected]></td>
+              						<td align="right"  class="item"><b>[question]</b></td>
+              						</tr>
+           							</table>
+							  			<!--END: checkbox-format-->
+
+				              			<!--START: radio-format-->
+				              			<table>
+				              			<tr> 
+              							<td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--><b>[question]</b></td>
+              							<td>
+              							<!--START: option-->
+				              			<input type="radio" name="cq[id]" value="[option]" class="txtBoxStyle" [selected]> [option]<br>
+				              			<!--END: option-->
+              							</td>
+           								</tr>
+           								</table>
+				              			<!--END: radio-format-->
+
+										<!--START: dropdown-format-->
+										<table>
+										<tr> 
+              							<td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--><b>[question]</b></td>
+              							<td>									              			
+				              			<select name="cq[id]" >
+				              			<!--START: option-->
+				              			<option  [selected]>[option]</option>
+				              			<!--END: option-->
+				              			</select></td>
+           								</tr>
+           								</table>
+										<!--END: dropdown-format-->
+
+
+<!--END: checkout_questions_templates-->
+</td></tr>
+
+
+<tr><td class="checkout-headers">[checkout3_Header-comment]</td></tr>
+<tr><td>
+
+
+<table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+<tr><td class="item">[checkout3_commentmessage]</td></tr>
+<tr><td class="item"><b>[checkout3_Header-comment]</b></td></tr>
+<tr><td> <textarea name="ocomment" cols="24" rows="5"></textarea></td></tr>
+</table>
+
+
+</td></tr>
+
+
+<tr>
+		<td align="right">&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<td align="right" ><input type="submit" value="[checkout3_submitbutton]" name="B1" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+	</tr>
+
+</table>
+
+</td>
+<!--column left ends-->
+<!--column right-->
+<td valign="top" width="40%" align="right">
+
+<table width="60%" cellpadding="0" cellspacing="0">
+ <tr>
+    <td class="checkout-headers">[checkout3_Header-shippingmethodinfo]</td>
+  </tr>
+  <tr>
+    <td><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+          <tr>
+            <td class="item">[oshipmethod]</td>
+          </tr>
+          <tr>
+            <td class="item">[shoppingcart_shipping]: [SHIPPING]</td>
+          </tr>
+          <tr>
+            <td><a href="checkout2.asp?step=2b">[checkout3_shippingmethodchange]</a></td>
+          </tr>
+        </table><br /></td>
+  </tr>
+ <!--customer info starts-->
+  <tr><td class="checkout-headers">[checkout2_Header-shippinginfo]</td></tr>
+<tr><td>
+ <table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+<tr><td class="item"><strong>[checkout2_shippinginfomessage]</strong></td></tr>
+
+<tr><td align="left" class="item" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr><td class="item">[shipping_firstname] [shipping_lastname]</td></tr>
+<tr><td class="item">[shipping_company]</td></tr>
+<tr><td class="item">[shipping_address]</td></tr>
+<tr><td class="item">[shipping_address2]</td></tr>
+<tr><td class="item">[shipping_city], [shipping_state] [shipping_zip] [shipping_country]</td></tr>
+
+  <tr>
+            <td><a href="checkout.asp?step=1">[checkout2_shippinginfochange]</a></td>
+          </tr>
+</table>
+
+</td></tr></table><br />
+</td></tr>
+  <!--customer info ends-->
+
+
+<tr><td class="checkout-headers">[checkout1_Header-shoppingcart]</td></tr>
+<tr><td>
+
+<table width="100%" cellpadding="0" cellspacing="0" class="alternative">
+
+ <!--START: SHOPPING_CART_ITEM-->
+ 
+ <tr>
+
+ <td class="item" align="left">
+<a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40"></a><br />
+[ITEM_NAME]</td><td class="item" align="right" valign="bottom">[ITEM_PRICE]  X [ITEM_QUANTITY]<br />
+ <b>[ITEM_SUBTOTAL]</b> </td></tr>
+ <tr><td colspan="2"><table width="100%" cellpadding="0" cellspacing="0"><tr><td class="borders"><img src="assets/images/spacer.gif" width="100%" height="1"></td></tr></table></td></tr>
+ <!--END: SHOPPING_CART_ITEM-->
+ 
+ 
+ 	<!--START: BUYSAFE-->
+															<tr><td align="right" class="item">
+																<img src="assets/templates/common/images/buysafe.gif"></td>
+																<td align="right" class="item">
+																[buysafe_totalbondcost]</td>
+															</tr>
+															<!--END: BUYSAFE-->			
+</table>
+
+</td></tr>
+<tr><td align="right"><a href="view_cart.asp">Update Cart</a>&nbsp;&nbsp;</td></tr>
+</table>
+
+
+
+</td>
+<!--column right ends-->
+</tr>
+<tr><td colspan="2">
+			 <!--START: CATEGORY_FOOTER-->              
+		  <table width="100%" cellspacing="0" cellpadding="2" border="0">
+		    <tr> 
+				<td class="data">[CONTENT]</td>
+		    </tr>
+		  </table>
+		 <!--END: CATEGORY_FOOTER--></td></tr>
+</table>
+</td></tr>
+</table>
+</form>
+<script language="javascript" type="text/javascript">
+//You should create the validator only after the definition of the HTML form
+  var frmvalidator  = new Validator("billing");
+
+  frmvalidator.setAddnlValidationFunction("submitForm");
+
+
+
+  frmvalidator.addValidation("billing_firstname","req","Please enter your First Name");
+  frmvalidator.addValidation("billing_firstname","maxlen=20","Max length for First Name is 20");
+
+  frmvalidator.addValidation("billing_lastname","req","Please enter your Last Name");
+  frmvalidator.addValidation("billing_lastname","maxlen=20","Max length for Last Name is 20");
+  
+  frmvalidator.addValidation("shipping_company2","maxlen=50","Max length for Company is 50");
+  
+  frmvalidator.addValidation("billing_phone","maxlen=18","Max length for Phone is 18");
+  frmvalidator.addValidation("billing_phone","req","Please enter your phone")
+
+  frmvalidator.addValidation("billing_address","maxlen=50","Max length for Address is 50");
+  frmvalidator.addValidation("billing_address","req","Please enter your address");
+
+  frmvalidator.addValidation("billing_address2","maxlen=40","Max length for Suite/Apt# is 40");
+
+  frmvalidator.addValidation("billing_city","maxlen=50","Max length for City is 50");
+  frmvalidator.addValidation("billing_city","req","Please enter your city");
+
+  frmvalidator.addValidation("billing_state","maxlen=50","Max length for State is 50");
+  frmvalidator.addValidation("billing_state","req","Please enter/select your state");
+
+  frmvalidator.addValidation("billing_zip","maxlen=15","Max length for Zip is 15");
+  frmvalidator.addValidation("billing_zip","req","Please enter your zip code");
+
+  frmvalidator.addValidation("billing_country","dontselect=0");
+
+  frmvalidator.addValidation("payment","req","Please select a payment option.");
+
+  
+  frmvalidator.setAddnlValidationFunction("checkotherreqfields");
+</script>

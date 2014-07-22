@@ -1,0 +1,60 @@
+﻿<script type="text/javascript" language="javascript">
+function login()
+	{
+		var strMsg = "";
+		if (document.frmForm.password.value.trim() == "")
+			strMsg += " - Password cannot be blank.\n";
+		if (document.frmForm.email.value.trim() == "" || !isValidEmail(document.frmForm.email.value))
+			strMsg += " - Email cannot be blank and must be a valid email address.\n";	
+		if (strMsg != ""){
+			alert(strMsg);
+			return false;
+		}else{
+			document.form1.submit();
+			return true;
+		}
+	}
+</script>
+<div class="current whiteBG" id="signin"> [HEADER]
+  <div id="divError"> 
+    <!--START: error_message--> 
+    [error_message] 
+    <!--END: error_message--> 
+  </div>
+  <form action="login.asp" method="post" id="Form1" name="form1" onsubmit="login(); return false">
+    <input type="hidden" name="catalogid" value="[catalogid]" id="catalogid">
+    <input type="hidden" name="bypasscaptcha" value="1" id="bypasscaptcha">
+    <h6>[login_Header-login]</h6>
+    <h2>[login_Header-loginmessage]</h2>
+    <ul>
+      <li>
+        <div class="frmtxt">Email</div>
+        <input type="text" style="width: 98%;" name="email" value="[email]" placeholder="[CustomerInfo_email]" id="email">
+      </li>
+      <li>
+        <div class="frmtxt">Password</div>
+        <input type="password" style="width: 98%;" autocomplete="off" name="password" placeholder="[CustomerInfo_password]" id="password">
+      </li>
+      <li><a href="#" onclick="javascript:login();">
+        <input class=submit type=image src="images/btn-login-to-your-account.png" border="0" />
+        </a></li>
+    </ul>
+  </form>
+  <form action="login.asp?action=forgotpass" method="post" id="form2" name="form2">
+    <h6>[login_Header-forgotpassword]</h6>
+    <ul>
+      <li>
+        <div class="frmtxt">Email</div>
+        <input type="text" style="width: 98%;" name="email" value="[email]" placeholder="[CustomerInfo_email]" id="email">
+      </li>
+      <li><a href="#" class="submit">
+        <input type=image class="submit" src="images/btn-reset-my-password.png" border="0" />
+        </a>
+        <div class="frmtxt">We will send you an email with a link to reset your password.</div>
+      </li>
+    </ul>
+  </form>
+  [FOOTER]
+  </div>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<table width="98%" cellspacing="0" cellpadding="2" border="0">
+    <!--START: BODY_HEADER-->
+    <tr>
+      <td class="item"><a href="">[frame_breadcrumb-home]</a> > <a href="search.asp?keyword=[keyword]">[keyword]</a></td>
+    </tr>
+    <!--END: BODY_HEADER-->
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td class="data">[CONTENT]</td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<!--START: SEARCH_PAGES-->
+	<tr>
+		<td><table width="100%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="titles" colspan="5">&nbsp;[Search_Header-pages]</td>
+				</tr>
+				<!--START: SEARCH_PAGES_FORMAT-->
+				<tr>
+					<td><table width="100%">
+							<tr>
+								<td><a href="[page_link]">[page_name]</a></td>
+							</tr>
+							<tr>
+								<td class="data">[page_content]</td>
+							</tr>
+						</table></td>
+				</tr>
+				<!--END: SEARCH_PAGES_FORMAT-->
+				<!--START: SEARCH_PAGES_MORERESULTS-->
+				<tr>
+					<td class="data" colspan="5" align="right"><a href="search.asp?keyword=[keyword_search]&amp;stype=1">[Search_pages-moreresults]</a></td>
+				</tr>
+				<!--END: SEARCH_PAGES_MORERESULTS-->
+			</table></td>
+	</tr>
+	<!--END: SEARCH_PAGES-->
+	<!--START: SEARCH_CATEGORIES-->
+	<tr>
+		<td><table width="100%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="titles" colspan="5">&nbsp;[Search_Header-categories]</td>
+				</tr>
+				<tr>
+					<!--START: SEARCH_CATEGORIES_FORMAT-->
+					<td><table border="0" cellspacing="4" cellpadding="0">
+							<tr>
+								<td>&nbsp;</td>
+								<td class="data"><a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;catid=[thiscatid]">[cat_name] ([cat_items])</a></td>
+							</tr>
+						</table></td>
+					<!--END: SEARCH_CATEGORIES_FORMAT-->
+				</tr>
+			</table></td>
+	</tr>
+	<!--END: SEARCH_CATEGORIES-->
+	<!--START: SEARCH_BAR-->
+	<tr>
+		<td><form action="search.asp?keyword=[keyword_search]&amp;catid=[catid]" method="post" name="frmsortby">
+			<table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="titles" colspan="3">[Search_header] ([productnumber] Matches found [CATEGORY_FULLLINE])</td>
+					<td class="titles" colspan="2" align="right"><!--START: sortbylist-->
+						<select name="sortby" onchange="frmsortby.submit();" class="txtBoxStyle">
+							
+					[sortbylist]
+				
+						</select>
+						<!--END: sortbylist-->
+					</td>
+				</tr>
+			</table>
+			</form></td>
+	</tr>
+	<!--END: SEARCH_BAR-->
+	<!--START: NO_RESULTS-->
+	<tr>
+		<td><table width="100%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data">[Search_no-results]</td>
+				</tr>
+			</table></td>
+	</tr>
+	<!--END: NO_RESULTS-->
+</table>
+<table width="98%" cellpadding="0" cellspacing="0" border="0">
+	<!--START: PAGING-->
+	<tr>
+		<td><table width="100%">
+				<tr align="center">
+					<td class="font2"> [category_moreresults]&nbsp;
+						<!--START: PREV-->
+						<font size="1"><a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=[prev]&amp;catid=[catid]">[category_previouspage]</a></font>&nbsp;
+						<!--END: PREV-->
+						<!--START: PAGES-->
+						<!--START: FIRST_PAGE-->
+						<font size="1"><a href="search.asp?keyword=[keyword_search]&amp;page=PAGE&amp;catid=[catid]"><b>[PAGE]</b></a>...</font>
+						<!--END: FIRST_PAGE-->
+						<!--START: PAGES_SELECTED-->
+						<font size="1"><b>[PAGE]</b></font>
+						<!--END: PAGES_SELECTED-->
+						<!--START: PAGES_NOTSELECTED-->
+						<a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=PAGE&amp;catid=[catid]"><font size="1">PAGE</font></a>
+						<!--END: PAGES_NOTSELECTED-->
+						<!--START: LAST_PAGE-->
+						<font size="1">...<a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=PAGE&amp;catid=[catid]"><b>[PAGE]</b></a></font>
+						<!--END: LAST_PAGE-->
+						<!--END: PAGES-->
+						<!--START: NEXT-->
+						&nbsp;<font size="1"><a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=[next]&amp;catid=[catid]">[category_nextpage]</a></font>
+						<!--END: NEXT-->
+					</td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<!--END: PAGING-->
+	<tr>
+		<td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<!--START: CATEGORY_ITEMS-->
+				<!--START: ITEM_TEMPLATE-->
+				<table width="100%" cellpadding="0" cellspacing="4" border="0">
+					<tr>
+						<td width="120" align="center"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&amp;maxx=150&amp;maxy=150" alt="[name]" border="0"></a></td>
+						<!--start right col-->
+						<td valign="top" align="left"><table width="100%" cellpadding="0" cellspacing="0">
+								<tr>
+									<td><a href='product.asp?itemid=[catalogid]'>[name]</a><br>
+										<br></td>
+								</tr>
+								<!--START: categories-->
+								<tr>
+									<td class="item"><b>Category:</b>&nbsp;<a href="view_category.asp?cat=[catid]">[categories]</a></td>
+								</tr>
+								<!--END: categories-->
+								<tr>
+									<td class="item">[description]</td>
+								</tr>
+								<tr>
+									<td><!--START: product_availability-->
+										<table cellpadding="0" cellspacing="0" border="0">
+											<tr>
+												<td colspan="2"><img src="spacer.gif" width="1" height="5" alt="" border="0"></td>
+											</tr>
+											<tr>
+												<td class="item" colspan="2"><b>[product_Header-availability]</b> [availability]</td>
+											</tr>
+										</table>
+										<!--END: product_availability-->
+									</td>
+								</tr>
+								<tr>
+									<td><table cellpadding="0" cellspacing="0">
+											<!--START: freeshippingblock-->
+											<tr>
+												<td class="item">[freeshipping]&nbsp;</td>
+											</tr>
+											<!--END: freeshippingblock-->
+											<tr>
+												<td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+														<tr>
+															<td class="item" colspan="2"><!--START: price2-->
+																<strong>[product_retailprice]</strong>&nbsp; [price2]
+																<!--START: SAVINGS-->
+																<br>
+																<strong>[product_savings]</strong>&nbsp; [savings]
+																<!--END: SAVINGS-->
+																<!--END: price2-->
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2" class="item"><!--START: ITEMPRICE-->
+																[product_yourprice]&nbsp;<span class="price">[ITEMPRICE]</span>
+																<!--END: ITEMPRICE-->
+															</td>
+														</tr>
+														<tr>
+															<td class="item"><!--START: SALEPRICE-->
+																<span class="price">[product_onsale]:&nbsp; [ITEMSALEPRICE]</span>
+																<!--END: SALEPRICE-->
+															</td>
+														</tr>
+													</table></td>
+											</tr>
+											<!--START: product_review-->
+											<tr><td class="price-info" valign="top" align="center"><!--START: product_review_average-->
+                                              <table border="0" cellspacing="0" cellpadding="1">
+                                                <tr>
+                                                  <td><img src="assets/templates/common/images/star[review_average].png" alt="Average Rating" border="0"></td>
+                                                  <td class="item">[review_count]&nbsp;Review(s)</td>
+                                                </tr>
+                                              </table>                      
+                                              <!--END: product_review_average--></td></tr>
+											<!--END: product_review-->											
+											<!--START: addtocart-->
+											<tr>
+												<td><input type="button" onClick="window.location='add_cart.asp?quick=1&amp;item_id=[catalogid]';" name="Add" value="[product_addtocart]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+												</td>
+											</tr>
+											<!--END: addtocart-->
+										</table></td>
+								</tr>
+							</table></td>
+						<!--end right col-->
+					</tr>
+					<tr>
+						<td class="borders2" colspan="2"><img src="assets/images/spacer.gif" height="1" alt=""></td>
+					</tr>
+				</table>
+				<!--END: ITEM_TEMPLATE-->
+				<!--END: CATEGORY_ITEMS-->
+			</table></td>
+	</tr>
+	<!--START: PAGING-->
+	<tr>
+		<td><table width="100%">
+				<tr align="center">
+					<td class="font2"> [category_moreresults]&nbsp;
+						<!--START: PREV-->
+						<font size="1"><a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=[prev]&amp;catid=[catid]">[category_previouspage]</a></font>&nbsp;
+						<!--END: PREV-->
+						<!--START: PAGES-->
+						<!--START: FIRST_PAGE-->
+						<font size="1"><a href="search.asp?keyword=[keyword_search]&amp;page=PAGE&amp;catid=[catid]"><b>[PAGE]</b></a>...</font>
+						<!--END: FIRST_PAGE-->
+						<!--START: PAGES_SELECTED-->
+						<font size="1"><b>[PAGE]</b></font>
+						<!--END: PAGES_SELECTED-->
+						<!--START: PAGES_NOTSELECTED-->
+						<a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=PAGE&amp;catid=[catid]"><font size="1">PAGE</font></a>
+						<!--END: PAGES_NOTSELECTED-->
+						<!--START: LAST_PAGE-->
+						<font size="1">...<a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=PAGE&amp;catid=[catid]"><b>[PAGE]</b></a></font>
+						<!--END: LAST_PAGE-->
+						<!--END: PAGES-->
+						<!--START: NEXT-->
+						&nbsp;<font size="1"><a href="search.asp?keyword=[keyword_search]&amp;sortby=[sortby]&amp;page=[next]&amp;catid=[catid]">[category_nextpage]</a></font>
+						<!--END: NEXT-->
+					</td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<!--END: PAGING-->
+	<tr>
+		<td><!--START: CATEGORY_FOOTER-->
+			<table width="98%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td>[CONTENT]</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_FOOTER--></td>
+	</tr>
+</table>

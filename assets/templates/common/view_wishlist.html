@@ -1,0 +1,188 @@
+<table width="95%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td colspan="7">
+			<table width="100%" cellpadding="0" cellspacing="0" border=0>
+				<tr>
+					<td class="page_headers" valign="top">
+						<!--START: SINGLE_WISHLIST_TITLE-->[wishlist_my-wishlist]  <!--END: SINGLE_WISHLIST_TITLE-->
+						<!--START: MULTIPLE_WISHLIST_LIST_TITLE-->[wishlist-list-title]  <!--END: MULTIPLE_WISHLIST_LIST_TITLE-->						
+					</td>
+					<!--START: myAccount-->
+					<td align="right">
+						<!--START: MULTIPLE_WISHLIST_BACK_LISTS--><a href="view_wishlist.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"> [wishlist_multiple-back-to-lists]</a> <!--END: MULTIPLE_WISHLIST_BACK_LISTS-->
+						<!--START: MULTIPLE_WISHLIST_BACK_ACCOUNT--><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"> [wishlist_back-to-account]</a>  <!--END: MULTIPLE_WISHLIST_BACK_ACCOUNT-->
+						</td>
+					<!--END: myAccount-->
+				</tr>
+				<!--START: LIST_VISIBILITY_RADIO-->
+				<tr>
+					<td>List Visibility: 
+						<input type = "radio" name="optListVisibility" id="optListVisibilityPrivate" value= "0" [Selected-Visibility-Private]> Private
+						<input type = "radio" name="optListVisibility" id="optListVisibilityPublic" value= "1" [Selected-Visibility-Public]> Public
+					</td>
+					<td align="right"><input type="button" value="Save" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="javascript: savePublicOrPrivate([WSH_ID]);"></td>
+				</tr>
+				<!--END: LIST_VISIBILITY_RADIO-->
+				<!--START: BLK_PUBLIC_WISHLIST_ADDRESS-->
+				<tr>
+					<td colspan="2">Public Address: [Public_Wishlist_URL]</td>
+				</tr>
+				<tr>
+					<td valign="top" >[product_social-bookmarking]</td>
+				</tr>
+				<!--END: BLK_PUBLIC_WISHLIST_ADDRESS-->
+
+			</table></td>
+	</tr>
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td colspan="7" valign="top"><table width="100%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data"><br>
+						[CONTENT]</td>
+				</tr>
+			</table></td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<tr>
+		<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="25"></td>
+	</tr>	
+	<!--START: SINGLE_WISHLIST-->	
+	<tr>
+		<td height="10" colspan="7"><img src="assets/images/spacer.gif" height="10"></td>
+	</tr>
+	<tr>
+		<td class="titles2" align="left" colspan="2" width="10%"><strong>[wishlist_viewwishlist-header-items]</strong></td>
+        <td class="titles2" align="center"><strong>[wishlist_viewwishlist-header-quantity]</strong></td>
+		<td class="titles2" style="text-align: right;"><strong>[wishlist_viewwishlist-header-price]</strong></td>
+		<td class="titles2" align="right"><strong>[wishlist_viewwishlist-header-total]</strong></td>
+		<td class="titles2" colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+	</tr>
+	<!--START: WSH_LIST_NO_ITEM-->
+	<tr>
+		<td height="60" valign="middle" align="center" colspan="10"> [wishlist_viewwishlist-emptylist] </td>
+	</tr>
+	<tr>
+		<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+	</tr>
+	<!--END: WSH_LIST_NO_ITEM-->
+	<!--START: WSH_LIST_ITEM-->
+	<tr>
+		<td width="60" height="60" valign="middle"><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="55" width="55"></a></td>
+		<td class="item" valign="middle" align="left" width="55%"><a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a>
+			<!--START: itemoptions-->
+			<br>
+			<a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a><br>
+			<div id="opt[ITEM_ID]" name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div>
+			<!--END: itemoptions--></td>
+		<td valign="middle" class="item" style="text-align: center;">
+            <input type="text" name="txtQty[ITEM_ID]" id="txtQty[ITEM_ID]" size="2" maxlength="4" value="[ITEM_QUANTITY]">
+            <br />
+            <a href="#" onclick="javascript:saveItem([ITEM_ID],[LIST_ID]);">update</a>
+        </td>
+        <td valign="middle" class="item" align="right">[ITEM_PRICE]</td>
+        <td valign="middle" class="item" align="right">[ITEM_SUBTOTAL]</td>
+		<td width="5%" align="right">
+			<input type="button" value="X" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="javascript: removeItem([ITEM_ID], [LIST_ID]);">
+		</td>
+		<td align="center" class="item"><!--START: WSH_LIST_ITEM_NOT_AVLB-->
+			[wishlist_viewwishlist-prod-not-available]
+			<!--END: WSH_LIST_ITEM_NOT_AVLB-->
+			<!--START: WSH_LIST_ITEM_ADDCART-->
+			<input type="button" value="Add to Cart" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="javascript: addToCart([ITEM_ID], [LIST_ID]);">
+			<!--END: WSH_LIST_ITEM_ADDCART-->
+		</td>
+	</tr>
+	<tr>
+		<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+	</tr>
+	<!--END: WSH_LIST_ITEM-->
+	<!--END: SINGLE_WISHLIST-->
+</table>
+
+
+
+<!--START: CATEGORY_FOOTER-->
+<table width="95%" cellspacing="0" cellpadding="2" border="0">
+	<tr>
+		<td class="data"><br>
+			[CONTENT]</td>
+	</tr>
+</table>
+<!--END: CATEGORY_FOOTER-->
+<form action="view_wishlist.asp" method="post" name="frmForm" id="frmForm">
+<input type="hidden" name="action"	id="action"	value="">
+<input type="hidden" name="wsiId"	id="wsiId"	value="">
+<input type="hidden" name="k"	id="intListId"	value="">
+<input type="hidden" name="qty"	id="qty"	value="">
+<input type="hidden" name="multiple_wishlist_name"	id="multiple_wishlist_name"	value="">
+<input type="hidden" name="optListVisibility"	id="Hidden1"	value="">
+	
+</form>
+
+
+<script>
+	
+       	function submitForm(strAction) {
+       		window.document.body.style.cursor = 'wait';
+       		if (window.document.activeElement) { window.document.activeElement.style.cursor = 'wait'; }
+
+       		document.frmForm.action.value = strAction;
+       		document.frmForm.submit();
+       	}
+
+       	function removeItem(intWsiId, intListId) {
+       		var rep;
+       		rep = confirm("[wishlist_viewwishlist-message-removeitem]");
+       		if (!rep)
+       			return false;
+
+       		document.frmForm.wsiId.value = intWsiId;
+       		document.frmForm.k.value = intListId;
+       		submitForm('removeItem');
+       	}
+       	function addToCart(intWsiId, intListId) {
+       		var rep;
+       		rep = confirm("[wishlist_viewwishlist-message-addtocart]");
+       		if (!rep)
+       			return false;
+
+       		document.frmForm.wsiId.value = intWsiId;
+       		document.frmForm.k.value = intListId;
+       		submitForm('addToCart');
+       	}
+
+       	function saveItem(intWsiId, intListId) {
+
+       		var qty = document.getElementById("txtQty" + intWsiId).value;
+
+
+       		document.frmForm.wsiId.value = intWsiId;
+       		document.frmForm.k.value = intListId;
+       		document.frmForm.qty.value = qty;
+
+       		submitForm('saveItem');
+       	}
+
+
+       	function savePublicOrPrivate(intListId) {
+       		var optVisibility = '';
+
+       		if (document.getElementById("optListVisibilityPublic").checked == true) {
+       			optVisibility = '1'
+       		}
+       		else {
+       			optVisibility = '0'
+
+       		}
+       		document.frmForm.optListVisibility.value = optVisibility;
+       		document.frmForm.action.value = 'savePublicOrPrivate';
+       		document.frmForm.k.value = intListId;
+       		frmForm.submit();
+       	}
+
+
+</script>

@@ -1,0 +1,173 @@
+<head>
+<title>[recommendafriend_header] | [name]</title>
+<link rel="stylesheet" href="assets/templates/[template]/css/[stylesheet]" type="text/css" media="screen">
+<script language="javascript" src="assets/templates/common/js/utilities.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+function sendEmailFriend(objForm)
+{
+	var strMsg = "";
+	
+	if (objForm.visitorname.value.trim() == "")
+		strMsg += " - Please enter your [recommendafriend_visitorname].\n";
+		
+	if (objForm.visitormail.value.trim() == "")
+		strMsg += " - Please enter your [recommendafriend_visitoremail].\n";
+	else
+		if (!validateEmail(objForm.visitormail.value.trim()))
+			strMsg += " - [recommendafriend_visitoremail]: enter a valid email address.\n";
+
+	if (objForm.friendname.value.trim() == "")
+		strMsg += " - Please enter your [recommendafriend_friendname].\n";
+		
+	if (objForm.friendmail.value.trim() == "")
+		strMsg += " - Please enter your [recommendafriend_friendemail].\n";
+	else
+		if (!validateEmail(objForm.friendmail.value.trim()))
+			strMsg += " - [recommendafriend_friendemail]: enter a valid email address.\n";
+	
+	if (objForm.message.value.trim() == "")
+		strMsg += " - Please enter your [recommendafriend_note].\n";
+	if (eval(objForm.message.value.length) > 500)
+		strMsg += " - Max length for [recommendafriend_note] is 500.\n";
+			
+	<!--START: captchascript-->
+	if (objForm.ramdomWord.value.trim() == "")
+		strMsg += " - Please enter the verification word.\n";
+	if (eval(objForm.ramdomWord.value.length) > 20)
+	    strMsg += " - Max length for the verification word is 20.\n";
+	<!--END: captchascript-->
+			
+	if (strMsg != ""){
+		alert(strMsg);
+		return false;
+	}
+	else
+		objForm.submit();
+}	
+String.prototype.trim = function() {
+	return this.replace(/^\s+|\s+$/g,"");
+}
+</script>
+</head>
+<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<table width="100%" cellpadding="0" cellspacing="5" class="data"><tr><td>
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="page_headers">[recommendafriend_header]</td></tr>
+  <tr><td colspan="2" class="borders"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td></tr>
+<tr><td class="data" style="padding-top:5; padding-bottom:5">[recommendafriend_message]</td></tr>
+  <tr><td colspan="2" class="borders"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td></tr>
+    <tr><td colspan="2"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="10"></td></tr>
+<tr><td>
+
+<!--START: recomendBlock-->
+<form method="post" action="recommendafriend.asp?action=send" class="nomargin" name="frmRecomend" id="frmRecomend">
+<input type="hidden" name="catalogid" value="[catalogid]">
+<input type="hidden" name="sitename" value="[sitename]">
+<input type="hidden" name="siteurl" value="[url]">
+<table width="100%" cellpadding="0" cellspacing="0" >
+<tr>
+<td width="40%" valign="top">
+<!--START: thumbnail-->
+<div align="center" class="price-info">
+<img src="[thumbnail]" border="1" style="border-color: ced2bf">
+<!--END: thumbnail-->
+<br/>
+<span class="item"><strong>[name]</strong></span></div>
+</td>
+<td>
+<table width="98%" border="0" align="right" cellpadding="2" cellspacing="0" >
+<tr> 
+<td width="30%" class="price-info"> 
+[recommendafriend_visitorname]</td>
+<td> 
+<input name="visitorname" value="[firstname]" type="text" size="25" class="txtBoxStyle"></td>
+</tr>
+<tr> 
+<td class="price-info">
+[recommendafriend_visitoremail]</td>
+<td> 
+<input name="visitormail" value="[email]" type="text" size="25" class="txtBoxStyle">
+</td>
+</tr>
+<tr> 
+<td class="price-info">
+[recommendafriend_friendname]</td>
+<td> 
+<input name="friendname" type="text" size="25" class="txtBoxStyle">
+</td>
+</tr>
+<tr> 
+<td class="price-info">
+[recommendafriend_friendemail]</td>
+<td> 
+<input name="friendmail" type="text" size="25" class="txtBoxStyle"></td>
+</tr>
+<tr> 
+<td colspan="2" class="price-info">
+&nbsp;<br/>
+[recommendafriend_note]<br/>
+<textarea name="message" rows="3" cols="32" wrap="soft" class="txtareaStyle"></textarea>
+</td>
+</tr>
+<tr>
+	<td  class="price-info" colspan="2">Verification:<br/>
+        
+        <!--START: captcha-->
+		<img src="admin/image_pw.asp" border="0" width="148">
+		<br>Type the word above...<br>
+		<input type="text" name="ramdomWord" id="ramdomWord" value="" size="25" maxlength="30"  class="txtBoxStyle">
+	    <br><br>
+        <!--END: captcha-->
+
+    	<!--START: recaptcha-->
+        <script type="text/javascript">var RecaptchaOptions = { theme: '[recaptcha_theme]' };</script>
+        <script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k=[recaptcha_key]"></script>
+        <noscript>
+        <iframe src="//www.google.com/recaptcha/api/noscript?k=[recaptcha_key]" height="300" width="500" frameborder="0"></iframe><br>
+        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+        <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+        </noscript>
+	<!--END: recaptcha-->
+	</td>
+</tr>	
+
+
+</table></td>
+</tr>
+<tr><td colspan="2" class="borders"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="1"></td></tr>
+<tr> 
+<td colspan="2" align="right" height="50">
+<input name="cmdRecommend" type="button" onclick="javascript:sendEmailFriend(this.form);" value="[recommendafriend_button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+
+<!--END: recomendBlock-->
+</td></tr>
+
+<!--START: errorMsg-->
+
+				<tr align="center"> 		      
+				<td colspan="4" class="data" align="left">[errorMsg]</td>
+				</tr>
+		
+	<tr> 
+		<td align="right"><input type="button" value='Click here to continue' class="btn" onClick="history.back(1);" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+	</tr>
+
+<!--END: errorMsg-->
+
+
+
+ 
+</table>
+</td></tr></table>
+</body>
+
+
+
+
+
+

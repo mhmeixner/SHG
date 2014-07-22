@@ -1,0 +1,174 @@
+/*
+
+
+   Magic Zoom Plus v4.0.2 
+   Copyright 2011 Magic Toolbox
+   Buy a license: www.magictoolbox.com/magiczoomplus/
+   License agreement: http://www.magictoolbox.com/license/
+
+
+*/
+
+
+/* Style of the small image link */
+.MagicZoomPlus, .MagicZoomPlus:hover {
+cursor: url(/assets/templates/common/3dzoom/graphics/zoomin.cur), pointer;
+outline: 0 !important;
+}
+
+/* Style of the small image */
+.MagicZoomPlus img {
+border: 0 !important;
+padding: 0 !important;
+margin: 0 !important;
+outline: 0 !important;
+}
+
+/* Style of the span inside the small image link */
+.MagicZoomPlus span {
+display: none !important; 
+}
+
+/* Style of hint box */
+.MagicZoomPlusHint {
+background: url(/assets/templates/common/3dzoom/graphics/hint.gif) no-repeat 2px 50%;
+padding: 2px 2px 2px 20px !important;
+min-height: 24px;
+margin: 0;
+text-decoration: none;
+text-align: left;
+line-height: 24px;
+font-size: 8pt;
+font-family: sans-serif;
+color: #444;
+}
+
+/* Style to hide external title or caption on a page. Only needed for #id method */
+.MagicZoomPlus-ExternalText {
+display: none;
+}
+
+
+/* Style of the zoomed image */
+.MagicZoomBigImageCont {
+border: 1px solid #999;
+}
+
+/* Style of text on the zoomed image */
+.MagicZoomHeader {
+font-size: 10pt !important;
+line-height: normal !important;
+color: #fff;
+background: #666;
+text-align: center !important;
+}
+
+/* Style of square magnify area under the cursor */
+.MagicZoomPup {
+border: 1px solid #aaa;
+background: #fff;
+cursor:url(/assets/templates/common/3dzoom/graphics/zoomin.cur),pointer;
+}
+
+/* Style of loading message and icon shown during load */
+.MagicZoomLoading {
+border: 1px solid #ccc;
+background: #fff url(/assets/templates/common/3dzoom/graphics/loader.gif) no-repeat 2px 50%;
+padding: 4px 4px 4px 24px !important;
+margin: 0;
+text-decoration: none;
+text-align: left;
+line-height: 1.5em;
+font-size: 8pt;
+font-family: sans-serif;
+color: #444;
+}
+
+/* Style of hotspots */
+.MagicHotspots {
+display: none;
+visibility: hidden;
+}
+.MagicHotspots a {
+border: 1px solid #ccc;
+}
+.MagicHotspots a:hover {
+border: 1px solid red;
+}
+
+/* Style of the small image when the large image is expanded */ 
+.MagicThumb-expanded-thumbnail {
+cursor: default;
+}
+
+/* Style of the expanded image */
+.MagicThumb-expanded {
+cursor: url(/assets/templates/common/3dzoom/graphics/zoomout.cur), pointer;
+background: #ffffff;
+border: 1px solid #ccc;
+outline: 0;
+padding: 0;
+}
+
+/* Style of the caption for the expanded image */
+.MagicThumb-caption {
+color: #333;
+font: normal 10pt Verdana, Helvetica;
+background: #ccc;
+text-align: left;
+padding: 8px;
+min-height: 18px !important;
+border: 0 !important;
+outline: 0 !important;
+}
+
+/* Style of the close/next/previous buttons */
+.MagicThumb-buttons {
+background: transparent url(/assets/templates/common/3dzoom/graphics/buttons1.png) no-repeat 0 0;
+height: 24px;
+display: block;
+}
+
+.MagicThumb-buttons a {
+width: 24px;
+height: 24px;
+margin: 0px 1px !important;
+overflow: hidden;
+}
+
+/* Style of the loading message box */
+.MagicThumb-loader {
+font: normal 12pt sans-serif;
+line-height: 1.5em;
+border: 1px solid #000;
+background: #fff url(/assets/templates/common/3dzoom/graphics/loader.gif) no-repeat 2px 50%;
+padding: 2px 2px 2px 22px;
+margin: 0;
+text-decoration: none;
+text-align: left;
+}
+
+
+/* Style of shadow effect behind zoomed image */
+.MagicBoxShadow {
+-moz-box-shadow: 3px 3px 4px #888888;
+-webkit-box-shadow: 3px 3px 4px #888888;
+box-shadow: 3px 3px 4px #888888;
+border-collapse: separate;
+/* For IE 5.5 - 7 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#888888') !important;
+/* For IE 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#888888')" !important;
+}
+
+/* Style of glow effect behind zoomed image */
+.MagicBoxGlow {
+-moz-box-shadow: 0px 0px 4px 4px #888888;
+-webkit-box-shadow: 0px 0px 4px 4px #888888;
+box-shadow: 0px 0px 4px 4px #888888;
+border-collapse: separate;
+/* For IE 5.5 - 7 */
+filter: progid:DXImageTransform.Microsoft.Glow(Strength=4, Color='#888888') !important;
+/* For IE 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=4, Color='#888888')" !important;
+}

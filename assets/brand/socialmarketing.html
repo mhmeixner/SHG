@@ -1,0 +1,272 @@
+<script language="JavaScript" type="text/JavaScript">
+<!--
+ function MM_openBrWindow(theURL, winName, features) { //v2.0
+ window.open(theURL, winName, features);
+ }
+//-->
+</script>
+
+<div id="spacer" style="height: 3px;"> </div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td nowrap="nowrap" align="left" class="xbig"><img src="templates/images/ic_orders.gif" width="14" height="14" />&nbsp;[settings_title] </td>
+		<td nowrap="nowrap" align="right" ><!--START: savebutton-->
+			<button type="button" class="scalable save gray" onclick="document.form1.submit();" style="" value="" id="Button1"><span>Save Changes</span></button>
+			<!--END: savebutton-->
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" background="templates/images/hr.gif"><img src="templates/images/hr.gif" /> </td>
+	</tr>
+</table>
+<form action="socialmarketing.asp?action=[action]_update" method="post" name="form1">
+	<!--START: status_update-->
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="601" height="273" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="3" width="704" height="17"><img src="/admin/templates/images/spacer.gif" width="1" height="17" alt=""></td>
+						<td><img src="/admin/templates/images/spacer.gif" width="1" height="17" alt=""></td>
+					</tr>
+					<tr>
+						<td rowspan="4" width="253"><img src="/admin/templates/images/spacer.gif" width="20" height="1" alt=""></td>
+						<td rowspan="3"><img src="/admin/templates/images/icon-status-update.jpg" width="228" height="223" alt=""></td>
+						<td><img src="/admin/templates/images/icon-social-commerce-2.jpg" width="362" height="93" alt=""></td>
+						<td><img src="/admin/templates/images/spacer.gif" width="1" height="93" alt=""></td>
+					</tr>
+					<tr>
+						<td width="362" height="68"><div style="font: 14px Segoe, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;padding-left: 34px;text-align: left;"><strong>Twitter &amp; Facebook Updates</strong><br />
+								Update your Twitter and Facebook accounts,
+								from the convenience of your store?s control panel. 
+								Save time while building your social network!</div></td>
+						<td><img src="/admin/templates/images/spacer.gif" width="1" height="68" alt=""></td>
+					</tr>
+					<tr>
+						<td rowspan="2" width="362"><img src="/admin/templates/images/spacer.gif" width="1" height="92" alt=""></td>
+						<td><img src="/admin/templates/images/spacer.gif" width="1" height="62" alt=""></td>
+					</tr>
+					<tr>
+						<td width="124"><img src="/admin/templates/images/spacer.gif" width="1" height="30" alt=""></td>
+						<td><img src="/admin/templates/images/spacer.gif" width="1" height="30" alt=""></td>
+					</tr>
+				</table>
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr class="subrow">
+						<td align="left">Facebook</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="100%" border="0" cellspacing="0" cellpadding="4" class="tablenooutline">
+					<tr>
+						<td class="headers">Facebook API Key</td>
+						<td class="cells"><input name="social_fb_key" size="45" type="text" id="social_fb_key" value="[social_fb_key]" class="txtBoxStyle2" ></td>
+					</tr>
+					<tr>
+						<td width="25%" class="headers">Enable Status Update</td>
+						<td width="75%" class="cells"><input name="social_fbstatus_enable" type="checkbox" id="social_fbstatus_enable" value="1" [social_fbstatus_enable]>
+							[fb_update_status_msg]</td>
+					</tr>
+					<tr>
+						<td class="headers">&nbsp;</td>
+						<td class="cells">&nbsp;</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+		
+		<td>
+		
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr class="subrow">
+				<td align="left">Twitter</td>
+			</td>
+			
+			</tr>
+			
+		</table>
+		</td>
+		
+		</tr>
+		
+	</table>
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="100%" border="0" cellspacing="0" cellpadding="4" class="tablenooutline">
+					<tr>
+						<td width="25%" class="headers">Enable</td>
+						<td width="75%" class="cells"><input name="social_twitter_enable" type="checkbox" id="social_twitter_enable" value="1" [social_twitter_enable]></td>
+					</tr>
+					<tr>
+						<td class="headers">Twitter Authentication</td>
+						<td class="cells"><a target="_new" href="http://twittermodule.3dcartstores.com/twitter/authenticate.aspx?k=[key]&d=[domain]">Click here to Authenticate</a></td>
+					</tr>
+					<tr>
+						<td class="headers">&nbsp;</td>
+						<td class="cells">&nbsp;</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	<!--END: status_update-->
+	<!--START: widgetbox-->
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="599" height="258" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="4" width="599"><img src="/admin/templates/images/spacer.gif" width="1" height="11" alt=""></td>
+					</tr>
+					<tr>
+						<td rowspan="4" height="251" align="left"><img src="/admin/templates/images/spacer.gif" width="16" height="1" alt=""></td>
+						<td width="428" height="62" align="left"><img src="/admin/templates/images/icon-social-commerce-3.jpg" width="226" height="62" alt=""></td>
+						<td rowspan="3" align="left"><img src="/admin/templates/images/icon-widget-box.jpg" width="136" height="221" alt=""></td>
+						<td rowspan="4" height="251" align="left"><img src="/admin/templates/images/spacer.gif" width="19" height="1" alt=""></td>
+					</tr>
+					<tr>
+						<td width="428" height="113"><div style="font: 14px Segoe, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;text-align: left;padding-right: 5px;"><strong>WidgetBox</strong><br>
+								Widgetbox makes the complexities of sharing your ideas and experiences on the web simple. Turn your  shopping cart into dynamic web apps that can be shared on just about any website, including: Facebook, MySpace, Blogger, and iGoogle.</div></td>
+					</tr>
+					<tr>
+						<td width="428" height="42" align="left"><a href="https://support.3dcart.com/index.php?_m=knowledgebase&_a=viewarticle&kbarticleid=416" target="_blank"><img src="/admin/templates/images/icon-download-2.jpg" width="194" height="42" border="0" alt=""></a></td>
+					</tr>
+					<tr>
+						<td colspan="2" width="551"><img src="/admin/templates/images/spacer.gif" width="1" height="30" alt=""></td>
+					</tr>
+				</table>
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr class="subrow">
+						<td align="left">WidgetBox</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="100%" border="0" cellspacing="0" cellpadding="4" class="tablenooutline">
+					<tr>
+						<td width="25%" class="headers">URL</td>
+						<td width="75%" class="cells"><a href="http://www.widgetbox.com/widget/3dcart" target="_blank">http://www.widgetbox.com/widget/3dcart</a></td>
+					</tr>
+					<tr>
+						<td class="headers">&nbsp;</td>
+						<td class="cells">&nbsp;</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	<!--END: widgetbox-->
+	<!--START: bookmarking-->
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="600" height="248" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="2" width="600"><img src="/admin/templates/images/spacer.gif" width="1" height="18" alt=""></td>
+					</tr>
+					<tr>
+						<td rowspan="3"><img src="/admin/templates/images/icon-share-this.jpg" width="222" height="195" alt=""></td>
+						<td width="378"><img src="/admin/templates/images/spacer.gif" width="1" height="33" alt=""></td>
+					</tr>
+					<tr>
+						<td><img src="/admin/templates/images/icon-social-commerce-4.jpg" width="378" height="55" alt=""></td>
+					</tr>
+					<tr>
+						<td width="378" height="107"><div style="font: 14px Segoe, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;padding: 0px 17px;text-align: left;"><strong>Social Bookmarking</strong><br>
+								Share your products and promotions anywhere and boost traffic back to your site. It only takes seconds to install &ldquo;AddThis&rdquo; social bookmarking tool and it's free!</div></td>
+					</tr>
+					<tr>
+						<td colspan="2" width="600"><img src="/admin/templates/images/spacer.gif" width="1" height="35" alt=""></td>
+					</tr>
+				</table>
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr class="subrow">
+						<td align="left">Social Bookmarking</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="100%" border="0" cellspacing="0" cellpadding="4" class="tablenooutline">
+					<tr>
+						<td colspan="2" class="cells"><br />
+							Social Bookmarking allows visitors to bookmark products and share with their friends via Facebook, Twitter, Digg and more. <br />
+							<br /></td>
+					</tr>
+					<tr>
+						<td width="25%" class="headers">Enable</td>
+						<td width="75%" class="cells"><input name="social_bookmark_enable" type="checkbox" id="Checkbox2" value="1" [social_bookmark_enable]>
+							&nbsp;
+							<button type="button"  class="scalable add gray fixed" onclick="Effect.toggle('script_advanced_bookmark','blind'); return false;" value=""> <span>Advanced</span> </button></td>
+					</tr>
+				</table>
+				<div name="script_advanced_bookmark" id="script_advanced_bookmark" style="display: none;">
+				<table width="100%" border="0" cellspacing="0" cellpadding="4" class="tablenooutline">
+					<tr>
+						<td width="25%" class="headers">Script</td>
+						<td width="75%" class="cells"><textarea rows="10" cols="80" class="txtBoxStyle2" name="social_bookmark_script">[social_bookmark_script]</textarea>
+							<textarea name="default_social_bookmark_script" style="display: none;">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://addthis.com/bookmark.php?v=250&amp;username=xa-4b7ff970541002c6" class="addthis_button_compact">Share</a>
+<span class="addthis_separator">|</span>
+<a class="addthis_button_facebook"></a>
+<a class="addthis_button_myspace"></a>
+<a class="addthis_button_google"></a>
+<a class="addthis_button_twitter"></a>
+</div>
+&lt;script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4b7ff970541002c6"&gt;
+&lt;/script&gt;</textarea>
+							<br />
+							<a href="#" name="restore" onclick="document.form1.social_bookmark_script.value=document.form1.default_social_bookmark_script.value;">Restore Default Script</a> </td>
+					</tr>
+				</table>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<!--END: bookmarking-->
+	<!--START: likebutton-->
+	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td><table width="100%" border="0" cellspacing="0" cellpadding="4" class="tablenooutline">
+					<tr>
+						<td colspan="2" class="cells"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="border:none;"><img src="/admin/templates/images/icon-facebook-like-button.jpg" border="0"></td>
+									<td valign="bottom" style="border:none;padding-bottom: 12px;font: 14px Segoe, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;"><strong>Facebook Like Button</strong><br>
+										The &quot;Facebook Like&quot; button enables users to make connections to your pages and share content back to their friends on Facebook with one click. Since the content is hosted by Facebook, the button can display personalized content whether or not the user has logged into your site. For logged-in Facebook users, the button is personalized to highlight friends who have also liked the page. </td>
+								</tr>
+							</table>
+							<br />
+							<br /></td>
+					</tr>
+					<tr>
+						<td width="25%" class="headers">Enable</td>
+						<td width="75%" class="cells"><input name="social_likebutton_enable" type="checkbox" id="Checkbox1" value="1" [social_likebutton_enable]>
+							&nbsp;
+							<button type="button" class="scalable add gray fixed" onclick="Effect.toggle('script_advanced','blind'); return false;" value=""> <span>Advanced</span> </button></td>
+					</tr>
+				</table>
+				<div name="script_advanced" id="script_advanced" style="display: none;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="4" class="tablenooutline">
+						<tr>
+							<td width="25%" class="headers">Script</td>
+							<td width="75%" class="cells"><textarea rows="10" cols="80" class="txtBoxStyle2" name="social_likebutton_script">[social_likebutton_script]</textarea>
+								<textarea name="default_social_likebutton_script" style="display: none;">&lt;script&gt;
+document.write('<iframe src="https://www.facebook.com/plugins/like.php?href=');
+document.write(window.location);
+document.write('&layout=standard&show_faces=false&width=180&action=like&font&colorscheme=light&height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:180px;; height:40px;" allowtransparency="true"></iframe>');
+&lt;/script&gt;</textarea>
+								<br />
+								<a href="#" name="restore" onclick="document.form1.social_likebutton_script.value=document.form1.default_social_likebutton_script.value;">Restore Default Script</a> </td>
+						</tr>
+					</table>
+				</div></td>
+		</tr>
+	</table>
+	<!--END: likebutton-->
+</form>
+

@@ -1,0 +1,281 @@
+<script type="text/javascript" src="state_countryjs.asp"></script>
+
+<table width="95%" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="page_headers" colspan="2">Shipping Info</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <!--START: CATEGORY_HEADER-->
+  <tr>
+    <td class="data" colspan="2">[CONTENT]</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <!--END: CATEGORY_HEADER-->
+  <tr>
+    <!--left column starts-->
+    <td width="50%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><!--START: account_login-->
+            
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="checkout-headers" align="left" colspan="2"> [checkout2_Header-shippinginfo-login]</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="item"> [checkout2_Header-shippinginfo-loginmessage]</td>
+              </tr>
+              <tr>
+                <td align="left"><input type="button" value="[checkout2_Header-shippinginfo-login]" name="B3" onclick="javascript:location.href='edit_shipment.asp?shipmentid=[id]&action=log-in';" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'"></td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+            </table>
+            
+            <!--END: account_login--></td>
+        </tr>
+        <tr>
+          <td class="checkout-headers">[checkout2_Header-shippinginfo]</td>
+        </tr>
+        <tr>
+          <td><form action="edit_shipment.asp?action=updateaddress" method="post" name="checkoutform">
+              <input type="hidden" name="id" value="[id]">
+              <input type="hidden" name="update" value="1">
+              <table width="100%" border="0" cellspacing="1" cellpadding="0" class="alternative">
+                
+                <!--START: copyAddressBook-->
+                <tr>
+                  <td class="item"><a href="myaccount.asp?action=addresses&reqPage=edit_shipment&shipmentid=[id]">Click here</a> to copy an address from your Address Book.</td>
+                </tr>
+                <!--END: copyAddressBook-->
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="3">
+                      <tr>
+                        <td width="41%" align="right" class="item"><b>[account_Address-Alias]</b></td>
+                        <td width="59%"><input name="oshipalias" type="text" id="oshipalias" value="[oshipalias]" size="15" class="txtBoxStyle" /></td>
+                      </tr>
+                      <tr>
+                        <td width="41%" align="right" class="item"><b>[CustomerInfo_firstname]</b></td>
+                        <td width="59%"><input name="oshipfirstname" type="text" id="oshipfirstname" value="[oshipfirstname]" size="15" class="txtBoxStyle" />
+                          
+                          <!--START: req_oshipfirstname--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshipfirstname--></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_lastname]</b></td>
+                        <td><input name="oshiplastname" type="text" id="oshiplastname" value="[oshiplastname]" size="15" class="txtBoxStyle" />
+                          
+                          <!--START: req_oshiplastname--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshiplastname--></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_company]</b></td>
+                        <td><input name="oshipcompany" type="text" id="oshipcompany" value="[oshipcompany]" size="25" class="txtBoxStyle" /></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_phone]</b></td>
+                        <td><input name="oshipphone" type="text" id="oshipphone" value="[oshipphone]" size="25" class="txtBoxStyle" />
+                          
+                          <!--START: req_oshipphone--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshipphone--></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_address]</b></td>
+                        <td><input name="oshipaddress" type="text" id="oshipaddress" value="[oshipaddress]" size="25" class="txtBoxStyle" />
+                          
+                          <!--START: req_oshipaddress--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshipaddress--></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_address2]</b></td>
+                        <td><input name="oshipaddress2" type="text" id="oshipaddress2" value="[oshipaddress2]" size="25" class="txtBoxStyle" /></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_city]</b></td>
+                        <td><input name="oshipcity" type="text" id="oshipcity" value="[oshipcity]" size="25" class="txtBoxStyle" />
+                          
+                          <!--START: req_oshipcity--><img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshipcity--></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_country]</b></td>
+                        <td><select id='oshipcountry' name='oshipcountry' onChange="populateState('oshipstate','oshipcountry')" class="txtBoxStyle" />
+                          
+                          </select>
+                          
+                          <!--START: req_oshipcountry--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshipcountry--></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_state]</b></td>
+                        <td><select id='oshipstate' name='oshipstate' class="txtBoxStyle" />
+                          
+                          </select>
+                          
+                          <!--START: req_oshipstate--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshipstate--></td>
+                      </tr>
+                      <tr>
+                        <td align="right"  class="item"><b>[CustomerInfo_zip]</b></td>
+                        <td><input name="oshipzip" type="text" id="oshipzip" value="[oshipzip]" size="10" class="txtBoxStyle" />
+                          
+                          <!--START: req_oshipzip--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" /> 
+                          <!--END: req_oshipzip--></td>
+                      </tr>
+                      <!--START: addressType-->
+                      <tr>
+                        <td align="right"  class="item" nowrap><b>[CustomerInfo_address_type]</b>&nbsp;</td>
+                        <td><select name="shipping_addresstype" id="shipping_addresstype" class="txtBoxStyle" onChange="check_address('addresstype');">
+                            
+				                    [addressTypeDropDown]
+                            
+                          </select></td>
+                      </tr>
+                      <!--END: addressType--> 
+                      <!--START: ADD_ADDRESSBOOK-->
+                      <tr>
+                        <td align="right"  class="item"><input type="checkbox" name="addressbook" value="0"></td>
+                        <td class="item"><b>Add to Address Book</b></td>
+                      </tr>
+                      <!--END: ADD_ADDRESSBOOK--> 
+                      <!--START: UPD_ADDRESSBOOK-->
+                      <tr>
+                        <td align="right"  class="item"><input type="checkbox" name="addressbook" value="[address_id]"></td>
+                        <td class="item"><b>Update Address Book</b></td>
+                      </tr>
+                      <!--END: UPD_ADDRESSBOOK-->
+                      
+                    </table></td>
+                </tr>
+                <tr>
+                  <td><span class="error"><img src="assets/templates/common/images/error2.gif"> = Required</span><br /></td>
+                </tr>
+                <tr>
+                  <td align="left"><input type="submit" name="Submit" value="[account_Update-Address]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" /></td>
+                </tr>
+              </table>
+            </form></td>
+        </tr>
+      </table></td>
+    <!--left colum ends--> 
+    <!--column right-->
+    <td valign="top" width="40%" align="right"><table width="80%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="checkout-headers">Ship To [oshipalias] </td>
+        </tr>
+        <tr>
+          <td><table width="100%" cellpadding="0" cellspacing="0" class="alternative">
+              <!--START: SHOPPING_CART_ITEM-->
+              <tr>
+                <td class="item" align="left"><!--START: itemthumbnail--><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40" id="tl"></a><br />
+                  <!--END: itemthumbnail--> 
+                  <!--START: thumbnailnolink--><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40" id="tnl"><br />
+                  <!--END: thumbnailnolink--> 
+                  <!--START: itemnamelink--><a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a><!--END: itemnamelink--> 
+                  <!--START: itemnamenolink--><span id="spnItemName">[ITEM_NAME]</span><!--END: itemnamenolink--></td>
+                <td class="item" align="right" valign="bottom">[ITEM_PRICE]  X [ITEM_QUANTITY]<br />
+                  <b>[ITEM_SUBTOTAL]</b></td>
+              </tr>
+              <tr>
+                <td colspan="2"><table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="borders"><img src="assets/images/spacer.gif" width="100%" height="1"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <!--END: SHOPPING_CART_ITEM-->
+              
+              <tr>
+                <td colspan="2"><table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td align="right" class="item"><strong>[shoppingcart_subtotal]:</strong></td>
+                      <td align="right" class="item">[CARTSUBTOTAL]</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr>
+          <td align="right"><a href="view_cart.asp">Update Cart</a></td>
+        </tr>
+      </table></td>
+    <!--column right ends--> 
+    
+  </tr>
+  <tr>
+    <td colspan="2"><!--START: CATEGORY_FOOTER-->
+      
+      <table width="100%" cellspacing="0" cellpadding="2" border="0">
+        <tr>
+          <td class="item">[CONTENT]</td>
+        </tr>
+      </table>
+      
+      <!--END: CATEGORY_FOOTER--></td>
+  </tr>
+</table>
+<script type="text/javascript">
+	initCountry('[oshipcountry]','[oshipstate]','oshipstate','oshipcountry'); 
+</script> 
+<script type="text/javascript">
+//You should create the validator only after the definition of the HTML form
+  var frmvalidator  = new Validator("checkoutform");
+
+  frmvalidator.setAddnlValidationFunction("submitForm");
+
+
+  frmvalidator.addValidation("oshipfirstname","req","Please enter your First Name");
+  frmvalidator.addValidation("oshipfirstname","maxlen=20","Max length for First Name is 20");
+
+
+  frmvalidator.addValidation("oshiplastname","req","Please enter your Last Name");
+  frmvalidator.addValidation("oshiplastname","maxlen=20","Max length for Last Name is 20");
+
+  
+  frmvalidator.addValidation("oshipphone","maxlen=18","Max length for Phone is 18");
+  frmvalidator.addValidation("oshipphone","phone","Invalid phone number");
+  frmvalidator.addValidation("oshipphone","req","Please enter your phone");
+
+  frmvalidator.addValidation("oshipaddress","maxlen=50");
+  frmvalidator.addValidation("oshipaddress","req","Please enter your address");
+
+  frmvalidator.addValidation("oshipcity","maxlen=50");
+  frmvalidator.addValidation("oshipcity","req","Please enter your City");
+
+
+
+  frmvalidator.addValidation("oshipcountry","maxlen=50");
+  frmvalidator.addValidation("oshipcountry","req",0);
+
+  frmvalidator.addValidation("oshipstate","maxlen=50");
+  //frmvalidator.addValidation("oshipstate","req",0);
+
+
+
+  frmvalidator.addValidation("oshipzip","maxlen=20");
+  frmvalidator.addValidation("oshipzip","req","Please enter your zip code");
+
+  frmvalidator.setAddnlValidationFunction("ValidateStateIsSelected");
+
+
+  function ValidateStateIsSelected() {
+
+      var obj_state = document.getElementById("oshipstate");
+
+      if (obj_state.type == 'select-one' && obj_state.value == '') {
+          alert('Please enter your State');
+          return false;
+      }
+  }     
+</script>

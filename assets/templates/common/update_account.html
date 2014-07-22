@@ -1,0 +1,370 @@
+<script type="text/javascript" src="state_countryjs.asp"></script>
+<script language="javascript">
+    var emailReq = 1;
+</script>
+<!--START: upd_message-->
+<br>
+<span align="center" class="error"><b>[update_message]</b></span> <br>
+<!--END: upd_message-->
+<form action="myaccount.asp?action=updacc" method="post" name="form1" id="form1">
+<input type="hidden" name="tknio" value="[tknio]">
+<input type="hidden" name="contactid" value="[contactid]">
+<input type="hidden" name="update" value="1" id="Hidden2">
+<table width="95%" border="0" cellspacing="1" cellpadding="0">
+	<tr>
+		<td class="page_headers">[account_header-update-account] </td>
+		<!--START: myAccount-->
+		<td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td>
+		<!--END: myAccount-->
+	</tr>
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="data" colspan="2">&nbsp;[CONTENT]</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<tr>
+		<td colspan="2"><table width="100%" cellspacing="3" cellpadding="0" class="alternative" border="0">
+				<tr>
+					<td class="titles" colspan="2" >&nbsp;Login Information </td>
+				</tr>
+				<tr>
+					<td align="right" class="item" width="200">Email</td>
+					<td><input size="40" name="email" value="[email]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="left" class="item"><strong><font size="-2">If you're changing your password, enter the additional information:</font></strong></td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Old Password</td>
+					<td class="item"><input type="password" autocomplete="off" size="40" name="pass_old" value="" class="txtBoxStyle" id="Password2">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">New Password</td>
+					<td class="item">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+	                            <td style="width:1px">                        
+                                    <input type="password" autocomplete="off" size="40" name="pass" value="" class="txtBoxStyle" id="Password1" [CallFunctionVerifyStrongPass]>
+                                </td>
+                                <!--START: StrongPasswordBar-->
+	                            <td>
+		                            <div style="width:100px;height:10px;border:none;background-image: linear-gradient(to left, #00FF00 0%, #FF0000 100%);">
+			                        <div id="divStrong" style="width:100%;height:10px;border:none;background-color:white;float:right"></div>
+		                            </div>
+	                            </td>
+                                <!--END: StrongPasswordBar-->
+                            </tr>
+                        </table>
+					</td>
+				</tr>
+                <!--START: PasswordMSG-->
+                <tr><td></td><td class="item">[CustomerInfo_password_policy]</td></tr>
+                <!--END: PasswordMSG-->
+				<tr>
+					<td class="item" align="right" >Confirm New Password</td>
+					<td class="item"><input type="password" autocomplete="off" size="40" name="pass_new" value="" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="titles" colspan="2">&nbsp;Billing Information </td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Company</td>
+					<td class="item"><input size="40" name="billing_company" value="[billing_company]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">First Name</td>
+					<td class="item"><input size="40" name="billing_firstname" value="[billing_firstname]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Last Name</td>
+					<td class="item"><input size="40" name="billing_lastname" value="[billing_lastname]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Address</td>
+					<td class="item"><input size="40" name="billing_address" value="[billing_address]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Address2</td>
+					<td class="item"><input size="40" name="billing_address2" value="[billing_address2]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">City</td>
+					<td class="item"><input size="40" name="billing_city" value="[billing_city]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">State</td>
+					<td class="item"><select id='billing_state' name='billing_state' class="txtBoxStyle" />
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Zip Code</td>
+					<td class="item"><input size="40" name="billing_zip" value="[billing_zip]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Country</td>
+					<td class="item"><select id='billing_country' name='billing_country' onchange="populateState('billing_state','billing_country')" class="txtBoxStyle" />
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Phone</td>
+					<td class="item"><input size="40" name="billing_phone" value="[billing_phone]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="titles" colspan="2">&nbsp;Shipping Information </td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Company</td>
+					<td class="item"><input size="40" name="shipping_company" value="[shipping_company]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">First Name</td>
+					<td class="item"><input size="40" name="shipping_firstname" value="[shipping_firstname]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Last Name</td>
+					<td class="item"><input size="40" name="shipping_lastname" value="[shipping_lastname]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Address</td>
+					<td class="item"><input size="40" name="shipping_address" value="[shipping_address]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Address2</td>
+					<td class="item"><input size="40" name="shipping_address2" value="[shipping_address2]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">City</td>
+					<td class="item"><input size="40" name="shipping_city" value="[shipping_city]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">State</td>
+					<td class="item"><select id='shipping_state' name='shipping_state' class="txtBoxStyle" />
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Zip Code</td>
+					<td class="item"><input size="40" name="shipping_zip" value="[shipping_zip]" class="txtBoxStyle">
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Country</td>
+					<td class="item"><select id='shipping_country' name='shipping_country' onchange="populateState('shipping_state','shipping_country')" class="txtBoxStyle" />
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="item" align="right">Phone</td>
+					<td class="item"><input size="40" name="shipping_phone" value="[shipping_phone]" class="txtBoxStyle">
+					</td>
+				</tr>
+                <!--START: addressType-->
+                <tr>
+                    <td align="right"  class="item" nowrap>[CustomerInfo_address_type]</td>
+                    <td><select name="shipping_addresstype" id="shipping_addresstype" class="txtBoxStyle">
+				            [addressTypeDropDown]
+                    </select></td>
+                </tr>
+                <!--END: addressType-->
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="titles" colspan="2">&nbsp;Other Information </td>
+				</tr>
+				<tr>
+					<td class="item" align="right"><input type="checkbox" name="maillist" value="1" [maillist]>
+					</td>
+					<td class="item" align="left">I would like to receive updates and promotions by email</td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right"><input type="button" onclick="doUpdate:doUpdate(this.form);" class="btn" value="Update My Information">
+			&nbsp;</td>
+	</tr>
+	<!--START: CATEGORY_FOOTER-->
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="data" colspan="2">&nbsp;[CONTENT]</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<!--END: CATEGORY_FOOTER-->
+</table>
+</form>
+
+
+
+<script language="javascript" type="text/javascript">
+    initCountry('[billing_country]', '[billing_state_script]', 'billing_state', 'billing_country');
+    initCountry('[shipping_country]', '[shipping_state_script]', 'shipping_state', 'shipping_country');
+
+    function doUpdate(objForm) {
+
+
+
+        String.prototype.trim = function () {
+            return this.replace(/^\s+|\s+$/g, "");
+        }
+
+        function IsNumeric(strString) {
+            var strValidChars = "0123456789.-";
+            var strChar;
+            var blnResult = true;
+
+            if (strString.length == 0) return false;
+            //  test strString consists of valid characters listed above
+            for (i = 0; i < strString.length && blnResult == true; i++) {
+                strChar = strString.charAt(i);
+                if (strValidChars.indexOf(strChar) == -1) {
+                    blnResult = false;
+                }
+            }
+            return blnResult;
+        }
+
+        var strMsg = "";
+
+        if (emailReq == 1) {
+            if (objForm.email.value.trim() == "")
+                strMsg += " - Please enter a valid Email.\n";
+            if (objForm.email.value.length > 50)
+                strMsg += " - Maximum length for this field is 50.\n";
+        }
+
+        //If changing the password
+        if (objForm.pass_old.value != "" || objForm.pass.value != "" || objForm.pass_new.value != "") {
+            if (objForm.pass_old.value.trim() == "")
+                strMsg += " - Please enter your old [CustomerInfo_password*script].\n";
+            if (objForm.pass.value.trim() == "")
+                strMsg += " - Please enter your new [CustomerInfo_password*script].\n";
+            else if (objForm.pass_new.value.trim() != objForm.pass.value.trim())
+                strMsg += " - Your new [CustomerInfo_password*script] must match with the confirmation.\n";
+            else if (objForm.pass_new.value.trim() == "")
+                strMsg += " - Please confirm your new [CustomerInfo_password*script].\n";
+            else if (!objForm.pass.value.match(/(?=^.{8,16}$)(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).*$/) && '[verifystrongpassword]' == '1')
+                strMsg += " - [CustomerInfo_password_policy*script] does not match the password policy.\n";
+
+        }
+
+        //BILLING INFO
+        if (objForm.billing_firstname.value.trim() == "")
+            strMsg += " - Please enter your Billing [CustomerInfo_firstname].\n";
+        if (objForm.billing_firstname.value.length > 20)
+            strMsg += " - Maximum length for this field is 20 characters.\n";
+
+        if (objForm.billing_lastname.value.trim() == "")
+            strMsg += " - Please enter your Billing [CustomerInfo_lastname].\n";
+        if (objForm.billing_lastname.value.length > 20)
+            strMsg += " - Maximum length for this field is 20 characters.\n";
+
+        if (objForm.billing_phone.value.trim() == "")
+            strMsg += " - Please enter your Billing [CustomerInfo_phone].\n";
+        if (objForm.billing_phone.value.length > 18)
+            strMsg += " - Maximum length for this field is 18 characters.\n";
+
+        if (objForm.billing_address.value.trim() == "")
+            strMsg += " - Please enter your Billing [CustomerInfo_address].\n";
+        if (objForm.billing_address.value.length > 50)
+            strMsg += " - Maximum length for this field is 50 characters.\n";
+
+        if (objForm.billing_city.value.trim() == "")
+            strMsg += " - Please enter your Billing [CustomerInfo_city].\n";
+        if (objForm.billing_city.value.length > 50)
+            strMsg += " - Maximum length for this field is 50 characters.\n";
+
+        if (objForm.billing_state.value.trim() == "")
+            strMsg += " - Please enter your Billing [CustomerInfo_state].\n";
+        if (objForm.billing_state.value.length > 50)
+            strMsg += " - Maximum length for this field is 50 characters.\n";
+
+        if (objForm.billing_zip.value.trim() == "")
+            strMsg += " - Please enter your Billing [CustomerInfo_zip].\n";
+        if (objForm.billing_zip.value.length > 20)
+            strMsg += " - Maximum length for this field is 20 characters.\n";
+
+
+        //SHIPPING INFO
+        if (objForm.shipping_firstname.value.trim() == "")
+            strMsg += " - Please enter your Shipping [CustomerInfo_firstname].\n";
+        if (objForm.shipping_firstname.value.length > 20)
+            strMsg += " - Maximum length for this field is 20 characters.\n";
+
+        if (objForm.shipping_lastname.value.trim() == "")
+            strMsg += " - Please enter your Shipping [CustomerInfo_lastname].\n";
+        if (objForm.shipping_lastname.value.length > 20)
+            strMsg += " - Maximum length for this field is 20 characters.\n";
+
+        if (objForm.shipping_phone.value.trim() == "")
+            strMsg += " - Please enter your Shipping [CustomerInfo_phone].\n";
+        if (objForm.shipping_phone.value.length > 18)
+            strMsg += " - Maximum length for this field is 18 characters.\n";
+
+        if (objForm.shipping_address.value.trim() == "")
+            strMsg += " - Please enter your Shipping [CustomerInfo_address].\n";
+        if (objForm.shipping_address.value.length > 50)
+            strMsg += " - Maximum length for this field is 50 characters.\n";
+
+        if (objForm.shipping_city.value.trim() == "")
+            strMsg += " - Please enter your Shipping [CustomerInfo_city].\n";
+        if (objForm.shipping_city.value.length > 50)
+            strMsg += " - Maximum length for this field is 50 characters.\n";
+
+        if (objForm.shipping_state.value.trim() == "")
+            strMsg += " - Please enter your Shipping [CustomerInfo_state].\n";
+        if (objForm.shipping_state.value.length > 50)
+            strMsg += " - Maximum length for this field is 50 characters.\n";
+
+        if (objForm.shipping_zip.value.trim() == "")
+            strMsg += " - Please enter your Shipping [CustomerInfo_zip].\n";
+        if (objForm.shipping_zip.value.length > 20)
+            strMsg += " - Maximum length for this field is 20 characters.\n";
+
+
+        if (strMsg != "") {
+            alert(strMsg);
+            return false;
+        }
+
+        objForm.submit();
+    }
+
+</script>

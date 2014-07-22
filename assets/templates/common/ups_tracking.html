@@ -1,0 +1,168 @@
+
+
+<script language="javascript" type="text/javascript">
+<!--
+function viewlicense()
+{
+	var windowhtml= '<html><body><table border="0" width="100%"><tr><td><img src="/admin/templates/images/ups_logo.gif"  alt="UPS"></td><td><font size="3" face="Verdana"><strong>UPS Tracking Terms and Conditions</strong></td>	</tr>	<tr>		<td colspan="2"><font size="1" face="Verdana">The UPS package tracking systems accessed via this Web Site (the &quot;Tracking Systems&quot;) and tracking information obtained through this Web Site (the &quot;Information&quot;) are the private property of UPS. UPS authorizes you to use the Tracking Systems solely to track shipments tendered by or for you to UPS for delivery and for no other purpose. Without limitation, you are not authorized to make the Information available on any web site or otherwise reproduce, distribute, copy, store, use or sell the Information for commercial gain without the express written consent of UPS. This is a personal service, thus your right to use the Tracking Systems or Information is non-assignable.';
+	windowhtml+='Any access or use that is inconsistent with these terms is unauthorized and strictly prohibited.</td></tr><tr><td colspan="2"><font size="1" face="Verdana">Copyright&nbsp;&copy; 1994-2003 United Parcel Service of America, Inc. All rights reserved.</td>	</tr>	<tr>		<td colspan="2">		<p align="center"><font face="Arial"><b><a href="#" onclick="self.close();">Close Window</a></b></td>	</tr></table></body></html>';
+
+	var lwindow = window.open("","license",'menubar=no, scrollbars=yes, width=500, height=270, directories=no,location=no,resizable=yes,status=no,toolbar=no');
+	lwindow.document.open();
+	lwindow.document.write(windowhtml);
+	lwindow.document.close();
+}
+
+
+function checkaccept()
+{
+  if (document.form1.agree.checked == false)
+  {
+    alert("You must accept the UPS Tracking Terms and conditions by selecting the checkbox below.");
+    return (false);
+  }else{
+	document.form1.submit();
+  }
+  return (true);
+}
+//-->
+</script>
+
+
+
+
+
+
+<table border="0" width="95%" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="324" align="left" class="checkout-headers" valign="bottom">
+		UPS Tracking Tool</td>
+		<td width="108" class="checkout-headers"><img alt="UPS" src="/admin/templates/images/ups_logo.gif"></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2">
+		
+			<table border="0" width="100%" cellspacing="1" cellpadding="3">
+<!--START: results-->
+			<tr>
+				<td class="titles2" colspan="3">
+				Tracking 
+				Details: [trackno]</td>
+			</tr>
+            
+            <tr><td valign="top">
+            <table width="100%" cellpadding="0" cellspacing="2">
+            <!--START: shipper_number-->
+			<tr>
+				<td class="item">
+				<strong>Shipper 
+				Number:</strong> [shipper_number]
+				</td>
+			
+			</tr>
+<!--END: shipper_number-->
+
+
+<!--START: service_description-->
+			<tr>
+				<td class="item">
+				<strong>Service 
+				Description:</strong>[service_description] 
+				</td>
+				
+			</tr>
+<!--END: service_description-->
+
+<!--START: delivery_date-->
+			<tr>
+				<td class="item" vAlign="top">
+				
+				<strong>Sched. Delivery Date:</strong> [delivery_date]</td>
+				
+			</tr>
+<!--END: delivery_date-->
+<!--START: redelivery_date-->
+			<tr>
+				<td class="item" vAlign="top">
+				
+				<strong>Re-Sched. Delivery Date:</strong> [redelivery_date]</td>
+				
+			</tr>
+<!--END: redelivery_date-->
+
+
+</table>
+            </td><td valign="top"><table width="100%" height="80" cellpadding="0" cellspacing="0"><!--START: shipper_address-->
+			<tr>
+				<td class="item" vAlign="top">
+				
+				<strong>Shipper Address: </strong><br />[shipper_address] </td>
+				
+			</tr>
+<!--END: shipper_address-->
+</table></td><td valign="top"><table width="100%" height="80" cellpadding="0" cellspacing="0"><!--START: shipto_address-->
+			<tr>
+				<td class="item" vAlign="top">
+				
+				<strong>Ship-To Address:</strong><br />[shipto_address] </td>
+				
+			</tr>
+<!--END: shipto_address--></table></td></tr>
+            
+
+			<tr>
+				<td align="right" colspan="3">
+				<div align="center">
+				<table cellSpacing="1" cellPadding="3" border="0" width="90%" class="alternative">
+					<tr>
+							<td class="titles2" ><strong>Date&nbsp;/&nbsp;Time</strong></td>
+						<td class="titles2" ><strong>Description</strong></td>
+					
+                        <td class="titles2"  width="122"><strong>Location</strong></td>
+					</tr>
+					<!--START: activity-->
+					<tr>
+					<td class="item">
+						[date_time]</td>
+						<td class="item">
+						[description]</td>
+						
+                        	<td class="item" width="122">
+						[location]</td>
+					</tr>
+					<!--END: activity-->
+					</table>
+				</div>
+				</td>
+			</tr>
+			
+					<!--END: results-->
+   <tr><td colspan="3" align="center"><form method="post" action="shiptracking.asp" name="form1">
+                <table cellSpacing="1" cellPadding="3" border="0" width="90%" class="alternative"><tr>
+				<td align="left" class="item"><b>UPS Tracking Number:</b><br />
+				<input size="30" value="[trackno]" name="trackno" class="txtBoxStyle"></td>
+			
+				<td align="right" valign="bottom">
+				<input onClick="viewlicense()" type="button" value="View License" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				<td valign="bottom">
+				<input onClick="checkaccept()" type="button" value="Track Package" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+			</tr>
+            	<tr>
+		<td colspan="3" class="item">
+		<input type="checkbox" value="ON" name="agree"> By 
+		selecting this box and the &quot;Track Package&quot; button, I agree to these
+		<a href="javascript:viewlicense();"><strong>Terms and Conditions</strong></a>.</td>
+	</tr>
+</table>
+  </form>                  
+                    </td></tr>
+                    </table></td></tr>
+                    <tr>
+                      <td colspan="2" class="item" align="center">UPS&reg;, UPS &amp; Shield Design&reg; and 
+UNITED PARCEL SERVICE&reg; are<br>
+registered trademarks of United Parcel Service of America, Inc.</td></tr>
+                    
+                 
+                    </table>
+               

@@ -1,0 +1,340 @@
+
+<table width="95%" cellpadding="0" cellspacing="0" align="center" border="0">
+	<form action="giftregistry_home.asp" name="frmForm" id="frmForm" method="post">
+		<input type="hidden" name="action" id="action" value="">
+		<input type="hidden" name="intCustId" id="intCustId" value="">
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="page_headers" align="left" colspan="2">[giftregistry_home]</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2"><!--START: CATEGORY_HEADER-->
+				<table width="95%" cellspacing="0" cellpadding="2" border="0">
+					<tr>
+						<td class="data">[CONTENT]</td>
+					</tr>
+				</table>
+				<!--END: CATEGORY_HEADER-->
+			</td>
+		</tr>
+		<!--START: giftRegistryMyRegistry-->
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="checkout-headers" colspan="2">[regName]</td>
+		</tr>
+		<tr>
+			<td colspan="2"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td width="22%"><table cellpadding="0" cellspacing="5">
+								<TR>
+									<td align="left" class="item"><b>[giftregistry_header-eventdate]</b>: &nbsp;&nbsp;[regEvent]<br></td>
+								</tr>
+								<TR>
+									<td align="left" class="item"><b>[giftregistry_header-expiration]</b>:&nbsp;&nbsp;[regExpiration]<br></td>
+								</tr>
+								<TR>
+									<td align="left" class="item"><b>[giftregistry_header-productsdesired]</b>: &nbsp;&nbsp;[regProductsDesired]<br></td>
+								</tr>
+								<TR>
+									<td align="left" class="item"><b>[giftregistry_header-productspurchased]</b>:&nbsp;&nbsp;[regProductsPurchased]</td>
+								</TR>
+							</table></td>
+						<td width="36%" valign="top" align="right"><table cellpadding="0" cellspacing="3">
+								<tr>
+									<td><img src="assets/templates/common/images/gift_view.png" align="absmiddle"></td>
+									<td valign="middle"><a href="view_giftregistry.asp?id=[custid]">[giftregistry_view-productlist]</a></td>
+								</tr>
+								<tr>
+									<td><img src="assets/templates/common/images/gift_edit.png" align="absmiddle"></td>
+									<td valign="middle"><a href="giftregistry_edit.asp">Edit Account Information</a></td>
+								</tr>
+								<tr>
+									<td><img src="assets/templates/common/images/gift_viewaccount.png" align="absmiddle"></td>
+									<td valign="middle"><a href="giftregistry_edit.asp?action=view">[account_giftRegistry-header-view]</a></td>
+								</tr>
+							</table></td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: giftRegistryMyRegistry-->
+		<!--START: giftRegistryCreate-->
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="checkout-headers" colspan="2" valign="middle"><img src="assets/templates/common/images/gift_add.png">&nbsp;[account_giftRegistry]</td>
+		</tr>
+		<tr>
+			<td colspan="2"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="alternative">
+					<tr>
+						<td align="left" class="item"> [giftregistry_home-create-registry] </td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><input name="button222" type="button" class="btn" onClick="window.location='giftregistry_edit.asp';" value="[giftregistry_header-create-registry]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"/>
+						</td>
+					</tr>
+				</table>
+				<br>
+			</td>
+		</tr>
+		<!--END: giftRegistryCreate-->
+		<!--START: giftRegistrySearch-->
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="checkout-headers" colspan="2" valign="middle"><img src="assets/templates/common/images/gift_add_search.png">&nbsp;[giftregistry_home-header-search]</td>
+		</tr>
+		<tr>
+			<td colspan="2"><table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+					<tr class="alternative">
+						<td class="item" width="100" ><b>[giftregistry_header-name]</td>
+						<td class="item" ><input type="text" id="txtRegName" name="txtRegName" maxlength="50" size="50" value="[regname]" class="txtBoxStyle"></td>
+					</tr>
+					<tr class="alternative">
+						<td class="item"><b>[giftregistry_header-eventdate]</td>
+						<td class="item" ><select name="drpRegMonth" id="drpRegMonth" class="txtBoxStyle">
+								<option value="">Month</option>
+								<!--START: drpRegMonth-->
+								<option value="[intMonth]" [selected]>[month]</option>
+								<!--END: drpRegMonth-->
+							</select>
+							&nbsp;
+							<select name="drpRegDay" id="drpRegDay" class="txtBoxStyle">
+								<option value="">Day</option>
+								<!--START: drpRegDay-->
+								<option value="[day]" [selected]>[day]</option>
+								<!--END: drpRegDay-->
+							</select>
+							&nbsp;
+							<select name="drpRegYear" id="drpRegYear" class="txtBoxStyle">
+								<option value="">Year</option>
+								<!--START: drpRegYear-->
+								<option value="[year]" [selected]>[year]</option>
+								<!--END: drpRegYear-->
+							</select>
+						</td>
+					</tr>
+					<tr class="alternative">
+						<td class="item"><b>[giftregistry_create-firstname]</td>
+						<td class="item" ><input type="text" id="txtRegFirstName" name="txtRegFirstName" maxlength="50" size="50" value="[firstname]" class="txtBoxStyle"></td>
+					</tr>
+					<tr class="alternative">
+						<td class="item"><b>[giftregistry_create-lastname]</td>
+						<td class="item" ><input type="text" id="txtRegLastName" name="txtRegLastName" maxlength="50" size="50" value="[lastname]" class="txtBoxStyle"></td>
+					</tr>
+					<tr>
+						<td align="right" colspan="2"><input type="button" id="Button3" name="cmdViewList" onClick="javascript:searchRegistry();" class="btn" value="[giftregistry_home-search]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+						</td>
+					</tr>
+				</table>
+				<br>
+			</td>
+		</tr>
+		<!--END: giftRegistrySearch-->
+		<!--START: giftRegistrySearchResult-->
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="checkout-headers" colspan="2" valign="middle">[giftregistry_home-header-searchresult]</td>
+		</tr>
+		<tr>
+			<td colspan="2"><table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+					<tr>
+						<td class="titles2">[giftregistry_header-name]</td>
+						<td class="titles2">[giftregistry_header-eventdate]</td>
+						<td class="titles2">[giftregistry_create-firstname]</td>
+						<td class="titles2">[giftregistry_create-lastname]</td>
+					</tr>
+					<!--START: giftRegistrySearchNoResult-->
+					<tr class="alternative">
+						<td class="item" align="center" colspan="10"><br>
+							[giftregistry_home-search-noresults]<br>
+							<br></td>
+					</tr>
+					<!--END: giftRegistrySearchNoResult-->
+					<!--START: giftRegistrySearchResultDetail-->
+					<tr>
+						<td class="item"><b>[regName]</td>
+						<td class="item">[regEvent]</td>
+						<td class="item">[regFirstName]</td>
+						<td class="item">[regLastName]</td>
+					</tr>
+					<tr>
+						<td class="item" colspan="4" align="left"><input type="button" name="cmdViewList" onClick="javascript:location.href='giftregistry_home.asp?action=view&id=[custid]';" class="btn" value="[giftregistry_home-select-registry]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" align="right" bgcolor="#ffffff"><br></td>
+					</tr>
+					<!--END: giftRegistrySearchResultDetail-->
+				</table>
+				<br>
+			</td>
+		</tr>
+		<!--END: giftRegistrySearchResult-->
+		<tr>
+			<td colspan="2"><!--START: CATEGORY_FOOTER-->
+				<br>
+				<table width="95%" cellspacing="0" cellpadding="2" border="0" id="Table3">
+					<tr>
+						<td class="data">[CONTENT]</td>
+					</tr>
+				</table>
+				<!--END: CATEGORY_FOOTER-->
+			</td>
+		</tr>
+	</form>
+</table>
+<script>
+function submitForm(strAction)
+{
+	window.document.body.style.cursor = 'wait';
+	if(window.document.activeElement){window.document.activeElement.style.cursor='wait'; }
+	
+	document.frmForm.action.value = strAction;
+	document.frmForm.submit();
+}
+function searchRegistry()
+{
+
+	var objTxtLastName = window.document.getElementById('txtRegLastName');
+	var objTxtFirstName = window.document.getElementById('txtRegFirstName');
+	var objTxtRegName = window.document.getElementById('txtRegName');
+	var objRegMonth = window.document.getElementById('drpRegMonth');
+	var objRegDay = window.document.getElementById('drpRegDay');
+	var objRegYear = window.document.getElementById('drpRegYear');
+	
+	var regDate = objRegMonth.value +"/"+ objRegDay.value +"/"+ objRegYear.value;
+	
+	var strMsg = "";
+	
+	if (objTxtLastName.value.trim() == "" && objTxtFirstName.value.trim() == "" && objTxtRegName.value.trim() == "" && regDate == "//")
+		strMsg += " - You must fill at least one field in order to search.\n"
+
+	if (regDate != "//")
+		if (!isDate(regDate))
+			strMsg += " - The date is incorrect. You can fill with a correct date or leave the date blank.\n"
+
+	if (strMsg != ""){
+		alert(strMsg);
+		return false;
+	}
+
+	submitForm('search');
+}
+function viewRegistry(intCustId)
+{
+	var objTxtPass = window.document.getElementById('txtRegPassword'+intCustId);
+	var strMsg = "";
+	
+	if (objTxtPass)
+		if (objTxtPass.value.trim() == "")
+			strMsg += " - [giftregistry_create-password] cannot be blank.\n"
+
+	if (strMsg != ""){
+		alert(strMsg);
+		return false;
+	}
+	
+	document.frmForm.intCustId.value = intCustId;
+	submitForm('view');
+}
+String.prototype.trim = function() {
+	return this.replace(/^\s+|\s+$/g,"");
+}
+</script>
+<script language = "javascript">
+/**
+ * DHTML date validation script. Courtesy of SmartWebby.com (http://www.smartwebby.com/dhtml/)
+ */
+// Declaring valid date character, minimum year and maximum year
+var dtCh= "/";
+var minYear=1900;
+var maxYear=2100;
+
+function isInteger(s){
+	var i;
+  for (i = 0; i < s.length; i++){  
+    // Check that current character is number.
+    var c = s.charAt(i);
+    if (((c < "0") || (c > "9"))) return false;
+  }
+  // All characters are numbers.
+  return true;
+}
+
+function stripCharsInBag(s, bag){
+	var i;
+  var returnString = "";
+  // Search through string's characters one by one.
+  // If character is not in bag, append to returnString.
+  for (i = 0; i < s.length; i++){  
+    var c = s.charAt(i);
+    if (bag.indexOf(c) == -1) returnString += c;
+  }
+  return returnString;
+}
+
+function daysInFebruary (year){
+	// February has 29 days in any year evenly divisible by four,
+  // EXCEPT for centurial years which are not also divisible by 400.
+  return (((year % 4 == 0) && ( (!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28 );
+}
+function DaysArray(n) {
+	for (var i = 1; i <= n; i++) {
+		this[i] = 31
+		if (i==4 || i==6 || i==9 || i==11) {this[i] = 30}
+		if (i==2) {this[i] = 29}
+  } 
+  return this
+}
+
+function isDate(dtStr){
+	var daysInMonth = DaysArray(12)
+	var pos1=dtStr.indexOf(dtCh)
+	var pos2=dtStr.indexOf(dtCh,pos1+1)
+	var strMonth=dtStr.substring(0,pos1)
+	var strDay=dtStr.substring(pos1+1,pos2)
+	var strYear=dtStr.substring(pos2+1)
+	strYr=strYear
+	if (strDay.charAt(0)=="0" && strDay.length>1) strDay=strDay.substring(1)
+	if (strMonth.charAt(0)=="0" && strMonth.length>1) strMonth=strMonth.substring(1)
+	for (var i = 1; i <= 3; i++) {
+		if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1)
+	}
+	month=parseInt(strMonth)
+	day=parseInt(strDay)
+	year=parseInt(strYr)
+	if (pos1==-1 || pos2==-1){
+		//alert("The date format should be : mm/dd/yyyy")
+		return false
+	}
+	if (strMonth.length<1 || month<1 || month>12){
+		//alert("Please enter a valid month")
+		return false
+	}
+	if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
+		//alert("Please enter a valid day")
+		return false
+	}
+	if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
+		//alert("Please enter a valid 4 digit year between "+minYear+" and "+maxYear)
+		return false
+	}
+	if (dtStr.indexOf(dtCh,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtCh))==false){
+		//alert("Please enter a valid date")
+		return false
+	}
+return true
+}
+</script>
+

@@ -1,0 +1,166 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <!--START: CATEGORY_HEADER-->
+  <tr>
+    <td class="item" colspan="2">[CONTENT] </td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="assets/templates/common/images/spacer.gif" width="1" height="25" /></td>
+  </tr>
+  <!--END: CATEGORY_HEADER-->
+  <tr>
+    <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center" valign="top"><table width="98%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><!--START: blog_post-->
+      <div width="100%"> <h1><a href="[pagename]" style="font-size: 28px; line-height: 28px;">[subject]</a></h1>
+        <div class="item">Posted by [post_author] on [post_date]
+          <!--START: POST_CATEGORY-->
+          to <a href="[post_category_link]">[post_category_name]</a>
+          <!--END: POST_CATEGORY-->
+        </div>
+        <div width="100%"><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></div>
+        [post] </div>
+      <div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="right"><table border="0" cellspacing="0" cellpadding="10">
+                <tr>
+                  <td>[product_social-bookmarking]</td>
+                  <!--START: read-more-->
+                  <td><a href="[pagename]" title="[subject]">[blog_read-more]</a></td>
+                  <!--END: read-more-->
+                  <!--START: blog_comments-->
+                  <td align="center"><div><a href="[pagename]#comments">([numcomments]) [blog_total-comments]</a></div></td>
+                  <!--END: blog_comments-->
+                </tr>
+              </table></td>
+          </tr>
+        </table>
+      </div>
+      <div><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></div>
+      <div style="background: #ecebe9;"><img src="assets/templates/common/images/spacer.gif" width="1" height="1" /></div>
+      <div><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></div>
+      <!--START: blog_comments_list-->
+      <div class="page_headers">[blog_comments-header]<a name="comments" id="comments"></a></div>
+      <div><img src="assets/templates/common/images/spacer.gif" width="1" height="15" /></div>
+      <!--START: comments-->
+      <div class="item"><span class="blog-hilite">[name]</span> <em>[blog_comments-date]</em> [datentime]</div>
+      <div><img src="assets/templates/common/images/spacer.gif" width="1" height="5" /></div>
+      <div class="item">[comment]</div>
+      <div><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></div>
+      <div style="background: #ecebe9;"><img src="assets/templates/common/images/spacer.gif" width="1" height="1" /></div>
+      <div><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></div>
+      <!--END: comments-->
+      <!--END: blog_comments_list-->
+      <!--START: blog_add_comments-->
+      <table border="0" cellspacing="0" cellpadding="2">
+        <form action="blog.asp?action=comment&articleid=[id]" method="post">
+          <tr>
+            <td width="80" align="right" class="item">&nbsp;</td>
+            <td align="left"><input type=text name="info" value="[idenc]" style="display:none;">
+              <input type=text name="email" value="" style="display:none;"></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="left" class="page_headers">[blog_comments-addcomment]</td>
+          </tr>
+          <tr>
+            <td align="right" class="item">[blog_comments-name]&nbsp;</td>
+            <td align="left"><input name="blog_comment_name" type="text" class="txtBoxStyle" value="[name]" size="50"></td>
+          </tr>
+          <tr>
+            <td align="right" class="item">[blog_comments-email]&nbsp;</td>
+            <td align="left"><input name="blog_comment_email" type="text" class="txtBoxStyle" value="[email]" size="50"></td>
+          </tr>
+          <tr>
+            <td align="right" valign="top" class="item">[blog_comments-body]&nbsp;</td>
+            <td align="left"><textarea cols=60 rows=8 name="blog_comment_comment" class="txtareaStyle"></textarea></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="left"><input type="submit"  value="[blog_comments-submit]" class="btn" onMouseOver="this.className='btn_over'" onmouseout="this.className='btn'"></td>
+          </tr>
+        </form>
+      </table>
+      <!--END: blog_add_comments-->
+                <!--START: blog_disquscomments-->
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = '[blog_disqusshortname]'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                <!--END: blog_disquscomments-->    
+      <!--END: blog_post--></td>
+          </tr>
+        </table></td>
+        <td width="180" valign="top" class="frame"><!--START: blog_topnav-->
+      <table width="180" cellspacing="0" cellpadding="4" border="0">
+        <tr>
+          <td align="left" class="item">[blog_topnav]</td>
+        </tr>
+        <tr>
+          <td align="left"><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></td>
+        </tr>
+      </table>
+      <!--END: blog_topnav-->
+      <div width="180">&nbsp;<a href="blog.asp" class="cat"><strong>&laquo; [blog_home]</strong></a></div>
+      <br>
+      <!--START: categories_block-->
+      <div width="180" class="menu-headers">&nbsp;[blog_categories]</div>
+      <!--START: categories-->
+      <a href='[categorylink]' class="cat">&nbsp;[categorylabel]</a><br>
+      <!--END: categories-->
+      <br>
+      <!--END: categories_block-->
+      <!--START: posts_block-->
+      <div width="180" class="menu-headers">&nbsp;[blog_recentposts]</div>
+      <!--START: posts-->
+      <a href='[postlink]' class="cat">&nbsp;[postlabel]</a><br>
+      <!--END: posts-->
+      <!--END: posts_block-->
+      <!--START: archives_block-->
+      <br>
+      <div width="180" class="menu-headers">&nbsp;[blog_archives]</div>
+      <!--START: archives-->
+      <a href='[archivelink]' class="cat">&nbsp;[archivelabel]</a><br>
+      <!--END: archives-->
+      <!--END: archives_block-->
+      <!--START: blog_bottomnav-->
+      <table width="180"  cellspacing="0" cellpadding="4" border="0">
+        <tr>
+          <td align="left"><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></td>
+        </tr>
+        <tr>
+          <td align="left" class="item">[blog_bottomnav]</td>
+        </tr>
+      </table>
+      <!--END: blog_bottomnav--></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top" width="80%" style="padding-right: 20px;"></td>
+    <td class="frame" width="180" valign="top"></td>
+  </tr>
+  <!--START: CATEGORY_FOOTER-->
+  <tr>
+    <td colspan="2"><img src="assets/templates/common/images/spacer.gif" width="1" height="15" /></td>
+  </tr>
+  <tr>
+    <td class="item" colspan="2">[CONTENT]</td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="assets/templates/common/images/spacer.gif" width="1" height="10" /></td>
+  </tr>
+  <!--END: CATEGORY_FOOTER-->
+</table>
+

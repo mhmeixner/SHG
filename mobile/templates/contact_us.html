@@ -1,0 +1,119 @@
+﻿<script>
+	var addReplyClick = 0;
+	
+	function submitFormContactUs(strAction)
+	{	
+		document.frmForm.action.value = strAction;
+		document.frmForm.submit();
+	}
+	function addNew()
+	{
+		var strMsg = "";
+		if (document.frmForm.customer.value.trim() == "")
+			strMsg += " - [crm_name] cannot be blank.\n";
+		if (document.frmForm.custemail.value.trim() == "" || !isValidEmail(document.frmForm.custemail.value))
+			strMsg += " - [crm_email] cannot be blank and must be a valid email address.\n";
+		if (document.frmForm.subject.value.trim() == "")
+			strMsg += " - [crm_subject] cannot be blank.\n";
+		if (document.frmForm.reply.value.trim() == "")
+			strMsg += " - [crm_message] cannot be blank.\n";
+		<!--START: captchascript-->
+		if (document.frmForm.ramdomWord.value.trim() == "")
+			strMsg += " - Verification word cannot be blank.\n";			
+		<!--END: captchascript-->
+		
+		if (strMsg != ""){
+			alert(strMsg);
+			return false;
+		}
+		if (addReplyClick == 0){
+			addReplyClick = 1;
+			submitFormContactUs('addnew');
+		}
+
+	}
+	String.prototype.trim = function() {
+		return this.replace(/^\s+|\s+$/g,"");
+	}
+	function isValidEmail(str) {
+
+		var at="@"
+		var dot="."
+		var lat=str.indexOf(at)
+		var lstr=str.length
+		var ldot=str.indexOf(dot)
+		
+		if (str.indexOf(at)==-1)
+		return false
+
+		if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr)
+		return false
+
+		if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr)
+			return false
+	
+		if (str.indexOf(at,(lat+1))!=-1)
+			return false
+
+		if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot)
+			return false
+
+		if (str.indexOf(dot,(lat+2))==-1)
+			return false
+		
+		if (str.indexOf(" ")!=-1)
+			return false
+
+	 	return true					
+	} 
+</script>
+
+<div class="current whiteBG" id="contactus" > [HEADER] 
+  <!--START: myAccount-->
+  <h6>[account_contact-us]</h6>
+  <ul>
+    <li>
+      <h4>[store_name]</h4>
+      <div class="frmtxt">[store_address1]</div>
+      <div class="frmtxt">[store_address2]</div>
+      <div class="frmtxt">[store_city], [store_state]. [store_zip]</div>
+      <div class="frmtxt">[store_country]</div>
+      <div class="frmtxt"><b>Phone:</b></div>
+      <a href="tel:[store_phone]" target="_webapp">[store_phone]</a> <br />
+      <a href="http://maps.google.com/maps?oi=map&q=[store_address1]+[store_city]+[store_state]+[store_zip]" target="_webapp"><img src="images/btn-get-directions.png" border="0" /></a></li>
+  </ul>
+  <form method="post" action="contact_us.asp" id="frmForm" name="frmForm">
+    <input type="hidden" name="action" id="action" value="addnew">
+    <input type="hidden" name="custid" value="[custid]" id="Hidden1"/>
+    <input type="hidden" name="orderid" value="[orderid]" id="Hidden2"/>
+    <input type="hidden" name="productid" value="[productid]" id="Hidden3"/>
+    <h6>[account_contact-us-form]</h6>
+    <ul>
+      <li>
+        <select name="departmentid" id="departmentid" placeholder="[crm_department]" style="width: 98%;">
+        [deptdropdown]
+        </select>
+      </li>
+      <li style="white-space: nowrap;">
+        <input type="text" name="customer" value="[name]" style="width: 98%;" maxlength="50" placeholder="[crm_name]" id="customer">
+      </li>
+      <li style="white-space: nowrap;">
+        <input type="text" name="phone" value="[phone]" style="width: 98%;" maxlength="50" placeholder="[crm_phone]" id="phone">
+      </li>
+      <li style="white-space: nowrap;">
+        <input type="text" name="custemail" value="[email]" style="width: 98%;" maxlength="50" placeholder="[crm_email]" id="custemail">
+      </li>
+      <li style="white-space: nowrap;">
+        <input name="subject" type="text" id="subject" value="" style="width: 98%;" maxlength="150" placeholder="[crm_subject]">
+      </li>
+      <li style="white-space: nowrap;">
+        <textarea name="reply" id="reply" style="width: 98%;" placeholder="[crm_message]"></textarea>
+      </li>
+    </ul>
+    <input type=image src="images/btn-submit-request.png" border="0" class="submit">
+    </ul>
+  </form>
+  [FOOTER]
+  </div>
+</body>
+</html>

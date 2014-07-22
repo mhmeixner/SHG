@@ -1,0 +1,42 @@
+<script>
+    function voidclick() {
+    }
+</script>
+<div id="mypanel" class="ddpanel" style="padding:0px; margin:0px; display:none;">
+  <div id="mypanelcontent" class="ddpanelcontent" style="height:0px;background:url(themes/jqt/img/toolbar.png) #000 repeat-x;padding:0px;margin:0px;">
+    <div class="right">
+      <form class='form' action='search.asp' method='post' id="Form1">
+        <div class="left" style="padding-top: 4px;"><img src="themes/jqt/img/search-left.png" /></div>
+        <div class="left" style="padding-top: 3px;">
+          <input type="text"  name="keyword" size="30" class="plain" />
+        </div>
+        <div class="left" style="padding-top: 4px;;margin-right: 20px;">
+          <input type=image class="submit" src="themes/jqt/img/btn-search.png" border="0" />
+        </div>
+        <div class="left" style="padding-top: 4px;margin-right: 11px;"><a href="javascript:voidclick();" onclick="toggle_search();"><img src="themes/jqt/img/btn-x.png" /></a></div>
+        <div class="clear"></div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="clear" style="background:url(themes/jqt/img/bg-header-footer.png);height:65px;"> 
+  <!--START: LOGO-->
+  <div class="left" style="line-height: 65px;">
+    <div id="store_name">[mobile_logo]</div>
+  </div>
+  <!--END: LOGO-->
+  <div class="right" style="text-align: right;">
+    <div id="mypaneltab" class="ddpaneltab"><a href="javascript:voidclick();" onclick="toggle_search();"><img src="themes/jqt/img/btn-search-toggle.png" border="0" /></a></div>
+    <div><a href="/mobile/view_cart.asp" class="minicart"><img src="images/cart.png" align="absmiddle" /></a><span class="minicarttxt">Cart:</span> <a href="/mobile/view_cart.asp" class="minicart">[MINICART]</a></div>
+  </div>
+</div>
+<div class="clear"></div>
+<ul id="menuLinks" style="padding:0px;margin:0px;">
+  <li>
+    <ul style="padding:0px;margin:0px;">
+      <li class="left menuLinksDiv"><a href="#" onclick="redirhome();">Home</a></li>
+      <li class="left menuLinksDiv"><a href="contact_us.asp" class="slideup">Contact</a></li>
+      <li class="left menuLinksDiv">[loginLnk]</li>
+    </ul>
+  </li>
+</ul>

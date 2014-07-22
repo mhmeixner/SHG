@@ -1,0 +1,80 @@
+<section id="home"> 
+  <script type="text/javascript">
+	jQuery(function() {
+		jQuery('.home-carousel').appendTo('#frameHomeCarousel .wrapper');
+	});
+  </script> 
+  <!--START: home_carousel-->
+  <div class="home-carousel">
+    <link rel="stylesheet" href="/assets/templates/common-html5/css/flexslider.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/assets/templates/common-html5/js/jquery.flexslider-min.js"></script>
+
+    <div id="homeCarousel" class="flexslider">
+      <ul class="slides">
+        <!--START: carousel-->
+        <li><a href="[link]"><img src="[image]" alt="" /></a></li>
+        <!--END: carousel-->
+      </ul>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+        jQuery(window).load(function () {
+            jQuery('#homeCarousel').flexslider({
+                animation: "[hc_effect]",
+                slideshowSpeed: [hc_delay],
+                controlNav: false,
+                keyboard: false
+            });
+        });
+    </script>
+  </div>
+  <!--END: home_carousel--> 
+  <!--START: CATEGORY_HEADER-->
+  <div class="category-header" id="homeHeader">[CONTENT]</div>
+  <!--END: CATEGORY_HEADER--> 
+  <!--START: FEATURE_MENU--> 
+  <!--START: CATEGORY_ITEMS--> 
+  <!--START: ITEM_TEMPLATE_0-->
+  <div class="hs-item hs[catalogid]"> 
+    <div class="on-sale on-sale[catalogid]">[product_sale]</div>
+    <script type="text/javascript">
+      jQuery('div.hs[catalogid]').mouseover(function () {
+          jQuery('div.overlay[catalogid]').show();
+      });
+      jQuery('div.hs[catalogid]').mouseout(function () {
+          jQuery('div.overlay[catalogid]').hide();
+      });
+    </script>
+    <div class="img"> <a href="product.asp?itemid=[catalogid]" title="[name]"><img src="[THUMBNAIL]" alt="[name]" /></a>
+      <div class="overlay overlay[catalogid]" onclick="window.location='product.asp?itemid=[catalogid]';" title="[name]">
+        <div class="info">
+          <div class="name">[name]</div>
+          <!--START: product_review--> 
+          <!--START: product_review_average-->
+          <div class="stars"><img src="assets/templates/[template]/images/star[review_average].png" alt="Average Rating" /></div>
+          <!--END: product_review_average--> 
+          <!--END: product_review-->
+          <div class="clear"></div>
+          <div class="price2"><!--START: ITEMPRICE--> 
+            [ITEMPRICE] 
+            <!--END: ITEMPRICE--> 
+            <!--START: SALEPRICE--> 
+            [ITEMSALEPRICE]
+            <script type="text/javascript">
+                jQuery('div.on-sale[catalogid]').show();
+            </script>
+            <!--END: SALEPRICE--></div>
+          <div class="clear"></div>
+        </div>
+        <a href="add_cart.asp?quick=1&amp;item_id=[catalogid]">Add To Cart</a> </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <!--END: ITEM_TEMPLATE_0--> 
+  <!--END: CATEGORY_ITEMS--> 
+  <!--END: FEATURE_MENU-->
+  <div class="clear"></div>
+  <!--START: CATEGORY_FOOTER-->
+  <div class="category-footer" id="homeFooter">[CONTENT]</div>
+  <!--END: CATEGORY_FOOTER--> 
+</section>

@@ -1,0 +1,330 @@
+<!-- //3dcart v2.2//frame.html//Rev. #1 10/31/2006-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[TITLE]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="/assets/templates/HG/css/default_modified.css" rel="stylesheet" type="text/css">
+[META]
+<script language="JavaScript" src="assets/templates/common/js/utilities.js" type="text/JavaScript"></script>
+<LINK REL="StyleSheet" HREF="assets/templates/[template]/css/[stylesheet]" TYPE="text/css" MEDIA="screen">
+<LINK REL="StyleSheet" HREF="assets/templates/common/js/tabs.css" TYPE="text/css" MEDIA="screen">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+<body onLoad="MM_preloadImages('assets/templates/[template]/images/btn_home_over.gif','assets/templates/[template]/images/btn_about_over.gif','assets/templates/[template]/images/btn_contact_over.gif','assets/templates/[template]/images/btn_account_over.gif','/assets/templates/HG/images/new_frame/btn_home_over.gif','/assets/templates/HG/images/new_frame/btn_about_over.gif','/assets/templates/HG/images/new_frame/btn_shop_over.gif','/assets/templates/HG/images/new_frame/btn_recipes_over.gif')">
+<table width="[screenwidth]" border="0" align="center" cellpadding="0" cellspacing="0"  class="data">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td rowspan="2"><!--START: global_header-->
+      <p><span class="store-name">[storename]</span><br>
+          <span class="store-slogan">[storeslogan]</span>
+        <!--END: global_header--></td>
+        <td align="right"><!--START: FRAME_SEARCH-->
+                  <form method="get" action="search.asp" STYLE="margin: 0px; padding: 0px,0px,0px,0px;" ID="Form1">
+                    <table border="0" align="right" cellpadding="5" cellspacing="0"  ID="Table2">
+                      <tr>
+						<td align="center" class="font3"><strong> Search: </strong></td>
+                        <td align="center"><input  type="text" size="20" name="keyword" class="txtBoxStyle" ID="Text1">                        </td>
+                        <td><input  type="submit" name="search" value="GO" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Submit1">                        </td>
+                      </tr>
+                    </table>
+                  </form>
+          <!--END: FRAME_SEARCH--></td>
+      </tr>
+      <tr>
+        <td align="right"><table border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#F3F3F3">
+      <tr>
+        <td class="cart-text"><img src="/assets/templates/HG/images/cart_left.gif" width="5" height="32"></td>
+		<td class="cart-text"><img src="/assets/templates/HG/images/cart.gif" width="24" height="32"></td>
+        <td align="center" nowrap class="cart-text"><strong>[ITEMSINCART] ITEM(S)
+              IN YOUR BAG / TOTAL:[SUBTOTAL]</strong></span></td>
+        <td align="center" nowrap class="font4">  <a href="view_cart.asp" class="font4"><img src="assets/templates/[template]/images/spacer.gif" width="5" height="1" border="0">View cart</a>   |   <a href="checkout.asp" class="font4">Checkout</a>  </td>
+        <td align="right"><img src="/assets/templates/HG/images/cart_right.gif" width="5" height="32"></td>
+        </tr>
+    </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><img src="assets/templates/[template]/images/spacer.gif" width="1" height="10"></td>
+  </tr>
+  <tr>
+    <td background="/assets/templates/HG/images/new_frame/buttons_middle.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td rowspan="2"><img src="/assets/templates/HG/images/new_frame/corner_left.jpg" width="31" height="65"></td>
+    <td colspan="2" valign="top"><img src="assets/templates/[template]/images/spacer.gif" width="724" height="1"></td>
+    <td rowspan="2" align="right"><img src="/assets/templates/HG/images/new_frame/corner_right.jpg" width="31" height="65"></td>
+  </tr>
+  <tr>
+  <td>&nbsp;</td>  
+  <td align="right" valign="bottom"><a href="/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','/assets/templates/HG/images/new_frame/btn_home_over.gif',1)"><img src="/assets/templates/HG/images/new_frame/btn_home.gif" name="Image10" width="65" height="37" border="0"></a><img src="assets/templates/[template]/images/spacer.gif" width="10" height="1" border="0"><a href="javascript:;" onMouseOver="MM_swapImage('Image1','','/assets/templates/HG/images/new_frame/btn_shop_over.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="/assets/templates/HG/images/new_frame/btn_shop.gif" width="101" height="37" border="0" id="Image1"></a><a href="About-Us_ep_7.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image12','','/assets/templates/HG/images/new_frame/btn_about_over.gif',1)"><img src="assets/templates/[template]/images/spacer.gif" width="10" height="1" border="0"><img src="/assets/templates/HG/images/new_frame/btn_about.gif" name="Image12" width="101" height="37" border="0"></a><img src="assets/templates/[template]/images/spacer.gif" width="10" height="1"><a href="Contact-Us_ep_5.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','/assets/templates/HG/images/new_frame/btn_recipes_over.gif','Image14','','assets/templates/[template]/images/btn_contact_over.gif',1)"><img src="/assets/templates/HG/images/new_frame/btn_recipes.gif" alt="Easy Recipes" width="113" height="37" border="0" id="Image2"><img src="assets/templates/[template]/images/spacer.gif" width="10" height="1" border="0"><img src="/assets/templates/HG/images/btn_contact.gif" name="Image14" width="120" height="37" border="0"></a><img src="assets/templates/[template]/images/spacer.gif" width="10" height="1" border="0"><a href="myaccount.asp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image16','','assets/templates/[template]/images/btn_account_over.gif',1)"><img src="/assets/templates/HG/images/btn_account.gif" name="Image16" width="125" height="37" border="0"></a></td>
+  </tr>
+</table></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F3F3F3"><table  border="0" align="left" cellpadding="0" cellspacing="0">
+      <tr>
+        <td nowrap ><!--START: username-->
+          &nbsp;<br>
+          &nbsp; <span class="font3"> <strong>[account_greeting]</strong> [username]</span>
+          <!--END: username--></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F3F3F3"><img src="assets/templates/[template]/images/spacer.gif" width="" height="10"></td>
+  </tr>
+  <tr>
+    <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top" background="assets/templates/[template]/images/bg_3c.gif" bgcolor="#F3F3F3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#CCCCCC">
+    <td colspan="3" align="left" valign="top"><img src="/assets/templates/HG/images/frame_top_left.gif" width="16" height="6"></td>
+    </tr>
+  <tr>
+    <td background="assets/templates/[template]/images/bg_frame_left.gif"><img src="assets/templates/[template]/images/bg_frame_left.gif" width="16" height="1"></td>
+
+<!--start left column-->
+	<td valign="top" bgcolor="#CCCCCC"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F8F8F8">
+  <tr bgcolor="#D2D0C3">
+    <td valign="top" bgcolor="#CCCCCC" ><!--START: FRAME_CATEGORY-->
+			 <table width="100%" border="0" cellpadding="0" cellspacing="0" ID="Table5">
+				  <tr>
+					<td class="menu-headers"><strong>[frame_categories]</strong></td>
+	              </tr>
+	           
+					<!--START: CATEGORIES-->
+						
+					<!--START: CATEGORY_FORMAT-->
+						<tr>
+						<TD ALIGN="LEFT"><table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+   
+    <td nowrap class="font3"><font color="#999999">•</font> <a href="view_category.asp?cat=CATID" class="cat"><strong>CATEGORY</strong></a></td>
+  </tr>
+</table></TD>
+						</tr>
+					<!--END: CATEGORY_FORMAT-->
+					
+					<!--START: SUB_CATEGORY_FORMAT-->
+	        			<tr><td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <TD ALIGN="LEFT"><table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  
+    <td class="font3">  <font color="#999999">›</font> <a href="view_category.asp?cat=CATID" class="cat">CATEGORY</a></td>
+  </tr>
+</table></TD>
+  </tr>
+</table>
+</td>
+	        			</tr>
+	             	<!--END: SUB_CATEGORY_FORMAT-->
+		 
+					<!--END: CATEGORIES--> 
+           </table>
+	 <!--END: FRAME_CATEGORY-->
+	 
+	 <!--START: FRAME_BYPRICE-->
+			 <table width="100%" border="0" cellpadding="0" cellspacing="0" ID="Table5">
+				  <tr>
+					<td  class="menu-headers"><strong>[frame_byprice]</strong></td>
+     <!--START: byprice_format-->
+                  <tr>
+                    <td height="20">  <a href="search_groups.asp?keyword=[id]&byprice=[id]" class="cat">[title]</a></td>
+                  </tr>
+     <!--END: byprice_format-->
+            </table>
+	 <!--END: FRAME_BYPRICE-->		
+	
+	 <!--START: FRAME_MANUFACTURER-->	
+		<form name="mfg" id="mfg" method="get" action="search_groups.asp" STYLE="margin: 0px; padding: 0px;">	 
+	<TABLE width="100%" cellspacing="0" cellpadding="0" border="0">
+			
+			<tr>
+	                <td class="menu-headers"><strong>[frame_manufacturer]</strong></td>
+	              </tr>
+		
+	
+            <tr><td align="center" valign="middle" height="30">
+			<select name="manf" onChange="this.form.submit();" ID="Select1"  class="txtBoxStyle" style="width:140px;">
+				<option value=0 selected class="txtBoxStyle">Manufacturer</option>
+			<!--START: manufacturer_format-->
+				<option value=[mfgid] class="txtBoxStyle">[manufacturer]</option>
+			<!--END: manufacturer_format-->
+			</select>
+
+			</td></tr>
+		</TABLE>
+			</form>
+			 <!--END: FRAME_MANUFACTURER-->
+			 
+			 <!--START: NEW_RELEASES_BLOCK-->
+			 <table width="100%" border="0" cellpadding="0" cellspacing="0" ID="Table5">
+				  <tr>
+					<td class="menu-headers"><strong>[frame_new-releases]</strong></td>
+                    <!--START: newreleases-->
+                  <tr>
+                    <td align="center"><a href="product.asp?itemid=[catalogid]"><img src="[thumbnail]" border="0" alt="[name]"></a><br>
+                      <a href="product.asp?itemid=[catalogid]">[id] [name]</a></td>
+                  </tr>
+            <!--END: newreleases-->
+            </table>
+	        <!--END: NEW_RELEASES_BLOCK-->
+			 
+			 <!--START: LEFT_BANNER-->
+		       <center>
+		         <span class="data"><p>[LEFT_BANNER]</p></span>
+		       </center>
+             <!--END: LEFT_BANNER-->  </td>
+ </tr>
+</table><p> </p></td>
+<!--end left column-->
+
+    <td bgcolor="#CCCCCC"><img src="assets/templates/[template]/images/spacer.gif" width="9" height="1"></td>
+    </tr>
+  <tr bgcolor="#F3F3F3">
+    <td colspan="3" valign="bottom" bgcolor="#CCCCCC"><img src="/assets/templates/HG/images/frame_bott_left.gif" width="16" height="6"></td>
+    </tr>
+</table></td>
+<!--end left column-->
+        <td bgcolor="#F3F3F3"><img src="assets/templates/[template]/images/spacer.gif" width="9"></td>
+<!--start middle column-->
+       <td width="100%" align="center" valign="top" class="data"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+               <tr>
+                 <td align="center">MIDDLE</td>
+               </tr>
+          </table></td>
+<!--end middle column-->
+        <td bgcolor="#F3F3F3"><img src="assets/templates/[template]/images/spacer.gif" width="7" height="1"></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F3F3F3"><img src="assets/templates/[template]/images/spacer.gif" width="1" height="10"></td>
+  </tr>
+  <tr>
+    <td background="/assets/templates/HG/images/new_frame/bottom_middle.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="129" align="left"><img src="/assets/templates/HG/images/new_frame/bottom_left.jpg" width="31" height="129"></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="5">
+              <tr>
+                <td bgcolor="#BF0F35"><span class="font1"><strong>[store_name]                      </strong><br>
+                      [store_address1]
+                      [store_address2]
+                      [store_state]<br>
+                [store_phone] </span> </td>
+              </tr>
+            </table></td>
+            <td align="right"><!--START: FRAME_MAILLIST--><table width="70%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F3F3F3">
+  <tr>
+    <td><img src="/assets/templates/HG/images/news_left.gif" width="45" height="32"></td>
+    <td>
+                  <form STYLE="margin: 0px; padding: 0px;" method="post" name="mailing" action="mailing_list.asp?action=add" onSubmit="return mailing_list();" ID="Form2">
+                    <table width="100%" cellspacing="0" cellpadding="5" border="0" ID="table9">
+                      <tr>
+                        <td colspan="2" nowrap class="menu-headers2">[frame_mailinglist]</td>
+						<td nowrap  class="menu-text"><input type="radio" name="subscribe" value="1" checked ID="Radio1">[mailinglist_subscribe]</td>
+						<td nowrap  class="menu-text"><input type="radio" name="subscribe" value="0" ID="Radio2">[mailinglist_unsubscribe]</td>
+						<td nowrap><input type="text" size="16" name="email" class="txtBoxStyle" id="Text2"></td>
+						<td nowrap><input type="submit" name="www" value="[mailinglist_button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Submit2"></td>
+                      </tr>
+                    </table>
+                  </form>                  </td>
+    <td align="right"><img src="/assets/templates/HG/images/news_right.gif" width="7" height="32"></td>
+  </tr>
+</table><!--END: FRAME_MAILLIST--></td>
+          </tr>
+        </table></td>
+        <td align="right"><img src="/assets/templates/HG/images/new_frame/bottom_right.jpg" width="31" height="129"></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center"><table border="0" cellpadding="5" cellspacing="0" >
+      <tr>
+        <td align="center" class="footer">[frame_copyright1]</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+<!--START: 3dcart stats-->
+
+<p>
+  <script type="text/javascript" language="JavaScript">
+
+var file='/stats/count.asp';
+
+var stats_d=new Date(); 
+var stats_s=stats_d.getSeconds(); 
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';} 
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';} 
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; 
+
+stats_h=screen.height; 
+stats_v=navigator.appName; 
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + 
+
+'&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width=1 height=1 border=0>');
+</script>
+</p>
+<noscript>
+<p><img src="/stats/count.asp" width=90 height=30 border=0>	</p>
+</noscript>
+
+  <!--END: 3dcart stats-->
+
+</body>
+</html>
+
+
+
+

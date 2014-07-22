@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Danilo's Store</title><description>Group Buying...Group Savings</description><atom:link href="http://192.168.0.200:5001/rss.asp" rel="self" type="application/rss+xml"/><language>en-us</language><item><title>The New York Times Delivery Truck Bank</title><link>http://192.168.0.200:5001/2825.html</link><pubDate>2012-02-13</pubDate><description><![CDATA[ <!--START: CSS--> <link href="http://192.168.0.200:5001//rss/widgetbox.css" rel="stylesheet" type="text/css"><!--END: CSS--> 
+<table cellpadding="2" cellspacing="0">
+<tr><td align="left" colspan="2"><a href="http://192.168.0.200:5001/2825.html?referrer=rss" class="store" target="_new">The New York Times Delivery Truck Bank</a></td></tr>
+<tr><td align="left" valign="top" rowspan="2"><a href="http://192.168.0.200:5001/2825.html?referrer=rss" target="_new"><img src="http://192.168.0.200:5001/assets/images/blue-marble-1-trim(1)_thumbnail.jpg" width="75px" border=0></a></td>
+<td align="left" class="price"><br>  <b>Our Price:</b> £1.50 <font color="red"><b>On Sale</b></font></td></tr>
+<tr><td><a href="http://192.168.0.200:5001/add_cart.asp?quick=1&amp;item_id=2825&amp;out=1" target="_new"><img src="http://192.168.0.200:5001//rss/add2.gif" border="0"></a></td></tr>
+<tr><td><br></td></tr>
+</table> ]]></description></item></channel></rss>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/"  xmlns:isc="http://dtd.3dcart.com/ecommerce-1.0.dtd">
+<channel>
+<title>Homemade Gourmet: Home Specials</title>
+<link>http://shop.homemadegourmet.com</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description>List of Home Featured Items at Homemade Gourmet</description>
+<language>en-us</language>
+<isc:store_name><![CDATA[Homemade Gourmet]]></isc:store_name>
+</channel></rss>

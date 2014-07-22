@@ -1,0 +1,312 @@
+<script type="text/javascript">
+function do_act()
+{
+	return false;
+}
+</script>
+<form action="checkout3.asp?step=3" name="pickship" method="post">
+  <table width="98%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="page_headers">Checkout</td>
+      <td align="right" class="steps">[checkout1_step]<span class="steps_on">[checkout2_step] </span>[checkout3_step] [checkout4_step]</td>
+    </tr>
+    <tr>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2"><!--START: CATEGORY_HEADER-->
+        
+        <table width="100%" cellspacing="0" cellpadding="2" border="0">
+          <tr>
+            <td class="data">[CONTENT]</td>
+          </tr>
+        </table>
+        
+        <!--END: CATEGORY_HEADER--></td>
+    </tr>
+    <tr>
+      <td colspan="2"><table width="100%" cellpadding="2" cellspacing="0">
+          <tr> 
+            <!--column left-->
+            <td valign="top" width="50%"><table width="100%" cellpadding="0" cellspacing="0">
+                <!--START: Shipping Rate -->
+                <tr>
+                  <td class="checkout-headers">[checkout2_Header-shippingmethods]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="0" class="alternative">
+                      <tr>
+                        <td class="item"><strong>[checkout2_shippingmethodsmessage]</strong></td>
+                      </tr>
+                      <tr>
+                        <td align="left" class="item"><!--START: CARRIER-->
+                          
+                          <table width="100%" cellpadding="0" cellspacing="0">
+                            <!--START: displayblock-->
+                            <tr>
+                              <td colspan="3"><div align="left"><img src="assets/templates/common/images/[OPTION-SHIPPER].gif"></div></td>
+                              <td colspan="2"><a href="javascript:click_ship()" onclick="toggleoff();toggle('sh[OPTION-SHIPPER]');">Display Rates</a></td>
+                            </tr>
+                            <!--END: displayblock-->
+                            <tr>
+                              <td colspan="5"><div name="sh[OPTION-SHIPPER]" id="sh[OPTION-SHIPPER]" class="ship" style="display:none;">
+                                  <table width="100%" cellpadding="0" cellspacing="3" border="0">
+                                    <!--START: SHIPPING_OPTION-->
+                                    <tr>
+                                      <td><div align="right"></div></td>
+                                      <td align="left" width="20"><input type="radio" name="shipping" value="[ID]" [SELECTED]></td>
+                                      <td class="item" align="left" width="200"><!--[OPTION-SHIPPER]--> 
+                                        [OPTION-DESCRIPTION]</td>
+                                      <td>&nbsp;</td>
+                                      <td class="item" align="left">[OPTION-PRICE2]</td>
+                                    </tr>
+                                    <!--END: SHIPPING_OPTION-->
+                                  </table>
+                                </div></td>
+                            </tr>
+                            <tr>
+                              <td class="borders" colspan="5"><img src="assets/images/spacer.gif" width="100%" height="1"></td>
+                            </tr>
+                          </table>
+                          
+                          <!--END: CARRIER--></td>
+                      </tr>
+                    </table>
+                    <br /></td>
+                </tr>
+                <!--START: INSURANCE-->
+                <tr>
+                  <td class="checkout-headers">[checkout2_insurance]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="2" cellspacing="0" class="alternative">
+                      <tr>
+                        <td class="item" align="left"><input type="radio" name="insurance" value="yes" checked>
+                          (+[insurance_cost]) [checkout2_insurance-selected] 
+                          <!--START: optional--> 
+                          <br />
+                          <input type="radio" name="insurance" value="no" checked>
+                          [checkout2_insurance-not-selected] 
+                          <!--END: optional--></td>
+                      </tr>
+                    </table>
+                    <br /></td>
+                </tr>
+                <!--END: INSURANCE--> 
+                <!--START: checkout_questions-->
+                <tr>
+                  <td class="checkout-headers">[checkout2_checkoutquestions]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="2" cellspacing="0" class="alternative">
+                      <tr>
+                        <td width="100%"><!--START: questions--> 
+                          [questions] 
+                          <!--END: questions--></td>
+                      </tr>
+                    </table>
+                    
+                    <!--START: checkout_questions_templates--> 
+                    <!--START: textarea-format-->
+                    <table cellpadding="0" cellspacing="3">
+                      <tr>
+                        <td align="left" class="item" colspan="2"><b>[question]</b></td>
+                      </tr>
+                      <tr>
+                        <td><!--START: req[id]--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]--></td>
+                        <td><textarea cols="30" rows="5" name="cq[id]" class="txtBoxStyle">[answer]</textarea></td>
+                      </tr>
+                    </table>
+                    <!--END: textarea-format--> 
+                    <!--START: text-format-->
+                    <table cellpadding="4" cellspacing="0">
+                      <tr>
+                        <td class="item" colspan="2"><b>[question]</b></td>
+                      </tr>
+                      <tr>
+                        <td align="right" class="item"><!--START: req[id]--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]--></td>
+                        <td><input type="text" size="30" name="cq[id]" value="[answer]" class="txtBoxStyle"></td>
+                      </tr>
+                    </table>
+                    <!--END: text-format--> 
+                    <!--START: file-format--> 
+                    [question]<br />
+                    <input type="file" name="file[oname]" size="20" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+                    <br />
+                    <!--END: file-format--> 
+                    <!--START: checkbox-format-->
+                    <table cellpadding="0" cellspacing="3">
+                      <tr>
+                        <td><!--START: req[id]--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]-->
+                          
+                          <input type="checkbox" name="cq[id]" class="txtBoxStyle" value="[answer]" [selected]></td>
+                        <td align="right" class="item"><b>[question]</b></td>
+                      </tr>
+                    </table>
+                    <!--END: checkbox-format--> 
+                    <!--START: radio-format-->
+                    <table>
+                      <tr>
+                        <td align="right" class="item"><!--START: req[id]--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]--> 
+                          <b>[question]</b></td>
+                        <td><!--START: option-->
+                          <input type="radio" name="cq[id]" value="[option]" class="txtBoxStyle" [selected]>
+                          [option]<br />
+                          <!--END: option--></td>
+                      </tr>
+                    </table>
+                    <!--END: radio-format--> 
+                    <!--START: dropdown-format-->
+                    <table>
+                      <tr>
+                        <td align="right" class="item"><!--START: req[id]--> 
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]--> 
+                          <b>[question]</b></td>
+                        <td><select name="cq[id]" >
+                            <!--START: option-->
+                            <option [selected]>[option]</option>
+                            <!--END: option-->
+                          </select></td>
+                      </tr>
+                    </table>
+                    <!--END: dropdown-format--> 
+                    <!--END: checkout_questions_templates--> 
+                    &nbsp;<span class="error"><img src="assets/templates/common/images/error2.gif">&nbsp; = Required</span><br />
+                    <br /></td>
+                </tr>
+                <!--END: checkout_questions-->
+                <tr>
+                  <td><input type="submit" name="Add222" value="[checkout2_submitbutton]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+                </tr>
+                <!-- END: Shipping Rate-->
+              </table></td>
+            <!--column left ends--> 
+            <!--column right-->
+            <td valign="top" align="right"><table cellpadding="0" cellspacing="0" width="60%">
+                <!--customer info starts-->
+                <tr>
+                  <td class="checkout-headers">[checkout2_Header-shippinginfo]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+                      <tr>
+                        <td class="item"><strong>[checkout2_shippinginfomessage]</strong></td>
+                      </tr>
+                      <tr>
+                        <td align="left" class="item" valign="top"><table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="item">[shipping_firstname] [shipping_lastname]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_company]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_address]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_address2]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_city], [shipping_state] [shipping_zip] [shipping_country]</td>
+                            </tr>
+                            <tr>
+                              <td><a href="checkout.asp?step=1">[checkout2_shippinginfochange]</a></td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                    </table>
+                    <br /></td>
+                </tr>
+                <!--customer info ends-->
+                <tr>
+                  <td class="checkout-headers">[checkout1_Header-shoppingcart]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="0" class="alternative">
+                      <!--START: SHOPPING_CART_ITEM-->
+                      <tr>
+                        <td class="item" align="left">
+						<!--START: itemthumbnail--><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40" id="tl"></a><br /><!--END: itemthumbnail-->
+						<!--START: thumbnailnolink--><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40" id="tnl"><br /><!--END: thumbnailnolink-->
+                        <!--START: itemnamelink--><a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a><!--END: itemnamelink--> 
+						<!--START: itemnamenolink--><span id="spnItemName">[ITEM_NAME]</span><!--END: itemnamenolink-->
+                        </td>
+                        <td class="item" align="right" valign="bottom">[ITEM_PRICE] X [ITEM_QUANTITY]<br />
+                          <b>[ITEM_SUBTOTAL]</b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="borders"><img src="assets/images/spacer.gif" width="100%" height="1"></td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                      <!--END: SHOPPING_CART_ITEM-->
+                      <tr>
+                        <td colspan="2"><table width="100%" cellpadding="0" cellspacing="0">
+                            <!--START: DISCOUNTS-->
+                            <tr>
+                              <td align="right" class="item"><strong>[shoppingcart_subtotal]:</strong></td>
+                              <td align="right" class="item">[CARTSUBTOTAL]</td>
+                            </tr>
+                            <tr>
+                              <td align="right" class="item"><strong>[checkout1_discounts]:</strong></td>
+                              <td align="right" class="item">[DISCOUNTS]</td>
+                            </tr>
+                            <!--END: DISCOUNTS--> 
+                            <!--START: BUYSAFE-->
+                            <tr>
+                              <td align="right" class="item"><img src="assets/templates/common/images/buysafe.gif"></td>
+                              <td align="right" class="item"> [buysafe_totalbondcost]</td>
+                            </tr>
+                            <!--END: BUYSAFE-->
+                            <tr>
+                              <td align="right" class="price"><strong>[shoppingcart_total]:</strong></td>
+                              <td align="right" class="price">[CARTTOTAL]</td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                      <!--START: GIFTCERTS-->
+                      <tr>
+                        <td colspan="2" class="titles2" align="right"><span class="item"><strong>?[shoppingcart_giftcertificate]</strong></span><br />
+                          [GIFTCERTS]</td>
+                      </tr>
+                      <!--END: GIFTCERTS-->
+                    </table></td>
+                </tr>
+                <tr>
+                  <td align="right"><a href="view_cart.asp">Update Cart</a></td>
+                </tr>
+              </table></td>
+            <!--column right ends--> 
+          </tr>
+          <tr>
+            <td colspan="2"><!--START: CATEGORY_FOOTER-->
+              
+              <table width="100%" cellspacing="0" cellpadding="2" border="0">
+                <tr>
+                  <td class="data">[CONTENT]</td>
+                </tr>
+              </table>
+              
+              <!--END: CATEGORY_FOOTER--></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</form>
+<script language="javascript" type="text/javascript">
+//You should create the validator only after the definition of the HTML form
+var frmvalidator = new Validator("pickship");
+
+frmvalidator.setAddnlValidationFunction("submitForm");
+
+frmvalidator.addValidation("shipping","req");
+var ccNumerNotAllowedMessage = '[ccNumerNotAllowedMessage]';
+frmvalidator.setAddnlValidationFunction("checkreq_questions2");
+
+</script> 

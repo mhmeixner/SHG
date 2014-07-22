@@ -1,0 +1,357 @@
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	outline: none;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+}
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:normal;
+	color: #000;
+	margin: 12px 12px 6px 12px;
+	padding-top:
+}
+a.link, a:visited.link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:normal;
+	color: #ff6633;
+	text-decoration:none;
+}
+a:hover.link, a:visited:hover.link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:normal;
+	color: #ff6633;
+	text-decoration:underline;
+}
+#company_brand {
+	position:relative;
+	background: url(../images/logo.png) no-repeat;
+	width:396px;
+	height:80px;
+}
+#company_name {
+	position:absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	font-weight:normal;
+	color: #000;
+	margin-top:24px;
+}
+div.rating_desc {
+	float:left;
+	font-size:11px;
+	color:#000;
+	width:64px;
+	height:16px;
+	overflow:hidden;
+	text-align:center;
+	background:none;
+	margin-left:4px;
+}
+#rate_it {
+	background: url(../images/form_BG-ratings.png) no-repeat;
+	width: 396px;
+	height: 110px;
+}
+.hidden {
+	display: none;
+}	
+#rate_wrapper{
+	width:480px;
+	margin:0px auto;
+}
+
+	.rate_body{
+		width:420px;
+		padding:15px 30px 30px;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-top-left-radius:6px;
+		
+		-moz-box-shadow:0px 2px 5px rgba(0,0,0,0.42);
+		-webkit-box-shadow:0px 2px 5px rgba(0,0,0,0.42);
+		box-shadow:0px 2px 5px rgba(0,0,0,0.42);
+		
+		background: #d1d1d1 url(../images/rate_body.jpg) no-repeat;
+	}
+		
+		.rate_body.success{
+			margin-top:70px;
+			text-align:center;
+			font-size:18px;
+			padding:30px;
+			line-height:24px;
+		}
+#form_contact{
+	width:370px;
+	height:150px;
+	background: #fff;
+	border:1px solid #ccc;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333;
+	margin:24px 0px 0px 12px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+#thankyou {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	color: #333;
+	text-align: center;
+	padding: 35px 0px 45px 0px;
+}
+input.feedback{
+	width:192px;
+	height:22px;
+	background: #fff;
+	border:1px solid #f4d568;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:18px;
+	color:#a6a6a6;
+	margin-top:6px;
+	
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+.field_label {
+	padding:8px 14px 0px 58px;
+	text-align:right;
+}
+textarea.feedback{
+	padding:10px;
+	width:290px;
+	height:100px;
+	background: #fff;
+	border:1px solid #f4d568;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333;
+	
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+label{
+	color:#818181;
+	width:auto;
+	display: block;
+	padding-bottom:5px;
+	font-size:14px;
+	line-height:20px;
+}
+button{
+	height:38px;
+	margin:20px 30px 40px 0;
+	padding:0px 12px;
+	float:right;
+	border:1px solid #007fd8;
+	color:#fff;
+	background: #007cd7 url(../images/bigbutton.png) repeat-x;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size:20px;
+	text-shadow:0px -1px 0px #004ec9;
+	text-decoration:none;
+	line-height:38px;
+	cursor: pointer;
+	
+}
+
+input.send_feedback {
+	background: url(../images/form_send-OFF.png) no-repeat;
+	color:#666;
+	width:66px;
+	height:30px;
+	border:none;
+	cursor:pointer;	
+}
+input:hover.send_feedback {
+	background: url(../images/form_send.png) no-repeat;
+	color:#333;
+	width:66px;
+	height:30px;
+	border:none;	
+	cursor:pointer;	
+}
+input.cancel_feedback {
+	background: url(../images/form_cancel-OFF.png) no-repeat;
+	color:#666;
+	width:78px;
+	height:30px;
+	border:none;	
+	cursor:pointer;
+}
+input:hover.cancel_feedback {
+	background: url(../images/form_cancel.png) no-repeat;
+	color:#333;
+	width:78px;
+	height:30px;
+	border:none;	
+	cursor:pointer;	
+}
+
+#starify{
+	width:100%;
+	height:40px;
+}
+div.star-rating{
+	float:left;
+	width:42px;
+	height:40px;
+	text-indent:-999em;
+	cursor:pointer;
+	display:block;
+	background:transparent;
+	overflow:hidden;
+	padding: 12px 0px 12px 26px;
+}
+div.star-rating,div.star-rating a{
+	background:url(../images/star.png) no-repeat 0 0px;
+}
+div.star-rating a{
+	display:block;
+	width:42px;
+	height:100%;
+	background-position:0 0px;
+	border:0
+}
+div.star-rating-on a{
+	background-position:0 -40px!important
+}
+div.star-rating-hover a{
+	background-position:0 -40px
+}
+/* Read Only CSS */
+div.star-rating-readonly a{
+	cursor:default !important
+}
+/* Partial Star CSS */
+div.star-rating{
+	background:transparent!important;
+	overflow:hidden!important
+}
+/* CSS Overrides */
+	.div.star-rating a { background: url("/images/star_1.png") no-repeat scroll 0 0 transparent  }
+	.div.star-rating-hover a { background-position:0 -40px; }
+
+/* END jQuery.Rating Plugin CSS */
+
+/*
+ * jQuery UI Accordion 1.8.11
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Accordion#theming
+ */
+/* IE/Win - Fix animation bug - #4615 */
+
+img.form_icon {
+	width:14px;
+	height:15px;
+	margin-right:8px;
+}
+
+.ui-accordion-icons .ui-accordion-header a {
+	background:none;
+	padding-left: 12px;
+}
+.ui-accordion .ui-accordion-header .ui-icon {
+	background:none;
+	left: 0;
+	top: 0;
+	margin-top: 0;
+}
+#accordion {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ------------------- JQUERY TABS ------------------- */
+#tablist {
+	font: bold 12px Verdana;
+	padding:0px;
+	margin:0px 0px 0px 14px;	
+}
+#tablist ul {
+	padding:0px;
+	margin:0px;
+}
+#tablist li {
+	list-style: none;
+	padding:0px;
+	margin:0px 0px 8px 0px;
+}
+#tablist li a, #tablist li a:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:normal;
+	color: #000;
+	text-decoration:none;
+	padding:0px;
+	margin:0px;
+}
+#tablist li a:hover, #tablist li a:visited:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:normal;
+	color: #ff6633;
+	text-decoration:underline;
+	padding:0px;
+	margin:0px;
+}
+.tabcontent {
+	display:none;
+	padding:0px;
+	margin:0px;
+}
+#tabcontentcontainer {
+	width:100%;
+	height:200px;
+	overflow: auto;
+	padding:0px;
+	margin:0px;
+}
+
+/*-------------------------------------------------------- ERROR */
+.errorSummary{
+	position: fixed;
+	top:-6px;
+	left:50%;
+	width:320px;
+	margin-left:-190px;
+	padding:15px 30px;
+	background: #c92500;
+	color:#fff;
+	font-size:18px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+	.errorSummary p{
+		display: none;
+	}
+	.errorSummary ul{
+		list-style: none;
+		width:320px;
+	}
+		.errorSummary ul li{
+			width:320px;
+			text-align: center;
+		}
+</style>

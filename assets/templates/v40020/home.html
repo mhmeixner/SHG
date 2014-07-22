@@ -1,0 +1,67 @@
+    <!--START: CATEGORY_HEADER-->
+    <div align="center">[CONTENT]</div>
+    <!--END: CATEGORY_HEADER-->
+    
+    <div id="homeContent">
+    <div id="homeInner">
+    <!--START: FEATURE_MENU-->
+    <div class="titles">[category_Header-specials]</div>
+    <div id="homeWrap">
+        <div id="homeBG">
+            <!--START: CATEGORY_ITEMS-->
+            <!--START: ITEM_TEMPLATE_0-->
+            <div class="listingBG">
+            	<div class="listingImageWrap">
+                    <div class="listingImageImage" align="center">
+                        <a href="product.asp?itemid=[catalogid]" title="[name]"><img src="thumbnail.asp?file=[THUMBNAIL]&#38;maxx=150&#38;maxy=150" alt="[name]" border="0" /></a>
+                    </div>
+                     <!--START: product_review-->
+                    <div class="homeReview">
+                        <!--START: product_review_average-->
+                        <img src="assets/templates/[template]/images/star[review_average].png" alt="review average" />
+                        <!--END: product_review_average-->
+                    </div>
+                    <!--END: product_review-->
+                </div><!-- end listingImageWrap -->
+                <div class="homeItem">
+                    <a href="product.asp?itemid=[catalogid]" title="[name]" class="item">[name]</a>
+                </div>
+                <div class="homePrice">
+                    <!--START: ITEMPRICE-->
+                    <div class="price">[ITEMPRICE]</div>
+                    <!--END: ITEMPRICE-->
+                    <!--START: SALEPRICE-->
+                    <div class="price">
+                        <div class="salePrice">
+                            [ITEMPRICE]
+                        </div>
+                        <div class="price">
+                            [product_onsale]:<br />[ITEMSALEPRICE]
+                        </div>
+                        <div>
+                            <img src="assets/templates/common/images/on_sale.png" alt="on sale" />
+                        </div>
+                    </div>
+                    <!--END: SALEPRICE-->
+                </div>
+               
+                <div class="clear"></div>
+                <div class="addToCart">
+                	<a href="javascript:void(0);" onclick="window.location='add_cart.asp?quick=1&amp;item_id=[catalogid]'" title="Add [name] to your cart" class="btn" onmouseover="this.className='btn_over';" onmouseout="this.className='btn'">[category_buyitlink]</a>
+                	
+                </div>
+            </div>
+            <br />
+            <!--END: ITEM_TEMPLATE_0-->
+            <!--END: CATEGORY_ITEMS-->
+            
+        </div><!-- end homeBG -->
+        <div class="clear"></div>
+    </div><!-- end homeWrap -->
+    
+    <!--END: FEATURE_MENU-->
+    <!--START: CATEGORY_FOOTER-->
+    <div class="footer_data">[CONTENT]</div>
+    <!--END: CATEGORY_FOOTER--><div class="clear"></div>
+    </div><!-- end homeInner -->
+</div><!-- end homeContent -->

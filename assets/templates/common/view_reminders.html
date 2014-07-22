@@ -1,0 +1,130 @@
+<table width="95%" cellpadding="0" cellspacing="0" border="0" ID="Table7">
+	<tr>
+		<td colspan="6"><table width="100%" cellpadding="0" cellspacing="0" ID="Table8">
+				<tr>
+					<td class="page_headers" valign="top">[reminders_my-reminders]</td>
+					<!--START: myAccount-->
+					<td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td>
+					<!--END: myAccount-->
+				</tr>
+			</table></td>
+	</tr>
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td colspan="6" valign="top"><table width="100%" cellspacing="0" cellpadding="2" border="0" ID="Table9">
+				<tr>
+					<td class="data"><br>
+						[CONTENT]</td>
+				</tr>
+			</table></td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<tr>
+		<td height="10" colspan="6"><img src="assets/images/spacer.gif" height="10"></td>
+	</tr>
+	<tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="1" class="alternative" ID="Table2">  
+				<tr class="alternative"> 
+					<td align=center class="titles2">&nbsp;</td>
+					<td align=left class="titles2" width="35%"><b>[reminders_product-code]</b></td>
+					<td align=left class="titles2"><b>[reminders_reminder]</b></td>
+					<td align=left class="titles2"><b>[reminders_suggested]</b></td>
+					<td align=left class="titles2"><b>[reminders_next-change]</b></td>
+					<td align=left class="titles2"><b>&nbsp;<!--[orderhistory_details]--></b></td>
+				</tr>
+				<tr><td colspan="7"><img src="assets/images/spacer.gif" height="4"></td></tr>
+				<!--START: no_reminders_item-->
+					<tr>
+						<td height="60" valign="middle" align="center" colspan="10"> [reminders_emptylist] </td>
+					</tr>
+					<tr>
+						<td height="1" colspan="6" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+					</tr>
+				<!--END: no_reminders_item-->
+				<!--START: reminders_item-->
+				<tr class="alternative">
+					<form name="form[id]" action="view_reminders.asp" method="post" ID="Form1">                  
+    				<input type="hidden" name="id" value="[id]" ID="id">
+    				<input type="hidden" name="action" value="update" ID="action">
+					<td align=left class="item">&nbsp;</td>
+					<td align=left class="item"><b>[itemid]</b><br /><a href="product.asp?itemid=[catalogid]">[name]</a></td>
+					<td align=center class="item">
+						<!--START: reminders_block-->
+						<select name="reminder" class="txtBoxStyle" ID="reminder">
+							<!--START: reminders_frequency_option-->
+							<option value="[optionvalue]" [selected]>[optiontext]</option>
+							<!--END: reminders_frequency_option-->
+     					</select>
+						<!--END: reminders_block-->
+    				</td>
+					<td align=center class="item">[suggested]</td>
+					<td align=center class="item"><input type="text" value="[nextchange]" name="nextchange" class="txtBoxStyle" size="6" ID="nextchange"></td>
+					<td>
+						<input name="update" type="submit" class="btn" value="[reminders_update]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Submit1">
+						<br />
+						<input name="delete" type="button" class="btn" onclick="deletereminder([id]);"  value="[reminders_delete]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Button1">
+					</td>
+					</form>        
+				</tr>
+				<tr><td colspan="7"><img src="assets/images/spacer.gif" height="4"></td></tr>    
+				<!--END: reminders_item-->
+			</table>
+			
+
+			<!--START: related_title-->			
+			<table width="100%" cellpadding="4" cellspacing="0" ID="Table4">
+				<tr><td class="page_headers"><br>[reminders_related-products]</td></tr>
+			</table>
+			<!--END: related_title-->			
+			<!--START: related_block-->
+			<table width="100%" cellpadding="4" cellspacing="0" ID="Table1">
+				<!--START: related_item-->
+				<tr>
+					<td>
+						<table width="100%" ID="Table3">
+							<tr><td class="titles2" colspan="2">[name]</td></tr>
+                            <!--START: related_subitem-->
+							<tr>
+								<td class="item" width="70%"><a href="product.asp?itemid=[catalogid]">[name]</a></td>
+								<td><a href="view_reminders.asp?action=add&catalogid=[catalogid]">[reminders_related-add-to-reminders]</a></td>
+							</tr>
+                            <!--END: related_subitem-->
+						</table>
+					</td>
+				</tr>
+				<!--END: related_item-->
+			</table>
+			<!--END: related_block-->
+			
+		</td>
+	</tr>
+</table>
+<!--START: CATEGORY_FOOTER-->
+<table width="95%" cellspacing="0" cellpadding="2" border="0" ID="Table10">
+	<tr>
+		<td class="data"><br>
+			[CONTENT]</td>
+	</tr>
+</table>
+<!--END: CATEGORY_FOOTER-->
+
+<script language='javascript' src='assets/templates/common/calendar/popcalendar.js'></script>
+<script language="Javascript">
+function deletereminder(id)
+{
+	var rep;
+	rep = confirm("[reminders_message-deletereminder]");
+	if (!rep)
+		return false;	
+	document.location.href="view_reminders.asp?action=delete&id=" + id;
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+</script>				
+
+
+
+

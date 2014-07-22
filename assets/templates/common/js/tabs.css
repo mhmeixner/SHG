@@ -1,0 +1,39 @@
+#tablist {
+	padding: 3px 0;
+	margin-left: 0;
+	margin-bottom: 0;
+	margin-top: 0.1em;
+	font: bold 12px Verdana;
+}
+#tablist li {
+	list-style: none;
+	display: inline;
+	margin: 0;
+}
+#tablist li a {
+	text-decoration: none;
+	padding: 3px 0.5em;
+	margin-left: 3px;
+	border: 1px solid #778;
+	border-bottom: none;
+	background: white;
+}
+#tablist li a:link {
+	color: navy;
+}
+#tablist li a:visited {
+	color: navy;
+}
+#tablist li a.current {
+	background: White;
+}
+.tabcontent {
+	display:none;
+	padding: 3px 0.5em;
+}
+#tabcontentcontainer {
+	width:100%;
+	height:300px;
+	overflow: auto;
+	border: 1px solid #778;
+}

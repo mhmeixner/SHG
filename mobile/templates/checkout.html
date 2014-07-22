@@ -1,0 +1,1437 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>[storeName]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<style type="text/css" media="screen">
+@import "jqtouch/jqtouch.min.css";
+</style>
+<style type="text/css" media="screen">
+@import "themes/jqt/theme.min.css";
+</style>
+<script src="jqtouch/jquery.1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jqtouch/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+<script src="jqtouch/functions.js" type="text/javascript"></script>
+<script src="assets/templates/common/js/utilities.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/state_countryjs.asp"></script>
+<script type="text/javascript" charset="utf-8">
+
+    jQuery.noConflict();
+
+    var jQT = new jQuery.jQTouch({
+        icon: 'images/icon.png',
+        addGlossToIcon: true,
+        startupScreen: 'images/splash.png',
+        useFastTouch: false,
+        statusBar: 'black',
+        slideSelector: 'body > * > ul li a,a'
+    });
+
+    // Some sample Javascript functions:
+    jQuery(function () {
+
+        jQuery('a[target="_blank"]').click(function () {
+            if (1 == 1) {
+                return true;
+            } else {
+                jQuery(this).removeClass('active');
+                return false;
+            }
+        });
+    });
+</script>
+<script src="/prototype.js" language="javascript" type="text/javascript"></script>
+<style type="text/css" media="screen">
+body.fullscreen #home .info {
+	display: none;
+}
+#about {
+	padding: 100px 10px 40px;
+	text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;
+	font-size: 13px;
+	text-align: center;
+	background: #161618;
+}
+#about p {
+	margin-bottom: 8px;
+}
+#about a {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="dddropdownpanel.css" />
+</head>
+<body>
+<style>
+.overlay {
+	background-color: #fff;
+	filter:alpha(opacity=80);	/* Transparency */
+	opacity:0.8;	/* Transparency */
+}
+#overlay {
+	background-image: url(assets/templates/common/images/transparent.png);
+}
+* html #overlay {
+	background-image: url(assets/templates/common/images/pixel_trans.gif);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="assets/templates/common/images/transparent.png", sizingMethod="scale");
+}
+</style>
+<script type="text/javascript" language="javascript">
+    var scity = "";
+    var szip = "";
+    var scountry = "";
+    var sstate = "";
+    var addrchange = "";
+    var ajax_request_progress = 0;
+    var selectedShipId = 0;
+
+    function get_Element(i) {
+        return document.getElementById(i) || document.getElementsByName(i).item(0);
+    }
+
+    function select_shipping(shipid) {
+        selectedShipId = shipid;
+        add_overlay("total_div", 1);
+        add_overlay("divPayment", 1);
+
+        var url = '../ship_ajax.asp?action1=total&mobile=1&no-cache=' + Math.random();
+        var params = 'id=' + shipid + '&action=total';
+        var ajax = new Ajax.Updater(
+		{ success: 'total_div' },
+		url,
+		{ method: 'post', evalScripts: true, parameters: params, onComplete: updateajax_total, onFailure: reportError });
+    }
+
+    function applyCoupon(strCoupon) {
+        var strMsg = "";
+
+        if (strCoupon.trim() == "")
+            strMsg += " - Coupon cannot be blank.\n"
+
+        if (strMsg != "") {
+            alert(strMsg);
+            return false;
+        }
+
+        add_overlay("total_div", 1);
+        var url = '../ship_ajax.asp?action1=total&mobile=1&no-cache=' + Math.random();
+        var params = 'id=' + selectedShipId + '&action=total&coupon=' + escape(strCoupon);
+        var ajax = new Ajax.Updater(
+		{ success: 'total_div' },
+		url,
+		{ method: 'post', evalScripts: true, parameters: params, onComplete: updateajax_total, onFailure: reportError });
+    }
+
+    function doPayment() {
+        var params = '';
+
+        add_overlay("divPayment", 1);
+        var url = 'checkout.asp?action=dopayment';
+        //document.write(url+params)
+        //return false;		
+        var ajax = new Ajax.Updater(
+		{ success: 'divPayment' },
+		url,
+		{ method: 'post', evalScripts: true, parameters: params, onComplete: paymentSuccess, onFailure: reportError });
+    }
+
+    function paymentSuccess() {
+        controlDivPayment('');
+        remove_overlay("divPayment");
+    }
+
+    function doCart() {
+        var params = 'action=docart';
+
+        add_overlay("divCart", 1);
+        var url = 'checkout.asp';
+        var ajax = new Ajax.Updater(
+		{ success: 'divCart' },
+		url,
+		{ method: 'post', evalScripts: true, parameters: params, onComplete: cartSuccess, onFailure: reportError });
+
+    }
+
+    function cartSuccess() {
+        remove_overlay("divCart");
+    }
+
+    function doCheckout(objForm) {
+        setValidation();
+
+        //isSubmitComplete = false; //Let this line commented in production... otherwise, it will allow multiple submits.
+
+        if (!objForm.onsubmit() || !checkotherreqfields())
+            return false;
+
+        var params = 'action=docheckout';
+        var formArray = getValuesAsArray(objForm);
+
+        for (var prop in formArray) {
+            if (1 == 2 && isArray(formArray[prop])) {
+                for (var no = 0; no < formArray[prop].length; no++) {
+                    var name = prop + '[' + no + ']';
+                    if (prop.indexOf('[') >= 0) { // The name of the form field is already indicating an array
+                        name = prop.replace('[', '[' + no);
+                    }
+                    var value = formArray[prop][no];
+                    value = escape(value);
+                    params = params + '&' + name + '=' + value;
+                }
+            } else {
+                var value = formArray[prop];
+                value = escape(value);
+                params = params + '&' + prop + '=' + value;
+            }
+        }
+
+        get_Element('divCheckout').style.display = 'block';
+        //alert(params);
+        add_overlay("billing_div", 1);
+        var url = 'checkout.asp';
+
+        //document.write('checkout_one.asp?'+params)
+        //return false;
+
+        var ajax = new Ajax.Updater(
+		{ success: 'divCheckout' },
+		url,
+		{ method: 'post', evalScripts: true, parameters: params, onComplete: checkoutSuccess, onFailure: reportError });
+
+    }
+
+    function checkoutSuccess() {
+        remove_overlay("billing_div");
+
+        var divCheckout = getInnerText('divCheckout');
+
+        if (divCheckout.indexOf('ORDER PLACED') >= 0 || divCheckout.indexOf('REDIRECTING') >= 0) {
+            //var orderId = divCheckout.split("-");
+            //window.location.href='ordertracking.asp?op=1&action=view&id='+orderId[1];
+            //window.location.href='checkout_thankyou.asp?i=' + orderId[1] + '&t=' +orderId[2];
+            return void (0);
+        }
+
+        isSubmitComplete = false;
+
+        if (divCheckout.indexOf('INVALID_CART') >= 0) {
+            doCart();
+            check_address('InvalidCart');
+            alert(divCheckout.replace('INVALID_CART', ''));
+            return void (0);
+        }
+
+        if (divCheckout.indexOf('REDIRECT') >= 0) {
+            return void (0);
+        }
+        alert(divCheckout.replace('<li>', '\n \- '));
+
+    }
+
+    function checkoutFailure() {
+        remove_overlay("billing_div");
+    }
+
+    function removeCoupon(couponId) {
+        var rep = confirm("Are you sure you want to remove this coupon?");
+
+        if (!rep)
+            return void (0);
+
+        add_overlay("total_div", 1);
+        var url = '../ship_ajax.asp?action1=total&mobile=1&no-cache=' + Math.random();
+        var params = 'id=' + selectedShipId + '&action=total&removeCoupon=1&coupon=' + escape(couponId);
+        var ajax = new Ajax.Updater(
+		{ success: 'total_div' },
+		url,
+		{ method: 'post', evalScripts: true, parameters: params, onComplete: updateajax_total, onFailure: reportError });
+    }
+
+    function updateajax_total(req) {
+
+        var couponApplied = getInnerText('total_div');
+
+        if (couponApplied.indexOf('divCouponApplied') >= 0) {
+            check_address('CouponApplied');
+            doCart();
+        }
+        else {
+            doPayment();
+        }
+
+        remove_overlay("divPayment");
+        remove_overlay("total_div");
+    }
+
+    function getInnerText(div) {
+        if (document.all) {
+            return get_Element(div).innerText;
+        } else {
+            return get_Element(div).textContent;
+        }
+    }
+
+    function initpage() {
+        check_address('billing');
+
+        if (!document.billing.shipping_zip) {
+            select_shipping(-1);
+        }
+        else {
+            if (document.billing.shipping_zip.value == '')
+                select_shipping(-1);
+        }
+
+        controlDivPayment('');
+        fillEmailDiv();
+    }
+
+
+    function check_address(type) {
+        if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null) {
+            var sameAsBilling = get_Element('sameAsBilling').checked;
+
+        }
+        else {
+            var sameAsBilling = true;
+            if (type == 'shipping')
+                type = 'billing';
+        }
+        if (type == '')
+            if (sameAsBilling)
+                type = 'billing';
+            else
+                type = 'shipping';
+
+        if ((sameAsBilling && type == 'billing') || (!sameAsBilling && type == 'shipping') || (type == 'CouponApplied') || (type == 'addresstype') || (type == 'InvalidCart') || (type == 'refresh'))
+            check_address2(type);
+    }
+
+    function check_address2(type) {
+        var type2 = type;
+        if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null)
+            var sameAsBilling = get_Element('sameAsBilling').checked;
+        else
+            var sameAsBilling = true;
+        
+        if (type2 == 'CouponApplied' || type2 == 'InvalidCart' || type2 == 'refresh' || type2 == 'addresstype')
+            if (sameAsBilling)
+                type = 'billing';
+            else
+                type = 'shipping';
+
+        addrchange = 0;
+        if (get_Element(type + '_state').value != sstate) { sstate = escape(removeHTMLTags(get_Element(type + '_state').value)); addrchange = 1; }
+
+        if ($F(type + '_city') != scity) { scity = escape(removeHTMLTags($F(type + '_city'))); addrchange = 1; }
+        if ($F(type + '_country') != scountry) { scountry = escape(removeHTMLTags($F(type + '_country'))); addrchange = 1; }
+        if ($F(type + '_zip') != szip) { szip = escape(removeHTMLTags($F(type + '_zip'))); addrchange = 1; }
+
+        if (type2 == 'CouponApplied' || type2 == 'InvalidCart' || type2 == 'refresh' || type2 == 'addresstype') { addrchange = 1; }
+
+
+        if ((szip.length >= 1 && sstate.length >= 1 && scountry.length >= 1 && addrchange == 1 && ajax_request_progress == 0)) {
+
+            if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null) {
+                if (get_Element('sameAsBilling').checked) {
+                    sameAsBilling = 1;
+                }
+                else {
+                    add_overlay("shipping_info", 0)
+                    sameAsBilling = 0;
+                }
+            }
+            else {
+                sameAsBilling = 1;
+            }
+
+            if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null) {
+                var sFirstname = escape(get_Element('shipping_firstname').value);
+                var sLastname = escape(get_Element('shipping_lastname').value);
+                var sCompany = escape(get_Element('shipping_company').value);
+                var sPhone = escape(get_Element('shipping_phone').value);
+                var sAddress = escape(get_Element('shipping_address').value);
+                var sAddress2 = escape(get_Element('shipping_address2').value);
+                var sCity = escape(get_Element('shipping_city').value);
+                var sState = escape(get_Element('shipping_state').value);
+                var sCountry = escape(get_Element('shipping_country').value);
+                var sZip = escape(get_Element('shipping_zip').value);
+            }
+            else {
+                var sFirstname = ' ';
+                var sLastname = ' ';
+                var sCompany = ' ';
+                var sPhone = ' ';
+                var sAddress = ' ';
+                var sAddress2 = ' ';
+                var sCity = ' ';
+                var sState = ' ';
+                var sCountry = ' ';
+                var sZip = ' ';
+            }
+
+            var bFirstname = escape(get_Element('billing_firstname').value);
+            var bLastname = escape(get_Element('billing_lastname').value);
+            var bCompany = escape(get_Element('billing_company').value);
+            var bPhone = escape(get_Element('billing_phone').value);
+            var bAddress = escape(get_Element('billing_address').value);
+            var bAddress2 = escape(get_Element('billing_address2').value);
+            var bCity = escape(get_Element('billing_city').value);
+            var bState = escape(get_Element('billing_state').value);
+            var bCountry = escape(get_Element('billing_country').value);
+            var bZip = escape(get_Element('billing_zip').value);
+            var sAddressType = '';
+
+            if (get_Element('shipping_addresstype') != 'undefined' && get_Element('shipping_addresstype') != 'null' && get_Element('shipping_addresstype') != null)
+                sAddressType = escape(get_Element('shipping_addresstype').value);
+
+            if (get_Element(type + '_email'))
+                get_Element(type + '_email').focus();
+            else
+                get_Element(type + '_state').focus();
+            $('shipResult').update('Calculating shipping rates....');
+            add_overlay("billing_info", 0)
+            add_overlay("shipping_div", 1)
+            add_overlay("total_div", 1)
+            add_overlay("divPayment", 1)
+            ajax_request_progress = 1;
+
+            var url = '../ship_ajax.asp?mobile=1&no-cache=' + Math.random();
+            var params = 'shipping_zip=' + szip + '&shipping_city=' + scity + '&shipping_state=' + sstate + '&shipping_country=' + scountry;
+            params = params + '&sFirstname=' + sFirstname;
+            params = params + '&sLastname=' + sLastname;
+            params = params + '&sCompany=' + sCompany;
+            params = params + '&sPhone=' + sPhone;
+            params = params + '&sAddress=' + sAddress;
+            params = params + '&sAddress2=' + sAddress2;
+            params = params + '&sCity=' + sCity;
+            params = params + '&sState=' + sState;
+            params = params + '&sCountry=' + sCountry;
+            params = params + '&sZip=' + sZip;
+            params = params + '&bFirstname=' + bFirstname;
+            params = params + '&bLastname=' + bLastname;
+            params = params + '&bCompany=' + bCompany;
+            params = params + '&bPhone=' + bPhone;
+            params = params + '&bAddress=' + bAddress;
+            params = params + '&bAddress2=' + bAddress2;
+            params = params + '&bCity=' + bCity;
+            params = params + '&bState=' + bState;
+            params = params + '&bCountry=' + bCountry;
+            params = params + '&bZip=' + bZip;
+            params = params + '&sameAsBilling=' + sameAsBilling;
+            params = params + '&Addresstype=' + sAddressType;
+
+            var ajax = new Ajax.Updater(
+			{ success: 'shipResult' },
+			url,
+			{ method: 'post', evalScripts: true, parameters: params, onComplete: function () { updateajax(type2); }, onFailure: reportError });
+        }
+    }
+
+    function updateajax(request) {
+        ajax_request_progress = 0;
+        remove_overlay("billing_info");
+
+        if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null)
+            if (!document.billing.sameAsBilling.checked)
+                remove_overlay("shipping_info");
+
+        remove_overlay("shipping_div");
+        remove_overlay("total_div")
+        remove_overlay("divPayment")
+
+        if (request != 'CouponApplied') {
+            if (get_Element('radio_ship') != undefined)
+                select_shipping(0);
+            else
+                select_shipping(-1);
+        }
+    }
+
+    function reportError(request) {
+        isSubmitComplete = false;
+        ajax_request_progress = 0;
+        remove_overlay("billing_info");
+
+        if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null)
+            if (!document.billing.sameAsBilling.checked)
+                remove_overlay("shipping_info");
+        //request.responseText
+        alert("Error processing request " + request.responseText);
+    }
+
+    function showHideShipping() {
+
+        if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null) {
+            if (document.billing.sameAsBilling.checked) {
+                document.getElementById("shipping_info").style.display = "none";
+
+                add_overlay("shipping_info", 0);
+
+                get_Element('shipping_firstname').value = '';
+                get_Element('shipping_lastname').value = '';
+                get_Element('shipping_company').value = '';
+                get_Element('shipping_phone').value = '';
+                get_Element('shipping_address').value = '';
+                get_Element('shipping_address2').value = '';
+                get_Element('shipping_city').value = '';
+                get_Element('shipping_zip').value = '';
+                get_Element('shipping_country').value = get_Element('billing_country').value;
+                populateState('shipping_state', 'shipping_country');
+                get_Element('shipping_state').value = get_Element('billing_state').value;
+            }
+            else {
+                remove_overlay("shipping_info");
+                document.getElementById("shipping_info").style.display = "block";
+
+                if (get_Element('shipping_firstname').value != "[shipping_firstname]") {
+                    get_Element('shipping_firstname').value = get_Element('billing_firstname').value;
+                    get_Element('shipping_lastname').value = get_Element('billing_lastname').value;
+                    get_Element('shipping_company').value = get_Element('billing_company').value;
+                    get_Element('shipping_phone').value = get_Element('billing_phone').value;
+                    get_Element('shipping_address').value = get_Element('billing_address').value;
+                    get_Element('shipping_address2').value = get_Element('billing_address2').value;
+                    get_Element('shipping_city').value = get_Element('billing_city').value;
+                    get_Element('shipping_zip').value = get_Element('billing_zip').value;
+                    get_Element('shipping_country').value = get_Element('billing_country').value;
+                    populateState('shipping_state', 'shipping_country');
+                    get_Element('shipping_state').value = get_Element('billing_state').value;
+                }
+            }
+        }
+        else {
+            //add_overlay("shipping_info",0);
+        }
+    }
+
+    function selectGiftRegAddress() {
+        remove_overlay("shipping_info");
+
+        if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null) {
+            get_Element('sameAsBilling').checked = false;
+        }
+        get_Element('shipping_firstname').value = get_Element('giftreg_shipping_firstname').value;
+        get_Element('shipping_lastname').value = get_Element('giftreg_shipping_lastname').value;
+        get_Element('shipping_company').value = get_Element('giftreg_shipping_company').value;
+        get_Element('shipping_phone').value = get_Element('giftreg_shipping_phone').value;
+        get_Element('shipping_address').value = get_Element('giftreg_shipping_address').value;
+        get_Element('shipping_address2').value = get_Element('giftreg_shipping_address2').value;
+        get_Element('shipping_city').value = get_Element('giftreg_shipping_city').value;
+        get_Element('shipping_zip').value = get_Element('giftreg_shipping_zip').value;
+        get_Element('shipping_country').value = get_Element('giftreg_shipping_country').value;
+        populateState('shipping_state', 'shipping_country');
+        get_Element('shipping_state').value = get_Element('giftreg_shipping_state').value;
+        check_address('');
+    }
+
+    function getElementById_s(id) {
+        var obj = null;
+        if (document.getElementById) {
+            /* Prefer the widely supported W3C DOM method, if 
+            available:- 
+            */
+            obj = get_Element(id);
+        } else if (document.all) {
+            /* Branch to use document.all on document.all only 
+            browsers. Requires that IDs are unique to the page 
+            and do not coincide with NAME attributes on other 
+            elements:- 
+            */
+            obj = document.all[id];
+        }
+        /* If no appropriate element retrieval mechanism exists on 
+        this browser this function always returns null:- 
+        */
+        return obj;
+    }
+
+    function remove_overlay(panel) {
+        var objBody = getElementById_s('overlay_' + panel);
+        if (objBody != null && objBody != 'null' && objBody != undefined && objBody != 'undefined')
+            objBody.style.display = 'none';
+
+    }
+
+    function add_overlay(panel, loading) {
+        var objBody = getElementById_s(panel);
+        var objOverlay = document.createElement("div");
+
+        objOverlay.setAttribute('id', 'overlay_' + panel);
+        objOverlay.className = 'overlay';
+        objOverlay.style.position = 'absolute';
+        objOverlay.style.textAlign = 'center';
+        objOverlay.style.width = objBody.clientWidth + "px";
+        objOverlay.style.height = objBody.clientHeight + "px";
+        //alert(objOverlay.style.height);
+        objBody.insertBefore(objOverlay, objBody.firstChild);
+        objOverlay.style.display = 'block';
+
+        if (loading == 1) {
+            get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td style="text-align: center;"><img src="assets/templates/common/images/loading.gif"></td></tr></table>';
+        }
+        else {
+            get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td align="center"></td></tr></table>';
+        }
+        DisableEnableForm(document.billing, false);
+    }
+
+    function DisableEnableForm(xForm, xHow) {
+        objElems = xForm.elements;
+        for (i = 0; i < objElems.length; i++) {
+            objElems[i].disabled = xHow;
+        }
+    }
+
+    String.prototype.trim = function () {
+        return this.replace(/^\s+|\s+$/g, "");
+    }
+
+    var giftCertDetails = "";
+    function showGiftCertDetails() {
+        get_Element('divGiftCertDetails').style.display = giftCertDetails;
+        if (giftCertDetails == "")
+            giftCertDetails = "none";
+        else
+            giftCertDetails = "";
+    }
+
+    var giftDiscountDetails = "";
+    function showDiscountDetails() {
+        get_Element('divDiscountDetails').style.display = giftDiscountDetails;
+        if (giftDiscountDetails == "")
+            giftDiscountDetails = "none";
+        else
+            giftDiscountDetails = "";
+    }
+
+    function fillEmailDiv() {
+        var strValue = get_Element('billing_email').value;
+        if (strValue == '')
+            strValue = 'Type your email above';
+        if (get_Element('divEmail') != 'undefined' && get_Element('divEmail') != null) {
+            strValue = "&nbsp;" + removeHTMLTags(strValue).trim();
+            get_Element('divEmail').innerHTML = strValue;
+        }
+    }
+
+    String.prototype.trim = function () {
+        return this.replace(/^\s+|\s+$/g, "");
+    }
+
+    function removeHTMLTags(strString) {
+        var strInputCode = strString;
+        strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1) {
+            return (p1 == "lt") ? "<" : ">";
+        });
+        var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+        strTagStrippedText = strTagStrippedText.replace(/\u00a0/g, '');
+        //strTagStrippedText = strTagStrippedText.replace(/&nbsp;/gi,'');
+        return strTagStrippedText;
+    }
+
+    function clearContent(obj) {
+        obj.value = removeHTMLTags(obj.value);
+    }
+
+    function controlDivPayment(id) {
+
+        var divs = document.getElementsByTagName("div");
+        for (var x = 0; x < divs.length; x++) {
+            if ((divs[x].id.indexOf("divPaymentOption") >= 0)) {
+                obj1 = get_Element(divs[x].id);
+
+                if (obj1 != undefined)
+                    if (id == '') {
+                        obj1.style.display = '';
+                        break;
+                    }
+                    else {
+                        if (obj1.id == 'divPaymentOption' + id)
+                            obj1.style.display = '';
+                        else
+                            obj1.style.display = 'none';
+                    }
+            }
+        }
+    }
+
+    function controlDivShipping(id) {
+        var divs = document.getElementsByTagName("div");
+        for (var x = 0; x < divs.length; x++) {
+            if (divs[x].id.indexOf("divShipping") >= 0 && divs[x].id != "divShipping" && divs[x].id != "divShippingCUSTOM") {
+                obj1 = get_Element(divs[x].id);
+
+                if (obj1 != undefined)
+                    if (id == '') {
+                        obj1.style.display = '';
+                        break;
+                    }
+                    else {
+                        if (obj1.id == 'divShipping' + id)
+                            obj1.style.display = '';
+                        else
+                            obj1.style.display = 'none';
+                    }
+            }
+        }
+    }
+
+    //utilities.js
+    //addLoadEvent(initpage);
+</script>
+<div class="current whiteBG">
+[HEADER]
+<div style="clear:both;"></div>
+<form action="checkout.asp" method="post" name="billing" id="billing" class="form">
+  <div id="divValidationMsg" style="display:none; padding:10px;color:Red; border:solid 1px red;"> </div>
+  <div id="billing_div" style="width:100%;">
+    <div id="divCart" style="width:100%;"> 
+      <!--START: SHOPPING_CART_TEMP-->
+      <h2>One Page Checkout</h2>
+      <!--START: CATEGORY_HEADER-->
+      <ul>
+        <li><span class="blktxt">[CONTENT]</span></li>
+      </ul>
+      <!--END: CATEGORY_HEADER--> 
+    </div>
+    <!--START: account_login1-->
+    <ul>
+      <li>
+        <div id="divAccountLogin" class="blktxt"> [checkout1_loginmessage2] </div>
+      </li>
+      <li> <a href="myaccount.asp"><img src="images/btn-login-to-your-account.png" border="0" /></a> </li>
+    </ul>
+    
+    <!--END: account_login1--> 
+    <!-- start left bar-->
+    <div id="divLeftBar">
+      <h6>[account_billing-info]</h6>
+      <div id="billing_info" style="width:100%">
+        <ul>
+          <!--START: SAVE_ADDRESSES-->
+          <li>
+            <label>[checkout3_PreviousAddresses]</label>
+            <select type="dropdown" uname="save_address" onchange="javascript:filladdress_form(this,'billing','billing');check_address('billing');">
+            [address_billing_list]
+            </select>
+          </li>
+          <!--END: SAVE_ADDRESSES-->
+          <li><span class="frmtxt">Use address from your credit card statement.</span></li>
+          <li>
+            <div class="frmtxt">First Name</div>
+            <input name="billing_firstname" onchange="clearContent(this);" type="text" style="width: 98%;" id="billing_firstname" value="[billing_firstname]" size="15" >
+          </li>
+          <li>
+            <div class="frmtxt">Last Name</div>
+            <input name="billing_lastname" type="text" style="width: 98%;" onchange="clearContent(this);" id="billing_lastname" value="[billing_lastname]" size="15">
+          </li>
+          <li>
+            <div class="frmtxt">Company</div>
+            <input name="billing_company" type="text" style="width: 98%;" onchange="clearContent(this);" id="billing_company" value="[billing_company]" size="25" class="txtBoxStyle">
+          </li>
+          <li>
+            <div class="frmtxt">Phone</div>
+            <input name="billing_phone" type="text" style="width: 98%;"  type="tel" onchange="clearContent(this);" id="billing_phone" value="[billing_phone]" size="25" class="txtBoxStyle">
+          </li>
+          <li>
+            <div class="frmtxt">Address</div>
+            <input name="billing_address" type="text" style="width: 98%;" onchange="clearContent(this);" id="billing_address" value="[billing_address]" size="25">
+          </li>
+          <li>
+            <div class="frmtxt">Suite / Apt#</div>
+            <input name="billing_address2" type="text" style="width: 98%;" onchange="clearContent(this);" id="billing_address2" value="[billing_address2]" size="25">
+          </li>
+          <li>
+            <div class="frmtxt">City</div>
+            <input name="billing_city" type="text" style="width: 98%;" onchange="clearContent(this);" id="billing_city" value="[billing_city]" size="25">
+          </li>
+          <li>
+            <div class="frmtxt">Country</div>
+            <select name="billing_country" style="width: 98%;" onchange="this.form.billing_zip.value='';populateState('billing_state','billing_country');check_stateValidator('billing');check_address('billing');" id="billing_country">
+            </select>
+          </li>
+          <li>
+            <div class="frmtxt">State</div>
+            <select id="billing_state" style="width: 98%;" onchange="this.form.billing_zip.value='';check_address('billing');" name="billing_state">
+            </select>
+          </li>
+          <li>
+            <div class="frmtxt">Zip</div>
+            <input name="billing_zip" maxlength="15" type="text" id="billing_zip" value="[billing_zip]" size="10"  pattern="[0-9]*" onchange="clearContent(this);check_address('billing');" >
+          </li>
+          <li>
+            <div class="frmtxt">Email</div>
+            <input name="billing_email" type="text" type="email" style="width: 98%;" id="billing_email" maxlength="40" onblur="fillEmailDiv();" onkeyup="fillEmailDiv();" onchange="clearContent(this);fillEmailDiv();" value="[email]" size="25">
+          </li>
+          <li>
+            <input type="checkbox" value="1" name="maillist" [maillist] id="Checkbox1" title="[checkout1_joinmailinglist]">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--START: account_login2-->
+    <h6>[checkout1_Header-createnewaccount]</h6>
+    <ul>
+      <li>
+        <div class="frmtxt">Password</div>
+        <input type="password" size="12" name="pass" id="pass" style="width: 98%;">
+      </li>
+    </ul>
+    <!--END: account_login2-->
+    <div id="divRightBar"> 
+      <!--START: GIFT_REGISTRY_SHIPPING-->
+      <input type="hidden" name="giftreg_shipping_firstname" id="giftreg_shipping_firstname" value="[giftreg_shipping_firstname]">
+      <input type="hidden" name="giftreg_shipping_lastname" id="giftreg_shipping_lastname" value="[giftreg_shipping_lastname]">
+      <input type="hidden" name="giftreg_shipping_company" id="giftreg_shipping_company" value="[giftreg_shipping_company]">
+      <input type="hidden" name="giftreg_shipping_phone" id="giftreg_shipping_phone" value="[giftreg_shipping_phone]">
+      <input type="hidden" name="giftreg_shipping_address" id="giftreg_shipping_address" value="[giftreg_shipping_address]">
+      <input type="hidden" name="giftreg_shipping_address2" id="giftreg_shipping_address2" value="[giftreg_shipping_address2]">
+      <input type="hidden" name="giftreg_shipping_city" id="giftreg_shipping_city" value="[giftreg_shipping_city]">
+      <input type="hidden" name="giftreg_shipping_zip" id="giftreg_shipping_zip" value="[giftreg_shipping_zip]">
+      <input type="hidden" name="giftreg_shipping_country" id="giftreg_shipping_country" value="[giftreg_shipping_country]">
+      <input type="hidden" name="giftreg_shipping_state" id="giftreg_shipping_state" value="[giftreg_shipping_state]">
+      <br />
+      <h6>[checkout1_Header-giftreg]</h6>
+      <info>[checkout1_Header-giftreg-instructions]</info>
+      <input type="button" id="cmdRegShip" onclick="javascript:selectGiftRegAddress();" name="cmdRegShip" value="Select Registry Address" class="btn">
+      <!--END: GIFT_REGISTRY_SHIPPING--> 
+      <!--START: sameAsBilling1-->
+      <h6>[checkout1_Header-shippinginformation]
+        <input type="checkbox" value="ON" name="sameAsBilling" id="Checkbox3" onclick="showHideShipping();check_address('');" title="[checkout3_sameasbilling]" checked>
+        Same as Billing</h6>
+      <!--END: sameAsBilling1-->
+      <div id="shipping_info" style="width:100%;" style="display:none">
+      <ul>
+        <!--START: sameAsBilling2--> 
+        <!--START: SAVE_ADDRESSES2-->
+        <li>
+          <div class="ftmtxt">[checkout3_PreviousAddresses]</div>
+          <select type="dropdown" name="save_address" onchange="javascript:filladdress_form(this,'billing','shipping');check_address('shipping');" class="txtBoxStyle">
+          [address_list]
+          </select>
+        </li>
+        <!--END: SAVE_ADDRESSES2-->
+        <li>
+          <div class="frmtxt">First Name</div>
+          <input name="shipping_firstname" onchange="clearContent(this);" type="text" style="width: 98%;" id="shipping_firstname" value="[shipping_firstname]" size="15">
+        </li>
+        <li>
+          <div class="frmtxt">Last Name</div>
+          <input name="shipping_lastname" onchange="clearContent(this);" type="text" style="width: 98%;" id="shipping_lastname" value="[shipping_lastname]" size="15">
+        </li>
+        <li>
+          <div class="frmtxt">Company</div>
+          <input name="shipping_company" onchange="clearContent(this);" type="text" style="width: 98%;" id="shipping_company" value="[shipping_company]" size="25">
+        </li>
+        <li>
+          <div class="frmtxt">Phone</div>
+          <input name="shipping_phone" onchange="clearContent(this);" type="text" type="tel" style="width: 98%;" id="shipping_phone" value="[shipping_phone]" size="25">
+        </li>
+        <li>
+          <div class="frmtxt">Address</div>
+          <input name="shipping_address" onchange="clearContent(this);" type="text" style="width: 98%;" id="shipping_address" value="[shipping_address]" size="25">
+        </li>
+        <li>
+          <div class="frmtxt">Suite / Apt#</div>
+          <input name="shipping_address2" onchange="clearContent(this);" type="text" style="width: 98%;" id="shipping_address2" value="[shipping_address2]" size="25">
+        </li>
+        <li>
+          <div class="frmtxt">City</div>
+          <input name="shipping_city" onchange="clearContent(this);" type="text" style="width: 98%;" id="shipping_city" value="[shipping_city]" size="25">
+        </li>
+        <li>
+          <div class="frmtxt">Country</div>
+          <select name="shipping_country" style="width: 98%;" onchange="this.form.shipping_zip.value='';populateState('shipping_state','shipping_country');check_stateValidator('shipping');check_address('shipping');" id="shipping_country">
+          </select>
+        </li>
+        <li>
+          <div class="frmtxt">State</div>
+          <select id="shipping_state" style="width: 98%;" onchange="this.form.shipping_zip.value='';check_address('shipping');" name="shipping_state">
+          </select>
+        </li>
+        <li>
+          <div class="frmtxt">Zip</div>
+          <input name="shipping_zip" maxlength="15" type="text" id="shipping_zip" value="[shipping_zip]" size="10"  pattern="[0-9]*" onchange="clearContent(this);check_address('shipping');" >
+        </li>
+        <!--END: sameAsBilling2-->
+      </ul>
+      <!--START: sameAsBilling3-->
+      <table width="100%" cellpadding="3" cellspacing="0" id="Table29">
+        <tr>
+          <td align="center" class="blktxt"><br />
+            [checkout3_sameasbillingmessage] </td>
+        </tr>
+      </table>
+      <!--END: sameAsBilling3--> 
+    </div>
+  </div>
+  <div id="divLeftBar2">
+    <h6>[checkout3_Header-shippingmethodinfo]</h6>
+    <div id="shipping_div" style="width:100%;font-size:10pt;">
+      <ul>
+        <li>
+          <div id="shipResult">
+            <div class="blktxt">[checkout3_shippinginstructions]</div>
+          </div>
+          <br />
+          <a href="javascript:check_address('refresh');">[checkout3_refreshRates]</a> </li>
+      </ul>
+    </div>
+  </div>
+  <div id="divRightBar2">
+    <h6>[checkout3_orderTotal]</h6>
+    <ul>
+      <li>
+        <div id="total_div" name="total_div" style="width:100%;"> 
+          <!--START: total_template_noshipping-->
+          <table width="100%" cellpadding="0" cellspacing="2" id="Table30" border="0" class="alternative">
+            <tr>
+              <td height="15" style="font-size:10pt;"><p>[checkout3_totalinstructions]</p></td>
+            </tr>
+          </table>
+          <!--END: total_template_noshipping--> 
+          <!--START: total_template-->
+          <table width="100%" cellpadding="0" cellspacing="2" id="Table20" border="0" class="alternative">
+            <tr>
+              <td  class="frmtxt"><strong>[itemCount] Item(s)</strong>:</td>
+              <td  class="frmtxt"style="text-align:right;">[SUBTOTAL]</td>
+            </tr>
+            <!--START: DISCOUNTS-->
+            <tr>
+              <td class="frmtxt"><strong>[shoppingcart_discount]</strong>:</td>
+              <td class="frmtxt" style="text-align:right;">- [DISCOUNT]</td>
+            </tr>
+            <!--START: PROMOTIONS-->
+            <tr>
+              <td colspan="2" align="center"><div id="divDiscountDetails" name="divDiscountDetails" style="width:100%;align:center;display:none;background:#efefef;">
+                  <table width="100%" cellpadding="0" cellspacing="2" id="Table28" border="0">
+                    <tr>
+                      <td class="frmtxt"><strong>Promotion Name</td>
+                      <td class="frmtxt"></td>
+                    </tr>
+                    <!--START: DISPLAY_PROMOS-->
+                    <tr>
+                      <td class="frmtxt">[promotion_name]</td>
+                      <td class="frmtxt" style="text-align:right;"><a href="javascript:removeCoupon('[id]');">remove</a></td>
+                    </tr>
+                    <!--END: DISPLAY_PROMOS-->
+                  </table>
+                </div></td>
+            </tr>
+            <!--END: PROMOTIONS--> 
+            <!--END: DISCOUNTS--> 
+            <!--START: BUYSAFE-->
+            <tr>
+              <td class="frmtxt" ><img src="assets/templates/common/images/buysafe.gif" border="0"></td>
+              <td class="frmtxt" style="text-align:right;">[buysafe_totalbondcost]</td>
+            </tr>
+            <!--END: BUYSAFE--> 
+            <!--START: HANDLING-->
+            <tr>
+              <td class="frmtxt" ><strong>[handling_itemname]</strong>:</td>
+              <td class="frmtxt" style="text-align:right;">[handling_price]</td>
+            </tr>
+            <!--END: HANDLING-->
+            <tr>
+              <td class="frmtxt" ><strong>[shoppingcart_shipping]</strong>:</td>
+              <td class="frmtxt" style="text-align:right;">[SHIPPING]</td>
+            </tr>
+            <tr>
+              <td class="frmtxt"><strong>[shoppingcart_taxes]</strong>:</td>
+              <td class="frmtxt" style="text-align:right;">[TAX]</td>
+            </tr>
+            <tr>
+              <td class="frmtxt"><strong>[shoppingcart_total]</strong>:</td>
+              <td class="frmtxt" style="text-align:right;">[TOTAL]</td>
+            </tr>
+            <!--START: GIFTCERTS-->
+            <tr>
+              <td class="frmtxt" nowrap><strong>[shoppingcart_giftcertificate]</strong>: <a href="javascript:showGiftCertDetails();">(details)</a></td>
+              <td class="frmtxt" style="text-align:right;">-[GIFTCERTS]</td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center"><div id="divGiftCertDetails" name="divGiftCertDetails" style="width:100%;align:center;display:none;background:#efefef;">
+                  <table width="100%" cellpadding="0" cellspacing="2" id="Table26" border="0">
+                    <tr>
+                      <td class="frmtxt"><strong>Gift Code</td>
+                      <td class="frmtxt" style="text-align:right;"><strong>Amount</td>
+                      <td class="frmtxt" style="text-align:right;"><strong>Balance</td>
+                      <td class="frmtxt"></td>
+                    </tr>
+                    <!--START: GIFTCERTS_DETAILS_ITEMS-->
+                    <tr>
+                      <td class="frmtxt">[certificate_name]</td>
+                      <td class="frmtxt" style="text-align:right;">[discount_amount]</td>
+                      <td class="frmtxt" style="text-align:right;">[discount_balance]</td>
+                      <td class="frmtxt" style="text-align:right;"><a href="javascript:removeCoupon('[id]');">remove</a></td>
+                    </tr>
+                    <!--END: GIFTCERTS_DETAILS_ITEMS-->
+                  </table>
+                </div></td>
+            </tr>
+            <!--END: GIFTCERTS-->
+            <tr>
+              <td class="frmtxt" colspan="2"><hr></td>
+            </tr>
+            <tr>
+              <td class="frmtxt"><strong>[shoppingcart_balance]</strong>:</td>
+              <td class="frmtxt" style="text-align:right;"><span class="price">[BALANCE]</span></td>
+            </tr>
+            <tr>
+              <td class="frmtxt" colspan="2"><hr></td>
+            </tr>
+            <!--START: apply_coupon-->
+            <tr>
+              <td class="frmtxt" colspan="2"><table width="100%" border="0">
+                  <tr>
+                    <td class="frmtxt"><strong>[viewcart_coupon-header]:</strong></td>
+                    <td nowrap><input id="coupon" onchange="clearContent(this);" maxlength="30" size="15" value="" name="coupon_code" />
+                      <input type="button" class="btn" onclick="applyCoupon(this.form.coupon_code.value);" value="Go!"></td>
+                  </tr>
+                  <tr>
+                    <td class="frmtxt" colspan="10">[viewcart_coupon-message]</td>
+                  </tr>
+                  <tr>
+                    <td class="frmtxt" colspan="10"><div name="divInvalidCoupon" id="divInvalidCoupon" style="display:[invalidCouponDisplay];color:#f00;">[viewcart_coupon-invalid]</div>
+                      [divCouponApplied] </td>
+                  </tr>
+                </table></td>
+            </tr>
+            <!--END: apply_coupon-->
+          </table>
+          <!--END: total_template--> 
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- end right bar2-->
+  <div id="divPayment" style="width:100%"> 
+    <!--START: PAYMENT_BLOCK-->
+    <h6>[checkout3_methodofpaymentselect]</h6>
+    <!--START: NO_PAYMENT_BLOCK-->
+    <info>There's no payment options available to your address. Please check the entered address and try again.</info>
+    <!--END: NO_PAYMENT_BLOCK-->
+    <div style="width:100%">
+      <ul>
+        <!--START: PPEXPRESS-->
+        <li>
+          <div class="frmtxt">[payment_description]</div>
+          <span class="blktxt">[payment_description_message]</span> <br />
+          <input name="payment" onclick="window.location.href='../paypal_express.asp?ch=0';" type="radio" value="online-[id]">
+          <img src="https://www.paypal.com/en_US/i/IntegrationCenter/scr/scr_ppAcceptMark_68x43.jpg" height=35 border="0"> <br />
+          <span class="blktxt">[payment_description]</span></li>
+        <!--END: PPEXPRESS--> 
+        <!--START: CCGATEWAY-->
+        <li>
+          <input onclick="controlDivPayment('[id]');" name="payment" type="radio" value="online-[id]" [firstoptionchecked] id="payment">
+          <span class="blktxt">&nbsp;[payment_description]</span>
+          <div id="divPaymentOption[id]" name="divPaymentOption" style="display:none;"><span class="blktxt"> [payment_description_message]</span><br />
+            <ul>
+              <li>
+                <input type="text" onchange="clearContent(this);" name="ff[id]_ocardno" id="ff[id]_ocardno" size="30" />
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+              <!--START: ccStartDate-->
+              <li><span class="frmtxt"> [CustomerInfo_creditstartdate]</span><br />
+                <select name="ff[id]_ocardstartmonth" class="txtBoxStyle" id="ff[id]_ocardstartmonth">
+                  <option value=""></option>
+                  [monthlist]
+                  </select>
+                <br />
+                <select name="ff[id]_ocardstartyear" class="txtBoxStyle" id="ff[id]_ocardstartyear">
+                  <option value=""></option>
+                  [yearlistdtstart]
+                  </select>
+                <span class="frmtxt">(Maestro, Solo and Amex only)</span> </li>
+              <!--END: ccStartDate-->
+              <li> <span class="frmtxt">[CustomerInfo_creditexpiration]</span><br />
+                <select name="ff[id]_ocardexpiresmonth" placeholder="Expiration Month" id="ff[id]_ocardexpiresmonth">
+                [monthlist]
+                </select>
+                <br />
+                <select name="ff[id]_ocardexpiresyear" placeholder="Expiration Year" id="ff[id]_ocardexpiresyear">
+                [yearlist]
+                </select>
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+              <li>
+                <select name="ff[id]_ocardtype" id="ff[id]_ocardtype">
+                [cctype]
+                </select>
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+              <!--START: ccIssueNumber-->
+              <li><span class="frmtxt">
+                <input type="text" name="ff[id]_ocardissue" maxlength="10" size="3" id="ff[id]_ocardissue">
+                (Maestro and Solo only)</span></li>
+              <!--END: ccIssueNumber-->
+              <li>
+                <input type="text" name="ff[id]_ocardcvv2" size="3" placeholder="CVV2" id="ff[id]_ocardcvv2">
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+            </ul>
+          </div>
+        </li>
+        <!--END: CCGATEWAY--> 
+        <!--START: AUTHNETCIMBLOCK-->
+        <li>
+          <input onclick="controlDivPayment('[id]CIM');" name="payment" type="radio" value="online-[id]-CIM" [firstoptionchecked] id="Radio8">
+          &nbsp;<span class="frmtxt">[payment_description]</span> <br />
+          <div id="divPaymentOption[id]CIM" name="divPaymentOptionCIM" style="display:none;">
+            <ul>
+              <!--START: authCIMBlock-->
+              <li>
+                <select name="authCIMProfileID" id="authCIMProfileID" placeholder="[checkout3_use-creditcard-on-file]">
+                  <!--START: authCIMPaymentProfileItem-->
+                  <option value="authCIMProfileID_[custProfId]_[custPmntProfId]_[authCIMProfileID_cardlastdigits]_[authCIMProfileID_cardexp]"> [checkout3_creditcard-last-digits]: [authCIMProfileID_cardlastdigits]
+                  / [CustomerInfo_creditexpiration]: [authCIMProfileID_cardexp] </option>
+                  <!--END: authCIMPaymentProfileItem-->
+                </select>
+              </li>
+              <!--END: authCIMBlock-->
+            </ul>
+          </div>
+        </li>
+        <!--END: AUTHNETCIMBLOCK--> 
+        <!--START: MILITARYSTAR-->
+        <li>
+          <input type="hidden" value="1" name="ff[id]_isstarcard" id="ff[id]_isstarcard">
+          <input onclick="controlDivPayment('[id]');" name="payment" type="radio" value="online-[id]" [firstoptionchecked] id="Radio5">
+          &nbsp;<span class="frmtxt">[payment_description]</span> <br />
+          <div id="divPaymentOption[id]" class="frmtxt" name="divPaymentOption" style="display:none;"> [payment_description_message]<br />
+            <ul>
+              <li>
+                <input type="text" onchange="clearContent(this);" name="ff[id]_ocardno" size="30" id="ff[id]_ocardno">
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+            </ul>
+          </div>
+        </li>
+        <!--END: MILITARYSTAR--> 
+        <!--START: CHECKGATEWAY-->
+        <li>
+          <input onclick="controlDivPayment('[id]');" name="payment" type="radio" value="online-[id]" [firstoptionchecked] id="payment">
+          &nbsp;<span class="blktxt">[payment_description]</span> <br />
+          <div id="divPaymentOption[id]" name="divPaymentOption" style="display:none;"> [payment_description_message]<br />
+            <ul>
+              <li>
+                <select name="ff[id]_ochecktype" placeholder="[CustomerInfo_check-type]" id="ff[id]_ochecktype">
+                [checktypelist]
+                </select>
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+              <li>
+                <select name="ff[id]_ocheckaccttype" placeholder="[CustomerInfo_check-acct-type]" id="ff[id]_ocheckaccttype">
+                [checkaccttypelist]
+                </select>
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+              <li>
+                <input type="text" name="ff[id]_ocheckrouting" maxlength="9" size="10" placeholder="[CustomerInfo_check-routing]" id="ff[id]_ocheckrouting">
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+              <li>
+                <input type="text" name="ff[id]_ocheckaccount" maxlength="30" size="10" placeholder="[CustomerInfo_check-acct]" id="ff[id]_ocheckaccount">
+                <img src="../assets/templates/common/images/error2.gif" width="12" height="12"> </li>
+            </ul>
+          </div>
+        </li>
+        <!--END: CHECKGATEWAY--> 
+        <!--START: LINKGATEWAY-->
+        <li>
+          <input onclick="controlDivPayment('[id]');" name="payment" type="radio" value="online-[id]" [firstoptionchecked]>
+          &nbsp;<span class="frmtxt">[payment_description]</span> <br />
+          <div id="divPaymentOption[id]" name="divPaymentOption" style="display:none;"> [payment_description_message]<br />
+            <info>Pay [payment_description]</info>
+          </div>
+        </li>
+        <!--END: LINKGATEWAY--> 
+        <!--START: CUSTOM-->
+        <li>
+          <input onclick="controlDivPayment('[id]');" name="payment" type="radio" value="offline-[id]" [firstoptionchecked] id="payment">
+          &nbsp;<span class="frmtxt">[payment_type]</span> <br />
+          <div id="divPaymentOption[id]" name="divPaymentOption" style="display:none;" class="blktxt"> [payment_description] <br />
+            [payment_type]<br />
+            <ul>
+              <!--START: CUSTOM_FIELD-->
+              <li>
+                <div class="frmtxt">[InputName]</div>
+                <br />
+                <div class="frmtxt">[field]</div>
+              </li>
+              <!--END: CUSTOM_FIELD-->
+            </ul>
+          </div>
+        </li>
+        <!--END: CUSTOM-->
+      </ul>
+    </div>
+    <!--END: PAYMENT_BLOCK--> 
+  </div>
+  <!--START: checkout_questions-->
+  <div id="divCheckoutQuestion">
+    <h6>[checkout1_checkoutquestions]</h6>
+    <ul>
+      <li> 
+        <!--START: questions--> 
+        <span class="frmtxt">[questions]</span> 
+        <!--END: questions--> 
+      </li>
+    </ul>
+  </div>
+  <!--END: checkout_questions-->
+  <div id="divComments">
+    <h6>[checkout3_Header-comment]</h6>
+    <ul>
+      <li>
+        <div class="blktxt"> [checkout3_commentmessage]</div>
+        <br />
+        <textarea onchange="clearContent(this);" name="ocomment" cols="35" rows="5" id="ocomment" placeholder="comments" ></textarea>
+        <br />
+        <div id="divCheckout" name="divCheckout" style="width:80%;display:none;background:#ffffff;border:0px solid black;text-align:center;padding:10px;"> <br />
+          Processing... </div>
+        <div class="right"><a href="#" onclick="doCheckout(document.billing);"><img src="images/btn-checkout.png" border="0" /></a></div>
+      </li>
+    </ul>
+  </div>
+  <!--START: CATEGORY_FOOTER-->
+  <div id="divCategoryFooter"> [CONTENT] </div>
+  <!--END: CATEGORY_FOOTER-->
+  </div>
+</form>
+<script>
+	window.setTimeout('showHideShipping_init()',100);
+
+	function showHideShipping_init()
+	{
+		var objBody = getElementById_s('shipping_info');	
+		var intWidth = objBody.clientWidth;
+		if (intWidth == 0)
+			window.setTimeout('showHideShipping_init()',100);
+		else
+			showHideShipping();
+	}
+	 
+	initCountry("[billing_country]","[billing_state]","billing_state","billing_country");
+	if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null)
+		initCountry("[shipping_country]","[shipping_state]","shipping_state","shipping_country");
+	
+	//Every time that there's no state for a selected country, that script deletes the state control and creates another one.
+	//That's why we need to re-create the validation for the state.
+	var billingStateType = document.billing.billing_state.type;
+	if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null)
+		var shippingStateType = document.billing.shipping_state.type;
+	
+	function check_stateValidator(type)
+	{
+		if (type == 'billing')
+		{
+			if (document.billing.billing_state.type != billingStateType)
+			{
+				frmvalidator.addValidation("billing_state","req","Please enter/select your billing state");
+				frmvalidator.addValidation("billing_state","maxlen=50");
+				billingStateType = document.billing.billing_state.type;
+			}
+		}
+		else
+		{
+			if (document.billing.shipping_state.type != shippingStateType)
+			{
+				frmvalidator.addValidation("shipping_state","req","Please enter/select your shipping state");
+				frmvalidator.addValidation("shipping_state","maxlen=50");
+				shippingStateType = document.billing.shipping_state.type;
+			}		
+		}
+	}
+
+	function setValidation()
+	{
+		frmvalidator.clearAllValidations();
+		
+		frmvalidator.addValidation("billing_firstname","req","Please enter your billing First Name");
+		frmvalidator.addValidation("billing_firstname","maxlen=20","Max length for billing First Name is 20");
+
+		frmvalidator.addValidation("billing_lastname","req","Please enter your billing Last Name");
+		frmvalidator.addValidation("billing_lastname","maxlen=20","Max length for billing Last Name is 20");
+
+		frmvalidator.addValidation("billing_phone","maxlen=18","Max length for billing Phone is 18");
+		frmvalidator.addValidation("billing_phone","phone","Invalid phone number.");
+		frmvalidator.addValidation("billing_phone","req","Please enter your billing phone")
+
+		frmvalidator.addValidation("billing_address","maxlen=50");
+		frmvalidator.addValidation("billing_address","req","Please enter your billing address");
+
+		frmvalidator.addValidation("billing_city","maxlen=50");
+		frmvalidator.addValidation("billing_city","req","Please enter your billing city");
+
+		frmvalidator.addValidation("billing_state","req","Please enter/select your billing state");
+		frmvalidator.addValidation("billing_state","maxlen=50");
+
+		frmvalidator.addValidation("billing_zip","maxlen=15");
+		frmvalidator.addValidation("billing_zip","req","Please enter your billing zip code");
+		
+		<!--START: emailrequiredscript-->
+		frmvalidator.addValidation("billing_email","maxlen=50","Max length for Email is 50");
+		frmvalidator.addValidation("billing_email","req","Please enter your email address");
+		frmvalidator.addValidation("billing_email","email");		
+		<!--END: emailrequiredscript-->
+
+		<!--START: passwordrequiredscript-->
+		frmvalidator.addValidation("pass","maxlen=20");
+		frmvalidator.addValidation("pass","req","Please enter your new password (registration is required)");
+		<!--END: passwordrequiredscript-->
+				
+		frmvalidator.addValidation("billing_country","dontselect=0");
+				
+		if (get_Element('sameAsBilling') != 'undefined' && get_Element('sameAsBilling') != null)
+			if (!document.billing.sameAsBilling.checked)
+			{
+				frmvalidator.addValidation("shipping_firstname","req","Please enter your shipping First Name");
+				frmvalidator.addValidation("shipping_firstname","maxlen=20","Max length for shipping First Name is 20");
+
+				frmvalidator.addValidation("shipping_lastname","req","Please enter your shipping Last Name");
+				frmvalidator.addValidation("shipping_lastname","maxlen=20","Max length for shipping Last Name is 20");
+
+				frmvalidator.addValidation("shipping_phone","maxlen=18","Max length for shipping Phone is 18");
+				frmvalidator.addValidation("shipping_phone","phone","Invalid phone number.");
+				frmvalidator.addValidation("shipping_phone","req","Please enter your shipping phone")
+
+				frmvalidator.addValidation("shipping_address","maxlen=50");
+				frmvalidator.addValidation("shipping_address","req","Please enter your shipping address");
+
+				frmvalidator.addValidation("shipping_city","maxlen=50");
+				frmvalidator.addValidation("shipping_city","req","Please enter your shipping city");
+
+				frmvalidator.addValidation("shipping_state","req","Please enter/select your shipping state");
+				frmvalidator.addValidation("shipping_state","maxlen=50");
+
+				frmvalidator.addValidation("shipping_zip","maxlen=15");
+				frmvalidator.addValidation("shipping_zip","req","Please enter your shipping zip code");
+
+				frmvalidator.addValidation("shipping_country","dontselect=0");		
+			}
+			
+	}
+</script> 
+<script type="text/javascript" src="/assets/common/js/validator.js"></script> 
+<script language="javascript" type="text/javascript">
+    //You should create the validator only after the definition of the HTML form
+    var frmvalidator = new Validator("billing");
+    frmvalidator.EnableMsgsTogether();
+  </script> 
+
+<!------------------------------------------------------------------------------> 
+<!-- BEGIN TEMPLATES BLOCKS --> 
+<!------------------------------------------------------------------------------> 
+<!--START: addressType-->
+<div id="divAddressType">
+  <table>
+    <tr>
+      <td class="frmtxt">[CustomerInfo_address_type]&nbsp;</td>
+      <td><select name="shipping_addresstype" id="shipping_addresstype" class="txtBoxStyle" onchange="check_address('addresstype');">
+      [addressTypeDropDown]
+      </select></td>
+    </tr>
+  </table>
+</div>
+<!--END: addressType--> 
+<!--START: CARRIER-->
+<table width="100%" cellpadding="0" cellspacing="0" id="tblCarrier">
+  <tr>
+    <td colspan="5"><div name="divShipping[OPTION-SHIPPER]" id="divShipping[OPTION-SHIPPER]" class="ship">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" id="Table25">
+          <!--START: SHIPPING_OPTION-->
+          <tr>
+            <td><div align="right"></div></td>
+            <td align="left"><input type="radio" name="shipping" value="[ID]" [selected] id="radio_ship" onclick="select_shipping([ID]);"></td>
+            <td class="blktxt" align="left" width="200"><!--[OPTION-SHIPPER]--> 
+              [OPTION-DESCRIPTION]</td>
+            <td>&nbsp;</td>
+            <td class="blktxt" align="left">[OPTION-PRICE2]</td>
+          </tr>
+          <!--END: SHIPPING_OPTION-->
+        </table>
+      </div></td>
+  </tr>
+</table>
+<!--END: CARRIER--> 
+<!--START: checkout_questions_templates-->
+<div id="divCheckoutQuestions"> 
+  <!--START: textarea-format-->
+  <table>
+    <tr>
+      <td class="blktxt"><!--START: req[id]--> 
+        <img src="assets/templates/common/images/error2.gif" width="12" height="12" align="absmiddle"> 
+        <!--END: req[id]--> 
+        <strong>[question]</strong></td>
+    </tr>
+    <tr>
+      <td><textarea cols="30" rows="5" name="cq[id]" class="txtBoxStyle" id="Textarea1">[answer]</textarea></td>
+    </tr>
+  </table>
+  <!--END: textarea-format--> 
+  <!--START: text-format-->
+  <table id="Table8">
+    <tr>
+      <td align="right" class="frmtxt"><!--START: req[id]--> 
+        <img src="assets/templates/common/images/error2.gif" width="12" height="12" align="absmiddle"> 
+        <!--END: req[id]--> 
+        <strong>[question]</strong></td>
+      <td><input type="text" size="30" name="cq[id]" value="[answer]" class="txtBoxStyle"></td>
+    </tr>
+  </table>
+  <!--END: text-format--> 
+  <!--START: file-format-->
+  <table>
+    <tr>
+      <td align="right" class="frmtxt"><!--START: req[id]--> 
+        <img src="assets/templates/common/images/error2.gif" width="12" height="12" align="absmiddle"> 
+        <!--END: req[id]--> 
+        <strong>[question]</strong></td>
+      <td><input type="file" name="file[oname]" size="20" id="File1"></td>
+    </tr>
+  </table>
+  <!--END: file-format--> 
+  <!--START: checkbox-format-->
+  <table>
+    <tr>
+      <td><input type="checkbox" name="cq[id]" class="txtBoxStyle" value="[answer]" [selected] id="Checkbox2"></td>
+      <td align="right" class="frmtxt"><strong>[question]</strong></td>
+      <!--START: req[id]-->
+      <td><img src="assets/templates/common/images/error2.gif" width="12" height="12" align="absmiddle"></td>
+      <!--END: req[id]--> 
+    </tr>
+  </table>
+  <!--END: checkbox-format--> 
+  <!--START: radio-format-->
+  <table>
+    <tr>
+      <td align="right" class="frmtxt"><!--START: req[id]--> 
+        <img src="assets/templates/common/images/error2.gif" width="12" height="12" align="absmiddle"> 
+        <!--END: req[id]--> 
+        <strong>[question]</strong></td>
+      <td class="frmtxt"><!--START: option-->
+        <input type="radio" name="cq[id]" value="[option]" class="txtBoxStyle" [selected] id="Radio1">
+        [option]<br />
+        <!--END: option--></td>
+    </tr>
+  </table>
+  <!--END: radio-format--> 
+  <!--START: dropdown-format-->
+  <table>
+    <tr>
+      <td align="right" class="blktxt"><!--START: req[id]--> 
+        <img src="assets/templates/common/images/error2.gif" width="12" height="12" align="absmiddle"> 
+        <!--END: req[id]--> 
+        <strong>[question]</strong></td>
+      <td><select name="cq[id]" id="Select4">
+          <!--START: option-->
+          <option value="[option]" [selected]>[option]</option>
+          <!--END: option-->
+        </select></td>
+    </tr>
+  </table>
+  <!--END: dropdown-format--> 
+</div>
+<!--END: checkout_questions_templates--> 
+[FOOTER]
+</div>
+<script type="text/javascript" language="javascript">
+    initpage();
+</script>
+</body>
+</html>

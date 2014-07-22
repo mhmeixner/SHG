@@ -1,0 +1,819 @@
+﻿//General 4-Tell plug-in code for all sites
+//	NOTE: Do not edit this page! These are generic settings.
+//		All client and cart specific settings are controlled in a separate .js file
+//		Check the page header for name and location
+
+//make sure jQuery is defined
+//We use a Google CDN because if they've failed, most of the Internet's in flames, Europe's
+//sunk into the Med/North Sea/Atlantic, Asia's being attacked by giant robot monsters,
+//and the Americas are fighting the 3rd American revolution.
+if (typeof jQuery == 'undefined') {
+    document.write('<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>');
+    var __noconflict = true;
+}
+
+//make sure jQuery Tools is defined
+//No good way to find it; apparently it falls under jQuery's namespace.
+
+//make sure JSON lib is defined
+if (typeof JSON == 'undefined') {
+    document.write("<script type=\"text/javascript\" src=\"assets/templates/common/js/json2.js\"></" + "script>");
+    var __noconflict = true;
+}
+
+//Namespace for all 4-Tell code
+(function (_4TellBoost, $, undefined) {
+
+    // General 4-Tell Web Service Settings
+    _4TellBoost.Service = {
+        address: 'stage.4-tell.net/Boost2.0/',
+        pageType: 'Auto',
+        productList: new Array(),
+        productCount: 0,
+        cartList: new Array(),
+        cartCount: 0,
+        blockList: new Array(),
+        blockCount: 0,
+        customerId: '',
+        catId: '',
+        lastDivIDs: new Array() //used to make sure the same items are not in both divs
+    };
+
+    //Uses json2.js for the JSON parsing.
+    var UserData = {
+        data: {
+            UID: '', //User ID with whatever cart is being used.
+            RID: Math.floor(Math.random() * 1000000), //semi-random anonymous ID.
+            Viewed: new Array(5),
+            likes: new Array(),
+            dislikes: new Array()
+        },
+
+        // Load from cookie.
+        load: function () {
+            var the_cookie = document.cookie.split(';');
+            for (var i = 0; i < the_cookie.length; i++) {
+                var x = the_cookie[i].substr(0, the_cookie[i].indexOf("=")).replace(/^\s+|\s+$/g, "");
+                var y = the_cookie[i].substr(the_cookie[i].indexOf("=") + 1);
+                if (x === "4Tell") {
+                    this.data = JSON.parse(unescape(y));
+                }
+            }
+            //Block the dislikes when we load them.
+            for (i = 0; i < this.data.dislikes.length; i++) {
+                _4TellBoost.blockItem(this.data.dislikes[i]);
+            }
+            return this.data;
+        },
+
+        // Save to cookie. Put expires in the past to delete the cookie.
+        save: function (expires, path) {
+            var d = expires || new Date(2020, 02, 02);
+            var p = path || '/';
+            document.cookie = '4Tell=' + escape(JSON.stringify(this.data))
+                          + ';path=' + p
+                          + ';expires=' + d.toUTCString();
+        }
+    };
+    UserData.load();
+    UserData.save();
+
+    // Client Settings
+    //   This constructor initializes the site structure
+    //   See client/platform js file for custom settings
+    //
+    _4TellBoost.Site = function () {
+        this.baseURL = '';
+        this.alias = '';
+        this.GA_UA = ''; //supplying UA number here will override the tracking type
+        this.GATrackingType = 'none'; //valid types are 'none', 'pageTracker', '_gaq'
+        this.GATrackID = '4TellRecs';
+        this.rotateTopSellers = true;
+        this.addCartMethod = '';
+        this.addCartImage = '';
+        this.spacerImage = '';
+        this.addCartClass = 'addCartClass';
+        this.priceClass = '';
+        this.strikePriceClass = '';
+        this.salePriceClass = '';
+        this.pricePrefix = '';
+        this.salePricePrefix = '';
+        this.showLogo = true;
+        this.includeBase = false;
+        this.delay = false;
+
+        for (var n in arguments[0]) { this[n] = arguments[0][n]; } //allow passed args to override
+    };
+    _4TellBoost.SiteInfo = new _4TellBoost.Site();
+
+
+    // Page Settings
+    //   This constructor initializes the tout structures
+    //   See client/platform js file for custom settings
+    //
+    _4TellBoost.ToutSettings = function (toutNumber) {
+        var tout = this; //allow inner functions to access this tout's properties
+
+        this.id = toutNumber;
+        this.enable = false;
+        this.showCaption = true;
+        this.showImage = true;
+        this.showTitle = true;
+        this.showPrice = true;
+        this.showRatings = true;
+        this.showBuyButton = true;
+        this.setHeight = false; //calculate and set the height/width
+        this.setWidth = false;
+        this.maxImageHeight = 0; //fixed height to use in calculations
+        this.inFrame = false;
+        this.resultType = 0; //Cross-sell
+        this.numItems = 1;
+        this.startPos = 1;
+        this.orientation = ''; //vertical or horizontal
+        this.newDivID = '';
+        this.carousel = false;
+        this.circular = false;
+        this.divSelect = ''; // if class use '.' -- if id use '#'
+        this.divPosition = ''; //valid settings are 'append', 'replace', 'above', or 'below'
+        this.caption = 'Suggestions for you...'; // caption for div1
+        this.captionStyle = '';
+        this.productStyle = '';
+        this.productImageStyle = "productImage";
+        this.imageSize = ""; //query parameters appended to thumbnail request
+        this.wrapper = ''; //formatting html to wrap around the div
+        this.toutType = ''; //fill with pageType-resultType for GA tracking
+        if (this.id === 1)
+            this.callback = '_4TellBoost.displayTout1';
+        else
+            this.callback = '_4TellBoost.displayTout2';
+
+
+        this.setToutType = function (pageType) { //combine pageType and resultType for analytics
+
+            if (!tout.enable) return; //nothing to do
+
+            tout.toutType = pageType + '-';
+            switch (tout.resultType) {
+                case 0: //Cross-sell
+                    tout.toutType += 'Cross-sell';
+                    break;
+                case 1: //Personalized
+                    tout.toutType += 'Personalized';
+                    break;
+                case 2: //Blended
+                    tout.toutType += 'Blended';
+                    break;
+                case 3: //Similar
+                    tout.toutType += 'Similar';
+                    break;
+                case 4: //Top-sellers
+                    tout.toutType += 'Top-sellers';
+                    break;
+                default:
+                    tout.toutType += tout.resultType;
+                    break;
+            }
+        };
+
+        // Tout call-back display function
+        //   This controls the display of each tout on the page
+        //   It is not called directly by external code
+        //   Instead it is called by one of the two external call-backs below
+        //
+        this.displayDiv = function (data) {
+            var validItems = 0;
+            try {
+                // If the data is passed in then proceed
+                if (data) {
+                    if ((String(data).length > 0) && (String(data).substring(0, 5) === 'Error')) return;
+
+                    var lastDivLoaded = false;
+                    if (_4TellBoost.Service.lastDivIDs.length > 0) lastDivLoaded = true;
+
+                    //set the main container
+                    var this4TellContainer = '';
+                    var locations = $(tout.divSelect);
+                    if (!locations || !(locations.length))
+                        return; //unable to locate div
+
+                    //get the last match if more than one
+                    var location = null;
+                    $.each(locations, function () {
+                        location = $(this);
+                    });
+                    if (tout.divPosition === 'append')
+                        this4TellContainer = location;
+                    else
+                        this4TellContainer = $("<div id='" + tout.newDivID + "'></div>");
+
+                    //set the caption
+                    var thisCaption = '';
+                    if (tout.showCaption) {
+                        if (navigator.appName === 'Microsoft Internet Explorer')  //special handling for IE
+                            thisCaption = $("<div class='" + tout.captionStyle + " product4TCaptionIE'>" + tout.caption + "</div>");
+                        else
+                            thisCaption = $("<div class='" + tout.captionStyle + "'>" + tout.caption + "</div>");
+                        thisCaption.appendTo(this4TellContainer);
+                    }
+
+                    //get the items array
+                    var items = data['GetRecDisplayListResult'];
+                    if (!items || !items.length) return; //no results
+
+                    var frameTarget = '';
+                    if (tout.inFrame) frameTarget = "target='_parent' ";
+
+                    var siteProtocol = ('https:' === document.location.protocol) ? 'https://' : 'http://';
+                    var siteBase = siteProtocol + _4TellBoost.SiteInfo.baseURL + '/';
+                    var spacerImg = '';
+                    if (_4TellBoost.SiteInfo.includeBase)
+                        spacerImg = siteBase;
+                    spacerImg += _4TellBoost.SiteInfo.spacerImage;
+
+                    //items container
+                    var itemDiv = $('<div></div>');
+                    //inner container; the carousel scrolls on a div-by-div basis.
+                    var innerDiv = $('<div class="scrollGroup"></div>');
+
+                    // Loop through each product
+                    $.each(items, function (i, itemdata) {
+
+                        if (validItems >= tout.numItems) return false; //finished
+
+                        if (lastDivLoaded) {
+                            var found = false;
+                            for (var q = 0; q < _4TellBoost.Service.lastDivIDs.length; q++) {
+                                if (_4TellBoost.Service.lastDivIDs[q] === itemdata.productID) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (found)
+                                return true; //skip this item
+                        }
+                        else
+                            _4TellBoost.Service.lastDivIDs[validItems] = itemdata.productID;
+                        validItems++;
+
+                        // This is the main product container
+                        var prod = $("<div class='" + tout.productStyle + "' />");
+
+                        //construct page link
+                        var pageLink = '';
+                        if (_4TellBoost.SiteInfo.includeBase)
+                            pageLink = siteBase;
+                        pageLink += itemdata.pageLink;
+
+                        //setup onclick string
+                        var trackFunc = 'onclick="_4TellBoost.TrackClick(' + "'" + tout.toutType + "','" + itemdata.productID + "');" + '"';
+
+                        //product image
+                        if (tout.showImage) {
+                            // A wrapper for the image allows better size and position control
+                            var prodImage = $("<div class='" + tout.productImageStyle + "' />");
+                            var d = 'qv_img_' + itemdata.productID;
+                            var img = $("<img class='productImageImg'" +
+							' onmouseover="_4TellBoost.QVToggle(\'' + d + '\', true)"' +
+							' onmouseout="_4TellBoost.QVToggle(\'' + d + '\', false)"' + "/>");
+                            itemdata.imageLink = (itemdata.imageLink.match(/assets/)) ? itemdata.imageLink : "thumbnail.asp?file=/assets/images/default.jpg";
+                            img.attr("src", itemdata.imageLink + tout.imageSize);
+                            img.appendTo(prodImage);
+                            img.wrap("<a href='" + pageLink + "' " + frameTarget + trackFunc + ' ></a>');
+
+                            //Quick view, because we're taking over.
+                            var qvbutton = $('<div id="' + d + '" style="z-index:999;top:-26px;left:25%;width:80px;visibility:hidden;position:relative;float:none">' +
+							'<a class="qv" href="#top" onclick="_4TellBoost.TrackClick(\'' + tout.toutType + '\', \'' + itemdata.productID +
+							'\', undefined, true);"><img src="assets/images/default/quickshop.png" border="0"'
+                            + ' onmouseover="_4TellBoost.QVToggle(\'' + d + '\', true)"'
+                            + ' onmouseout="_4TellBoost.QVToggle(\'' + d + '\', false)"></a></div>');
+
+                            if (false && !tout.toutType.match("QuickView") && !tout.toutType.match('ViewCartQuick'))
+                                qvbutton.appendTo(prodImage);
+
+                            prodImage.appendTo(prod);
+                        }
+
+                        //product title
+                        if (tout.showTitle) {
+                            if (navigator.appName === 'Microsoft Internet Explorer')  //special handling for IE
+                                var prodTitle = $("<div class='" + tout.productTitleStyle + " productTitleIE'>" + itemdata.title + "</div>");
+                            else
+                                var prodTitle = $("<div class='" + tout.productTitleStyle + "'>" + itemdata.title + "</div>");
+                            prodTitle.appendTo(prod);
+                            prodTitle.wrap("<a class='home' href='" + pageLink + "' " + frameTarget + trackFunc + ' ></a>');
+                        }
+
+                        //product price
+                        if (tout.showPrice) {
+                            var priceClass = '';
+                            var price = '';
+                            var salePrice = '';
+                            if ((itemdata.salePrice)
+								&& (itemdata.salePrice !== "$0.00")
+								&& (itemdata.salePrice !== "$-1.00")
+								&& (itemdata.salePrice !== itemdata.price)) {
+                                //strike out the full price and add the sale price
+								    priceClass = _4TellBoost.SiteInfo.strikePriceClass;
+								    price = '<s>' + itemdata.price + '</s>';
+								    salePrice = _4TellBoost.SiteInfo.salePricePrefix + itemdata.salePrice;
+								}
+                            else {
+                                priceClass = _4TellBoost.SiteInfo.priceClass;
+                                price = _4TellBoost.SiteInfo.pricePrefix + itemdata.price;
+                                salePrice = '&nbsp';
+                            }
+                            $("<div class='" + priceClass + " productPrice'>" + price
+								+ "</div>").appendTo(prod);
+                            $("<div class='" + _4TellBoost.SiteInfo.salePriceClass
+								+ " productSalePrice'>" + salePrice + "</div>").appendTo(prod);
+                        }
+
+                        //product ratings
+                        if (tout.showRatings && itemdata.rating && (itemdata.rating !== "-1.0") && (itemdata.rating !== "NoEntry")) {
+                            var ratingLink = _4TellBoost.getRatingImage(itemdata.rating);
+                            if (ratingLink) {
+                                var ratingImageLink = '';
+                                if (_4TellBoost.SiteInfo.includeBase)
+                                    ratingImageLink = siteBase;
+                                ratingImageLink += ratingLink;
+                                var rating = $("<div class='ratingImage'/>");
+                                var img = $("<img class='ratingImageImg'/>");
+                                img.attr("src", ratingImageLink);
+                                img.appendTo(rating);
+                                rating.appendTo(prod);
+                            }
+                        }
+
+                        // buy-now button (add to cart)
+                        if (tout.showBuyButton) {
+                            var buyWrapper = $("<div class='productBuy' />");
+                            var buyBtn = $("<" + _4TellBoost.SiteInfo.addCartBtnAtts + " />");
+                            if (_4TellBoost.SiteInfo.addCartImage) {
+                                var buyBtnImage = '';
+                                if (_4TellBoost.SiteInfo.includeBase)
+                                    buyBtnImage = siteBase;
+                                buyBtnImage += _4TellBoost.SiteInfo.addCartImage;
+                                buyBtn.attr("src", buyBtnImage);
+                            }
+                            if (buyBtn)
+                                buyBtn.appendTo(buyWrapper);
+                            var newAddress = '';
+                            if (_4TellBoost.SiteInfo.includeBase)
+                                newAddress = siteBase;
+                            switch (_4TellBoost.SiteInfo.addCartMethod) {
+                                case 'VolusionCart':
+                                    newAddress += '/ShoppingCart.asp?ProductCode=' + encodeURI(itemdata.productID);
+                                    break;
+                                case '3dCartMoreDetails':
+                                    newAddress += itemdata.pageLink;
+                                    break;
+                                case '3dCartQuickCart':
+                                default:
+                                    newAddress += '/add_cart.asp?quick=1&item_id=' + encodeURI(itemdata.productID);
+                                    break;
+                            }
+                            //can't wrap with a-href in IE so add new address to the onclick handler
+                            buyBtn.click(function () {
+                                _4TellBoost.TrackClick(tout.toutType, itemdata.productID, newAddress);
+                            });
+
+                            buyWrapper.appendTo(prod);
+                        }
+
+                        // Insert the product into the main product container
+                        if (!tout.carousel || tout.numVis === 1) {
+                            prod.appendTo(itemDiv);
+                        } else {
+                            prod.appendTo(innerDiv);
+                            //do it like this to avoid fenceposts and an initial empty div.
+                            if ((innerDiv[0].children.length === tout.numVis) //innerDiv is full
+                            	|| (i === (items.length - 1))) { //or it's the last item
+                                //add filled div to the scrolling div
+                            	    innerDiv.appendTo(itemDiv);
+                            	    //create new div to fill.
+                            	    innerDiv = $('<div class="scrollGroup"></div>');
+                            	}
+                        }
+
+                    });
+
+                    if (validItems < 1) {
+                        this4TellContainer.remove();
+                        return;
+                    }
+                    //give the items div a unique id name for css
+                    itemDiv.attr('id', _4TellBoost.Service.pageType + "ItemWrapper" + tout.id);
+
+                    //Display the tout (needed before any size calculations are made)
+                    itemDiv.appendTo(this4TellContainer);
+                    if (tout.divPosition === 'below')
+                        this4TellContainer.insertAfter(location);
+                    else if (tout.divPosition === 'above')
+                        this4TellContainer.insertBefore(location);
+                    else if (tout.divPosition === 'replace') {
+                        this4TellContainer.insertBefore(location);
+                        location.remove();
+                    }
+                    if (tout.wrapper.length)
+                        this4TellContainer.wrap(tout.wrapper);
+
+                    //calculate heights and widths
+                    if (tout.carousel) {
+                        itemDiv.addClass("items");
+
+                        //add prev arrow before (check orientation)
+                        //add next arrow after (check orientation)
+                        //wrap items with scrollable div
+                        if (tout.orientation === 'vertical' && false) {
+                            itemDiv.before('<a class="prev browse up"></a>');
+                            itemDiv.after('<a class="next browse down"></a>');
+                            itemDiv.wrap('<div class="' + tout.scrollStyle + '" />');
+                            itemDiv.parent().scrollable({ vertical: true });
+                        } else {
+                            itemDiv.before('<a class="prev browse left"></a>');
+                            itemDiv.after('<a class="next browse right"></a>');
+                            itemDiv.wrap('<div class="' + tout.scrollStyle + '" />');
+                            itemDiv.parent().scrollable({ circular: tout.circular });
+                        }
+
+                        if (tout.numVis !== 1) {
+                            var prodDivs = itemDiv.children().children(); //should get product divs
+                            var grpWdth = tout.numVis * prodDivs.outerWidth(true);
+                            itemDiv.children().width(grpWdth);
+                            itemDiv.parent().width(grpWdth);
+                            //Allow for more than one thing in a grouping div.
+                        }
+                    }//End carousel code
+                    else {
+                        //calculate and set desired overall itemDiv height and/or width
+                        if (tout.setHeight) {
+                            var maxHeight = 0;
+                            var totalHeight = 0;
+                            var prodDivs = itemDiv.children();
+                            $.each(prodDivs, function () {
+                                var includeMargin = (tout.orientation === 'vertical');
+                                var thisHeight = $(this).outerHeight(includeMargin);
+                                var imgHeight = $(this).find('.productImageImg').outerHeight(false);
+                                if (imgHeight < tout.maxImageHeight)
+                                    thisHeight += (tout.maxImageHeight - imgHeight);
+                                //have to add max image height since they may not be loaded yet
+                                if (thisHeight > maxHeight) {
+                                    maxHeight = thisHeight;
+                                }
+                                if (tout.orientation === 'vertical') totalHeight += thisHeight;
+                                else totalHeight = maxHeight + 10;
+                            });
+                            itemDiv.height(totalHeight);
+                        }
+                        if (tout.setWidth) {
+                            var maxWidth = 0;
+                            var totalWidth = 0;
+                            var prodDivs = itemDiv.children();
+                            $.each(prodDivs, function () {
+                                var thisWidth = $(this).outerWidth(true);
+                                if (thisWidth > maxWidth) maxWidth = thisWidth;
+                                if (tout.orientation === 'vertical') totalWidth = maxWidth;
+                                else totalWidth += thisWidth;
+                            });
+                            itemDiv.width(totalWidth);
+                        }
+                        if (tout.orientation === 'horizontal') //if horizontal then hide extra items
+                            itemDiv.css('overflow', 'hidden');
+                    }
+
+                    if (_4TellBoost.SiteInfo.showLogo) { //powered by 4-Tell logo
+                        var poweredBy4T = $("<div/>");
+                        if (navigator.appName === 'Microsoft Internet Explorer') { //special handling for IE
+                            if (tout.orientation === 'horizontal') {
+                                //one more product div to fix IE bug
+                                var prod = $("<div class='product4T' style='background: none;'/>");
+                                var img = $("<img src='" + spacerImg
+											+ "' width='200px' height='1px' style='border: 0 !important;'/>");
+                                img.appendTo(prod);
+                                prod.appendTo(this4TellContainer);
+                            }
+                            poweredBy4T.attr("class", "product4T poweredByImage4T poweredByImage4Tie");
+                        } else
+                            poweredBy4T.attr("class", "product4T poweredByImage4T");
+
+                        // This is the image and gets wrapped by the link
+                        var logoImg4T = $("<img class='poweredByImageImg' />");
+                        logoImg4T.attr("src", siteProtocol + "www.4-tell.net/images/Poweredby4Tell.png");
+                        logoImg4T.appendTo(poweredBy4T);
+                        logoImg4T.wrap('<a href="http://www.4-Tell.com" target="_blank"></a>');
+
+                        poweredBy4T.appendTo(this4TellContainer);
+                    }
+
+                }
+            } catch (ex) { }
+        };
+    };
+
+    //Have to pull this out into its own function to avoid $ conflicts.
+    _4TellBoost.QVToggle = function (divID, visible) {
+        $("#" + divID).css('visibility', (visible ? "visible" : "hidden"));
+    };
+
+    // The following two touts are used to define display settings for up to two locations.
+    //   Page specific choices should be set in the get4TellPageSettings switch table
+    //   which is defined in the client specific settings
+    //
+    _4TellBoost.FirstTout = new _4TellBoost.ToutSettings(1);
+    _4TellBoost.SecondTout = new _4TellBoost.ToutSettings(2);
+
+
+    _4TellBoost.getPageSettings = function (pageType) { }; //placeholder...defined by Client specific settings
+    _4TellBoost.getRatingImage = function (rating) { }; //placeholder...defined by Client specific settings
+
+
+    // getServiceResults:
+    //   This function sets the parameters to pass to the 4-Tell Boost web service to retrieve
+    //   recommended product data. This function is called by get4TellRecommendations above
+    //
+    function getServiceResults(tout, productIDs, cartIDs, blockIDs, numResults) {
+        var operation = 'rest/GetRecDisplayList';
+        var ViewData = UserData.data.Viewed.slice(0, 5);
+
+        // Assemble the url to call
+        var query = '?clientAlias=' + _4TellBoost.SiteInfo.alias
+								+ '&productIDs=' + productIDs
+								+ '&cartIDs=' + cartIDs
+								+ '&blockIDs=' + blockIDs
+								+ '&att1IDs=' + _4TellBoost.Service.catId
+								+ '&customerID=' + _4TellBoost.Service.customerId
+								+ '&numResults=' + numResults
+								+ '&startPosition=' + tout.startPos
+								+ '&resultType=' + tout.resultType
+								+ '&format=json'
+								+ '&callback=' + tout.callback;
+
+        _4TellBoost.call4TellRest(operation, query);
+    };
+
+    // call4TellRest:
+    //   This function is a rest helper to form calls to the 4-Tell Boost web service
+    //
+    _4TellBoost.call4TellRest = function (operation, query) {
+        var jsonUrl = _4TellBoost.Service.address + operation + encodeURI(query);
+
+        // Call the service, passing the results to the callback function
+        (function () {
+            var forTell = document.createElement('script'); forTell.type = 'text/javascript'; forTell.async = true;
+            forTell.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + jsonUrl;
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(forTell, s);
+        })();
+    };
+
+
+    //External Functions
+
+    //Delay Handling (to allow rec call to occur after a page element finishes loading
+    //Can also be repurposed for other calls.
+    _4TellBoost.DelayHandler = {
+        selector: null,
+        element: null,
+        toutDiv: null,
+        callback: null,
+        params: null,
+        lastContents: "",
+        started: false,
+        delayStart: true,
+        ended: false
+    };
+
+    _4TellBoost.delayUntilLoaded = function (element) {
+        var selectedElement = $(element);
+        if (selectedElement && selectedElement.length) {
+            _4TellBoost.DelayHandler.element = selectedElement;
+            _4TellBoost.DelayHandler.lastContents = _4TellBoost.DelayHandler.element.html();
+        }
+        else
+            _4TellBoost.DelayHandler.selector = element;
+        if (!_4TellBoost.DelayHandler.delayStart) _4TellBoost.DelayHandler.started = true;
+
+        setInterval(function () {
+            if (_4TellBoost.DelayHandler.ended) return; //completed
+            if (!_4TellBoost.DelayHandler.element || !_4TellBoost.DelayHandler.element.length) { //selection not found yet
+                var selectedElement = $(_4TellBoost.DelayHandler.selector);
+                if (!selectedElement || !selectedElement.length)
+                    return; //still not found --wait and try again
+                _4TellBoost.DelayHandler.element = selectedElement;
+                _4TellBoost.DelayHandler.started = true;
+            }
+            var newContents = _4TellBoost.DelayHandler.element.html();
+            if (_4TellBoost.DelayHandler.lastContents != newContents) { //change detected
+                if (!_4TellBoost.DelayHandler.started) _4TellBoost.DelayHandler.started = true;
+                _4TellBoost.DelayHandler.lastContents = newContents;
+            }
+            else {
+                if (!_4TellBoost.DelayHandler.started) return; //still waiting
+                _4TellBoost.DelayHandler.ended = true; //changes completed
+                if (_4TellBoost.DelayHandler.callback)
+                    _4TellBoost.DelayHandler.callback.call();
+                if (_4TellBoost.DelayHandler.ended) {
+                    var params = _4TellBoost.DelayHandler.params;
+                    _4TellBoost.completeRecCall(params.pageType, params.productIDs, params.inCart);
+                }
+            }
+
+        }, 100); //check every 100ms
+    }
+
+    // getRecommendations:
+    //   This function sets the number and type of recommendations based on the type of page
+    //   where they will be displayed. Page specific settings are defined above.
+    //
+    _4TellBoost.getRecommendations = function (pageType, productIDs) {
+
+        // Page type can be passed in the call or pre-loaded into the global setting
+        if (pageType === 'Auto')
+            pageType = _4TellBoost.Service.pageType; //set by _4TellBoost.setPageType
+
+        //get rid of invalid id label like [catalog_ids]
+        if (productIDs.indexOf('[') > 0) productIDs = "";
+
+        //get page specific tout settings (see get4TellPageSettings above)
+        var inCart = false;
+        inCart = _4TellBoost.getPageSettings(pageType);
+
+        if (!_4TellBoost.FirstTout.enable && !_4TellBoost.SecondTout.enable) return; //nothing to do
+
+        if (_4TellBoost.SiteInfo.delay)
+            _4TellBoost.DelayHandler.params = { pageType: pageType, productIDs: productIDs, inCart: inCart };
+        else
+            _4TellBoost.completeRecCall(pageType, productIDs, inCart)
+    };
+
+    // completeRecCall:
+    //   Function to complete the recommendation call from getRecommendations above.
+    //	 this portion is split off so it can be delayed if needed to wait for other page elements to load
+    //
+    _4TellBoost.completeRecCall = function (pageType, productIDs, inCart) {
+        var userID = _4TellBoost.getCustomerID();
+        var cartIDs = '';
+        var blockIDs = '';
+
+        // Compile the list of product IDs
+        // IDs can be sent in the call or pre-loaded into the array
+        var pCount = _4TellBoost.Service.productCount;
+        if (pCount > 0) {
+            if (((pageType === 'Category') || (pageType === 'Search'))
+				&& (pCount > 4))
+                pCount = 4; //only use first 4 items for list results pages
+
+            var firstItem = true;
+            if (productIDs !== "") {
+                firstItem = false;
+            }
+            for (var i = 0; i < pCount; i++) {
+                if (firstItem) firstItem = false;
+                else productIDs += ',';
+                productIDs += _4TellBoost.Service.productList[i];
+            }
+        }
+
+        // Compile the list of cart items
+        if (_4TellBoost.Service.cartCount > 0) {
+            var firstItem = true;
+            for (var i = 0; i < _4TellBoost.Service.cartCount; i++) {
+                if (firstItem) firstItem = false;
+                else cartIDs += ',';
+                cartIDs += _4TellBoost.Service.cartList[i];
+            }
+        }
+        //on cart pages, use cart IDs directly instead of as influencers
+        if (inCart && (cartIDs !== '')) {
+            if (productIDs !== '')
+                productIDs += ',';
+            productIDs += cartIDs;
+            cartIDs = '';
+        }
+
+        // Compile the list of block items
+        if (_4TellBoost.Service.blockCount > 0) {
+            var firstItem = true;
+            for (var i = 0; i < _4TellBoost.Service.blockCount; i++) {
+                if (firstItem) firstItem = false;
+                else blockIDs += ',';
+                blockIDs += _4TellBoost.Service.blockList[i];
+            }
+        }
+
+        for (var i = 0; i < _4TellBoost.getDislikes().length; i++) {
+            blockIDs += ',';
+            blockIDs += _4TellBoost.getDislikes()[i];
+        }
+
+        var numResults = _4TellBoost.FirstTout.numItems + _4TellBoost.SecondTout.numItems; //get extra in case of overlap
+        if (_4TellBoost.FirstTout.carousel || _4TellBoost.SecondTout.carousel) {
+            numResults = 20; //Enough to avoid overlaps.
+        }
+        if (_4TellBoost.FirstTout.enable) {
+            getServiceResults(_4TellBoost.FirstTout, productIDs, cartIDs, blockIDs, numResults);
+        }
+        if (_4TellBoost.SecondTout.enable) {
+            getServiceResults(_4TellBoost.SecondTout, productIDs, cartIDs, blockIDs, numResults);
+        }
+    };
+
+    _4TellBoost.TrackClick = function (toutType, productID, newAddress, QVBool) {
+        if (_4TellBoost.SiteInfo.GA_UA.length > 0) {
+            window._gaq = window._gaq || [];
+            window._gaq.push(['_setAccount', _4TellBoost.SiteInfo.GA_UA]);
+            window._gaq.push(['_trackEvent', _4TellBoost.SiteInfo.GATrackID, toutType, productID]);
+        }
+
+        if (newAddress)
+            window.location = newAddress;
+        if (QVBool)
+            open_product('product.asp?lt_c=1&itemid=' + productID + '&qv=1&');
+    };
+
+    _4TellBoost.addProductID = function (id) {
+        if (!id || (id.substring(0, 1) === "[")) return;
+        _4TellBoost.Service.productList[_4TellBoost.Service.productCount] = id;
+        _4TellBoost.Service.productCount++;
+    };
+
+    _4TellBoost.getProductCount = function () {
+        return _4TellBoost.Service.productCount;
+    };
+
+    _4TellBoost.addCartItem = function (id) {
+        if (!id || (id.substring(0, 1) === "[")) return;
+        _4TellBoost.Service.cartList[_4TellBoost.Service.cartCount] = id;
+        _4TellBoost.Service.cartCount++;
+    };
+
+    _4TellBoost.addBlockItem = function (id) {
+        if (!id || (id.substring(0, 1) === "[")) return;
+        _4TellBoost.Service.blockList[_4TellBoost.Service.blockCount] = id;
+        _4TellBoost.Service.blockCount++;
+    };
+
+    _4TellBoost.setCatId = function (id) {
+        if (!id || (id.substring(0, 1) === "[")) return;
+        _4TellBoost.Service.catId = id;
+    };
+
+    _4TellBoost.setCustomerId = function (id) {
+        if (!id || (id.substring(0, 1) === "[")) return;
+        _4TellBoost.Service.customerId = id;
+        UserData.data.UID = id;
+        UserData.save();
+    };
+
+    _4TellBoost.getCustomerID = function () {
+        return (_4TellBoost.Service.customerId != null || _4TellBoost.Service.customerId != '') ? _4TellBoost.Service.customerId :
+               (UserData.data.UID != null || UserData.data.UID != '') ? UserData.data.UID : UserData.data.RID;
+    };
+
+    _4TellBoost.setPageType = function (pageType) {
+        if (!pageType)
+            return;
+        _4TellBoost.Service.pageType = pageType;
+        //Could have put this in addProductID, but that would result in more checks than we need.
+        //Also, productID is set before pageType on ProductDetail pages. The Right Thing would be to combine these two.
+        if (pageType == "ProductDetail") {
+            var lastViewed = Service.productList[Service.productCount - 1];
+            UserData.data.Viewed.unshift(lastViewed);
+        }
+    };
+
+    _4TellBoost.setItemCount = function (itemCount) { //total results for results list pages
+        if (!itemCount || (itemCount.substring(0, 1) === "[")) return;
+        _4TellBoost.Site.itemCount = itemCount;
+    };
+
+    //Here begin the cookie-based functions
+    _4TellBoost.likeItem = function (ID) {
+        userData.data.likes.push(ID);
+        UserData.save();
+    };
+
+    _4TellBoost.dislikeItem = function (ID) {
+        userData.data.dislikes.push(ID);
+        UserData.save();
+        //$(this).closest("div.product4T").remove();
+    };
+
+    _4TellBoost.getDislikes = function () {
+        return UserData.data.dislikes;
+    };
+
+    //Call-back Functions
+    // The following functions are exposed to display the recommendation touts.
+    // The separate call-back functions define which tout data to use.
+
+    _4TellBoost.displayTout1 = function (data) {
+        _4TellBoost.FirstTout.displayDiv(data);
+    };
+    _4TellBoost.displayTout2 = function (data) {
+        _4TellBoost.SecondTout.displayDiv(data);
+    };
+
+
+}(window._4TellBoost = window._4TellBoost || {}, jQuery));
+//self-invoked namespace that protects $ and undefined internally
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>[TITLE]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+[META]
+<script type="text/javascript" src="/assets/templates/common/js/utilities.js"></script>
+<link rel="StyleSheet" href="/assets/templates/[template]/css/[stylesheet]" type="text/css" media="screen">
+<link rel="StyleSheet" href="/assets/templates/common/js/tabs.css" type="text/css" media="screen">
+<script type="text/javascript" src="assets/templates/common/js/jquery.min.js"></script>
+<style type="text/css">
+body {
+	background: #ffffff;
+}
+tr {
+	text-align: left;
+}
+.view_cart_table {
+	width: 480px;
+	_width: 440px;
+	overflow: hidden;
+	white-space:nowrap;
+}
+</style>
+<script type="text/javascript">
+function close_modal() {
+	parent.jQuery.modal.close();
+}
+</script>
+</head><body>
+<div style="width:774px;height:auto;padding:10px;">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td colspan="2" align="left" class="checkout-headers">[viewcart_quick-header]</td>
+      <td align="right"><a href="#" onClick="close_modal();"><img src="assets/templates/common/images/close.png" border="0"></a></td>
+    </tr>
+    <tr>
+      <td colspan="3"><img src="assets/templates/common/images/spacer.gif" height="10" width="10"></td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top"><table border="0" cellpadding="4" cellspacing="0" width="480">
+          <tr>
+            <td class="titles2" style="padding:0px;"><table cellpadding="4" cellspacing="0" border="0">
+                <tr>
+                  <td class="titles2" align="left" width="280"><strong>[shoppingcart_items]</strong></td>
+                  <td class="titles2" align="right" width="100"><strong>[shoppingcart_quantity]</strong></td>
+                  <td class="titles2" align="right" width="100"><strong>[shoppingcart_price]</strong></td>
+                  <td class="titles2" align="right" width="100"><strong>[shoppingcart_total]</strong></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td height="1" colspan="6"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+          </tr>
+          <tr>
+            <td style="padding:0px;"><div style="max-height: 133px;overflow:auto;">
+                <table cellpadding="4" cellspacing="0" border="0">
+                  <!--START: SHOPPING_CART_ITEM-->
+                  <tr>
+                    <td width="280" height="60" valign="middle"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]&amp;maxx=55&amp;maxy=55" style="border: 1px solid #e7e7e7;" border="0"></a></td>
+                          <td style="padding-left: 3px;"><div style="width: 220px;white-space:nowrap;overflow:auto;"><a href="product.asp?itemid=[ITEM_CATALOGID]" target="_parent">[ITEM_NAME]</a></div>
+                            
+                            <!--START: itemoptions-->
+                            <div> <a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a>
+                              <div id=opt[ITEM_ID] name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div>
+                            </div>
+                            <!--END: itemoptions--></td>
+                        </tr>
+                      </table></td>
+                    <td valign="middle" class="item" align="right" width="50">[ITEM_QUANTITY]</td>
+                    <td valign="middle" class="item" align="right" width="100">[ITEM_PRICE]</td>
+                    <td valign="middle" class="item" align="right" width="100">[ITEM_SUBTOTAL]</td>
+                  </tr>
+                  <!--END: SHOPPING_CART_ITEM-->
+                </table>
+              </div></td>
+          </tr>
+          <tr>
+            <td colspan="4" align="right"><input type="button" value="[shoppingcart_updatecart]" onclick="parent.location.href='view_cart.asp';" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+          </tr>
+        </table></td>
+      <td valign="top"><img src="assets/templates/common/images/spacer.gif" width="12" height="1" alt=""></td>
+      <td align="center" valign="top" style="padding-top: 0px;"><table border="0" cellpadding="5" cellspacing="0" width="250">
+          <tr>
+            <td style="border: 1px solid #c0c0c0;"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="page_headers">[viewcart_quick-title]</td>
+                </tr>
+                <tr>
+                  <td class="checkout-headers">[viewcart_quick-itemsincart]</td>
+                </tr>
+                <tr>
+                  <td class="price-info" height="60">Subtotal: <span class="price">[CARTSUBTOTAL]</span></td>
+                </tr>
+                <tr>
+                  <td align="center"><input type="button" style="width:175px;" value="[viewcart_continue-shopping]"onclick="parent.location.href='[continue_url]';" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+                </tr>
+                <tr>
+                  <td align="center"><input type="button" style="width:175px;" onClick="parent.location.href='view_cart.asp';" value="[viewcart_checkout-button]" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td height="51" align="center">
+    </tr>
+    <tr>
+      <td colspan="3"><!--START: FEATURE_MENU-->
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="titles"><div style="width:100%;white-space:nowrap;overflow:hidden;">[viewcart_feature-header]</div></td>
+          </tr>
+          <tr>
+            <td class="alternative"><table border="0" cellspacing="0" cellpadding="5" width="100%" align="center" id="Table13">
+                <!--START: CATEGORY_ITEMS--> 
+                <!--START: ITEM_TEMPLATE_0-->
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td align="center"><a href="product.asp?itemid=[catalogid]" target="_parent"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=80&maxy=80" alt="[name]" border="0"></a></td>
+                  </tr>
+                  <tr>
+                    <td class="item" align="center" height="30"><a href="product.asp?itemid=[catalogid]" target="_parent">[name]</a></td>
+                  </tr>
+                  <tr>
+                    <td class="price-info" valign="top" align="center" height="40"><!--START: ITEMPRICE--> 
+                      <strong>[product_yourprice]?</strong><span class="price">[ITEMPRICE]</span> 
+                      <!--END: ITEMPRICE--> 
+                      <!--START: SALEPRICE-->
+                      <table cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td class="price-info" nowrap="nowrap"><strong>[product_yourprice]?</strong><s>[ITEMPRICE]</s></td>
+                        </tr>
+                        <tr>
+                          <td valign="top" nowrap="nowrap" class="price-info"><strong>[product_onsale]:?</strong><span class="price">[ITEMSALEPRICE]</span></td>
+                        </tr>
+                      </table>
+                      <!--END: SALEPRICE--></td>
+                  </tr>
+                </table>
+                <!--END: ITEM_TEMPLATE_0--> 
+                <!--END: CATEGORY_ITEMS-->
+              </table></td>
+          </tr>
+        </table>
+        <!--END: FEATURE_MENU--></td>
+    </tr>
+    <tr>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

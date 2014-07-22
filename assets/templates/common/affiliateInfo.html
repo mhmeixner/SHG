@@ -1,0 +1,128 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<table width="95%" cellpadding="0" cellspacing="10" align="center" border="0">
+	<tr>
+		<td class="page_headers" align="left" colspan="4">[affiliate_become-affiliate]</td>
+	</tr>
+	<tr>
+		<td colspan="4"><!--START: CATEGORY_HEADER-->
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data">&nbsp;[CONTENT]</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_HEADER-->
+		</td>
+	</tr>
+	<tr>
+		<td align="center"><table width"400" cellpadding="0" cellspacing="0">
+				<!--START: loginForm-->
+				<tr>
+					<td class="checkout-headers" colspan="2">[login_Header-login]</td>
+				</tr>
+				<tr>
+					<td align="center"><form action="login.asp?ordertracking=[otrack]&returnurl=register_affiliate.asp" method="post">
+							<table width="400" cellpadding="4" cellspacing="0" height="100" class="alternative">
+								<tr>
+									<td class="item" colspan="2">[login_Header-loginmessage]</td>
+								</tr>
+								<tr>
+									<td class="item" align="right"><strong>[CustomerInfo_email]:</strong></td>
+									<td><input type="text" size="30" name="email" value="" class="txtBoxStyle"></td>
+								</tr>
+								<tr>
+									<td align="right" class="item" ><strong>[CustomerInfo_password]:</strong></td>
+									<td><input type="password" autocomplete="off" size="12" name="password" class="txtBoxStyle"></td>
+								</tr>
+								<!--START: captcha-->
+								<tr>
+									<td class="item" align="right"><strong>[registration_verification]:</td>
+									<td class="item"><img src="admin/image_pw.asp?cache=[now]" border="0" width="148"> <br>
+										[registration_verification_message]<br>
+										<input type="text" name="randomWord" id="randomWord" autocomplete="off" value="" size="25" maxlength="30" class="txtBoxStyle">
+									</td>
+								</tr>
+								<!--END: captcha-->
+				                <!--START: recaptcha-->
+                                <tr>
+                                  <td class="item" align="right"><strong>[registration_verification]:</strong></td>
+					                <td class="item">
+                                        <script type="text/javascript">var RecaptchaOptions = { theme: '[recaptcha_theme]' };</script>
+                                        <script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k=[recaptcha_key]"></script>
+                                        <noscript>
+                                        <iframe src="//www.google.com/recaptcha/api/noscript?k=[recaptcha_key]" height="300" width="500" frameborder="0"></iframe><br>
+                                        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                                        <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+                                        </noscript>
+					                </td>
+				                </tr>
+				                <!--END: recaptcha-->
+								<tr>
+									<td>&nbsp;</td>
+									<td align="left"><input type="submit" value="[login_button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+									</td>
+								</tr>
+							</table>
+						</form></td>
+				</tr>
+				<tr>
+					<td class="checkout-headers" colspan="2">[registration_Header-createnewaccount]</td>
+				</tr>
+				<tr>
+					<td align="center"><table width="400" cellpadding="4" cellspacing="2" class="alternative">
+							<tr>
+								<td align="left" class="item" width="70%">[affiliate_create-account]</td>
+							</tr>
+							<tr>
+								<td align="left" class="item"><input type="button" value="[registration_button-createaccount]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="window.location='affiliateInfo.asp?action=register';">
+								</td>
+							</tr>
+						</table></td>
+				</tr>
+				<!--END: loginForm-->
+				<tr>
+					<td colspan="4"><!--START: continue-->
+						<br>
+						<table width="95%" cellspacing="0" cellpadding="2" border="0">
+							<tr>
+								<td align="left"><input type="button" value="Continue" onClick="javascript:location.href='register_affiliate.asp'" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+							</tr>
+						</table>
+						<!--END: continue--></td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td colspan="4"><!--START: CATEGORY_FOOTER-->
+			<br>
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data">[CONTENT]</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_FOOTER-->
+		</td>
+	</tr>
+</table>
+<script>
+function HighlightAll(theField) {
+	var tempval=eval("document."+theField);
+	tempval.focus();
+	tempval.select();
+	if (document.all&&copytoclip==1)
+	{
+		therange=tempval.createTextRange();
+		therange.execCommand("Copy");
+		window.status="Contents highlighted and copied to clipboard!";
+		setTimeout("window.status=''",1800);
+	}
+}
+</script>
+</body></html>
+

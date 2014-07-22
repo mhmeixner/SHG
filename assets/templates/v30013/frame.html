@@ -1,0 +1,292 @@
+<!-- //3dcart v2.2//frame.html//Rev. #1 10/31/2006-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[TITLE]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+[META]
+<script language="JavaScript" src="assets/templates/common/js/utilities.js" type="text/JavaScript"></script>
+<LINK REL="StyleSheet" HREF="assets/templates/[template]/css/[stylesheet]" TYPE="text/css" MEDIA="screen">
+<LINK REL="StyleSheet" HREF="assets/templates/common/js/tabs.css" TYPE="text/css" MEDIA="screen">
+</head>
+
+<body>
+<center>
+<table width="[screenwidth]" cellspacing="0" cellpadding="0" border="0" class="data">
+<tr><td colspan="2" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td background="assets/templates/[template]/images/logo.gif" width="413" height="114" align="center"><br><span class="store-name">[storename]</span><br><span class="store-slogan">[storeslogan]</span></td><td background="assets/templates/[template]/images/top_back.gif">&nbsp;</td><td background="assets/templates/[template]/images/top.gif" width="352" valign="top">
+<!--start menu table--><table width="420" cellpadding="0" cellspacing="0"><tr><td background="assets/templates/[template]/images/topmenu_left.gif"><img src="assets/templates/[template]/images/topmenu_left.gif"></td><td bgcolor="#263e3e"> <!--START: FRAME_MENU-->
+			 <table cellspacing="0" cellpadding="4" border="0">
+           <tr><td colspan="3"><img src="assets/templates/[template]/images/spacer.gif" height="4"></td></tr>
+			  <tr>
+               
+				
+			        <!--START: menuitems_view-->
+					<!--START: TOP_LINK_FORMAT-->
+					<td valign="middle">&nbsp;<a href="infopage.asp?page=[link_id]" class="menu" target="[link_target]">[link_name]</a>&nbsp;</td>
+					<!--END: TOP_LINK_FORMAT--> 
+					<!--END: menuitems_view--> 
+				<td><a href="view_cart.asp"><img src="assets/templates/[template]/images/shopping_cart.gif" alt="view cart" border="0"></a></td><td valign="middle"><a href="view_cart.asp" class="menu">Shopping Bag</a></td>
+			</tr>
+		
+          	 </table>
+			 <!--END: FRAME_MENU--></td><td background="assets/templates/[template]/images/topmenu_right.gif"><img src="assets/templates/[template]/images/topmenu_right.gif"></td></tr>
+<tr><td width="10"><img src="assets/templates/[template]/images/topmenu_cornerleft.gif"></td><td background="assets/templates/[template]/images/topmenu_bottom.gif"><img src="assets/templates/[template]/images/topmenu_bottom.gif"></td><td width="10"><img src="assets/templates/[template]/images/topmenu_cornerright.gif"></td></tr>
+</table><!--end menu_table--></td></tr></table>
+
+
+
+
+
+
+</td></tr>
+<tr><td colspan="2" background="assets/templates/[template]/images/menu.gif" height="43">
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td> <!--START: FRAME_MANUFACTURER-->	
+	
+	<TABLE width="90%" cellspacing="0" cellpadding="0" border="0">
+		<form name="mfg" id="mfg" method="get" action="search_groups.asp">	 
+			
+			<tr>
+	                <td class="menu-headers" align="center">&nbsp;[frame_manufacturer]</td>
+	            <td align="left" valign="middle" height="30">
+			<select name="manf" onChange="this.form.submit();"  style="width:150px;"  class="txtBoxStyle">
+				<option value=0 selected >Manufacturer</option>
+			<!--START: manufacturer_format-->
+				<option value=[mfgid]>[manufacturer]</option>
+			<!--END: manufacturer_format-->
+			</select>
+
+			</td></tr>
+					</form>
+			
+		</TABLE>
+	
+			 <!--END: FRAME_MANUFACTURER--></td><td align="right"> <!--START: FRAME_SEARCH-->
+	
+			<table width="180" cellspacing="5" cellpadding="0" border="0">
+			 	<form method="get" action="search.asp">
+				<tr>
+					<td class="menu-headers" colspan="2">[frame_search]</td>
+			
+					<td><input  type="text" size="17" name="keyword" class="txtBoxStyle"></td><td><input type="image" src="assets/templates/[template]/images/go.gif" name="search" value="GO"></td>
+				</tr>
+				</form>
+			</table>
+			
+			<!--END: FRAME_SEARCH--></td></tr></table>
+</td></tr>
+<tr>
+ <!--START: LEFT BAR-->
+<td background="assets/templates/[template]/images/left_back.gif" width="174" valign="top">
+ <!--START: FRAME_CATEGORY-->
+<table cellpadding="0" cellspacing="0" width="154"><tr><td colspan="3"><img src="assets/templates/[template]/images/cat_top.gif"></td></tr>
+<tr><td background="assets/templates/[template]/images/cat_left.gif"><img src="assets/templates/[template]/images/cat_left.gif"></td>
+<td bgcolor="#415f61" width="152">
+
+			 <table width="100%" cellspacing="3" cellpadding="0" border="0">
+	              <tr>
+	                <td class="menu-headers"><img src="assets/templates/[template]/images/tl_shop_our_collection.gif"></td>
+	              </tr>
+	            
+					<!--START: CATEGORIES-->
+					
+					<!--START: CATEGORY_FORMAT-->
+						<tr><td><a href="view_category.asp?cat=CATID" class="cat">&nbsp;&nbsp;<span class="icon">&raquo;&nbsp;</span>CATEGORY</a></td></tr>
+					<!--END: CATEGORY_FORMAT-->
+
+					<!--START: SUB_CATEGORY_FORMAT-->
+	        			<tr><td> <a href="view_category.asp?cat=CATID" class="cat">&nbsp;&nbsp;&nbsp;<span class="icon">&nbsp;&nbsp;-&nbsp;</span>CATEGORY</a></td></tr>
+	             	<!--END: SUB_CATEGORY_FORMAT-->
+			
+					<!--END: CATEGORIES-->
+			
+
+           </table>
+	
+
+
+</td><td background="assets/templates/[template]/images/cat_right.gif"><img src="assets/templates/[template]/images/cat_right.gif"></td></tr>
+	<tr><td colspan="3"><img src="assets/templates/[template]/images/cat_bottom.gif"></td></tr>
+</table><br>
+ <!--END: FRAME_CATEGORY-->
+  <!--START: FRAME_BYPRICE-->
+<table cellpadding="0" cellspacing="0" width="154"><tr><td colspan="3"><img src="assets/templates/[template]/images/cat_top.gif"></td></tr>
+<tr><td background="assets/templates/[template]/images/cat_left.gif"><img src="assets/templates/[template]/images/cat_left.gif"></td>
+<td bgcolor="#415f61" width="152">
+
+		
+
+		<TABLE width="100%" cellspacing="3" cellpadding="0" border="0">
+			 <tr>
+	                <td class="menu-headers"><img src="assets/templates/[template]/images/tl_shop_by_price.gif"></td>
+	              </tr>
+			
+				<!--START: byprice_format-->
+				<tr><td><a href="search_groups.asp?keyword=[id]&byprice=[id]" class="cat">&nbsp;&nbsp;<span class="icon">&raquo;&nbsp;</span>[title]</a></td></tr>
+				<!--END: byprice_format-->
+
+
+
+		</TABLE>
+			
+	
+
+
+</td><td background="assets/templates/[template]/images/cat_right.gif"><img src="assets/templates/[template]/images/cat_right.gif"></td></tr>
+	<tr><td colspan="3"><img src="assets/templates/[template]/images/cat_bottom.gif"></td></tr>
+</table><br>
+
+			 <!--END: FRAME_BYPRICE-->
+			 
+			 
+			  <!--START: TOP_SELLERS_BLOCK-->
+<table cellpadding="0" cellspacing="0" width="154"><tr><td colspan="3"><img src="assets/templates/[template]/images/cat_top.gif"></td></tr>
+<tr><td background="assets/templates/[template]/images/cat_left.gif"><img src="assets/templates/[template]/images/cat_left.gif"></td>
+<td bgcolor="#415f61" width="152">
+
+		
+
+	
+		
+		
+		 <table cellpadding="3" cellspacing="0" border="0">
+		 	<tr><td colspan="2"><img src="assets/templates/[template]/images/tl_bestsellers.gif"></td></tr>
+			<!--START: topsellers--> 
+			<tr><td><a href="product.asp?itemid=[catalogid]" class="cat"><img src="[thumbnail]" border="0" width="39" height="39" class="borders"></a></td><td align="left" class="menu-text">[name]</td></tr>
+			<!--END: topsellers-->								
+		</table>
+     
+			
+	
+
+
+</td><td background="assets/templates/[template]/images/cat_right.gif"><img src="assets/templates/[template]/images/cat_right.gif"></td></tr>
+	<tr><td colspan="3"><img src="assets/templates/[template]/images/cat_bottom.gif"></td></tr>
+</table>
+<br>
+			<!--END: TOP_SELLERS_BLOCK-->
+			
+			   <!--START: NEW_RELEASES_BLOCK-->
+<table cellpadding="0" cellspacing="0" width="154"><tr><td colspan="3"><img src="assets/templates/[template]/images/cat_top.gif"></td></tr>
+<tr><td background="assets/templates/[template]/images/cat_left.gif"><img src="assets/templates/[template]/images/cat_left.gif"></td>
+<td bgcolor="#415f61" width="152">
+
+		
+
+	
+  
+		 <table width="100%" cellpadding="3" cellspacing="0" border="0">
+	       <tr><td class="menu-headers" colspan="2"><img src="assets/templates/[template]/images/tl_new_releases.gif"></td></tr>
+			<!--START: newreleases--> 
+			<tr><td align="center"><a href="product.asp?itemid=[catalogid]"><img src="[thumbnail]" border="0" alt="[name]"></a></td></tr><tr><td align="center"><a href="product.asp?itemid=[catalogid]" class="cat">[id] [name]</a></td></tr>
+			<!--END: newreleases-->	
+									
+		</table>
+    
+			
+	
+
+
+</td><td background="assets/templates/[template]/images/cat_right.gif"><img src="assets/templates/[template]/images/cat_right.gif"></td></tr>
+	<tr><td colspan="3"><img src="assets/templates/[template]/images/cat_bottom.gif"></td></tr>
+</table>
+    <!--END: NEW_RELEASES_BLOCK-->
+			 
+	<!--START: LEFT_BANNER-->
+		 <table width="154"  cellspacing="0" cellpadding="4" border="0">
+	              <tr>
+        	        <td align="center">[LEFT_BANNER]</td>
+	              </tr>
+		</table>
+
+	<!--END: LEFT_BANNER-->
+			 
+			 
+	
+</td>
+ <!--END: LEFT BAR-->
+<td valign="top" width="100%" align="center" style="padding-top:5; padding-right:5; padding-left:5;">MIDDLE</td></tr>
+<tr><td colspan="2" height="10" bgcolor="#142121">&nbsp;</td></tr>
+<tr><td colspan="2" background="assets/templates/[template]/images/menu.gif" height="43">
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td><!--START: FRAME_LINKS-->
+		    <table cellspacing="0" cellpadding="2" border="0">
+
+
+			  <tr>
+              
+				<!--START: LINKS-->
+				
+				<!--START: LINK_FORMAT-->
+				<td><span class="icon">&nbsp;|&nbsp;</span><a href="infopage.asp?page=[link_id]&extra=1" class="menu">[link_name]</a></td>
+				<!--END: LINK_FORMAT-->
+	
+				<!--END: LINKS-->
+			
+              </tr>
+
+			</table>
+	<!--END: FRAME_LINKS--></td><td><!--START: FRAME_MAILLIST-->
+
+			    <table width="250" cellspacing="0" cellpadding="4" border="0">
+        	      <form method="post" name="mailing" action="mailing_list.asp?action=add" onSubmit="return mailing_list();">
+
+
+					<tr>
+                 
+                  		<td class="menu-headers">&nbsp;[frame_mailinglist]</td>
+    	        	
+					<td><input type="text" size="16" name="email" class="txtBoxStyle"></td><td align="left"><input type="image" src="assets/templates/[template]/images/go.gif" name="www" value="[mailinglist_button]"></td>
+				   
+					<td  class="menu-text" colspan="2"><input type="hidden" name="subscribe" value="1" checked></td>
+					</tr>
+
+           		</form>
+				</table>
+				
+	<!--END: FRAME_MAILLIST-->
+</td></tr></table>
+
+</td></tr>
+
+</table>
+<table>
+	<tr><td align="center"><span class="footer">[GLOBAL_FOOTER]</span>  </td></tr>
+    <tr><td align="center" class="footer">[frame_copyright1]</td></tr>
+    </table>
+</center>
+
+<!--START: 3dcart stats-->
+
+<script type="text/javascript" language="JavaScript">
+
+var file='/stats/count.asp';
+
+var stats_d=new Date(); 
+var stats_s=stats_d.getSeconds(); 
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';} 
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';} 
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; stats_h=screen.height; 
+stats_v=navigator.appName; 
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width=1 height=1 border=0>');
+</script>
+</a>
+<noscript>
+<img src="/stats/count.asp" width=90 height=30 border=0>
+</noscript>
+<!--END: 3dcart stats-->
+
+
+</body>
+</html>

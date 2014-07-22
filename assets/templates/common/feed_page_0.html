@@ -1,0 +1,92 @@
+
+<table cellpadding="4" cellspacing="0" border="0" width="98%">
+	<!--START: BODY_HEADER-->
+	<tr>
+		<td class="data">[PAGE_FULLLINE]</td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+	<tr>
+		<td class="page_headers">[htmlpage]</td>
+	</tr>
+	<!--END: BODY_HEADER-->
+	<tr>
+		<td><!--START: SUB_PAGES-->
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<!--START: SUB_PAGES_FORMAT-->
+				<tr>
+					<td class="data"> - <a href="infopage.asp?page=[id]&extra=[extra]">[sub_pages_title]</a> </td>
+				</tr>
+				<!--END: SUB_PAGES_FORMAT-->
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<!--END: SUB_PAGES-->
+		</td>
+	</tr>
+	<tr>
+		<td class="data">[content]</td>
+	</tr>
+	<tr>
+		<td><table cellpadding="0" cellspacing="0" border="0" width="100%">
+				<!--START: feedblock-->
+				<tr>
+					<td><table cellpadding="4" cellspacing="0" border="0" width="100%" class="alternative">
+							<tr class="titles">
+								<td width="70%">&nbsp;[feed_title]</td>
+								<td align="right">&nbsp;[feed_created] &nbsp;by&nbsp;
+									<!--START: feed_author-->
+									[feed_author]
+									<!--END: feed_author--></td>
+							</tr>
+							<tr>
+								<td align="left" class="data" colspan="2">[feed_shortdescription]</td>
+							</tr>
+							<!--START: feed_description-->
+							<tr class="alternative">
+								<td align="right" class="data" colspan="2"><a href="[feedlink]">[feeds_morelink]</a></td>
+							</tr>
+							<!--END: feed_description-->
+						</table></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<!--END: feedblock-->
+			</table></td>
+	</tr>
+	<tr>
+		<td><!--START: PAGING-->
+			<table width="100%">
+				<tr align="center">
+					<td class="font2"> [category_moreresults]&nbsp;
+						<!--START: PREV-->
+						<font size="1"><a href="infopage.asp?page=[id]&extra=[extra]&pagenum=[prev]">[category_previouspage]</a></font>&nbsp;
+						<!--END: PREV-->
+						<!--START: PAGES-->
+						<!--START: FIRST_PAGE-->
+						<font size="1"><a href="infopage.asp?page=[id]&extra=[extra]&pagenum=PAGE"><b>[PAGE]</b></a>...</font>
+						<!--END: FIRST_PAGE-->
+						<!--START: PAGES_SELECTED-->
+						<font size="1"><b>[PAGE]</b></font>
+						<!--END: PAGES_SELECTED-->
+						<!--START: PAGES_NOTSELECTED-->
+						<a href="infopage.asp?page=[id]&extra=[extra]&pagenum=PAGE"><font size="1">PAGE</font></a>
+						<!--END: PAGES_NOTSELECTED-->
+						<!--START: LAST_PAGE-->
+						<font size="1">...<a href="infopage.asp?page=[id]&extra=[extra]&pagenum=PAGE"><b>[PAGE]</b></a></font>
+						<!--END: LAST_PAGE-->
+						<!--END: PAGES-->
+						<!--START: NEXT-->
+						&nbsp;<font size="1"><a href="infopage.asp?page=[id]&extra=[extra]&pagenum=[next]">[category_nextpage]</a></font>
+						<!--END: NEXT-->
+					</td>
+				</tr>
+			</table>
+			<!--END: PAGING-->
+		</td>
+	</tr>
+</table>
+

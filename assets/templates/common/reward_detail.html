@@ -1,0 +1,75 @@
+
+<table width="95%" cellpadding="0" cellspacing="0" align="center" border="0">
+	<tr>
+		<td class="page_headers" align="left">[rewards_details-detail] </td>
+		<!--START: myAccount-->
+		<td valign="middle" align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a>&nbsp;<a href="myaccount.asp">back to my account</a></td>
+		<!--END: myAccount-->
+	</tr>
+	</tr>
+	
+	<tr>
+		<td colspan="3"><!--START: CATEGORY_HEADER-->
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="data">[CONTENT]</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_HEADER-->
+			<!--START: rewards-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td colspan="2"><table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+							<tr>
+								<td width="25%" class="titles2">[rewards_details-header-date]</td>
+								<td width="15%" class="titles2">[rewards_details-header-points]</td>
+								<td width="60%" class="titles2">[rewards_details-header-reference]</td>
+							</tr>
+							<!--START: rewardsNoDetail-->
+							<tr class="alternative">
+								<td class="item" colspan="3" align="center">[rewards_details-nohistory]</td>
+							</tr>
+							<!--END: rewardsNoDetail-->
+							<!--START: rewardsDetail-->
+							<tr class="alternative">
+								<td class="item">[rwdDate]</td>
+								<td class="item">[rwdPoints]</td>
+								<td class="item"><!--START: orderLink-->
+									<a href="ordertracking.asp?action=view&id=[orderid]">
+									<!--END: orderLink-->
+									[rwdReference]</a></td>
+							</tr>
+							<!--END: rewardsDetail-->
+							<!--START: rewardsTotal-->
+							<tr class="alternative">
+								<td class="titles2">[rewards_details-header-pointsAvailable]</td>
+								<td class="titles2" colspan="2">[rwdTotalPoints]</td>
+							</tr>
+							<!--END: rewardsTotal-->
+						</table>
+						<br>
+					</td>
+				</tr>
+				<tr>
+					<td><input name="button222" type="button" class="btn" onclick="window.location='redeem.asp';"
+							value="[account_rewards-header-redeem]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table>
+			<!--END: rewards-->
+			<!--START: CATEGORY_FOOTER-->
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data">[CONTENT]</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_FOOTER-->
+		</td>
+	</tr>
+</table>
+

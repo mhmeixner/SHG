@@ -1,0 +1,293 @@
+ <!--START: CATEGORY_HEADER-->              
+  <table width="98%" cellspacing="0" cellpadding="2" border="0">
+    <tr> 
+		<td class="font2">&nbsp;[CONTENT]</td>
+    </tr>
+  </table>
+ <!--END: CATEGORY_HEADER-->
+
+
+
+  <form action="checkout2_multiple.asp?step=2" method="post" name="recalculate">
+  <table width="95%" cellpadding="0"  cellspacing="0">
+ 
+  <tr><td align="right" colspan="4"><input type="button" value="Back" onclick="document.location.href='checkout.asp?step=1';" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="[checkout1_addaddresses]" onclick="document.location.href='myaccount.asp?action=addresses';" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td></tr>
+
+<tr>
+
+
+                              <td class="titles2" align="left" colspan="2"><strong>&nbsp;[shoppingcart_items]</strong></td>
+
+                              <td width="115" class="titles2" align="left"><strong>&nbsp;&nbsp;&nbsp;&nbsp;[shoppingcart_quantity]</strong></td>
+                              <td width="170" class="titles2"><div align="left"><strong>[shoppingcart_shipto]</strong></div></td>
+                            </tr>
+							<tr><td height="1" colspan="6" class="borders2"><img src="assets/images/spacer.gif" height="1"></td></tr>
+                        
+                      <!--START: SHOPPING_CART_ITEM-->
+                  
+<tr> 
+                              <td width="20"><a href="product.asp?itemid=[ITEM_CATALOGID]" target="_blank"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40"></a></td>
+                              <td class="item"><a href="product.asp?itemid=[ITEM_CATALOGID]" target="_blank">[ITEM_NAME]</a><!--START: itemoptions--><br><a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a><br><div id=opt[ITEM_ID] name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div><!--END: itemoptions--></td>
+                              <td class="item" align="left"><input  type="text" name="qtyitemnum" value="[ITEM_QUANTITY]" size="3" maxlength="5"><input  type="hidden" name="coliditemnum" value="[ITEM_ID]" size="3" maxlength="5"></td>
+                              <td class="item" align="left">
+
+<select name="address_iditemnum" class="txtBoxStyle">
+[abdropdown]
+</select>
+
+</td>
+                            </tr>     
+							<tr><td height="1" colspan="6" class="borders2"><img src="assets/images/spacer.gif" height="1"></td></tr>          
+                  
+                      <!--END: SHOPPING_CART_ITEM-->
+						<tr><td align="right" colspan="4"><br /><input type="submit" value="[checkout1_submitbutton]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td></tr>
+                    </table>
+				
+				
+
+					
+					
+
+					</form>
+
+
+
+					
+				
+
+	 <!--START: CATEGORY_FOOTER-->              
+		  <table width="95%" cellspacing="0" cellpadding="2" border="0">
+		    <tr> 
+				<td  class="font2">[CONTENT]</td>
+		    </tr>
+		  </table>
+		 <!--END: CATEGORY_FOOTER--> 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[store_name]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<body>
+<table width="621" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="40" rowspan="6"></td>
+    <td colspan="2"><!--START: invoicelogo-->
+      <img src="[store_url]/[invoicelogo]">
+      <!--END: invoicelogo-->
+    </td>
+    <td valign="bottom"><div align="right">Phone: [phone1]<br>
+        <a href="mailto:[email]">[email]</a></div></td>
+  </tr>
+  <tr>
+    <td colspan="3"><hr color="#000000" size="thin"></td>
+  </tr>
+  <tr>
+    <td height="40" colspan="3"><strong>Gift Registry - Order Confirmation</strong></td>
+  </tr>
+  <tr>
+    <td colspan="3"><p>[ofirstname] [olastname],<br>
+        <br>
+        This email confirms that a order was received at [store_name] and it has one or more items from your Gift Registry.
+        Contact us if you have any questions about this order.<br>
+        <br>
+        Thanks for using [store_name].</p></td>
+  </tr>
+  <tr>
+    <td colspan="3"> </td>
+  </tr>
+  <tr>
+    <td colspan="3"> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td width="275"><strong>Order Information</strong></td>
+    <td width="30"></td>
+    <td width="275"><strong>Additional Information </strong></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><hr color="#000000" size="thin"></td>
+    <td></td>
+    <td><hr color="#000000" size="thin"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><strong>Order Summary</strong></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"></td>
+  </tr>
+  <!--START: shipment-->
+  <tr>
+    <td></td>
+    <td colspan="3"><hr color="#000000" size="thin"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="4"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+          <td width="70%" valign="top"><strong>Shipping To:</strong> [oshipfirstname] [oshiplastname]
+            <!--START: oshipcompany-->
+            [oshipcompany]
+            <!--END: oshipcompany-->
+            <br>
+            [oshipcity], [oshipstate] - [oshipcountry]
+			<!--START: oshippeddate--><br>
+			<strong>Shipped Date</strong>: [oshippeddate]<!--END: oshippeddate-->			 </td>
+          <td width="30%" valign="top"><strong>Shipping Method</strong><br>
+             [oshipmethod]<br>
+            <!--START: trackingcode-->
+            <strong>Tracking Number</strong><br>
+             <a href="[store_url]/shiptracking.asp?trackno=[trackingcode]">[trackingcode]</a>
+            <!--END: trackingcode-->
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+  <!--END: shipment-->
+  <!--START: product-->
+  <tr>
+    <td></td>
+    <td colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="10" id="Table3">
+        <tr>
+          <td width="9%"><!--START: thumbnail-->
+            <img src="[store_url]/[thumbnail]">
+            <!--END: thumbnail--></td>
+          <td width="46%"><span>[itemid] [itemname]</span></td>
+          <td width="23%"><div align="left">[unitprice] x [numitems] </div></td>
+          <td width="22%"><div align="right"><strong>[itemsubtotal]</strong></div></td>
+        </tr>
+      </table></td>
+  </tr>
+  <!--END: product-->
+  <tr>
+    <td></td>
+    <td colspan="3"><hr color="#000000" size="thin"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><div align="right"><strong>Subtotal: </strong>[osubtotal]<br>
+        <b>Discount:</b> [totaldiscounts]<br>
+        <b>Shipping:</b> [oshipcost]<br>
+        <b>Sales Tax:</b> [otax]<br>
+        <b>Total:</b> [orderamount] </div></td>
+  </tr>
+  <!--START: discount_block-->
+  <tr>
+    <td></td>
+    <td colspan="3"> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><strong>Discounts / Promotions / Gift Certificates</strong></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><hr color="#000000" size="thin"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><!--START: discounts-->
+      [promotion_name] - [discount_amount] <br>
+      <!--END: discounts-->
+    </td>
+  </tr>
+  <!--END: discount_block-->
+  <!--START: checkoutquestions_block-->
+  <tr>
+    <td></td>
+    <td colspan="3"> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><strong>Checkout Questions</strong></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><hr color="#000000" size="thin"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><!--START: checkoutquestions1-->
+      <!--START: question1-->
+      [question]:  [answer] <br />
+      <!--END: question1-->
+      <!--END: checkoutquestions1-->
+      <!--START: checkoutquestions2-->
+      <!--START: question2-->
+      [question]:  [answer] <br />
+      <!--END: question2-->
+      <!--END: checkoutquestions2-->
+      <!--START: checkoutquestions3-->
+      <!--START: question3-->
+      [question]:  [answer] <br />
+      <!--END: question3-->
+      <!--END: checkoutquestions3-->
+    </td>
+  </tr>
+  <!--END: checkoutquestions_block-->
+  <tr>
+    <td></td>
+    <td colspan="3"><hr color="#000000" size="thin"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="3"><table width="100%"><tr><td width="30%">
+	[store_name]</td>
+    <td></td>
+    <td width="67%"><div align="right">[address1] [address2] [city], [state] [zip] <br>
+        Phone: [phone1]</div>
+		</td></tr></table>
+		
+		</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,1133 @@
+<script src="prototype.js" language="javascript" type="text/javascript"></script>
+
+<style>
+#simplemodal-overlay {background-color:#000;}
+</style>
+
+<script type="text/javascript">
+	if (typeof jQuery == 'undefined') {
+		document.write("<script type=\"text/javascript\" src=\"assets/templates/common/js/jquery.min.js\"></" + "script>");
+	}
+
+	function do_act()
+	{
+		//return true;
+	}
+
+	function copy_ship_info()
+	{
+
+		if (!(document.billing.check1.checked)) {
+			document.billing.billing_firstname.value = "";
+			document.billing.billing_lastname.value = "";
+			document.billing.billing_company.value = "";
+			document.billing.billing_address.value = "";
+			document.billing.billing_address2.value = "";
+			document.billing.billing_city.value = "";
+			document.billing.billing_phone.value = "";
+			document.billing.billing_zip.value = "";
+		}
+		else {
+			document.billing.billing_firstname.value = "[shipping_firstname]";
+			document.billing.billing_lastname.value = "[shipping_lastname]";
+			document.billing.billing_company.value = "[shipping_company]";
+			document.billing.billing_address.value = "[shipping_address]";
+			document.billing.billing_address2.value = "[shipping_address2]";
+			document.billing.billing_city.value = "[shipping_city]";
+			document.billing.billing_phone.value = "[shipping_phone]";
+
+			country_object = "document.billing.billing_country";
+			state_object = "document.billing.billing_state";
+
+			document.billing.billing_state.value = "[shipping_state]";
+
+			document.billing.billing_zip.value = "[shipping_zip]";
+			select_field(country_object, "[shipping_country]");
+			document.billing.action = "checkout3.asp?step=3&action=updatecountry&billing_state=[shipping_state]";
+			document.billing.submit();
+		}
+	}
+</script>
+
+<form name="billing" method="post" action="checkout4.asp?step=4">
+  <input type="hidden" name="tknio" value="[tknio]">
+  <table width="98%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="page_headers">Checkout</td>
+      <td align="right" class="steps">[checkout1_step][checkout2_step]<span class="steps_on">[checkout3_step] </span> [checkout4_step]</td>
+    </tr>
+    <tr>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2"><!--START: CATEGORY_HEADER-->
+        
+        <table width="100%" cellspacing="0" cellpadding="2" border="0">
+          <tr>
+            <td class="data">[CONTENT]</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        
+        <!--END: CATEGORY_HEADER--></td>
+    </tr>
+    <tr>
+      <td class="checkout-headers" colspan="2">[checkout3_Header-ordersummary]</td>
+    </tr>
+    <tr>
+      <td colspan="2"><table width="100%" cellpadding="0" cellspacing="2" class="alternative">
+          <tr>
+            <td class="item" valign="top"><strong>[shoppingcart_subtotal]</strong><br />
+              [SUBTOTAL]</td>
+            <td class="item" valign="top"><strong>[shoppingcart_discount]</strong><br />
+              - [DISCOUNT]</td>
+            <td class="item" valign="top" ><strong>[shoppingcart_shipping]</strong><br />
+              [SHIPPING]</td>
+            <td class="item" valign="top"><strong>[shoppingcart_taxes]</strong><br />
+              [TAX]</td>
+            <!--START: GIFTCERTS-->
+            <td class="item" valign="top"><strong>[shoppingcart_total]</strong><br />
+              [TOTAL]</td>
+            <td class="item" valign="top"><strong>[shoppingcart_giftcertificate]</strong><br />
+              -[GIFTCERTS]</td>
+            <!--END: GIFTCERTS-->
+            <td class="item" valign="top"><strong>[shoppingcart_balance]</strong><br />
+              <span class="price">[BALANCE]</span></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2"><table width="100%" cellpadding="2" cellspacing="0">
+          <tr> 
+            <!--column left-->
+            <td valign="top"  width="50%"><table width="100%" cellpadding="0" cellspacing="0">
+                <!--START: allow_different_billing-->
+                <tr>
+                  <td class="checkout-headers">[checkout3_Header-billingaddress]</td>
+                </tr>
+                <tr>
+                  <td><div id="divBillingInfo" style="display:[divBillingInfoDisplay];"><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+                      <tr>
+                        <td align="left" class="item" valign="top" colspan="2">[checkout3_billingcomment]</td>
+                      </tr>
+                      <tr>
+                        <td height="21" colspan="2" class="item"><input type="checkbox" name="check1" value="1" onClick="copy_ship_info()" [BCHECKED]>
+                          <span class="font2"><strong>[checkout3_billingsameasshipping]</strong></span></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_firstname]</strong></td>
+                        <td><input name="billing_firstname" type="text" id="shipping_firstname2" value="[billing_firstname]" size="15" class="txtBoxStyle">
+                          <!--START: req_billing_firstname--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_firstname--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_lastname]</strong></td>
+                        <td><input name="billing_lastname" type="text" id="shipping_lastname3" value="[billing_lastname]" size="15" class="txtBoxStyle">
+                          <!--START: req_billing_lastname--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_lastname--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_company]</strong></td>
+                        <td><input name="billing_company" type="text" id="shipping_company2" value="[billing_company]" size="25" class="txtBoxStyle">
+                          <!--START: req_billing_company--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_company--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_phone]</strong></td>
+                        <td><input name="billing_phone" type="text" id="shipping_phone2" value="[billing_phone]" size="25" class="txtBoxStyle">
+                          <!--START: req_billing_phone--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_phone--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_address]</strong></td>
+                        <td><input name="billing_address" type="text" id="shipping_address3" value="[billing_address]" size="25" class="txtBoxStyle">
+                          <!--START: req_billing_address--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_address--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_address2]</strong></td>
+                        <td><input name="billing_address2" type="text" id="shipping_address22" value="[billing_address2]" size="25" class="txtBoxStyle">
+                          <!--START: req_billing_address2--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_address2--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_city]</strong></td>
+                        <td><input name="billing_city" type="text" id="shipping_city2" value="[billing_city]" size="25" class="txtBoxStyle">
+                          <!--START: req_billing_city--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_city--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_country]</strong></td>
+                        <td><select name="billing_country" onChange="document.billing.action='checkout3.asp?step=3&action=updatecountry';document.billing.submit();" class="txtBoxStyle">
+                            
+				[CountryDropDown]
+			     
+                          </select>
+                          <!--START: req_billing_country--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_country--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_state]</strong></td>
+                        <td>[state]<!--START: req_billing_state--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_state--></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><strong>[CustomerInfo_zip]</strong></td>
+                        <td><input name="billing_zip" type="text" id="billing_zip" value="[billing_zip]" size="10" class="txtBoxStyle">
+                          <!--START: req_billing_zip--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req_billing_zip--></td>
+                      </tr>
+                    </table></div>
+                    <div id="divVme" style="display:[divVmeDisplay]; margin:5px 50px 0px 0px;"><img src="assets/templates/common/images/vme_accpt_mark.png"></div>
+                  </td>
+                </tr>
+                
+                <!--END: allow_different_billing--> 
+                
+                <!--START: samebilling_billing--> 
+                <!--start billing same as shipping--> 
+                <!--START: showsamebillingasshipping--> 
+                <br />
+                <tr>
+                  <td class="checkout-headers">[checkout3_Header-billingaddress]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+                      <tr>
+                        <td class="item">[billing_firstname] [billing_lastname]</td>
+                      </tr>
+                      <!--START: billing_company-->
+                      <tr>
+                        <td class="item">[billing_company]</td>
+                      </tr>
+                      <!--END: billing_company-->
+                      <tr>
+                        <td class="item">[billing_address]</td>
+                      </tr>
+                      <!--START: billing_address2-->
+                      <tr>
+                        <td class="item">[billing_address2]</td>
+                      </tr>
+                      <!--END: billing_address2-->
+                      <tr>
+                        <td class="item">[billing_city], [billing_state] [billing_zip] [billing_country]</td>
+                      </tr>
+                      <tr>
+                        <td><a href="checkout.asp?step=1">[checkout2_shippinginfochange]</a></td>
+                      </tr>
+                    </table></td>
+                </tr>
+                
+                <!--END: showsamebillingasshipping-->
+                <input name="billing_firstname" type="hidden" id="shipping_firstname2" value="[shipping_firstname]">
+                <input name="billing_lastname" type="hidden" id="shipping_lastname3" value="[shipping_lastname]">
+                <input name="billing_company" type="hidden" id="shipping_company2" value="[shipping_company]" size="25" >
+                <input name="billing_phone" type="hidden" id="shipping_phone2" value="[shipping_phone]" size="25" >
+                <input name="billing_address" type="hidden" id="shipping_address3" value="[shipping_address]" size="25" >
+                <input name="billing_address2" type="hidden" id="shipping_address22" value="[shipping_address2]" size="25" >
+                <input name="billing_city" type="hidden" id="shipping_city2" value="[shipping_city]" size="25" >
+                <input name="billing_country" type="hidden" value="[shipping_country]">
+                <input name="billing_state" type="hidden" id="billing_zip" value="[shipping_state]">
+                <input name="billing_zip" type="hidden" id="billing_zip" value="[shipping_zip]">
+                <!--end billing same as shipping--> 
+                <!--END: samebilling_billing-->
+                <!--START: GIFTCERTIFICATES-->
+                <tr>
+                  <td  class="checkout-headers">?[viewcart_giftcertificates-header]</td>
+                </tr>
+                <tr>
+                  <td><!--START: DISPLAY_GIFTCERTIFICATES-->
+                    <table width="100%" cellpadding="5" cellspacing="0" class="alternative">
+                      <input type="hidden" name="coupon" value="[id]">
+                      <tr>
+                        <td class="item" width="40%">?<b>[certificate_name]</b></td>
+                        <td class="item" width="60%" align="left"><b>Amount:</b> [discount_amount]<br />
+                          Balance after this order: [discount_balance] </td>
+                        <td></td>
+                      </tr>
+                    </table>
+                    <!--END: DISPLAY_GIFTCERTIFICATES--></td>
+                </tr>
+                <!--END: GIFTCERTIFICATES-->
+                
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="checkout-headers">[checkout3_methodofpaymentselect]</td>
+                </tr>
+                <tr>
+                  <td valign="top"><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+                      
+                    <!--START: VME_SELECTED-->
+                    <tr>
+                        <td class="titles">
+                        <input type="hidden" name="payment" value="online-[id]" checked>
+                        &nbsp;<img src="assets/templates/common/images/vme_accpt_mark.png" alt="V.me by Visa" /></td>
+                    </tr>
+                    <!--END: VME_SELECTED--> 
+
+                      <!--START: CHECKGATEWAY-->
+                      <tr>
+                        <td class="titles" colspan="2" height="15">&nbsp;[payment_description] </td>
+                      </tr>
+                      <tr>
+                        <td class="item" colspan="2">[payment_description_message]</td>
+                      </tr>
+                      <tr>
+                        <td height="21" colspan="2" class="item"><input name="payment" onclick="javascript:checkoutSwitch(false);" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED] id="Radio1">
+                          [payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><b>[CustomerInfo_check-type]</b></td>
+                        <td><select name="ff[id]_ochecktype" class="txtBoxStyle">
+                        [checktypelist]
+                          </select>
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><b>[CustomerInfo_check-acct-type]</b></td>
+                        <td><select name="ff[id]_ocheckaccttype" class="txtBoxStyle" id="Select2">
+                        [checkaccttypelist]
+                        </select>
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <tr>
+                        <td  class="item" align="right"><b>[CustomerInfo_check-routing]</b></td>
+                        <td class="item"><input type="text" name="ff[id]_ocheckrouting" maxlength="9" size="10" class="txtBoxStyle">
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <tr>
+                        <td  class="item" align="right"><b>[CustomerInfo_check-acct]</b></td>
+                        <td class="item"><input type="text" name="ff[id]_ocheckaccount" maxlength="30" size="10" class="txtBoxStyle">
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <!--END: CHECKGATEWAY--> 
+                      
+                      <!--START: checkoutByAmazon-->
+                      <tr>
+                        <td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item">[amazon_cba_form]</td>
+                      </tr>
+                      <!--END: checkoutByAmazon--> 
+                      
+                      <!--START: CCGATEWAY-->
+                      <tr>
+                        <td class="titles" colspan="2" height="15">&nbsp;[payment_description] </td>
+                      </tr>
+                      <tr>
+                        <td class="item" colspan="2">[payment_description_message]</td>
+                      </tr>
+                      <tr>
+                        <td height="21" colspan="2" class="item"><input name="payment" onclick="javascript:checkoutSwitch(false);" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED]>
+                          [payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><b>[CustomerInfo_creditcardnumber]</b></td>
+                        <td><input type="text" name="ff[id]_ocardno" size="30" class="txtBoxStyle">
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <!--START: ccStartDate-->
+                      <tr>
+                        <td  class="item" align="right"><b>[CustomerInfo_creditstartdate]</b></td>
+                        <td class="item"><select name="ff[id]_ocardstartmonth" class="txtBoxStyle" id="Select3">
+                            <option value=""></option>
+                            [monthlist]
+                          </select>
+                          <select name="ff[id]_ocardstartyear" class="txtBoxStyle" id="Select8">
+                            <option value=""></option>
+                            [yearlistdtstart]
+                          </select>
+                          (Maestro, Solo and Amex only) </td>
+                      </tr>
+                      <!--END: ccStartDate-->
+                      <tr>
+                        <td  class="item" align="right"><b>[CustomerInfo_creditexpiration]</b></td>
+                        <td><select name="ff[id]_ocardexpiresmonth" class="txtBoxStyle">
+                        [monthlist]
+                        </select>
+                          <select name="ff[id]_ocardexpiresyear" class="txtBoxStyle">
+                          [yearlist]
+			        
+                          </select>
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <tr>
+                        <td  class="item" align="right"><b>[CustomerInfo_cardtype]</b></td>
+                        <td><select name="ff[id]_ocardtype" class="txtBoxStyle">
+                        [cctype]
+                        </select>
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <!--START: ccIssueNumber-->
+                      <tr>
+                        <td  class="item" align="right"><b>[CustomerInfo_creditissuenumber]</b></td>
+                        <td class="item"><input type="text" name="ff[id]_ocardissue" maxlength="10" size="3" class="txtBoxStyle" id="Text4">
+                          (Maestro and Solo only) </td>
+                      </tr>
+                      <!--END: ccIssueNumber-->
+                      <tr>
+                        <td  class="item" align="right"><b>CVV2</b></td>
+                        <td><input type="text" name="ff[id]_ocardcvv2" size="3" class="txtBoxStyle">
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /> <a href="#" onclick="javascript:window.open('assets/templates/common/images/cvv2.gif','new','menubars=no, resizable=no, statusbar=no, titlebar=no, width=300, height=500');">What's this?</a></td>
+                      </tr>
+                      <!--END: CCGATEWAY--> 
+                      
+                    <!--START: VME_NOTSELECTED-->
+                        <tr>
+                            <td class="titles" colspan="2">
+                            &nbsp;[payment_description]</td>
+                        </tr>
+                        <tr>
+                            <td class="item" colspan="2">
+		                    <!--START: vMeByVisa-->
+                                [vMeByVisaButton]
+                                <script>
+                                    if (typeof jQuery == 'undefined')
+                                        document.write("<script type=\"text/javascript\" src=\"assets/templates/common/js/jquery.min.js\"></" + "script>");
+
+                                    function myCallbackFunctionForVmeEvents(VmeEventType, eventData) {
+                                        if (VmeEventType == "purchase.success") {
+                                            var url = "vmebyvisa.asp?r=purchase.success&s=checkout&no-cache=" + Math.random();
+                                            var params = "mt=" + eventData.merchTrans;
+                                            params = params + "&ci=" + eventData.callId;
+                                            params = params + "&tp=" + eventData.type;
+                                            params = params + "&st=" + eventData.state;
+                                            params = params + "&sg=" + eventData.signature;
+                                            params = params + "&pi=" + eventData.productId;
+                                            if (eventData.subTotal) {
+                                                params = params + "&sta=" + eventData.subTotal.amount;
+                                                params = params + "&stc=" + eventData.subTotal.currency;
+                                            }
+                                            if (eventData.total) {
+                                                params = params + "&tta=" + eventData.total.amount;
+                                                params = params + "&ttc=" + eventData.total.currency;
+                                            }
+
+                                            jQuery.ajax({
+                                                url: url,
+                                                dataType: 'html',
+                                                type: 'POST',
+                                                data: params,
+                                                cache: false,
+                                                success: function (strResult) {
+                                                    var arrResult = strResult.split("|");
+                                                    if (arrResult.length < 2) {
+                                                        alert("Error processing v.me request. Please, try again." + strResult);
+                                                    }
+                                                    else {
+                                                        //doPayment();
+                                                        //document.getElementById("divVmeNotSelected").style.display='none';
+                                                        document.location.href = "checkout3.asp?step=3";
+                                                    }
+                                                },
+                                                error: reportError
+                                            });
+                                        }
+                                    }
+
+                                    function reportError(jqXHR, textStatus) {
+                                        if (jqXHR.status > 0) {
+                                            alert("Error processing v.me request. Please, try again.");
+                                            alert(jqXHR.responseText);
+                                        }
+                                    }
+                                </script>
+		                    <!--END: vMeByVisa-->
+                            </td>
+                        </tr>
+                    <!--END: VME_NOTSELECTED--> 
+
+                      <!--START: AUTHNETCIMBLOCK-->
+                      <tr>
+                        <td class="titles" colspan="2" height="15">&nbsp;[payment_description] </td>
+                      </tr>
+                      <tr>
+                        <td height="21" colspan="2" class="item"><input name="payment" onclick="javascript:checkoutSwitch(false);" type="radio" value="online-[id]-CIM" [FIRSTOPTIONCHECKED] id="payment">
+                          [payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td class="item" colspan="2"><table width="100%" cellpadding="0" cellspacing="3" id="Table16">
+                            <!--START: authCIMBlock-->
+                            <tr>
+                              <td class="item" colspan="2"><b>[checkout3_use-creditcard-on-file]</b></td>
+                            </tr>
+                            <tr>
+                              <td class="item" colspan="2"><select name="authCIMProfileID" id="authCIMProfileID" class="txtBoxStyle">
+                                  <!--START: authCIMPaymentProfileItem-->
+                                  <option value="authCIMProfileID_[custProfId]_[custPmntProfId]_[authCIMProfileID_cardlastdigits]_[authCIMProfileID_cardexp]"> [checkout3_creditcard-last-digits]: [authCIMProfileID_cardlastdigits]
+                                  / [CustomerInfo_creditexpiration]: [authCIMProfileID_cardexp] </option>
+                                  <!--END: authCIMPaymentProfileItem-->
+                                </select></td>
+                            </tr>
+                            <!--END: authCIMBlock-->
+                          </table></td>
+                      </tr>
+                      <!--END: AUTHNETCIMBLOCK--> 
+                      
+                      <!--START: MILITARYSTAR-->
+                      <tr>
+                        <td class="titles" colspan="2" height="15">&nbsp;[payment_description] </td>
+                      </tr>
+                      <tr>
+                        <td class="item" colspan="2">[payment_description_message]</td>
+                      </tr>
+                      <tr>
+                        <td height="21" colspan="2" class="item"><input type="hidden" value="1" name="ff[id]_isstarcard" id="ff[id]_isstarcard">
+                          <input name="payment" type="radio" onclick="javascript:checkoutSwitch(false);" value="online-[id]" [FIRSTOPTIONCHECKED] ID="Radio3">
+                          [payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="right"><b>[CustomerInfo_creditcardnumber]</b></td>
+                        <td><input type="text" name="ff[id]_ocardno" size="30" class="txtBoxStyle" ID="Text1">
+                          <img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /></td>
+                      </tr>
+                      <!--END: MILITARYSTAR--> 
+                      
+                      <!--START: LINKGATEWAY-->
+                      <tr>
+                        <td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item">[payment_description_message]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item"><input name="payment" onclick="javascript:checkoutSwitch(false);" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED]>
+                          Pay [payment_description]</td>
+                      </tr>
+                      <!--END: LINKGATEWAY--> 
+                      
+                      <!--START: ELAYAWAYGATEWAY-->
+                      <tr>
+                        <td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item">[payment_description_message]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item"><input name="payment" onclick="javascript:checkoutSwitch(false);" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED] ID="Radio2">
+                          <a onclick="eLayaway.button_click({amount:'[lay_order_total]', 
+										merchant_name:'[company_name]',
+										max_lay_length: [max_lay_length],
+										eci_form: 'eci_form',
+										months_field: 'months',
+										payment_frequency_field: 'payment_frequency',
+										currency_code:'[currency_code]'}, event);" href="javascript:void(0);">Select Term</a> <br />
+                          <div name="divElayawayInfo" id="divElayawayInfo"></div>
+                          <input name="elayawayMonths" id="elayawayMonths" type="hidden" value="">
+                          <input name="elayawayPaymentFrequency" id="elayawayPaymentFrequency" type="hidden" value=""></td>
+                      </tr>
+                      <!--END: ELAYAWAYGATEWAY--> 
+                      
+                      <!--START: PPEXPRESS-->
+                      <tr>
+                        <td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item">[payment_description_message]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item"><input name="payment"  onclick="javascript:checkoutSwitch(true);window.location.href='paypal_express.asp?ch=3';" type="radio" value="online-[id]">
+                          <img src="https://www.paypal.com/en_US/i/IntegrationCenter/scr/scr_ppAcceptMark_68x43.jpg" height=35 border="0"></a> [payment_description]</td>
+                      </tr>
+                      <!--END: PPEXPRESS--> 
+                        <!--START: PAYPALADV-->
+                        <tr>
+                          <td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td>
+                        </tr>
+                        <!--tr>
+                          <td colspan="2" class="item">[payment_description_message]</td>
+                        </tr-->
+                        <tr>
+                            <td colspan="2" class="item">
+                                <input name="payment" onClick="javascript:checkoutSwitch(true);doCheckout(document.billing);" type="radio" value="online-[id]">
+                                [payment_description]
+                                <div id="divPayPalAdv" style="display:none;"> <br />
+                                    <div style="text-align:left;">
+                                        <iframe id="iframePayPalAdv" name="iframePayPalAdv" src="assets/images/spacer.gif" width="490" height="565" frameborder="0" scrolling="no"></iframe>
+                                    </div>
+                                  </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!--END: PAYPALADV--> 
+
+                        <!--START: TRANSFLOW-->
+                        <tr>
+                          <td colspan="2" class="titles"><input  onclick="javascript: checkoutSwitch(false);" name="payment" type="radio" value="transflow-[id]" [FIRSTOPTIONCHECKED]>
+                            &nbsp;[payment_description]</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" class="item">
+                              <table width="100%" cellpadding="0" cellspacing="3" id="Table21">
+                                <tr>
+                                  <td class="item">
+                                      <table width="100%" cellpadding="0" cellspacing="3">
+                                        <tr>
+                                          <td class="item" colspan="2">[payment_description_message]</td>
+                                        </tr>
+                                        <tr>
+                                          <td class="item" align="right"><b>MTN Mobile Number</b></td>
+                                          <td><input type="text" onChange="clearContent(this);" name="ff[id]_ocardno" size="20" class="txtBoxStyle">
+                                            <img src="assets/templates/common/images/error2.gif" width="12" height="12"></td>
+                                        </tr>
+                                    </table>
+                                    </td>
+                              </table>
+                            </td>
+                        </tr>
+                        <!--END: TRANSFLOW-->
+
+                      <!--START: SHOPATRON-->
+                      <tr>
+                        <td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item">[payment_description_message]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item"><table cellpadding="2" cellspacing="0" border="0">
+                            <tr>
+                              <td><input name="payment" onClick="window.location.href='shopatron.asp';" type="button" class="btn" onmouseover=="this.className='btn_over'" onmouseout="this.className='btn'" value="Checkout with Shopatron"></td>
+                              <td class="item">[payment_description]</td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                      <!--END: SHOPATRON--> 
+                      <!--START: CUSTOM-->
+                      
+                      <tr>
+                        <td class="titles" colspan="2" height="15"><b>[payment_type]</b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="item">[payment_description]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><input name="payment" onclick="javascript:checkoutSwitch(false);" type="radio" value="offline-[id]" [FIRSTOPTIONCHECKED]>
+                          <span class="item">[payment_type]</span>
+                      </tr>
+                      
+                      <!--START: CUSTOM_FIELD-->
+                      <tr>
+                        <td class="item"><b>[InputName]</b></span></td>
+                        <td class="item" >[field]</td>
+                      </tr>
+                      
+                      <!--END: CUSTOM_FIELD-->
+                      <tr>
+                        <td colspan="2"><table cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                              <td class="titles2" colspan="2"><img src="assets/images/spacer.gif" width="100%" height="1"></td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                      <!--END: CUSTOM-->
+                    </table>
+                    </br></td>
+                </tr>
+                
+                <!--START: checkout_questions-->
+                
+                <tr>
+                  <td class="checkout-headers">[checkout3_checkoutquestions]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="2" cellspacing="0" class="alternative">
+                      <tr>
+                        <td><!--START: questions--> 
+                          [questions] 
+                          <!--END: questions--></td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;<span class="error"><img src="assets/templates/common/images/error2.gif"> = Required</span><br />
+                    <br /></td>
+                </tr>
+                <!--END: checkout_questions-->
+                
+                <tr>
+                  <td><!--START: checkout_questions_templates--> 
+                    
+                    <!--START: textarea-format-->
+                    
+                    <table>
+                      <tr>
+                        <td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]--><b>[question]</b></td>
+                        <td><textarea cols="30" rows="5" name="cq[id]"   class="txtBoxStyle">[answer]</textarea></td>
+                      </tr>
+                    </table>
+                    
+                    <!--END: textarea-format--> 
+                    
+                    <!--START: text-format-->
+                    
+                    <table>
+                      <tr>
+                        <td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" />&nbsp;<!--END: req[id]--><b>[question]</b></td>
+                        <td><input type="text" size="30" name="cq[id]" value="[answer]"  class="txtBoxStyle"></td>
+                      </tr>
+                    </table>
+                    
+                    <!--END: text-format--> 
+                    <!--START: file-format--> 
+                    [question]<br />
+                    <input type="file" name="file[oname]" size="20">
+                    <br />
+                    <!--END: file-format-->
+                    <!--START: checkbox-format-->
+                    <table>
+                      <tr>
+                        <td><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]-->
+                          <input type="checkbox" name="cq[id]" class="txtBoxStyle" value="[answer]" [selected]></td>
+                        <td align="right"  class="item"><b>[question]</b></td>
+                      </tr>
+                    </table>
+                    <!--END: checkbox-format-->
+                    <!--START: radio-format-->
+                    <table>
+                      <tr>
+                        <td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]--><b>[question]</b></td>
+                        <td><!--START: option-->
+                          <input type="radio" name="cq[id]" value="[option]" class="txtBoxStyle" [selected]>
+                          [option]<br />
+                          <!--END: option--></td>
+                      </tr>
+                    </table>
+                    <!--END: radio-format-->
+                    <!--START: dropdown-format-->
+                    <table>
+                      <tr>
+                        <td align="right"  class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12" alt="" /><!--END: req[id]--><b>[question]</b></td>
+                        <td><select name="cq[id]" >
+                            <!--START: option-->
+                            <option  [selected]>[option]</option>
+                            <!--END: option-->
+                          </select></td>
+                      </tr>
+                    </table>
+                    <!--END: dropdown-format-->
+                    <!--END: checkout_questions_templates--></td>
+                </tr>
+                <tr>
+                  <td class="checkout-headers">[checkout3_Header-comment]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+                      <tr>
+                        <td class="item">[checkout3_commentmessage]</td>
+                      </tr>
+                      <tr>
+                        <td class="item"><b>[checkout3_Header-comment]</b></td>
+                      </tr>
+                      <tr>
+                        <td><textarea name="ocomment" onchange="clearContent(this);updateOrderComments(this.value);"  cols="24" rows="5"></textarea></td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td align="right">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="right" ><span id="spanCheckout"><input type="button" onclick="javascript:submitCheckoutForm();" name="btnCheckout" id="btnCheckout" value="[checkout3_submitbutton]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></span></td>
+                </tr>
+              </table></td>
+            <!--column left ends--> 
+            <!--column right-->
+            <td valign="top" width="40%" align="right"><table width="60%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="checkout-headers">[checkout3_Header-shippingmethodinfo]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+                      <tr>
+                        <td class="item">[oshipmethod]</td>
+                      </tr>
+                      <tr>
+                        <td class="item">[shoppingcart_shipping]: [SHIPPING]</td>
+                      </tr>
+                      <tr>
+                        <td><a href="checkout2.asp?step=2p">[checkout3_shippingmethodchange]</a></td>
+                      </tr>
+                    </table>
+                    <br /></td>
+                </tr>
+                <!--customer info starts-->
+                <tr>
+                  <td class="checkout-headers">[checkout2_Header-shippinginfo]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="3" class="alternative">
+                      <tr>
+                        <td class="item"><strong>[checkout2_shippinginfomessage]</strong></td>
+                      </tr>
+                      <tr>
+                        <td align="left" class="item" valign="top"><table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="item">[shipping_firstname] [shipping_lastname]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_company]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_address]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_address2]</td>
+                            </tr>
+                            <tr>
+                              <td class="item">[shipping_city], [shipping_state] [shipping_zip] [shipping_country]</td>
+                            </tr>
+                            <tr>
+                              <td><a href="checkout.asp?step=1">[checkout2_shippinginfochange]</a></td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                    </table>
+                    <br /></td>
+                </tr>
+                <!--customer info ends-->
+                <tr>
+                  <td class="checkout-headers">[checkout1_Header-shoppingcart]</td>
+                </tr>
+                <tr>
+                  <td><table width="100%" cellpadding="0" cellspacing="0" class="alternative">
+                      <!--START: SHOPPING_CART_ITEM-->
+                      <tr>
+                        <td class="item" align="left">
+						<!--START: itemthumbnail--><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40" id="tl"></a><br /><!--END: itemthumbnail-->
+						<!--START: thumbnailnolink--><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="40" width="40" id="tnl"><br /><!--END: thumbnailnolink-->
+                        <!--START: itemnamelink--><a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a><!--END: itemnamelink--> 
+						<!--START: itemnamenolink--><span id="spnItemName">[ITEM_NAME]</span><!--END: itemnamenolink-->
+                        </td>
+                        <td class="item" align="right" valign="bottom">[ITEM_PRICE]  X [ITEM_QUANTITY]<br />
+                          <b>[ITEM_SUBTOTAL]</b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="borders"><img src="assets/images/spacer.gif" width="100%" height="1"></td>
+                            </tr>
+                          </table></td>
+                      </tr>
+                      <!--END: SHOPPING_CART_ITEM-->
+                      <!--START: BUYSAFE-->
+                      <tr>
+                        <td align="right" class="item"><img src="assets/templates/common/images/buysafe.gif"></td>
+                        <td align="right" class="item"> [buysafe_totalbondcost]</td>
+                      </tr>
+                      <!--END: BUYSAFE-->
+                    </table></td>
+                </tr>
+                <tr>
+                  <td align="right"><a href="view_cart.asp">Update Cart</a>&nbsp;&nbsp;</td>
+                </tr>
+              </table></td>
+            <!--column right ends--> 
+          </tr>
+          <tr>
+            <td colspan="2"><!--START: CATEGORY_FOOTER-->
+              
+              <table width="100%" cellspacing="0" cellpadding="2" border="0">
+                <tr>
+                  <td class="data">[CONTENT]</td>
+                </tr>
+              </table>
+              
+              <!--END: CATEGORY_FOOTER--></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</form>
+
+<input type="hidden" name="hdnAddrressValidatorResult" id="hdnAddrressValidatorResult" value="" />
+<div id="divAddrressValidator" style="display:none;"> 
+  <!--START: AddressValidatorBlock-->
+  <div style="background-color: White; padding: 30px; -webkit-box-shadow: 0px 0px 12px rgba(50, 50, 50, 0.5); -moz-box-shadow: 0px 0px 12px rgba(50, 50, 50, 0.5); box-shadow: 0px 0px 12px rgba(50, 50, 50, 0.5);"> 
+    <!--START: AddressValidatorBlock_ValidationFailed-->
+    <div>[result_msg]</div>
+    <!--END: AddressValidatorBlock_ValidationFailed--> 
+    <!--START: AddressValidatorBlock_ValidationSuggestion-->
+    <div> [result_msg] 
+      <!--START: AddressValidatorBlock_ValidationSuggestion_SingleAddressBlock--> 
+      <br />
+      <br />
+      <strong>[checkout1_AddressValidator_SuggestedAddress]</strong> <a style="text-decoration:underline;" href="#" onclick="javascript:parent.jQuery.modal.close();selectAddress('[AddrressValidator_address1]', '[AddrressValidator_address2]', '[AddrressValidator_city]', '[AddrressValidator_state]', '[AddrressValidator_zip]', '[AddrressValidator_rdi]');">[AddrressValidator_address], [AddrressValidator_city], [AddrressValidator_state], [AddrressValidator_zip]</a> 
+      <!--END: AddressValidatorBlock_ValidationSuggestion_SingleAddressBlock--> 
+      </div>
+    <!--END: AddressValidatorBlock_ValidationSuggestion-->
+    <!--START: AddressValidatorBlock_ValidationSuggestion_ContinueWithEnteredAddress--> 
+    <br />
+    <a style="text-decoration:underline;" href="javascript:void(0);" onclick="javascript:parent.jQuery.modal.close();useAddressValidator='';submitCheckoutForm();">[checkout1_AddressValidator_Continue]</a>
+	<br />
+    <!--END: AddressValidatorBlock_ValidationSuggestion_ContinueWithEnteredAddress--> 
+    <br /><a style="text-decoration:underline;" href="javascript:void(0);" onclick="javascript:parent.jQuery.modal.close();">[checkout1_AddressValidator_Close]</a></div>
+  <!--END: AddressValidatorBlock-->
+</div>
+
+<script language="javascript" type="text/javascript">
+    var useAddressValidator = "[useAddressValidator]";
+
+    //You should create the validator only after the definition of the HTML form
+    var frmvalidator = new Validator("billing");
+    frmvalidator.EnableMsgsTogether();
+
+    function setValidation() {
+        frmvalidator.clearAllValidations();
+
+        frmvalidator.setAddnlValidationFunction("submitForm");
+
+        frmvalidator.addValidation("billing_firstname", "req", "Please enter your First Name");
+        frmvalidator.addValidation("billing_firstname", "maxlen=20", "Max length for First Name is 20");
+
+        frmvalidator.addValidation("billing_lastname", "req", "Please enter your Last Name");
+        frmvalidator.addValidation("billing_lastname", "maxlen=20", "Max length for Last Name is 20");
+
+        frmvalidator.addValidation("shipping_company2", "maxlen=50", "Max length for Company is 50");
+
+        if (get_Element('billing_country').value == "US") {
+            frmvalidator.addValidation("billing_phone", "maxlen=18", "Max length for Phone is 18");
+            frmvalidator.addValidation("billing_phone", "req", "Please enter your phone")
+        }
+
+        frmvalidator.addValidation("billing_address", "maxlen=50", "Max length for Address is 50");
+        frmvalidator.addValidation("billing_address", "req", "Please enter your address");
+
+        frmvalidator.addValidation("billing_address2", "maxlen=40", "Max length for Suite/Apt# is 40");
+
+        frmvalidator.addValidation("billing_city", "maxlen=50", "Max length for City is 50");
+        frmvalidator.addValidation("billing_city", "req", "Please enter your city");
+
+        if (get_Element('billing_country').value == "US") {
+            frmvalidator.addValidation("billing_state", "maxlen=50", "Max length for State is 50");
+            frmvalidator.addValidation("billing_state", "req", "Please enter/select your state");
+        }
+
+        frmvalidator.addValidation("billing_zip", "maxlen=15", "Max length for Zip is 15");
+        frmvalidator.addValidation("billing_zip", "req", "Please enter your zip code");
+
+        frmvalidator.addValidation("billing_country", "dontselect=0");
+
+        frmvalidator.addValidation("payment", "req", "Please select a payment option.");
+
+
+        frmvalidator.setAddnlValidationFunction("checkotherreqfields");
+    }
+
+    function submitCheckoutForm() {
+        var myCountry = "US";
+        if (getElementById_s("billing_country"))
+            myCountry = getElementById_s("billing_country").value;
+
+        var textNamesForCCcheck = [textNamesForCCcheck];
+        var quit = false;
+        if (textNamesForCCcheck.length > 0) {
+            jQuery.each(textNamesForCCcheck, function (i, val) {
+                if (ExistsCreditCard(jQuery('[name="' + val + '"]').val())) {
+                    alert("[ccNumerNotAllowedMessage]");
+                    quit = true;
+                    return;
+                }
+            });
+        }
+        if (ExistsCreditCard(jQuery('[name="ocomment"]').val())) {
+            alert("[ccNumerNotAllowedMessage]");
+            quit = true;
+        }
+        if (quit) return;
+
+        document.body.style.cursor = 'wait';
+        if (getElementById_s("btnCheckout")) getElementById_s("btnCheckout").style.cursor = 'wait';
+        objForm = document.billing;
+
+        setValidation();
+
+        if (objForm.onsubmit()) //triggers the form validation
+        {
+            if (useAddressValidator == "1" && myCountry == "US") {
+                isSubmitComplete = false;
+                getElementById_s("hdnAddrressValidatorResult").value = "";
+                var url = 'addressvalidator.asp?no-cache=' + Math.random();
+                var params = 'doaction=verify&ct=multi';
+                params += '&name=' + getElementById_s("billing_firstname").value + ' ' + getElementById_s("billing_lastname").value;
+                if (getElementById_s("billing_company")) params += '&company=' + getElementById_s("billing_company").value;
+                params += '&address=' + getElementById_s("billing_address").value;
+                params += '&address2=' + getElementById_s("billing_address2").value;
+                params += '&city=' + getElementById_s("billing_city").value;
+                params += '&state=' + getElementById_s("billing_state").value;
+                params += '&zip=' + getElementById_s("billing_zip").value;
+                var ajax = new Ajax.Updater(
+		        { success: 'divAddrressValidator' },
+		        url,
+		        { method: 'post', evalScripts: true, parameters: params, onFailure: reportError });
+
+            }
+            else {
+                document.body.style.cursor = '';
+                if (getElementById_s("btnCheckout")) getElementById_s("btnCheckout").style.cursor = '';
+                if (getElementById_s("divAddrressValidator") != null && getElementById_s("divAddrressValidator") != 'undefined')
+                    getElementById_s("divAddrressValidator").style.display = 'none';
+
+                objForm.submit();
+            }
+        }
+        else {
+            document.body.style.cursor = '';
+            if (getElementById_s("btnCheckout")) getElementById_s("btnCheckout").style.cursor = '';
+        }
+    }
+
+    function submitCheckoutFormPos() {
+        objForm = document.billing;
+        if (getElementById_s("hdnAddrressValidatorResult").value == "1") {
+            objForm.submit();
+            return;
+        }
+        else {
+            isSubmitComplete = false;
+
+            jQuery("#divAddrressValidator").modal({ containerCss: { borderWidth: "1px" } });
+            document.body.style.cursor = '';
+            if (getElementById_s("btnCheckout")) getElementById_s("btnCheckout").style.cursor = '';
+        }
+
+    }
+
+    function selectAddress(AddrressValidator_address1, AddrressValidator_address2, AddrressValidator_city, AddrressValidator_state, AddrressValidator_zip) {
+        getElementById_s("billing_address").value = AddrressValidator_address1;
+        getElementById_s("billing_address2").value = AddrressValidator_address2;
+        getElementById_s("billing_city").value = AddrressValidator_city;
+        getElementById_s("billing_zip").value = AddrressValidator_zip;
+        getElementById_s("billing_state").value = AddrressValidator_state;
+        useAddressValidator = '';
+        submitCheckoutForm();
+    }
+
+    function reportError(request) {
+        isSubmitComplete = false;
+        //request.responseText
+        alert("Error processing request " + request.responseText);
+    }
+
+    function getElementById_s(id) {
+        var obj = null;
+        if (document.getElementById) {
+            /* Prefer the widely supported W3C DOM method, if 
+            available:- 
+            */
+            obj = get_Element(id);
+        } else if (document.all) {
+            /* Branch to use document.all on document.all only 
+            browsers. Requires that IDs are unique to the page 
+            and do not coincide with NAME attributes on other 
+            elements:- 
+            */
+            obj = document.all[id];
+        }
+        /* If no appropriate element retrieval mechanism exists on 
+        this browser this function always returns null:- 
+        */
+        return obj;
+    }
+
+
+    function updateOrderComments(strValue) {
+        //alert(strValue);
+        var url = 'ship_ajax.asp?action=updateOrderComments&no-cache=' + Math.random();
+        var params = 'comment=' + escape(strValue);
+
+        jQuery.ajax({
+            url: url,
+            dataType: 'html',
+            type: 'POST',
+            data: params,
+            cache: false
+        });
+    }
+
+    function clearContent(obj) {
+        obj.value = removeHTMLTags(obj.value);
+    }
+
+    function removeHTMLTags(strString) {
+        var strInputCode = strString;
+
+        strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1) {
+            return (p1 == "lt") ? "<" : ">";
+        });
+        var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+        strTagStrippedText = strTagStrippedText.replace(/\u00a0/g, '');
+        //strTagStrippedText = strTagStrippedText.replace(/&nbsp;/gi,'');
+        return strTagStrippedText;
+    }
+
+
+
+</script> 
+
+<!--START: ELAYAWAYGATEWAYSCRIPTS--> 
+<script language="javascript" type="text/javascript" src="https://app2.elayaway.com/javascripts/prototype.js" ></script> 
+<script language="javascript" type="text/javascript" src="https://app2.elayaway.com/javascripts/elayaway.js" ></script> 
+<script>
+    function eLayAwayPost()
+    {
+	    //Hide the calculator
+	    var myDivCalculator = document.getElementById("elayaway_configurator0");
+	    myDivCalculator.style.display = 'none';	
+			
+	    //Write the selected payment configuration
+	    var myDivElayaway = document.getElementById("divElayawayInfo");
+	    var intMonths = 0;
+	    intMonths = eval(parseInt(document.eci_form.months.value)+1);
+	    var myString = "Selected term: " + intMonths + " months";
+	    myDivElayaway.innerHTML = myString;
+			
+	    document.eci_form.elayawayconfigured.value = "1";
+			
+	    document.billing.elayawayMonths.value=document.eci_form.months.value;
+	    document.billing.elayawayPaymentFrequency.value=document.eci_form.payment_frequency.value;
+    }
+</script>
+<form name="eci_form" id="eci_form" method="POST" action="javascript:eLayAwayPost();">
+  <input type="hidden" value="0" name="elayawayconfigured" id="elayawayconfigured"/>
+  <input type="hidden" value="" name="months" id="months"/>
+  <input type="hidden" value="" name="payment_frequency" id="payment_frequency"/>
+</form>
+<!--END: ELAYAWAYGATEWAYSCRIPTS--> 
+<!--START: paypaladvance--> 
+<form method="post" action="https://payflowlink.paypal.com" name="frmPayPalAdv" id="frmPayPalAdv" target="iframePayPalAdv">
+	<input type="hidden" name="SECURETOKEN" value="">
+	<input type="hidden" name="SECURETOKENID" value="" >
+</form>
+<script language="javascript" type="text/javascript">
+    function openPayPalAdv(strToken, strTokenId) {
+        var elt = document.getElementById("divPayPalAdv");
+
+        //document.getElementById("iframePayPalAdv").src = "https://payflowlink.paypal.com/?SECURETOKEN=" + strToken + "&SECURETOKENID=" + strTokenId;
+        document.getElementById("frmPayPalAdv").SECURETOKEN.value = strToken;
+        document.getElementById("frmPayPalAdv").SECURETOKENID.value = strTokenId;
+        document.getElementById("frmPayPalAdv").submit();
+
+        elt.style.display = 'block';
+    }
+    function doCheckout(objForm) {
+        if (document.billing.onsubmit()) {
+            document.billing.target = "iframePayPalAdv";
+            document.billing.submit();
+        }
+        return;
+    }
+    function checkoutSwitch(bolHide) {
+        if (document.getElementById("spanCheckout")) {
+            if (bolHide)
+                document.getElementById("spanCheckout").style.display = 'none';
+            else
+                document.getElementById("spanCheckout").style.display = 'block';
+        }
+    }
+</script>
+<!--END: paypaladvance-->
+
+<!--START: kount-->
+<iframe width="1" height="1" frameborder="0" scrolling="no" src="/logo_k.htm?m=[kount_merchantid]&s=[kount_sessionid]">
+<img width=1 height=1 src="/logo_k.gif?m=[kount_merchantid]&s=[kount_sessionid]">
+</iframe>
+<!--END: kount-->

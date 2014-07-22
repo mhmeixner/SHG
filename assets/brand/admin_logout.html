@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Store Manager Log Out</title>
+<!--[if IE]>
+<style type="text/css">
+p.iepara{ /*Conditional CSS- For IE (inc IE7), create 1em spacing between menu and paragraph that follows*/
+padding-top: 1em;
+}
+</style>
+<![endif]-->
+<link href="templates/css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="datagrid/modern.skn/grid.css" />
+<link type="text/css" rel="stylesheet" href="templates/css/webtoolkit.contextmenu.css" />
+<script type="text/javascript" src="templates/js/webtoolkit.contextmenu.js"></script>
+<style type="text/css">
+<!--
+body {
+	background: #e9e9e9 url(templates/images/bg_login.jpg) repeat-x;
+}
+-->
+</style>
+</head>
+<body >
+<div id="bgLogin">
+<br><br><br><br><br><br>
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table width="600" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="center"><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="middle"><img src="/admin/templates/images/checkLogout.png" hspace="5" align="absmiddle" /></td>
+                <td align="left" valign="middle" class="logOut">[checkout_reason]</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td align="center"><br>
+      <br>
+      <a href="login.asp" class="loginText">Click here to go to the login page.</a></td>
+  </tr>
+</table>
+</div>
+<script>
+    window.setTimeout('window.location.href="login.asp";', 5000);
+</script>
+</body>
+</html>

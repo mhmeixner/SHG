@@ -1,0 +1,129 @@
+<style type="text/css">
+#make-table {margin:0; margin-bottom:20px; padding:0; list-style:none; float:left; width:100%;}
+#make-table li{float:left; margin:0px 2px 5px 0px; padding:0; width:33%; position:relative;}
+#make-table input{margin:0px 5px;}
+.clear {clear:both;}
+</style>
+<form action="checkout_upsell.asp?k=[k]" method="post" name="frmsortby" id="frmsortby">
+  <table width="98%" cellspacing="0" cellpadding="2" border="0">
+    <tr>
+      <td class="page_headers">[checkout4_upsell-checkadditionalitems]</td>
+    </tr>
+    <!--START: CATEGORY_HEADER-->
+    <tr>
+      <td id="categoryHeader" class="data">[CONTENT]</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <!--END: CATEGORY_HEADER--> 
+
+    <tr>
+        <td>
+            <!--START: ITEMS-->
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td colspan="5">
+
+	<ul id="make-table">
+        <!--START: CATEGORY_ITEMS--> 
+            <!--START: ITEM_TEMPLATE_1-->
+			<!--START: productblockcontainer-->
+			<!--END: productblockcontainer-->
+			<!--START: productcontainer-->
+			<!--END: productcontainer-->
+		<li>
+            <table cellspacing="0" cellpadding="5" border="0" width="99%" class="alternative">
+              <tr>
+                <td align="center" height="150"><div style="overflow: hidden; height: 150px;"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&amp;maxx=150&amp;maxy=0" alt="[name]" border="0"></a></div></td>
+              </tr>
+              <tr>
+                <td class="item" align="center" height="30"><a href="product.asp?itemid=[catalogid]">[name]</a></td>
+              </tr>
+              <!--START: product_review-->
+              <tr>
+                <td class="price-info" colspan="2" align="center"><!--START: product_review_average-->
+                  
+                  <table border="0" cellspacing="0" cellpadding="1">
+                    <tr>
+                      <td><img src="assets/templates/common/images/star[review_average].png" alt="Average Rating" border="0"></td>
+                      <td class="item">[review_count]&nbsp;Review(s)</td>
+                    </tr>
+                  </table>              
+                  <!--END: product_review_average--></td>
+              </tr>
+              <!--END: product_review-->
+              <tr>
+                <td class="price2" valign="top" align="center"><!--START: ITEMPRICE-->[product_yourprice]&nbsp;[ITEMPRICE] 
+                  <!--END: ITEMPRICE--> 
+                  <!--START: SALEPRICE-->              
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td colspan="2" align="center" class="item" nowrap="nowrap"><s>[product_yourprice]&nbsp;[ITEMPRICE]</s></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="item" nowrap="nowrap"><table border="0" cellspacing="0" cellpadding="2">
+                    <tr>
+                      <td nowrap="nowrap" class="price2">[product_onsale]:&nbsp;[ITEMSALEPRICE]</td>
+                      <td align="right"><img src="assets/templates/common/images/on_sale.png" alt="On Sale" hspace="5" border="0"></td>
+                    </tr>
+                      </table></td>
+                    </tr>
+                  </table>              
+                  <!--END: SALEPRICE--></td>
+              </tr>
+              <!--START: addtocart-->
+              <tr>
+                <td align="center" valign="top">
+                	<div style="line-height:14px; height:14px;">
+                    <input type="checkbox" name="chkAddUpsell" id="chkAddUpsell" value="[encrypted_catalogid]" style="margin-left:75px; float:left;" />
+                    <div style="float:left;">[checkout4_upsell-additem]</div>
+                    </div>
+                    </td>
+              </tr>
+              <!--END: addtocart-->
+            </table>
+		</li>
+			<!--START: productcontainer_close-->
+			<!--END: productcontainer_close-->
+			<!--START: productblockcontainer_close-->
+			<!--END: productblockcontainer_close-->
+            <!--END: ITEM_TEMPLATE_1--> 
+	<!--END: CATEGORY_ITEMS-->
+    </ul>
+    <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" align="center">
+                    <input type="button" onclick="addToOrder(this.form);" name="Add" value="[checkout4_upsell-addtoorder]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+                    <input type="button" onclick="location.href='checkout_thankyou.asp?k=[k]';" name="Add" value="[checkout4_upsell-nothanks]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+                </td>
+              </tr>
+            </table>        
+            <!--END: ITEMS-->
+        </td>
+    </tr>
+
+
+    <!--START: CATEGORY_FOOTER-->
+    <tr>
+      <td id="categoryFooter" class="data">[CONTENT] </td>
+    </tr>
+    <!--END: CATEGORY_FOOTER-->
+  </table>
+</form>
+
+<script>
+    function addToOrder(objForm) {
+        if (document.getElementsByName("chkAddUpsell")) {
+            for (var i = 0; i < document.getElementsByName("chkAddUpsell").length; i++) {
+                if (document.getElementsByName("chkAddUpsell").item(i).checked) {
+                    objForm.submit();
+                    return;
+                }
+            }
+        }
+        alert("Please, select at least one product.");
+    }
+</script>

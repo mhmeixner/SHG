@@ -1,0 +1,6 @@
+# Disallow all crawlers access to certain pages. SSL
+
+User-agent: *
+Disallow: /
+Disallow: /admin/
+

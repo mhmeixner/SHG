@@ -1,0 +1,6 @@
+<!--START: CSS--> <link href="[siteurl]/rss/widgetbox.css" rel="stylesheet" type="text/css"><!--END: CSS--> 
+<table cellpadding="3" cellspacing="0" width="250">
+<tr><td colspan="2" align="center" valign="bottom"><a href="[url]?referrer=rss" class="store" target="_new">[name]</a></td></tr>
+<tr><td align="center"><a href="[url]?referrer=rss" target="_new"><img src="[thumbnail]" width="150px" border=0></a></td></tr>
+<tr><td align="center" class="price">&nbsp;&nbsp;<b>Our Price:</b> [price] <font color="red"><b>[onsale]</b></font><br><a href="[addcart_link]" target="_new"><img src="[siteurl]/rss/add_cart2.gif" border="0"></a></td></tr>
+</table>

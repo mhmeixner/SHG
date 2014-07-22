@@ -1,0 +1,164 @@
+<script language="javascript">
+	function printThis(rma){
+		document.formu.action = "my_rma.asp?p=1";
+		document.formu.target = "_blank";
+		document.formu.submit(); 
+	}
+</script>
+
+<form name="formu" id="formu" action="" method="post">
+  <input type="hidden" name="oid" id="oid" value="[oNumber]">
+  <input type="hidden" name="r" id="r" value="[RmaNumber]">
+</form>
+<table width="95%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="page_headers" align="left">[rma_header-rmatitle]</td>
+    <!--START: return-->
+    <td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td>
+    <!--END: return-->
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <!--START: CATEGORY_HEADER-->
+  <tr>
+    <td class="data" colspan="2">[CONTENT]</td>
+  </tr>
+  <!--END: CATEGORY_HEADER-->
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <!--START: RMA-->
+  <tr>
+    <td colspan="2">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="2">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left"  class="checkout-headers"> [rma_header-rmanumber]&nbsp;[RmaNumber]
+                  <input type="hidden" name="r" id="r" value="[RmaNumber]">
+                </td>
+                <td align="right"  class="checkout-headers"><!--START: print-->
+                  <a href="javascript:printThis();"><img src="./assets/templates/common/images/print.gif" width="25" height="25" border="0">&nbsp;[rma_header-rmaprint]</a>
+                  <!--END: print--></td>
+              </tr>
+              <tr>
+                <td align="left" colspan="2" class="item">[rma_header-rmacustomername]&nbsp;:&nbsp;[Customer]</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="2" width="20%" class="item">[rma_header-rmaordernumber]&nbsp;:&nbsp;[oid2]</td>
+              </tr>
+              <tr>
+                <td class="options-titles" colspan="4"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="3"></td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><table width="100%" cellpadding="4" cellspacing="0" border="0">
+              <tr>
+                <td class="checkout-headers">[rma_header-rmaorderitems]</td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%" cellspacing="0" cellpadding="4" border="0" class="alternative">
+              <tr>
+                <td width="60" class="titles2">[rma_header-rmaorder-item-id]</td>
+                <td class="titles2">[rma_header-rmaorder-item-description]</td>
+                <td width="70" class="titles2">[rma_header-rmaorder-item-unitprice]</td>
+                <td width="70" class="titles2">[rma_header-rmaorder-item-qty]</td>
+                <td width="70" class="titles2">[rma_header-rmaorder-item-qtyrtn]</td>
+                <td width="70" class="titles2">[rma_header-rmaorder-item-qtyrcvd]</td>
+              </tr>
+              <!--START: items-->
+              <tr>
+                <td class="item">[Id]
+                  <input type="hidden" name="Item[idx]" id="Item[idx]" value="[IdItem]" class="txtBoxStyle4"></td>
+                <td class="item">[Description]</td>
+                <td class="item" align="center">[uPrice]</td>
+                <td class="item" align="center">[Qty]</td>
+                <td class="item" align="center">[qr]</td>
+                <td class="item" align="center">[qre]</td>
+              </tr>
+              <tr>
+                <td class="options-titles" colspan="6"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="3"></td>
+              </tr>
+              <!--END: items-->
+            </table></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+           <table width="100%" cellpadding="4" cellspacing="0" border="0">
+              <tr>
+                <td class="checkout-headers">[rma_header-rmaorder-rtn-option]</td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%" cellspacing="0" cellpadding="4" border="0" class="alternative">
+              <tr>
+                <td class="titles2" width="150">[rma_header-rmaorder-rtn-reason]</td>
+                <td class="titles2" width="100">[rma_header-rmaorder-rtn-method]</td>
+                <td class="titles2">[rma_header-rmaorder-rtn-status]</td>
+              </tr>
+              <!--START: options-->
+              <tr>
+                <td class="item">[Reason]</td>
+                <td class="item">[Method]</td>
+                <td class="item">[Status]</td>
+              </tr>
+              <!--END: options-->
+            </table></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%" cellpadding="4" cellspacing="0" border="0">
+              <tr>
+                <td class="checkout-headers" style="width:48%;">[rma_header-rmacomments]</td>
+                <td style="width:4%;">&nbsp;</td>
+                <td class="checkout-headers" style="width:48%;">[rma_header-staffcomments]</td>
+              </tr>
+              <tr class=cellselected2 bgcolor="#ffffff">
+                <td valign="top" class="item" ><!--START: comments-->
+                  [comments]
+                  <!--END: comments--></td>
+                <td  ></td>
+                <td valign="top" class="item" ><!--START: staffComments-->
+                  [staffcomments]
+                  <!--END: staffComments--></td>
+              </tr>
+            </table>
+            </td>
+        </tr>
+      </table>
+</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+</tr>
+<!--END: RMA-->
+<tr>
+  <td>&nbsp;</td>
+</tr>
+<!--START: CATEGORY_FOOTER-->
+<tr>
+  <td class="data"> [CONTENT] </td>
+</tr>
+<!--END: CATEGORY_FOOTER-->
+</table>
+

@@ -1,0 +1,262 @@
+<script language="javascript">
+function filladdress(save_address){
+		
+		var frm = document.addresslist;
+		
+		var oElement = eval(save_address)
+
+		if (oElement.selectedIndex < 0) oElement.selectedIndex = 0;
+
+		if (oElement.selectedIndex > -1) {
+			var oValues = oElement.options[oElement.selectedIndex].value.split("::");
+			
+			eval("document.checkoutform.shipping_address").value = oValues[0];
+			eval("document.checkoutform.shipping_firstname").value = oValues[1];
+			eval("document.checkoutform.shipping_lastname").value = oValues[2];
+			eval("document.checkoutform.shipping_address2").value = oValues[3];
+			eval("document.checkoutform.shipping_city").value = oValues[4];
+			eval("document.checkoutform.shipping_zip").value = oValues[5];
+			eval("document.checkoutform.shipping_state").value = oValues[6];
+			eval("document.checkoutform.shipping_country").value = oValues[7];
+			eval("document.checkoutform.shipping_phone").value = oValues[8];
+			eval("document.checkoutform.shipping_company").value = oValues[9];
+			
+			
+		} else {
+			//alert("You must select an address to fill.");
+		}
+	}
+</script> <center>
+<!--START: CATEGORY_HEADER-->
+<div align="center">
+<table width=552 cellspacing="0" cellpadding="2" border="0">
+	<tr>
+		<td class="font2">[CONTENT]</td>
+	</tr>
+</table>
+</div>
+<!--END: CATEGORY_HEADER-->
+<p><br>
+</p>
+<!------ START: Shopping Cart ------------------------------------>
+<table width="552" border="0" cellspacing="1" cellpadding="0" class="borders">
+	<tr> <form action="recalculate.asp" method="post" name="recalculate">
+		<td class="alternative"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr align="center" valign="middle">
+				<td class="titles" align="left" colspan="6">&nbsp;[checkout1_Header-shoppingcart]</td>
+			</tr>
+			<tr align="center" valign="middle">
+				<td height="19" class="font2" align="left" width="2%">&nbsp;</td>
+				<td height="19" class="font2" align="left" width="71%"><b>[shoppingcart_items]</b></td>
+				<td height="19" class="font2" width="9%"><b>[shoppingcart_price]</b></td>
+				<td height="19" class="font2" width="7%"><b>[shoppingcart_quantity]</b></td>
+				<td height="19" class="font2" width="11%"><b>[shoppingcart_total]</b></td>
+			</tr>
+			<tr valign="bottom">
+				<td height="2" align="left" colspan="6" class="titles"><img src="spacer.gif" width="1" height="1"></td>
+			</tr>
+			<!--START: SHOPPING_CART_ITEM-->
+			<tr valign="bottom">
+				<td height="30" align="left" width="2%">&nbsp;</td>
+				<td height="30" align="left" width="71%" valign="top"><a href="product.asp?itemid=[ITEM_ID]" class="font2">[ITEM_NAME]</a></td>
+				<td align="center" height="30" class="font2" width="9%" valign="top">[ITEM_PRICE]</td>
+				<td align="center" height="30" width="7%" valign="top" class="font2"> [ITEM_QUANTITY]
+					<input type="hidden" name="coliditemnum" value="[ITEM_COLID]" size="3" maxlength="5"></td>
+				<td align="center" height="30" class="font2" width="11%" valign="top">[ITEM_SUBTOTAL]&nbsp;&nbsp;</td>
+			</tr>
+			<!--END: SHOPPING_CART_ITEM-->
+			<tr>
+				<td height="5" colspan="7" class="font1">&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="right" class="font2"><b>[shoppingcart_subtotal]</b></td>
+				<td align="center" class="font2">[CARTSUBTOTAL]</td>
+			</tr>
+			<!--START: DISCOUNTS-->
+			<tr>
+				<td colspan="4" align="right" class="font2"><b>[checkout1_discounts]</b></td>
+				<td align="center" class="font2">[DISCOUNTS]</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="right" class="font2"><b>[shoppingcart_total]</b></td>
+				<td align="center" class="font2">[CARTTOTAL]</td>
+			</tr>
+			<!--END: DISCOUNTS-->
+			<tr>
+				<td valign="bottom" height="30" colspan="5" align="right"><a href="view_cart.asp">Make 
+					changes</a>&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td height="5" colspan="6">&nbsp;</td>
+			</tr>
+		</form>
+</table>
+</td>
+</tr>
+</table>
+<!------ END Shopping Cart ------------------------------------>
+<!--START: CATEGORY_HEADER-->
+<br>
+<!--START: account_login-->
+<table width="552" border="0" align="center" cellpadding="3" cellspacing="0">
+	<tr>
+		<td align="left" class="titles"><b>[checkout1_loginmessage]</b></td>
+	</tr>
+	<tr>
+		<td class="font1">[checkout1_loginmessage2]<br></td>
+	</tr>
+	<tr>
+		<td><div align="right">
+			<input type="button" value="[checkout1_login]" name="B3" onclick="document.location='checkout.asp?step=log-in';">
+			</div></td>
+	</tr>
+</table>
+<br>
+<!--END: account_login-->
+<!--START: required_fields-->
+<br>
+<table width="552" border="0" align="center" cellpadding="3" cellspacing="0">
+	<tr>
+		<td align="center" class="alternative"><b>ERROR: PLEASE CHECK THE REQUIRED FIELDS BELOW!</b></td>
+	</tr>
+</table>
+<br>
+<!--END: required_fields-->
+<!----- START: Customer Infomation ---->
+<table width="552" border="0" cellspacing="1" cellpadding="0" class="borders">
+	<tr>
+		<td class="alternative"><table width="100%" cellspacing="0" cellpadding="4" border="0">
+				<tr>
+					<td colspan="3" class="titles">&nbsp; [checkout1_Header-shippinginformation]</td>
+				</tr>
+				<form action="checkout2.asp?step=2" method="post" name="checkoutform">
+				
+				<tr class="alternative">
+					<td></td>
+					<td width="32%" align="right"><span class="font2"><b>[CustomerInfo_firstname]</b></span></td>
+					<td width="68%"><span class="font2"> <input name="shipping_firstname" type="text" id="shipping_firstname" value="[shipping_firstname]" size="15" 
+						<!--START: req_shipping_firstname-->
+						class="savings"
+						<!--END: req_shipping_firstname-->
+						> </span></td>
+				</tr>
+				<tr class="alternative">
+					<td><!--START: req_shipping_lastname-->
+						*
+						<!--END: req_shipping_lastname--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_lastname]</b> </span></td>
+					<td><span class="font2">
+						<input name="shipping_lastname" type="text" id="shipping_lastname" value="[shipping_lastname]" size="15">
+						</span></td>
+				</tr>
+				<tr class="alternative">
+					<td><!--START: req_email-->
+						*
+						<!--END: req_email--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_email]:</b></span></td>
+					<td><input type="text" size="20" name="email" value="[email]"></td>
+				</tr>
+				<tr class="alternative">
+					<td><!--START: req_shipping_company-->
+						*
+						<!--END: req_shipping_company--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_company]</b></span></td>
+					<td><input name="shipping_company" type="text" id="shipping_company" value="[shipping_company]" size="25"></td>
+				</tr>
+				<tr class="alternative">
+					<td height="24" class="alternative"><!--START: req_shipping_phone-->
+						*
+						<!--END: req_shipping_phone--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_phone]</b></span></td>
+					<td><input name="shipping_phone" type="text" id="shipping_phone" value="[shipping_phone]" size="25"></td>
+				</tr>
+				<tr class="alternative">
+					<td height="24" class="alternative"><!--START: req_shipping_address-->
+						*
+						<!--END: req_shipping_address--></td>
+					<td align="right" ><span class="font2"><b>[CustomerInfo_address]</b></span></td>
+					<td><input name="shipping_address" type="text" id="shipping_address" value="[shipping_address]" size="25"></td>
+				</tr>
+				<tr class="alternative">
+					<td></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_address2]</b></span></td>
+					<td><input name="shipping_address2" type="text" id="shipping_address2" value="[shipping_address2]" size="25"></td>
+				</tr>
+				<tr class="alternative">
+					<td><!--START: req_shipping_city-->
+						*
+						<!--END: req_shipping_city--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_city]</b></span></td>
+					<td><input name="shipping_city" type="text" id="shipping_city" value="[shipping_city]" size="25"></td>
+				</tr>
+				<tr class="alternative">
+					<td><!--START: req_shipping_country-->
+						*
+						<!--END: req_shipping_country--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_country]</b></span></td>
+					<td><select name="shipping_country" onChange="document.checkoutform.action='checkout.asp?step=1';document.checkoutform.submit();" class="txtBoxStyle2">
+							
+				[CountryDropDown]
+			  
+						</select>
+					</td>
+				</tr>
+				<tr class="alternative">
+					<td><!--START: req_shipping_state-->
+						*
+						<!--END: req_shipping_state--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_state]</b></span></td>
+					<td> [state] </td>
+				</tr>
+				<tr class="alternative">
+					<td><!--START: req_shipping_zip-->
+						*
+						<!--END: req_shipping_zip--></td>
+					<td align="right"><span class="font2"><b>[CustomerInfo_zip]</b></span></td>
+					<td><input name="shipping_zip" type="text" id="shipping_zip" value="[shipping_zip]" size="10">
+					</td>
+				</tr>
+				<tr class="alternative">
+					<td>&nbsp;</td>
+					<td align="right"><input type="checkbox" value="1" name="maillist" [maillist]></td>
+					<td>[checkout1_joinmailinglist]</td>
+				</tr>
+			</table></td>
+	</tr>
+</table>
+<br>
+<!--START: SAVE_ADDRESSES-->
+<table width="150" border="0" cellspacing="1" cellpadding="0" class="borders">
+	<tr>
+		<td class="alternative"><table width="100%" cellspacing="0" cellpadding="0" border="0" id="Table5">
+				<tr>
+					<td class="titles">Previous Addresses</td>
+				</tr>
+				<tr>
+					<td class="font2" align="center"><div name="addresslist" id="addresslist">
+						<select type="dropdown" name="save_address" multiple onchange="javascript:filladdress(this);">
+							
+				[address_list]
+				
+						</select>
+						</div></td>
+				</tr>
+			</table></td>
+	</tr>
+</table>
+<!--END: SAVE_ADDRESSES-->
+<p>
+	<input type="submit" name="Add22" value="[checkout1_submitbutton]">
+	<br>
+	</form> <br>
+	<!--START: CATEGORY_FOOTER-->
+<div align="center">
+<table width=552 cellspacing="0" cellpadding="2" border="0">
+	<tr>
+		<td class="font2">[CONTENT]</td>
+	</tr>
+</table>
+</div>
+<!--END: CATEGORY_FOOTER-->
+<!----- END: Customer Information ---->
+

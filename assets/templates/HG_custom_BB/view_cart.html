@@ -1,0 +1,424 @@
+<script language="javascript">
+	function buySAFEOnClick(wantsbond) 
+	{ 
+	document.location.href='view_cart.asp?wantsbond=' + wantsbond;
+ }		
+</script>
+
+<table width="98%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td class="checkout-headers" colspan="6" valign="top">[viewcart_header]</td>
+	</tr>
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td class="data" colspan="6">[CONTENT]</td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<form action="../Copy of HG_custom/shipquote.asp" method="post" name="shipquote" onSubmit="return submitForm();">
+		<input type="hidden" name="thispage" value="">
+		<input type="hidden" name="shipping_zip" value="[shipping_zip]" id="Hidden2">
+		<script language="javascript">document.shipquote.thispage.value = window.location.href;</script>
+	</form>
+	<tr>
+		<td> </td>
+	</tr>
+	<tr>
+		<td colspan="6" align="right"><table cellpadding="1" cellspacing="1" border="0">
+				<tr>
+					<td valign="top"><input type="button" value="[viewcart_continue-shopping]" onclick="document.location.href='[continue_url]';" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+					<td valign="top"><input type="button" onclick="window.location='checkout.asp?step=1'" value="[viewcart_checkout-button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+			</table></td>
+	</tr>
+	<form action="../Copy of HG_custom/recalculate.asp" method="post" name="recalculate" id="recalculate">
+		<!--START: SHOPPING_CART_SHIPMENT_INFO-->
+		<tr>
+			<td class="options-titles" colspan="6" height="20">Ship To [name] [address]
+				<!--START: EDITADDRESS-->
+				<a href='../Copy of HG_custom/edit_shipment.asp?shipmentid=[shipmentid]&amp;action=editaddresses'>Edit Address</a>
+				<!--END: EDITADDRESS--></td>
+		</tr>
+		<!--END: SHOPPING_CART_SHIPMENT_INFO-->
+		<tr>
+			<td height="10" colspan="6"><img src="../Copy of HG_custom/assets/templates/common/images/spacer.gif" height="10"></td>
+		</tr>
+		<tr>
+			<td class="titles2" align="left" colspan="2" width="10%"><strong>[shoppingcart_items]</strong></td>
+			<td class="titles2" align="right"><strong>[shoppingcart_quantity]</strong></td>
+			<td class="titles2" align="right"><strong>[shoppingcart_price]</strong></td>
+			<td class="titles2" align="right"><strong>[shoppingcart_total]</strong></td>
+			<td class="titles2"> </td>
+		</tr>
+		<tr>
+			<td height="1" colspan="6" class="borders2"><img src="../Copy of HG_custom/assets/templates/common/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--START: SHOPPING_CART_ITEM-->
+
+        <!--4-Tell Recommendations Begin-->
+			<script type="text/javascript">
+			    _4TellBoost.addCartItem("[ITEM_CATALOGID]");
+			</script>
+			<!--4-Tell Recommendations End-->
+            
+		<tr>
+			<td width="15%" height="60" valign="middle"><!--START: itemthumbnail--><a href="../Copy of HG_custom/product.asp?itemid=[ITEM_CATALOGID]"><img src="../Copy of HG_custom/thumbnail.asp?file=[THUMBNAIL]" border="0" height="55" width="55"></a><!--END: itemthumbnail--></td>
+			<td class="item" valign="middle" align="left" width="55%"><a href="../Copy of HG_custom/product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a>
+				<!--START: itemoptions-->
+				<br>
+				<a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a><br>
+				<div id=opt[ITEM_ID] name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div>
+				<!--END: itemoptions-->
+				<!--START: recurring_frequency-->
+				<br>
+				This item will Autoship every <b>[recurring_frequency]</b>
+				<!--END: recurring_frequency--></td>
+			<td valign="middle" class="item" align="right"><input type="text" name="qtyitemnum" value="[ITEM_QUANTITY]" size="3" maxlength="5" class="txtBoxStyle">
+				<input type="hidden" name="coliditemnum" value="[ITEM_ID]" size="3" maxlength="5" id="Hidden3">
+			</td>
+			<td valign="middle" class="item" align="right">[ITEM_PRICE]</td>
+			<td valign="middle" class="item" align="right">[ITEM_SUBTOTAL]</td>
+			<td width="20" align="center"><a href="#" onClick="document.recalculate.qtyitemnum.value=0;document.recalculate.submit();">
+				<input type="button" value="x" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+				</a></td>
+		</tr>
+		<tr>
+			<td height="1" colspan="6" class="borders2"><img src="../Copy of HG_custom/assets/templates/common/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--END: SHOPPING_CART_ITEM-->
+		<tr>
+			<td colspan="3"> </td>
+			<td class="item" align="right">[shoppingcart_subtotal]</td>
+			<td class="item" align="right">[CARTSUBTOTAL]</td>
+		</tr>
+		<!--START: BUYSAFE_CONTROL-->
+		<tr>
+			<td colspan="5" align="right"><table border="0" width="100%" id="Table3">
+					<tr>
+						<!--START: BUYSAFE_LEARNMORE-->
+						<td class="item" align="right"><a href="../Copy of HG_custom/[buysafe_cartdetailsurl]" target="_buySAFE">[buysafe_cartdetailsdisplaytext]</a> </td>
+						<!--END: BUYSAFE_LEARNMORE-->
+						<td class="item" align="right">[buysafe_bondingsignal]</td>
+						<!--START: BUYSAFE_BONDCOST-->
+						<td class="item" align="right">[buysafe_bondcostdisplaytext]</td>
+						<!--END: BUYSAFE_BONDCOST-->
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: BUYSAFE_CONTROL-->
+		<!--START: DISCOUNTS-->
+		<tr>
+			<td colspan="3"> </td>
+			<td class="item" align="right">[checkout1_discounts]</td>
+			<td class="item" align="right">[DISCOUNTS]</td>
+		</tr>
+		<!--END: DISCOUNTS-->
+		<tr>
+			<td colspan="3"> </td>
+			<td class="item" align="right"><strong>[shoppingcart_total]</strong></td>
+			<td class="item" align="right"><b>[CARTTOTAL]</b></td>
+		</tr>
+		<tr>
+			<td class="item" colspan="6"> </td>
+		</tr>
+		<tr>
+			<td class="item" colspan="6">[viewcart_total-note]</td>
+		</tr>
+		<tr>
+			<td height="4" colspan="6"><img src="../Copy of HG_custom/assets/templates/common/images/spacer.gif" height="4"></td>
+		</tr>
+		<tr>
+			<td colspan="6"><table width="100%" cellpadding="3" cellspacing="0" border="0">
+					<!--START: apply_coupon-->
+					<tr class="alternative">
+						<td class="item" width="150" align="right"><strong>[viewcart_coupon-header]</strong></td>
+						<td width="100"><input type="text" name="coupon_code" class="txtBoxStyle" size="14"></td>
+						<td width="15"><input type="submit" value="Go!" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" id="Submit1" name="Submit1" /></td>
+						<td class="item">[viewcart_coupon-message]</td>
+					</tr>
+					<!--END: apply_coupon-->
+					<tr>
+						<td height="1" colspan="6"><img src="../Copy of HG_custom/assets/templates/common/images/spacer.gif" height="1"></td>
+					</tr>
+					<!--START: ShipQuote-->
+					<tr class="alternative">
+						<td class="item" width="150" align="right"><strong>[viewcart_shipping-header]</strong></td>
+						<td><input type="text" name="shipping_zip" size="14" value="[shipping_zip]" class="txtBoxStyle" id="Text3"></td>
+						<td width="15"><input type="button" value="Go!" class="btn" onClick="document.shipquote.shipping_zip.value=document.recalculate.shipping_zip.value;document.shipquote.submit();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" name="Button4"></td>
+						<td class="item">[viewcart_shipping-message]</td>
+					</tr>
+					<!--START: viewcart_ship-->
+					<tr class="alternative">
+						<td> </td>
+						<td class="item" colspan="4"> [shipping_city] [shipping_state] [shipping_zip]<br />
+							<select class="txtBoxStyle">
+								<!--START: Shippers-->
+								<option><b>[OPTION-SHIPPER]</b> <i>[OPTION-DESCRIPTION]</i> [OPTION-PRICE]</option>
+								<!--END: Shippers-->
+							</select>
+							 
+							<input type="button" class="btn" value="Clear" onClick="document.shipquote.action='shipquote.asp?action=clean';document.shipquote.submit();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Button5" name="Button5">
+						</td>
+					</tr>
+					<!--END: viewcart_ship-->
+					<!--END: ShipQuote-->
+					<!--START: ShipQuoteInternational-->
+					<tr class="alternative">
+						<td class="item" width="150" align="right"><strong>[viewcart_shipping-header]</strong></td>
+						<td class="item">
+							<script type="text/javascript" src="../Copy of HG_custom/state_countryjs.asp"></script>
+							<script>
+								function get_Element(i)
+								{
+									return document.getElementById(i) || document.getElementsByName(i).item(0);
+								}								
+								function getInternationalQuote()
+								{
+									var strAction = "shipquote.asp?shipping_country=" + get_Element("shipping_country").value;
+									strAction = strAction + "&shipping_state=" + get_Element("shipping_state").value;
+									document.shipquote.action = strAction;
+									
+									document.shipquote.shipping_zip.value = document.recalculate.shipping_zip.value
+									document.shipquote.submit();
+								}
+							</script>
+							<select name="shipping_country" onChange="this.form.shipping_zip.value='';populateState('shipping_state','shipping_country');" class="txtBoxStyle" id="shipping_country"></select>
+							<span><select id="shipping_state" onChange="this.form.shipping_zip.value='';" name="shipping_state" class="txtBoxStyle"></select></span>
+							<input type="text" name="shipping_zip" size="14" value="[shipping_zip]" class="txtBoxStyle" id="shipping_zip">
+						</td>
+						<td width="15"><input type="button" value="Go!" class="btn" onClick="getInternationalQuote();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" name="Button4" ID="Button1"></td>
+						<td class="item">[viewcart_shipping-message]</td>
+					</tr>
+					<!--START: viewcart_ship-->
+					<tr class="alternative">
+						<td> </td>
+						<td class="item" colspan="4"> [shipping_city] [shipping_state] [shipping_zip]<br />
+							<select class="txtBoxStyle" ID="Select1" NAME="Select1">
+								<!--START: Shippers-->
+								<option><b>[OPTION-SHIPPER]</b> <i>[OPTION-DESCRIPTION]</i> [OPTION-PRICE]</option>
+								<!--END: Shippers-->
+							</select>
+							 
+							<input type="button" class="btn" value="Clear" onClick="document.shipquote.action='shipquote.asp?action=clean';document.shipquote.submit();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Button2" name="Button5">
+						</td>
+					</tr>
+					<!--END: viewcart_ship-->
+					<!--END: ShipQuoteInternational-->
+				</table></td>
+		</tr>
+		<tr>
+			<td height="5" colspan="6"><img src="../Copy of HG_custom/assets/templates/common/images/spacer.gif" height="5"></td>
+		</tr>
+		<tr>
+			<td colspan="6" align="right"><table cellpadding="1" cellspacing="1" border="0" id="Table5">
+					<tr>
+						<td valign="top"><!--START: savecart--><input type="button" value="[viewcart_save-cart]" onclick="document.location.href='myaccount.asp?action=save_cart';" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Button3" name="Button6"><!--END: savecart--></td>
+						<td valign="top"><input type="button" value="[viewcart_continue-shopping]" onclick="document.location.href='[continue_url]';" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Button6" name="Button6"></td>
+						<td valign="top"><input type="submit" name="Add" value="[shoppingcart_updatecart]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Submit2"></td>
+						<td valign="top"><input type="button" onclick="window.location='checkout.asp?step=1'" value="[viewcart_checkout-button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Button7" name="Button7"></td>
+					</tr>
+				</table></td>
+		</tr>
+        <!-- 4-Tell -new outer table to make column for recommendations next to checkout buttons -->
+		<tr><td colspan="6"><table width="100%"><tr>
+			
+				<!--4-Tell Recommendations Begin-->
+				<td align="left" valign="top" width="70%"><table width="100%" style="border: 1px solid #DFE0E0;">
+					<tr><td>
+	            	<!--START: USERNAME-->
+					<script type="text/javascript">
+					    _4TellBoost.setCustomerId("[userid]");
+					</script>
+	            	<!--END: USERNAME-->
+					<script type="text/javascript">
+					    _4TellBoost.getRecommendations('ViewCart', '');
+					</script>
+						<div id="second4TellContainer"></div>		
+					</td></tr>
+				</table></td>
+				<!--4-Tell Recommendations End-->		
+				
+				<!-- 4-Tell -new table to hold existing checkout buttons -->
+				<td align="right" valign="top" width="30%"><table width="100%">
+
+		<!--START: INTERNATIONAL_CHECKOUT-->
+		<tr>
+			<td colspan="6" align="right" valign="top"><table>
+					<tr>
+						<td class="font1" valign="middle"> - Outside the U.S. - </td>
+						<td><a href="internationalcheckout.asp"><img src="../Copy of HG_custom/assets/templates/common/images/international_checkout.gif" border="0" /></td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: INTERNATIONAL_CHECKOUT-->
+		<!--START: BONGO_INTERNATIONAL-->
+		<tr>
+			<td colspan="6" align="right" valign="top"><table>
+					<tr>
+						<td class="font1" valign="middle"> - Outside the U.S. - </td>
+						<td><a href="bongointernational.asp"><img style="cursor:pointer;" src="https://bongous.com/partner/images/Bongo_Checkout_Button.png" border="0"/></td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: BONGO_INTERNATIONAL-->
+		<!--START: GOOGLECHECKOUT-->
+		<tr>
+		  <td colspan="6" align="right" valign="top"><h6>We accept all major credit cards<br>
+		    <img src="http://shop.homemadegourmet.com/common_images/credit-cards.gif" alt="all credit cards accepted" width="186" height="22"></h6></td>
+		  </tr>
+		<tr>
+			<td colspan="6" align="right" valign="top"><table>
+					<tr>
+						<td class="font1" valign="middle">&nbsp;</td>
+						<td><a href="../Copy of HG_custom/google_checkout.asp"><img name="Google Checkout" alt="Google Checkout" src="https://checkout.google.com/buttons/checkout.gif?merchant_id=[gc_merchantid]&w=180&h=46&style=trans&variant=text&loc=en_US" height="46" width="180" border="0"></a> </td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: GOOGLECHECKOUT-->
+		<!--START: paypalexpress-->
+		<tr>
+			<td colspan="6" align="right" valign="top"><table border=0 width="30%">
+            
+					<tr>
+						<td align="center"><br /><a href="../Copy of HG_custom/paypal_express.asp?ch=1"> <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" 
+ ></a></td></tr>
+<tr>
+						<td width="383" valign="top" align="center"><span style="font-size: 11px; font-family: Arial, Verdana;">Save time. Checkout securely.<br />
+							Pay without sharing your financial information.</span> </td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: paypalexpress-->
+		<!--START: checkoutByAmazon-->
+		<tr>
+			<td colspan="6" align="right" valign="top"><table ID="Table1">
+					<tr>
+						<td>[amazon_cba_form]</td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: checkoutByAmazon-->
+        <!--START: shopatron-->
+		<tr>
+			<td colspan="6" align="right" valign="top"><table ID="Table2">
+					<tr>
+						<td><input type="button" value="Checkout with Shopatron" name="B1" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="window.location='shopatron.asp'"/></td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: shopatron-->
+                    </table></td><!-- 4-Tell -end new checkout table -->
+			</tr>
+			<tr>
+				<td><img src="../Copy of HG_custom/assets/templates/common/images/spacer.gif" width="1" height="11"></td>
+			</tr>
+		  	</table> <!-- 4-Tell -end new outer table -->		
+		<tr>
+			<td colspan="6"> </td>
+		</tr>
+	</form>
+	<script language="javascript" type="text/javascript">
+//You should create the validator only after the definition of the HTML form
+ var frmvalidator = new Validator("recalculate");
+
+ frmvalidator.setAddnlValidationFunction("submitForm");
+ 
+ //<!--START: apply_coupon_validation-->
+ frmvalidator.addValidation("coupon_code","maxlen=20","Maximun Coupon Length is 20");
+ //<!--END: apply_coupon_validation-->
+</script>
+	<tr>
+		<td colspan="6"><!--START: PROMOTIONS-->
+			<table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="checkout-headers" colspan="2">[viewcart_discounts-header]</td>
+				</tr>
+				<tr>
+					<td colspan="2"><!--START: DISPLAY_PROMOS-->
+						<table width="100%" cellpadding="5" cellspacing="0" class="alternative" id="Table8">
+							<form method="post" action="../Copy of HG_custom/recalculate.asp?apply_coupon=2" name=couponapply>
+								<input type="hidden" name="coupon" value="[id]" id="Hidden4">
+								<tr>
+									<td class="item" width="40%"><b>[promotion_name]</b></td>
+									<td class="item" width="60%" align="left">[promotion_description]<br>
+										<b>Valid from: [promotion_start] - [promotion_end]</b></td>
+									<td><!--START: REMOVE_PROMO--><input type="submit" value="Remove" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Submit3" name="Submit3"><!--END: REMOVE_PROMO--></td>
+								</tr>
+							</form>
+						</table>
+						<!--END: DISPLAY_PROMOS-->
+					</td>
+				</tr>
+			</table>
+			<br>
+			<!--END: PROMOTIONS-->
+			<!--START: GIFTCERTIFICATES-->
+			<table width="100%" cellpadding="0" cellspacing="0" id="Table9">
+				<tr>
+					<td class="checkout-headers" colspan="2">[viewcart_giftcertificates-header]</td>
+				</tr>
+				<tr>
+					<td colspan="2"><!--START: DISPLAY_GIFTCERTIFICATES-->
+						<table width="100%" cellpadding="5" cellspacing="0" class="alternative" id="Table10">
+							<form method="post" action="../Copy of HG_custom/recalculate.asp?apply_coupon=2" name=couponapply id="Form4">
+								<input type="hidden" name="coupon" value="[id]" id="Hidden5">
+								<tr>
+									<td class="item" width="40%"><b>[certificate_name]</b></td>
+									<td class="item" width="60%" align="left"><b>Amount:</b> [discount_amount] </td>
+									<td><input type="submit" value="Remove" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Submit4" name="Submit4"></td>
+								</tr>
+							</form>
+						</table>
+						<!--END: DISPLAY_GIFTCERTIFICATES-->
+					</td>
+				</tr>
+			</table>
+			<!--END: GIFTCERTIFICATES-->
+			<!--START: FEATURE_MENU-->
+			<table width="100%" cellpadding="2" cellspacing="0">
+				<tr>
+					<td class="checkout-headers">[viewcart_feature-header]</td>
+				</tr>
+			</table>
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="alternative">
+				<tr>
+					<td><table border="0" cellspacing="0" cellpadding="5" width="100%" align="center" id="Table13">
+							<!--START: CATEGORY_ITEMS-->
+							<!--START: ITEM_TEMPLATE_0-->
+							<table border="0" cellspacing="0" cellpadding="0" width="75%" id="Table14">
+								<tr>
+									<td colspan="2" align="center" valign="middle" height="100"><a href="../Copy of HG_custom/product.asp?itemid=[catalogid]"><img src="../Copy of HG_custom/[THUMBNAIL]" alt="[name]" border="0"></a></td>
+								</tr>
+								<tr valign="middle">
+									<td colspan="2" class="item" align="center"><a href="../Copy of HG_custom/product.asp?itemid=[catalogid]">[name]</a></td>
+								</tr>
+								<tr>
+									<td class="price" align="center" valign="middle" colspan="2">[ITEMPRICE]</td>
+								</tr>
+								<tr>
+									<td colspan="2"></td>
+								</tr>
+							</table>
+							<!--END: ITEM_TEMPLATE_0-->
+							<!--END: CATEGORY_ITEMS-->
+						</table></td>
+				</tr>
+			</table>
+			<p>
+				<!--END: FEATURE_MENU-->
+			<p>
+				<!--START: CATEGORY_FOOTER-->
+			<table width="98%" cellspacing="0" cellpadding="2" border="0" id="Table15">
+				<tr>
+					<td class="data">[CONTENT]</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_FOOTER-->
+		</td>
+	</tr>
+</table>
+
+<!--START: ShipQuoteInternationalScript-->
+<script>
+initCountry("[shipping_country]","[shipping_state]","shipping_state","shipping_country");
+</script>
+<!--END: ShipQuoteInternationalScript-->

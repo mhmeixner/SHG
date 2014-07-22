@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/"  xmlns:isc="http://dtd.3dcart.com/ecommerce-1.0.dtd">
+<channel>
+<title>Homemade Gourmet: New Releases</title>
+<link>http://shop.homemadegourmet.com</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description>List of New Released Items at Homemade Gourmet</description>
+<language>en-us</language>
+<isc:store_name><![CDATA[Homemade Gourmet]]></isc:store_name>
+<item>
+<title><![CDATA[Southwest Seasoning Mix]]></title>
+<link>http://shop.homemadegourmet.com/Southwest-Seasoning-Mix_p_566.html</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description><![CDATA[ <p><a href="http://shop.homemadegourmet.com/Southwest-Seasoning-Mix_p_566.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/southwest seasoning grilled chicken_thumbnail.jpg" align="right" border=0></a>A delicious, mildly spicy blend that perks up your pork, chicken, beef, fish, eggs, potatoes and more......<a href="http://shop.homemadegourmet.com/Southwest-Seasoning-Mix_p_566.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $8.50 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=566&out=1" target="_new">Add to Cart</a>]</p><br clear=all> ]]></description>
+<guid isPermaLink="false">http://shop.homemadegourmet.com/Southwest-Seasoning-Mix_p_566.html</guid>
+<content:encoded><![CDATA[<p><a href="http://shop.homemadegourmet.com/Southwest-Seasoning-Mix_p_566.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/southwest seasoning grilled chicken_thumbnail.jpg" align="right" border=0></a>A delicious, mildly spicy blend that perks up your pork, chicken, beef, fish, eggs, potatoes and more......<a href="http://shop.homemadegourmet.com/Southwest-Seasoning-Mix_p_566.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $8.50 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=566&out=1" target="_new">Add to Cart</a>]</p><br clear=all>]]></content:encoded>
+<isc:description><![CDATA[<p class=summary><DIV>A delicious, mildly spicy blend that perks up your pork, chicken, beef, fish, eggs, potatoes and more...</DIV></p>]]></isc:description>
+<isc:productid><![CDATA[Southwest Seasoning Mix]]></isc:productid>
+<isc:thumb><![CDATA[http://shop.homemadegourmet.com/assets/images/southwest seasoning grilled chicken_thumbnail.jpg]]></isc:thumb>
+<isc:image><![CDATA[http://shop.homemadegourmet.com/assets/images/southwest seasoning grilled chicken.jpg]]></isc:image>
+<isc:price><![CDATA[$8.50]]></isc:price>
+</item>
+<item>
+<title><![CDATA[Great Grilling Collection]]></title>
+<link>http://shop.homemadegourmet.com/Great-Grilling-Collection_p_543.html</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description><![CDATA[ <p><a href="http://shop.homemadegourmet.com/Great-Grilling-Collection_p_543.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/kansas-city-rub-seasoning(1)_thumbnail.jpg" align="right" border=0></a>Perfect for the grilling enthusiast! Delicious grill-worthy recipes for amazing prepared meals are included right on the box. Includes single packets of: Kansas City Rub, Chicken Enchilada Soup Mix, Garlic Lemon Seasoning and Jalapeno Bacon Cheddar D...<a href="http://shop.homemadegourmet.com/Great-Grilling-Collection_p_543.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $20.00 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=543&out=1" target="_new">Add to Cart</a>]</p><br clear=all> ]]></description>
+<guid isPermaLink="false">http://shop.homemadegourmet.com/Great-Grilling-Collection_p_543.html</guid>
+<content:encoded><![CDATA[<p><a href="http://shop.homemadegourmet.com/Great-Grilling-Collection_p_543.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/kansas-city-rub-seasoning(1)_thumbnail.jpg" align="right" border=0></a>Perfect for the grilling enthusiast! Delicious grill-worthy recipes for amazing prepared meals are included right on the box. Includes single packets of: Kansas City Rub, Chicken Enchilada Soup Mix, Garlic Lemon Seasoning and Jalapeno Bacon Cheddar D...<a href="http://shop.homemadegourmet.com/Great-Grilling-Collection_p_543.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $20.00 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=543&out=1" target="_new">Add to Cart</a>]</p><br clear=all>]]></content:encoded>
+<isc:description><![CDATA[<span style="font-weight: bold;">Perfect for the grilling enthusiast! </span> Delicious grill-worthy recipes for amazing prepared meals are included right on the box. Includes single packets of: <a style="COLOR: #1e90ff" href="/Kansas-City-Rub--Double-Pack_p_347.html">Kansas City Rub</a>, <a style="COLOR: #1e90ff" href="/Chicken-Enchilada-Soup-Mix--Double-Pack_p_476.html">Chicken Enchilada Soup Mix</a>, <a style="COLOR: #1e90ff" href="/Garlic-Lemon-Seasoning--Herbs-and-Spices-Double-Pack_p_322.html">Garlic Lemon Seasoning</a> and <a style="COLOR: #1e90ff" href="/Jalapeno-Bacon-Cheddar-Dip-Mix--Double-Pack_p_345.html">Jalapeno Bacon Cheddar Dip Mix</a>. Also makes a Great Gift for meat lovers!]]></isc:description>
+<isc:productid><![CDATA[Great Grilling Collection]]></isc:productid>
+<isc:thumb><![CDATA[http://shop.homemadegourmet.com/assets/images/kansas-city-rub-seasoning(1)_thumbnail.jpg]]></isc:thumb>
+<isc:image><![CDATA[http://shop.homemadegourmet.com/assets/images/kansas-city-rub-seasoning(1).jpg]]></isc:image>
+<isc:price><![CDATA[$20.00]]></isc:price>
+</item>
+<item>
+<title><![CDATA[Jalapeno Bacon Cheddar Pantry Staple]]></title>
+<link>http://shop.homemadegourmet.com/Jalapeno-Bacon-Cheddar-Pantry-Staple_p_511.html</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description><![CDATA[ <p><a href="http://shop.homemadegourmet.com/Jalapeno-Bacon-Cheddar-Pantry-Staple_p_511.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/jalapeno-bacon-chedder-dip-l_thumbnail.jpg" align="right" border=0></a>A $33.25 value for only $20.00! This value sized customer favorite is just the right balance of smoky bacon and roasted jalapeno flavor combined with cheddar cheese. A delicious and hearty bacon jalapeno dip you can't forget! Make a double batch beca...<a href="http://shop.homemadegourmet.com/Jalapeno-Bacon-Cheddar-Pantry-Staple_p_511.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $20.00 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=511&out=1" target="_new">Add to Cart</a>]</p><br clear=all> ]]></description>
+<guid isPermaLink="false">http://shop.homemadegourmet.com/Jalapeno-Bacon-Cheddar-Pantry-Staple_p_511.html</guid>
+<content:encoded><![CDATA[<p><a href="http://shop.homemadegourmet.com/Jalapeno-Bacon-Cheddar-Pantry-Staple_p_511.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/jalapeno-bacon-chedder-dip-l_thumbnail.jpg" align="right" border=0></a>A $33.25 value for only $20.00! This value sized customer favorite is just the right balance of smoky bacon and roasted jalapeno flavor combined with cheddar cheese. A delicious and hearty bacon jalapeno dip you can't forget! Make a double batch beca...<a href="http://shop.homemadegourmet.com/Jalapeno-Bacon-Cheddar-Pantry-Staple_p_511.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $20.00 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=511&out=1" target="_new">Add to Cart</a>]</p><br clear=all>]]></content:encoded>
+<isc:description><![CDATA[<div>A $33.25 value for only $20.00! <span style="font-weight: bold; font-style: italic;"></span>This value sized customer favorite is just the right balance of smoky bacon and roasted jalapeno flavor combined with cheddar cheese. A delicious and hearty bacon jalapeno dip you can't forget! Make a double batch because it is guaranteed to disappear. Equivalent to 7 individual packets. Recipes printed on the box. <div> </div><div>Visit <a target="_blank" href="http://recipes.homemadegourmet.com/" style="COLOR: #1e90ff">The Key to the Kitchen</a> and search keyword "Jalapeno Bacon Cheddar Dip Mix" for additional recipes.</div></div>]]></isc:description>
+<isc:productid><![CDATA[Jalapeno Bacon Cheddar Pantry Staple]]></isc:productid>
+<isc:thumb><![CDATA[http://shop.homemadegourmet.com/assets/images/jalapeno-bacon-chedder-dip-l_thumbnail.jpg]]></isc:thumb>
+<isc:image><![CDATA[http://shop.homemadegourmet.com/assets/images/jalapeno-bacon-chedder-dip-l.jpg]]></isc:image>
+<isc:price><![CDATA[$20.00]]></isc:price>
+</item>
+</channel></rss>

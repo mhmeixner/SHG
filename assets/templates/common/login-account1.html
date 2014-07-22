@@ -1,0 +1,71 @@
+<table width="98%" cellpadding="0" cellspacing="10">
+  <tr>
+    <td class="page_headers" align="left" colspan="5">My Account</td>
+  </tr>
+  <tr>
+    <td align="left" class="item" colspan="5"><!--START: error_message--> 
+      [error_message] 
+      <!--END: error_message--></td>
+  </tr>
+  <tr>
+    <td valign="top" width="260"><table width="250" cellpadding="0" cellspacing="5">
+        <form action="login.asp?ordertracking=[otrack]" method="post">
+          <input type="hidden" name="catalogid" value="[catalogid]">
+          <tr>
+            <td class="checkout-headers" colspan="2">[login_Header-login]</td>
+          </tr>
+          <tr>
+            <td class="item" colspan="2">[login_Header-loginmessage]</td>
+          </tr>
+          <tr>
+            <td class="item" align="right"><strong>[CustomerInfo_email]:</strong></td>
+            <td><input type="text" size="30" name="email" value="[email]" class="txtBoxStyle"></td>
+          </tr>
+          <tr>
+            <td align="right" class="item" ><strong>[CustomerInfo_password]:</strong></td>
+            <td><input type="password" size="12" name="password" autocomplete="off" class="txtBoxStyle"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="left"><input type="submit" value="[login_button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+          </tr>
+        </form>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <form action="login.asp?action=forgotpass&ordertracking=[otrack]" method="post">
+          <tr>
+            <td class="checkout-headers" colspan="3">[login_Header-forgotpassword]</td>
+          </tr>
+          <tr>
+            <td align="right" class="item"><strong>[CustomerInfo_email]:</strong></td>
+            <td><input type="text" size="30" name="email" value="[email]"  class="txtBoxStyle"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="[login_resetpasswordbutton]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+          </tr>
+        </form>
+      </table></td>
+    <td>&nbsp;</td>
+    <td class="borders" width="1"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" width="1"></td>
+    <td>&nbsp;</td>
+    <td valign="top"><form action="login.asp?action=forgotpass&ordertracking=[otrack]" method="post">
+        <table width="80%" cellpadding="0" cellspacing="5">
+          <tr>
+            <td class="checkout-headers" colspan="3"> [registration_Header-createnewaccount]</td>
+          </tr>
+          <tr>
+            <td align="left" class="item"  colspan="3"> [registration_create-account]</td>
+          </tr>
+          <tr>
+            <td class="item" colspan="3"><input type="button" value="[registration_button-createaccount]" class="btn" onmouseover="this.className='btn_over'"
+                    onmouseout="this.className='btn'" onclick="window.location='register.asp?cg=0';"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </form></td>
+  </tr>
+</table>

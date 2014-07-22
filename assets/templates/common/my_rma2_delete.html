@@ -1,0 +1,43 @@
+
+<script language="javascript">
+	function printThis(rma){
+		document.formu.action = "my_rma.asp?p=1";
+		document.formu.target = "_blank";
+		document.formu.submit(); 
+	}
+	
+	
+	<!--START: printing-->
+		onload = function(){print();}
+	<!--END: printing-->
+	
+</script>
+<form name="formu" id="formu" action="" method="post">
+					<input type="hidden" name="oid" id="oid" value="[oNumber]">
+					<input type="hidden" name="r" id="r" value="[RmaNumber]">
+				</form>
+<table width="95%" cellpadding="0" cellspacing="0" border="0">
+
+	<tr><td class="page_headers" align="left">[rma_header-rmatitle]</td></tr>
+		<!--START: CATEGORY_HEADER--><tr><td>[CONTENT]</td></tr><!--END: CATEGORY_HEADER-->
+	<!--START: RMA-->
+<tr><td>
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td>hh</td></tr></table>
+	<!--START: return-->
+			
+<input type="button" value="[rma_header-rma-btn-returntomyacc]" class="item" onclick="window.location.href='myaccount.asp'">
+								
+						
+										<!--END: return-->
+		
+		</td>
+	</tr>
+	<!--END: RMA-->
+
+		
+</table>
+<br><br>
+<!--START: CATEGORY_FOOTER-->
+	[CONTENT]
+<!--END: CATEGORY_FOOTER-->
+<br><Br>

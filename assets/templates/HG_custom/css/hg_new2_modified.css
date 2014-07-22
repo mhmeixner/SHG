@@ -1,0 +1,686 @@
+/* 
+================================
+3DCart Style Sheet 
+by Infomart2000 Corp.
+www.3dcart.com
+================================
+*/	
+	
+
+/***********************************/
+/*          DESIGN ELEMENTS        */
+/***********************************/
+
+ 
+/*body:: Controls Page Background Color and any other fonts not defined below*/ 	
+body
+{
+	font-family: Verdana, Tahoma, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	font-weight: Normal;
+	background: #ffffff;
+	margin-top: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	text-align: left;
+	vertical-align: top;
+}
+
+/*data:: Controls body default fonts and colors*/
+.data
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: left;
+}
+
+/*frame:: Controls the  Color of the Store's Frame*/		
+.frame	
+{
+	background-color: #eeeeee;
+}
+
+/*top:: Controls the  Color of the top Bar*/		
+.top
+{
+	background: url(../../HG/images/bg.gif) repeat-x;
+}
+
+/*footer:: Displays at the very bottom of your online store,  copyright and desgined by notices*/		
+.footer
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #3e404a;
+}	
+
+/*line:: Controls the  Color of the line bellow the top bar*/		
+.line
+{
+	background: url(../../HG/images/bg1.gif);
+}	
+
+/*alternative:: Controls the form backgrounds and other areas that requred an alternative color*/
+.alternative
+{
+	background-color: #f3f2f2;
+   padding: 2px 4px 2px 4px;
+   border: 1px solid #eae9e9;
+}
+ 
+/*borders:: Controls the color of  the borders on forms*/ 
+.borders
+{
+	background-color: #000000;
+}
+
+/*borders2:: Controls the color of  the borders on forms*/ 
+.borders2
+{
+	border: #999999;
+	background-color: #999999;
+}
+
+/*borders_coupon:: Controls the color of  the borders on the coupon and shipping box*/ 
+.borders_coupon
+{
+	border: solid;
+	border-color: #999999;
+	border-width: 1px;
+}
+
+/*invoice_table:: Controls the background color on your invoices*/ 
+.invoice_table
+{
+	background-color: #f9f8f8;
+} 
+
+
+/***********************************/
+/*         HEADERS & TITLES        */
+/***********************************/
+
+
+/*menu-headers:: Controls the way the menu headers look*/ 
+.menu-headers
+{
+	font-size: 12px;
+	font-family: Tahoma, Tahoma, Helvetica, sans-serif;
+	text-transform: uppercase;
+	color: #333333;
+	font-weight: none;
+	text-decoration: none;
+	padding: 4px 4px 4px 4px;
+}
+
+.menu-headers2
+{
+	
+	font-size: 12px;
+	font-family: Tahoma, Tahoma, Helvetica, sans-serif ;
+	text-transform: uppercase;
+	color: #393939;
+	font-weight: none;
+	text-decoration: none;
+}
+
+/*page_headers:: Controls the page's titles*/
+.page_headers
+{
+	font-family: Tahoma, Tahoma, Helvetica, sans-serif ;
+	font-size: 18pt;
+	font-weight: bold;
+	color: #be0f34;
+	letter-spacing: -1pt;
+	line-height: 26pt;
+	background-color: #ffffff;
+	
+}
+
+.small_headers
+{
+	font-family: Tahoma, Tahoma, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #be0f34;
+	letter-spacing: -1pt;
+	line-height: 26pt;
+	background-color: #ffffff;
+	
+}
+
+
+/*checkout-headers:: Controls the titles on the checkout pages (Billing Information, Shipping Information etc)*/
+.checkout-headers
+{
+	font-family: Tahoma, Tahoma, Helvetica, sans-serif ;
+	font-size: 14px;
+	font-weight:bold;
+	color:#be0f34; 
+}
+
+/*titles:: Controls the Body Tiles such as (Specials, Feature Items, Items, Related Items)*/ 
+.titles
+{
+	font-family: Tahoma, Helvetica, sans-serif ;
+	font-size: 14px;
+	font-weight:bold; 
+
+	background-color:#0000000; 
+	color: #535353
+	text-decoration: none;
+    padding: 10px 4px 10px 4px;
+	background-image:url(../../HG/images/bgg.gif);
+
+} 
+
+/*titles2:: Controls the titles on the view cart page*/ 
+.titles2
+{
+	font-family: Verdana, Geneva, Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	color: #999999;
+	padding:4px;
+} 
+
+/*options-titles:: Controls the way the titles on the product options display*/
+.options-titles
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #999999;
+}
+
+
+/*invoice_title:: Controls the way the title of the invoices look */ 
+.invoice_title
+{
+	font-family: Verdana, Geneva, Tahoma, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #cbcaca;
+	color: #4f4e4e;
+} 
+
+
+/***********************************/
+/*          GENERAL FONTS          */
+/***********************************/
+
+
+/*font1:: Primary Screen Font */ 
+.font1
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: Normal;
+	color: #333333;
+}
+ 
+ .footerfont
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: Normal;
+	color: #FFF;
+}
+ 
+ 
+/*font2:: Secondary Screen Font */ 
+.font2
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: Normal;
+	color: #666666;
+}
+
+.orange
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #f49d3f;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration:underline;
+}
+
+.font3
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: Normal;
+	color: #393939;
+}
+.font4
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: Normal;
+	color: #333333;
+}
+
+/*icon:: Controls the way the menu icons display*/ 
+.icon
+{
+	font-family: Verdana, Tahoma, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #ffffff;
+}
+
+/*store-name:: Store Name*/		 
+.store-name
+{
+font-family: Tahoma, Tahoma, Helvetica, sans-serif ;
+	font-size: 25px;
+	color: #333333;
+	text-decoration: none;
+}
+
+/*store-slogan:: Store Slogan*/		 
+.store-slogan
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:bold;
+	color: #715e55;
+	padding-top:28px;
+}	 	 
+
+/*menu-text:: Controls the way the menu (mailing list) text look*/ 
+.menu-text
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #393939;
+}
+
+/*item:: Controls the Item, Name, Description, Price, Savings, Cost,Font and Color*/ 
+.item
+{
+	font-family: Tahoma, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: Normal;
+	color: #132A4D;
+	text-decoration: none;
+}
+
+.custom_item
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #253255;
+	text-decoration: none;
+}
+
+.recipe_item
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #253255;
+	text-decoration: none;
+	list-style: url(/common_images/heart-bullet.gif);
+}
+
+
+/*price-info:: controls the way the prices display on the product page*/ 
+.price-info
+{
+	font-family: Verdana, Tahoma, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: Normal;
+	color: #;
+}
+
+/*price:: Controls the way the product's prices display*/ 
+.price
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight:bold;
+	color: #be0f34;
+}
+
+/*cart-text:: Controls the way the text inside the shopping cart looks*/ 
+.cart-text
+{
+	font-family: Verdana, Tahoma, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: Normal;
+	color: #be0f34;
+	line-height: 18px;
+
+}
+
+
+/*steps:: Controls the way the steps on the checkout pages display*/
+.steps
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #cccccc;
+	background-color: #ffffff;
+}
+
+/*steps_on:: Controls the way the steps on the checkout [ages display*/
+.steps_on
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #535353;
+	background-color: #ffffff;
+}
+
+/*error:: Controls the error messages*/ 
+.error
+{
+	font-family: Verdana, Tahoma, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #e10e04;
+	text-decoration: none;
+}
+
+
+/***********************************/
+/*      FORM FIELDS & BUTTONS      */
+/***********************************/
+
+/*btn:: Controls the buttons*/ 
+.btn
+{
+	border-top: 1px solid #dcdbdc;
+	border-bottom: 1px solid #dcdbdc;
+	border-left: 1px solid #dcdbdc;
+	border-right: 1px solid #dcdbdc;
+	background: #132a4d;
+	font-family: arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11px;
+	color: #ffffff;
+	cursor: pointer;
+	margin:1px;
+} 
+
+/*btn_over:: Controls the buttons*/ 
+.btn_over
+{
+	border-top: 1px solid #dcdbdc;
+	border-bottom: 1px solid #dcdbdc;
+	border-left: 1px solid #dcdbdc;
+	border-right: 1px solid #dcdbdc;
+	background: #be0f34;
+	font-family: arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11px;    
+	color: #ffffff;
+	cursor: pointer;
+	margin:1px;
+} 	
+
+ /*btn2:: Controls the buttons*/
+.btn2
+{
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
+	background-color: #ffffff;
+	font-family: arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 12px;    
+	color: #535353;
+	cursor: pointer;
+} 	
+
+/*txtBoxStyle:: Controls the text boxes*/  	
+.txtBoxStyle
+{
+	border-top: 1px solid #b3b4b5;
+	border-bottom: 1px solid #b3b4b5;
+	border-left: 1px solid #b3b4b5;
+	border-right: 1px solid #b3b4b5;
+	background-color: #f5f4f2;
+	font-family: arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 11px;    
+	color: #38393a;
+} 
+	
+/*txtareaStyle:: Controls the text areas*/ 	
+.txtareaStyle
+{
+	border-top: 1px solid #C7D5E0;
+	border-bottom: 1px solid #C7D5E0;
+	border-left: 1px solid #C7D5E0;
+	border-right: 1px solid #C7D5E0;
+	background-color: #FBFBFB;
+	font-family: arial, Helvetica, sans-serif;
+	font-weight: normal;;
+	font-size: 11px;    
+	color: #343333;
+	height: 80px;
+	width: 250px;
+}
+
+
+/***********************************/
+/*              LINKS              */
+/***********************************/
+
+
+/*A:: Controls the way the  Links look before a user clicks  or mouse overs on them*/ 	 
+A
+{
+	color: #333;
+	text-decoration: underline;
+	font: normal 11px Tahoma, Helvetica, sans-serif;
+	
+}
+	
+/*A:hover:: Controls the way the  Links look when a user passes  their mouse over a them*/ 	 	
+A:hover
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-style: normal;
+	color: #be0f34;
+	text-decoration: underline;
+}
+
+/*A:visited:: Controls the way the  Links look after a user has visited that section*/ 
+A:visited
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #333333;
+	text-decoration: none;
+}
+	
+/*A:visited:hover:: Controls the way the  Links look when a user hovers over a section they have visited*/ 	 
+A:visited:hover
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #0000000;
+	text-decoration: underline;
+	text-align: center;
+} 
+
+A.menu
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #ffffff;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration:none;
+}
+	
+A.menu:hover
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #ffffff;
+	font-size: 11px;
+	font-style: normal;
+   font-weight: bold;
+	text-decoration: none;
+}
+
+A.menu:visited
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #ffffff;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration:none;
+}
+	
+A.menu:visited:hover
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #ffffff;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+/*A.cat:: Controls the way the  Links on the left bar look before a user clicks  or mouse overs on them*/ 	 
+A.cat {
+
+font-family: Tahoma, Helvetica, sans-serif;
+color: #be0f34;
+font-size: 11px;
+font-weight: normal;
+font-style: normal;
+text-decoration: none;
+
+}
+	
+/*A.cat:hover:: Controls the way the  Links on the left bar look  when a user passes  their mouse over a them*/ 	
+A.cat:hover
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #132a4d;
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration:underline;
+}
+
+/*A.cat:visited:: Controls the way the  Links on the left bar look after a user has visited that section*/ 
+A.cat:visited
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #be0f34;
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration:none;
+}
+	
+/*A.cat:visited:hover:: Controls the way the  Links on the left bar look when a user hovers over a section they have visited*/ 	 
+A.cat:visited:hover
+{
+	font-family: Tahoma, Helvetica, sans-serif;
+	color: #132a4d;
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration:underline;
+} 
+
+.link2:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+.link2:visited {
+	text-decoration: none;
+	color: #ffffff;
+}
+.link2:hover {
+	text-decoration: none;
+	color: #ffffff;
+	text-decoration: underline;
+}
+.link2:active {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+
+.white{
+color: #ffffff;
+}
+
+/*controls the text in the common pages and non-product pages*/
+
+.common-pages-text
+{
+	color: #BD2139;
+	text-decoration: none;
+	font: normal 12px Tahoma;
+	text-align: left;
+}
+
+.left-4-meals-table {
+	text-align: left;
+	font-size: 10px;
+	vertical-align: top;
+}
+.bonus-recipe {
+	color: #132A4D;
+	font-weight: bold;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+.heart-bullets {
+	font: bold 14px Tahoma, Helvetica, Verdana, sans-serif;
+	list-style: url(/common_images/heart-bullet.gif);
+	color: #253255;
+	text-align: left;
+}
+.WV-header {
+	color: #333;
+	font: bold 24px tahoma;
+	letter-spacing: -1pt;
+}
+.welcome-text {
+	font: bold normal 12px Tahoma, Geneva, sans-serif;
+	color: #253255;
+}
+#search-nudge {
+	margin-right: 15px;
+}
+#cart-nudge {
+	margin-right: 15px;
+}
+#geotrust-nudge {
+	margin-top: 35px;
+}
+#account-greeting-nudge {
+	margin-left: 25px;
+}
+#ssl-icon-nudge {
+	margin-top: 3px;
+	margin-left: 2px;
+}
+#greetingnudge {
+	margin-left: 15px;
+}
+h1 {
+	font-size: 24px;
+}
+h2 {
+	font-size: 12px;
+	font-weight: normal;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/"  xmlns:isc="http://dtd.3dcart.com/ecommerce-1.0.dtd">
+<channel>
+<title>Homemade Gourmet: Best Sellers</title>
+<link>http://shop.homemadegourmet.com</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description>List of Best Seller Items at Homemade Gourmet</description>
+<language>en-us</language>
+<isc:store_name><![CDATA[Homemade Gourmet]]></isc:store_name>
+<item>
+<title><![CDATA[Basic Sweet Bread Mix]]></title>
+<link>http://shop.homemadegourmet.com/Basic-Sweet-Bread-Mix_p_327.html</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description><![CDATA[ <p><a href="http://shop.homemadegourmet.com/Basic-Sweet-Bread-Mix_p_327.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/zoomify/basic-sweet-bread-mix_thumbnail.jpg" align="right" border=0></a>This quick bread mix is the base for a variety of sweet bread recipe options such as apple spice bread, banana nut muffins, pumpkin bread, zucchini bread and more! Simply choose an optional add-in ingredient from the box and you can bake these delici...<a href="http://shop.homemadegourmet.com/Basic-Sweet-Bread-Mix_p_327.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $6.50 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=327&out=1" target="_new">Add to Cart</a>]</p><br clear=all> ]]></description>
+<guid isPermaLink="false">http://shop.homemadegourmet.com/Basic-Sweet-Bread-Mix_p_327.html</guid>
+<content:encoded><![CDATA[<p><a href="http://shop.homemadegourmet.com/Basic-Sweet-Bread-Mix_p_327.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/zoomify/basic-sweet-bread-mix_thumbnail.jpg" align="right" border=0></a>This quick bread mix is the base for a variety of sweet bread recipe options such as apple spice bread, banana nut muffins, pumpkin bread, zucchini bread and more! Simply choose an optional add-in ingredient from the box and you can bake these delici...<a href="http://shop.homemadegourmet.com/Basic-Sweet-Bread-Mix_p_327.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $6.50 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=327&out=1" target="_new">Add to Cart</a>]</p><br clear=all>]]></content:encoded>
+<isc:description><![CDATA[This quick bread mix is the base for a variety of sweet bread recipe options such as apple spice bread, banana nut muffins, pumpkin bread, zucchini bread and more! Simply choose an optional add-in ingredient from the box and you can bake these delicious varieties in minutes at home. A delicious addition to breakfast or serve warm with a dollop of whipped cream for a delicious dessert.  Add: egg, oil, milk. Yields: one loaf or 36 mini muffins.</P>]]></isc:description>
+<isc:productid><![CDATA[Basic Sweet Bread Mix]]></isc:productid>
+<isc:thumb><![CDATA[http://shop.homemadegourmet.com/assets/images/zoomify/basic-sweet-bread-mix_thumbnail.jpg]]></isc:thumb>
+<isc:image><![CDATA[http://shop.homemadegourmet.com/assets/images/zoomify/basic-sweet-bread-mix.jpg]]></isc:image>
+<isc:price><![CDATA[$6.50]]></isc:price>
+</item>
+<item>
+<title><![CDATA[Black Bean Salsa Mix - Double Pack]]></title>
+<link>http://shop.homemadegourmet.com/Black-Bean-Salsa-Mix--Double-Pack_p_371.html</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description><![CDATA[ <p><a href="http://shop.homemadegourmet.com/Black-Bean-Salsa-Mix--Double-Pack_p_371.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/black-bean-salsa-dip-l_thumbnail.jpg" align="right" border=0></a>Double-pack box! An all-time customer favorite! Our Black Bean Salsa Mix comes with the actual black beans and corn! Fresh-tasting herbs, spices, and ingredients combine to make this distinctive and flavorful salsa, sure to brighten any meal or party...<a href="http://shop.homemadegourmet.com/Black-Bean-Salsa-Mix--Double-Pack_p_371.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $5.50 <font color="red">On Sale</font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=371&out=1" target="_new">Add to Cart</a>]</p><br clear=all> ]]></description>
+<guid isPermaLink="false">http://shop.homemadegourmet.com/Black-Bean-Salsa-Mix--Double-Pack_p_371.html</guid>
+<content:encoded><![CDATA[<p><a href="http://shop.homemadegourmet.com/Black-Bean-Salsa-Mix--Double-Pack_p_371.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/black-bean-salsa-dip-l_thumbnail.jpg" align="right" border=0></a>Double-pack box! An all-time customer favorite! Our Black Bean Salsa Mix comes with the actual black beans and corn! Fresh-tasting herbs, spices, and ingredients combine to make this distinctive and flavorful salsa, sure to brighten any meal or party...<a href="http://shop.homemadegourmet.com/Black-Bean-Salsa-Mix--Double-Pack_p_371.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $5.50 <font color="red">On Sale</font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=371&out=1" target="_new">Add to Cart</a>]</p><br clear=all>]]></content:encoded>
+<isc:description><![CDATA[<div><span style="font-weight: bold;">Double-pack box!</span>  An all-time customer favorite!  Our Black Bean Salsa Mix comes with the actual black beans and corn!  Fresh-tasting herbs, spices, and ingredients combine to make this distinctive and flavorful salsa, sure to brighten any meal or party.  You simply cannot get enough of this great salsa flavor- very versatile as quesadillas, soup, salads and more!  Find our Black Bean Recipes under <a href="http://shop.homemadegourmet.com/easy-recipes.html"><span style="color: rgb(30, 144, 255);">Easy Recipes</span></a>- search: black bean salsa.  Add:  sliced black olives, water, avocado, diced tomatoes and green chilies.  <span class="yield">Serves 12</span> per packet.</div>]]></isc:description>
+<isc:productid><![CDATA[Black Bean Salsa Mix - Double Pack]]></isc:productid>
+<isc:thumb><![CDATA[http://shop.homemadegourmet.com/assets/images/black-bean-salsa-dip-l_thumbnail.jpg]]></isc:thumb>
+<isc:image><![CDATA[http://shop.homemadegourmet.com/assets/images/black-bean-salsa-dip-l.jpg]]></isc:image>
+<isc:price><![CDATA[$11.00]]></isc:price>
+</item>
+<item>
+<title><![CDATA[Mini Pecan Pie Muffin Mix]]></title>
+<link>http://shop.homemadegourmet.com/Mini-Pecan-Pie-Muffin-Mix_p_377.html</link>
+<pubDate>Tue, 20 May 2014 00:00:00 EST</pubDate>
+<description><![CDATA[ <p><a href="http://shop.homemadegourmet.com/Mini-Pecan-Pie-Muffin-Mix_p_377.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/mini-pecan-pie-muffin-mix_thumbnail.jpg" align="right" border=0></a>An all-time customer favorite that melts in your mouth and makes you weak in the knees! A Homemade Gourmet exclusive, these bite-sized pecan pie muffins taste just like old fashioned pecan pie!Like Baklava? Try our EASY version found in Easy Recipes....<a href="http://shop.homemadegourmet.com/Mini-Pecan-Pie-Muffin-Mix_p_377.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $8.00 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=377&out=1" target="_new">Add to Cart</a>]</p><br clear=all> ]]></description>
+<guid isPermaLink="false">http://shop.homemadegourmet.com/Mini-Pecan-Pie-Muffin-Mix_p_377.html</guid>
+<content:encoded><![CDATA[<p><a href="http://shop.homemadegourmet.com/Mini-Pecan-Pie-Muffin-Mix_p_377.html?referrer=rss"><img src="http://shop.homemadegourmet.com/assets/images/mini-pecan-pie-muffin-mix_thumbnail.jpg" align="right" border=0></a>An all-time customer favorite that melts in your mouth and makes you weak in the knees! A Homemade Gourmet exclusive, these bite-sized pecan pie muffins taste just like old fashioned pecan pie!Like Baklava? Try our EASY version found in Easy Recipes....<a href="http://shop.homemadegourmet.com/Mini-Pecan-Pie-Muffin-Mix_p_377.html?referrer=rss">[Read More]</a><br><b>Our Price:</b> $8.00 <font color="red"></font> [<a href="http://shop.homemadegourmet.com/add_cart.asp?quick=1&item_id=377&out=1" target="_new">Add to Cart</a>]</p><br clear=all>]]></content:encoded>
+<isc:description><![CDATA[An all-time customer favorite that melts in your mouth and makes you weak in the knees!  A Homemade Gourmet exclusive, these bite-sized pecan pie muffins taste just like old fashioned pecan pie!<p></p>Like Baklava?  Try our EASY version found in <a href="http://shop.homemadegourmet.com/easy-recipes.html"><span style="COLOR: #1e90ff">Easy Recipes</span></a>.  Search:  inside out baklava.  Add:  eggs, butter or margarine.  Yields: <span class="yield">36 muffins</span>.]]></isc:description>
+<isc:productid><![CDATA[Mini Pecan Pie Muffin Mix]]></isc:productid>
+<isc:thumb><![CDATA[http://shop.homemadegourmet.com/assets/images/mini-pecan-pie-muffin-mix_thumbnail.jpg]]></isc:thumb>
+<isc:image><![CDATA[http://shop.homemadegourmet.com/assets/images/mini-pecan-pie-muffin-mix.jpg]]></isc:image>
+<isc:price><![CDATA[$8.00]]></isc:price>
+</item>
+</channel></rss>

@@ -1,0 +1,47 @@
+﻿.scrollable 
+{
+    float: left;
+    position:relative;
+	overflow:hidden;
+	height: 280px;
+}
+
+.scrollable .items {
+	/* this cannot be too large;
+     * must fit ev-ery-thing */
+	width:20000em;
+	position:absolute;
+	clear: both;
+}
+
+/* Quite necessary; customize to fit. */
+.items div {
+	float:left;
+}
+
+/* For the buttons. */
+a.browse {
+	background: url(../../Copy%20of%20HG_custom/images/hori_large.png) no-repeat;
+	display:block;
+	width:15px;
+	height:18px;
+	float:left;
+	margin:100px 0px;
+	cursor:pointer;
+	font-size:1px;
+}
+
+a.right {
+	background-position: 0 -30px;
+	clear:right;
+	margin-right: 0px;
+}
+
+a.left {
+	background-position: 0 0;
+	margin-left: 10px;
+}
+
+a.disabled {
+	visibility:hidden !important;
+}

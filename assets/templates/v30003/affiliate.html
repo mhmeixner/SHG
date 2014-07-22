@@ -1,0 +1,260 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+
+<table width="95%" cellpadding="0" cellspacing="0" align="center" border=0>
+	
+	<tr><td class="page_headers" align="left">[affiliate_details]</td><!--START: myAccount--><td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td><!--END: myAccount--></tr>
+	<tr>
+		<td colspan="2">
+			<!--START: CATEGORY_HEADER-->              
+			 <table width="100%" cellspacing="0" cellpadding="2" border="0">
+			   <tr> 
+					<td class="data">[CONTENT]</td>
+			   </tr>
+			 </table>
+			<!--END: CATEGORY_HEADER-->
+			<br>
+			<!--START: affiliateStatistics-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr><td class="checkout-headers" colspan="2">[affiliate_details-summary]</td></tr>
+				<tr>
+					<td colspan="2">
+						<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+							<tr>
+								<td class="titles2">[affiliate_summary-header-membersince]</td>
+								<td class="titles2">[affiliate_summary-header-orders]</td>
+								<td class="titles2">[affiliate_summary-header-amount]</td>
+								<td class="titles2">[affiliate_summary-header-commission]</td>
+								<td class="titles2">[affiliate_summary-header-paid]</td>
+								<td class="titles2">[affiliate_summary-header-balance]</td>
+							</tr>
+							
+							<!--START: affiliateStatisticsNoOrders-->
+							<tr class="alternative">
+								<td class="item" colspan="6" align="center">[affiliate_no-history-to-display]</td>
+							</tr>
+							<!--END: affiliateStatisticsNoOrders-->
+											
+							<!--START: affiliateStatisticsDetail-->				
+							<tr class="alternative">
+								<td class="item">[memberSince]</td>
+								<td class="item">[orders]</td>
+								<td class="item">[amount]</td>
+								<td class="item">[totalCommission]</td>
+								<td class="item">[paid]</td>
+								<td class="item">[balance]</td>
+							</tr>
+							<!--END: affiliateStatisticsDetail-->
+						</table>
+						<br>
+					</td>
+				</tr>
+			</table>
+			<!--END: affiliateStatistics-->
+			
+			<!--START: affiliatePayments-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr><td class="checkout-headers" colspan="2">[affiliate_details-payments] <font size=1>(last [lastDays] days)</font></td></tr>
+				<tr>
+					<td colspan="2">
+						<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+							<tr>
+								<td class="titles2">[affiliate_payments-header-date]</td>
+								<td class="titles2">[affiliate_payments-header-amount]</td>
+								<td class="titles2">[affiliate_payments-header-check]</td>
+							</tr>
+							
+							<!--START: affiliateNoPayments-->
+							<tr class="alternative">
+								<td class="item" colspan="3" align="center" alt="affiliatePayments">[affiliate_no-history-to-display]</td>
+							</tr>
+							<!--END: affiliateNoPayments-->
+											
+							<!--START: affiliatePaymentsDetail-->				
+							<tr class="alternative">
+								<td class="item">[date]</td>
+								<td class="item">[amount]</td>
+								<td class="item">[check]</td>
+							</tr>
+							<!--END: affiliatePaymentsDetail-->
+						</table>
+						<br>
+					</td>
+				</tr>
+			</table>
+			<!--END: affiliatePayments-->
+			
+			
+			<!--START: affiliateAppOrders-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr><td class="checkout-headers" colspan="2">[affiliate_details-approvedorders] <font size=1>(last [lastDays] days)</font></td></tr>
+				<tr>
+					<td colspan="2">
+						<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+							<tr>
+								<td class="titles2">[affiliate_orders-header-date]</td>
+								<td class="titles2">[affiliate_orders-header-ordernum]</td>
+								<td class="titles2">[affiliate_orders-header-amount]</td>
+								<td class="titles2">[affiliate_orders-header-commissionperc]</td>
+								<td class="titles2">[affiliate_orders-header-commissionamnt]</td>
+							</tr>
+							
+							<!--START: affiliateNoAppOrders-->
+							<tr class="alternative">
+								<td class="item" colspan="6" align="center" alt="affiliateAppOrders">[affiliate_no-history-to-display]</td>
+							</tr>
+							<!--END: affiliateNoAppOrders-->
+											
+							<!--START: affiliateAppOrdersDetail-->
+							<tr class="alternative">
+								<td class="item">[date]</td>
+								<td class="item">[orderNumber]</td>
+								<td class="item">[amount]</td>
+								<td class="item">[percentCommission]</td>
+								<td class="item">[amountCommission]</td>
+							</tr>
+							<!--END: affiliateAppOrdersDetail-->
+							
+						</table>
+						<br>
+					</td>
+				</tr>
+			</table>
+			<!--END: affiliateAppOrders-->
+			
+			
+			<!--START: affiliateDenOrders-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr><td class="checkout-headers" colspan="2">[affiliate_details-deniedorders] <font size=1>(last [lastDays] days)</font></td></tr>
+				<tr>
+					<td colspan="2">
+						<table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+							<tr>
+								<td class="titles2">[affiliate_orders-header-date]</td>
+								<td class="titles2">[affiliate_orders-header-ordernum]</td>
+								<td class="titles2">[affiliate_orders-header-amount]</td>
+								<td class="titles2">[affiliate_orders-header-comments]</td>								
+							</tr>
+							
+							<!--START: affiliateNoDenOrders-->
+							<tr class="alternative">
+								<td class="item" colspan="6" align="center" alt="affiliateDenOrders">[affiliate_no-history-to-display]</td>
+							</tr>
+							<!--END: affiliateNoDenOrders-->
+											
+							<!--START: affiliateDenOrdersDetail-->
+							<tr class="alternative">
+								<td class="item">[date]</td>
+								<td class="item">[orderNumber]</td>
+								<td class="item">[amount]</td>
+								<td class="item">[comments]</td>
+							</tr>
+							<!--END: affiliateDenOrdersDetail-->
+							
+						</table>
+						<br>
+					</td>
+				</tr>
+			</table>
+			<!--END: affiliateDenOrders-->	
+			
+			<!--START: affiliateLinks-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<form name="frmLinks" id="frmLinks" action="">
+				<tr><td class="checkout-headers" colspan="2">[affiliate_details-links]</td></tr>
+				<tr>
+					<td colspan="2">
+						<table width="100%" cellpadding="4" cellspacing="0" border="0">
+							<tr>
+								<td class="item">
+									[affiliate_details-link-instructions]
+								</td>
+							</tr>
+							<tr>
+								<td class="item">
+									<table width="100%" border="0" cellspacing="5" cellpadding="5">
+									  <tr> 
+
+									    <td> <a href="[store_url]/?AffId=[affId]">General link - [affiliate_details-link-text]</a> 
+									      <br><br>
+									      <table width="100%" border="0" cellspacing="1" cellpadding="5" class="alternative">
+									        <tr> 
+									          <td class="titles2"><a class="highlighttext" href="javascript:HighlightAll('frmLinks.select0')">Click here to "Select All Code"</a></td>
+									        </tr>
+									        <tr> 
+									          <td align="center"> 
+									            <textarea name="select0" rows=5 cols=80 wrap="VIRTUAL" class="txtareaStyle">&lt;a href=&quot;[store_url]/?AffId=[affId]&quot;&gt;[affiliate_details-link-text]&lt;/a&gt;</textarea>
+									          </td>
+									        </tr>
+									      </table>
+									    </td>
+									  </tr>
+									</table>
+								</td>
+							</tr>												
+							<!--START: affiliateLinksDetails-->
+							<tr>
+								<td class="item">
+									<table width="100%" border="0" cellspacing="5" cellpadding="5">
+									  <tr> 
+
+									    <td> <a href="[store_url]/?AffId=[affId]"><img border=0 src="[affBannersFolder]affiliateBanner[intBannerCount].jpg"></a> 
+									      <br><br>
+									      <table width="100%" border="0" cellspacing="1" cellpadding="5" class="alternative">
+									        <tr> 
+									          <td class="titles2"><a class="highlighttext" href="javascript:HighlightAll('frmLinks.select[intBannerCount]')">Click 
+									            here to &quot;Select All Code&quot;</a></td>
+									        </tr>
+									        <tr> 
+									          <td align="center"> 
+									            <textarea name="select[intBannerCount]" rows=5 cols=80 wrap="VIRTUAL" class="txtareaStyle">&lt;a href=&quot;[store_url]/?AffId=[affId]&quot;&gt;&lt;img border=0 src=&quot;[store_url][affBannersFolder]affiliateBanner[intBannerCount].jpg&quot;&gt;&lt;/a&gt;</textarea>
+									          </td>
+									        </tr>
+									      </table>
+									    </td>
+									  </tr>
+									</table>
+								</td>
+							</tr>
+							<!--END: affiliateLinksDetails-->
+						</table>
+						<br>
+					</td>
+				</tr>
+				</form>
+			</table>
+			<!--END: affiliateLinks-->	
+			
+			<br>
+			
+			<!--START: CATEGORY_FOOTER-->              
+				  <table width="100%" cellspacing="0" cellpadding="2" border="0">
+				    <tr> 
+						<td  class="data">[CONTENT]</td>
+				    </tr>
+				  </table>
+			<!--END: CATEGORY_FOOTER--> 									
+		</td>
+	</tr>
+</table>
+
+<script>
+function HighlightAll(theField) {
+	var tempval=eval("document."+theField);
+	tempval.focus();
+	tempval.select();
+	if (document.all)
+	{
+		therange=tempval.createTextRange();
+		therange.execCommand("Copy");
+		window.status="Contents highlighted and copied to clipboard!";
+		setTimeout("window.status=''",1800);
+	}
+}
+</script>
+		
+</body>
+</html>

@@ -1,0 +1,467 @@
+<style type="text/css">
+/*invoice_title:: Controls the Body Tiles such as (Specials, Feature Items, Items, Related Items)*/ 
+.invoice_title {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+	background-color : #cbcaca;
+	color : #4f4e4e;
+}
+/*invoice_table:: Controls the Body Tiles such as (Specials, Feature Items, Items, Related Items)*/ 
+.invoice_table {
+	background-color : #f9f8f8;
+	background-color : #f9f8f8;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : Normal;
+	color : #585C5F;
+}
+/*item:: Controls the Item, Name, Description, Price, Savings, Cost,Font and Color  (Default Size is 12)*/ 
+.item {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : Normal;
+	color : #585C5F;
+	text-decoration: none;
+}
+/*borders2:: Controls the color of  the borders on forms*/ 
+.borders2 {
+	border : #cbcaca;
+	background-color : #cbcaca;
+}
+/*checkout-headers:: Controls body default fonts and colors  (Default Font Size is 12)*/
+.checkout-headers {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 16px;
+	font-weight : bold;
+	color : #4f4e4e;
+	background-color : #ffffff;
+}
+</style>
+<script type="text/javascript">
+function saveRecurring(objForm) {
+	var strMsg = "";
+
+	if (objForm.next_order.value.trim() == '')
+		strMsg += " - [recurringorders_next-order] cannot be blank.\n";
+
+	if (strMsg != "") {
+		alert(strMsg);
+		return false;
+	}
+
+	objForm.submit();
+}
+function cancelRecurring(objForm) {
+	var rep = confirm("[recurringorders_cancel-confirm]");
+	if (rep) {
+		objForm.hdnAction2.value = "cancelrecurring";
+		objForm.submit();
+	}
+}
+String.prototype.trim = function () {
+	return this.replace(/^\s+|\s+$/g, "");
+}		
+</script>
+<table width="98%" cellpadding="0" cellspacing="0">
+  <!--START: printable-->
+  <tr>
+    <td width="32" height="25"><a href="#" onClick="window.open('ordertracking.asp?action=view&id=[orderid]&printable=1', name , 'width=550,height=600,toolbar=yes,scrollbars=yes' );"><img src="assets/templates/common/images/print.gif" border="0"></a>&nbsp;</td>
+    <td width="677" align="left" class="item"><a href="#" onClick="window.open('ordertracking.asp?action=view&id=[orderid]&printable=1', name , 'width=550,height=600,toolbar=yes,scrollbars=yes' );">[orderhistory_printableversion]</a></td>
+    <td width="496" align="right" class="item"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> [orderhistory_returnlink]</td>
+  </tr>
+  <!--END: printable--> 
+  <!--START: header-->
+  <tr>
+    <td class="borders2" colspan="3"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="3" class="checkout-headers" align="center">Order  [invoicenum_prefix][invoicenum] </td>
+  </tr>
+  <tr>
+    <td class="borders2" colspan="3"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+  </tr>
+  <!--END: header-->
+  <tr>
+    <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3"><!--START: RECURRINGORDER-->
+      <div>
+        <form action="ordertracking.asp?action=view&id=[orderid]" method="post" name="frmRecurring" class="nomargin" id="frmRecurring">
+          <input type="hidden" name="hdnAction2" id="hdnAction2" value="updaterecurring">
+          <input type="hidden" name="hdnNextOrder" id="hdnNextOrder" value="[next_order_encrypted]">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" id="Table59">
+            <tr>
+              <td class="borders2" colspan="10"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+            </tr>
+            <tr>
+              <td><table width="100%" cellpadding="4" cellspacing="0" id="Table60">
+                  <tr>
+                    <td class="checkout-headers" align="center" style="font-size:10pt;">[recurringorders_recurringordersettings-header]</td>
+                  </tr>
+                </table>
+                <table width="100%" cellpadding="2" cellspacing="0" border="0" style="padding-top:4px;padding-bottom:4px;" class="tablenooutline" id="Table61">
+                  <tr>
+                    <td class="item" width="70">[recurringorders_frequency]:</td>
+                    <td class="item"><select name="recurring_frequency" class="txtBoxStyle" id="recurring_frequency" style="width:65px;">
+                    [recurring_frequency]
+                    </select></td>
+                    <td class="item" align="right">[recurringorders_payment]:</td>
+                    <td class="item" width="10" align="right"><select name="recurring_payment" class="txtBoxStyle" id="recurring_payment" style="width:200px;">
+                    [recurring_payment]
+                    </select></td>
+                  </tr>
+                  <tr>
+                    <td class="item">[recurringorders_next-order]:</td>
+                    <td class="item"><input type="text" name="next_order" value="[next_order_date]" size="8" maxlength="10" class="txtBoxStyle" id="next_order"></td>
+                    <td class="item" colspan="10" align="right"><input type="button" class="btn" onClick="cancelRecurring(this.form);" value="[recurringorders_cancel-button]"  onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"/>
+                      <input type="button" class="btn" onClick="saveRecurring(this.form);" value="[recurringorders_save-button]"  onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"/></td>
+                  </tr>
+                </table></td>
+            </tr>
+            <tr>
+              <td class="borders2" colspan="10"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <!--END: RECURRINGORDER-->
+      <!------ START: Confirmation ---------------------------------->
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <!--START: order_details-->
+        <tr> 
+          <!--start customer info block-->
+          <td width="50%" valign="top" align="left"><table width="80%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><!--START: invoicelogo--> 
+                  <img src="../[invoicelogo]"> 
+                  <!--END: invoicelogo--></td>
+              </tr>
+              <tr>
+                <td class="item"><font size="2"><strong>[company]</strong></font></td>
+              </tr>
+              <tr>
+                <td class="item"> [address1]</td>
+              </tr>
+              <!--START: address2-->
+              <tr>
+                <td class="item">[address2]</td>
+              </tr>
+              <!--END: address2-->
+              <tr>
+                <td class="item">[city], [state] [zip]
+                  </p></td>
+              </tr>
+            </table></td>
+          <!-- end customer info block--> 
+          <!--start invoice info block-->
+          <td valign="top" align="right"><table width="80%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="item" align="left"><strong>[invoice_dateordered]</strong> [odate]</td>
+              </tr>
+              <tr>
+                <td class="item" align="left"><strong>[invoice_ordernum]</strong>: [invoicenum_prefix][invoicenum]</td>
+              </tr>
+              <!--START: salesperson-->
+              
+              <tr>
+                <td class="item" align="left"><strong>Sales Person</strong>: [salesperson]</td>
+              </tr>
+              <!--END: salesperson-->
+            </table></td>
+          <!--end invoice info block--> 
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr> 
+          <!--start billing block-->
+          <td width="50%" valign="top" align="left"><table width="80%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="item"><strong>[invoice_billingaddress]</strong></td>
+              </tr>
+              <tr>
+                <td class="item"> [ofirstname] [olastname] </td>
+              </tr>
+              <!--START: ocompany-->
+              <tr>
+                <td class="item"> [ocompany] </td>
+              </tr>
+              <!--END: ocompany-->
+              <tr>
+                <td class="item"> [oaddress] </td>
+              </tr>
+              <!--START: oaddress2-->
+              <tr>
+                <td class="item"> [oaddress2] </td>
+              </tr>
+              <!--END: oaddress2-->
+              <tr>
+                <td class="item"> [ocity], [ostate] [ozip] - [ocountry] </td>
+              </tr>
+              
+              <!--START: ophone-->
+              <tr>
+                <td class="item">[ophone]</td>
+              </tr>
+              <!--END: ophone--> 
+              <!--START: oemail-->
+              <tr>
+                <td class="item">[oemail]</td>
+              </tr>
+              <!--END: oemail-->
+            </table></td>
+          <!--end billing block--> 
+          <!--start shipping block-->
+          <td valign="top" align="right"><table width="80%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="item"><strong>[invoice_shippingaddress]</strong></td>
+              </tr>
+              <tr>
+                <td class="item"><!--START: shipping_address--> 
+                  [oshipfirstname] [oshiplastname] </td>
+              </tr>
+              <!--START: oshipcompany-->
+              <tr>
+                <td class="item"> [oshipcompany] </td>
+              </tr>
+              <!--END: oshipcompany-->
+              <tr>
+                <td class="item"> [oshipaddress] </td>
+              </tr>
+              <!--START: oshipaddress2-->
+              <tr>
+                <td class="item"> [oshipaddress2] </td>
+              </tr>
+              <!--END: oshipaddress2-->
+              <tr>
+                <td class="item"> [oshipcity], [oshipstate] [oshipzip]-
+                  [oshipcountry] 
+                  <!--END: shipping_address--> 
+                  <!--START: shipping_multiple--> 
+                  <!--START: shipment-->
+                  <table cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="item" width="80%">Shipment #[num] - [oshipfirstname] [oshiplastname]</td>
+                    </tr>
+                  </table>
+                  <!--END: shipment--> 
+                  <!--END: shipping_multiple--></td>
+              </tr>
+            </table></td>
+          <!--start shipping block--> 
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2"><table width="100%" cellpadding="4" cellspacing="0">
+              <!--START: shipping_info-->
+              <tr>
+                <td class="item"><strong>[invoice_shipmethod]</strong> [oshipmethod]</td>
+              </tr>
+              
+              <!--START: trackingcode-->
+              <tr>
+                <td class="item"><strong>[invoice_trackingnum]:</strong> <a href="shiptracking.asp?trackingnumber=[trackingcode]" target="new">[trackingcode]</a></td>
+              </tr>
+              <!--END: trackingcode--> 
+              <!--START: oshippeddate-->
+              <tr>
+                <td class="item"><strong>[invoice_shippeddate]</strong> [oshippeddate]</td>
+              </tr>
+              <!--END: oshippeddate--> 
+              <!--END: shipping_info--> 
+              <!--START: opaymethod-->
+              <tr>
+                <td class="item"><strong>[invoice_paymenttype]</strong> [opaymethod]</td>
+              </tr>
+              <!--END: opaymethod--> 
+              <!--START: coupon-->
+              <tr>
+                <td class="item"><strong>[invoice_discounts] </strong></td>
+              </tr>
+              <tr>
+                <td class="item"> [invoice_coupon]: [coupon] - [coupondiscount]</td>
+              </tr>
+              
+              <!--END: coupon-->
+              
+            </table></td>
+        </tr>
+        <tr>
+          <td class="item">&nbsp;</td>
+        </tr>
+        <!--START: RMAButton-->
+        <tr>
+          <td align="right" colspan="2"><input name="button222" type="button" class="btn" onclick="window.location.href='rma_new.asp?oid=[orderid]'" value="[shoppingcart_rma-btn-addnew]"  onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" /></td>
+        </tr>
+        <!--END: RMAButton--> 
+        <!--END: order_details-->
+        <tr>
+          <td class="item">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2"><table width="100%" cellpadding="1" border="0" cellspacing="0">
+              <tr class="invoice_title">
+                <td width="15%" align="left" valign="top" class="invoice_title"><strong>[shoppingcart_itemid]</strong></td>
+                <td width="53%" align="left" valign="top" class="invoice_title"><strong>[shoppingcart_items]</strong></td>
+                <td width="1%" class="invoice_title">&nbsp;</td>
+                <td width="9%" align="center" valign="top" class="invoice_title"><strong>[shoppingcart_price]</strong></td>
+                <td width="1%" class="invoice_title">&nbsp;</td>
+                <td width="9%" align="center" valign= "top" class="invoice_title"><strong>[shoppingcart_quantity]</strong></td>
+                <td width="2%">&nbsp;</td>
+                <td width="10%" valign="top" align="center" class="invoice_title"><strong>[shoppingcart_total]</strong></td>
+              </tr>
+              
+              <!--START: shipment_header-->
+              <tr>
+                <td class="borders2" colspan="8"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+              </tr>
+              <tr class="invoice_table">
+                <td valign="top" align="left"   colspan="8"><table cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <tr>
+                      <td class="item" width="15%"><strong>Shipment #[num]</strong></td>
+                      <td class="item" width="50%"><i> [oshipfirstname] [oshiplastname]<!--START: oshipcompany-->[oshipcompany]<!--END: oshipcompany--><br />
+                        [oshipaddress] [oshipaddress2] [oshipcity], [oshipstate] [oshipzip] [oshipcountry] </i></td>
+                      <td class="item"><!--START: oshipmethod--><strong>[invoice_shipmethod]</strong> [oshipmethod]<!--END: oshipmethod--> 
+                        <!--START: trackingcode--><br />
+                        <strong>[invoice_trackingnum]</strong> &nbsp;[trackingcode]<!--END: trackingcode--></td>
+                    </tr>
+                    <tr>
+                      <td class="item" colspan="8"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              
+              <!--END: shipment_header--> 
+              
+              <!--START: items-->
+              <tr class="invoice_table">
+                <td valign="top" align="left"  class="item" width="15%">[id]</td>
+                <td valign="top" align="left" class="item" width="53%">[itemname]<!--START: edownload--><br />
+                  <a href="[store_url]/order_eproduct.asp?action=edownload&eid=[orderkey]">Click Here to download</a><!--END: edownload--></td>
+                <td width="1%">&nbsp;</td>
+                <td valign="top" align="right"  class="item" width="9%">[unitprice]</td>
+                <td width="1%">&nbsp;</td>
+                <td valign="top" align="center" class="item" width="9%">[numitems]</td>
+                <td width="2%">&nbsp;</td>
+                <td valign="top" align="right" class="item" width="10%">[subtotal]</td>
+              </tr>
+              <!--END: items-->
+              
+            </table></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="invoice_table"><table width="100%" cellpadding="4" cellspacing="0">
+              <tr class="invoice_table">
+                <td rowspan="7" width="60%" valign=top ><!--START: ocomment--> 
+                  <strong>[invoice_ordercomments]</strong><br />
+                  [ocomment]<br />
+                  <br />
+                  <!--END: ocomment-->
+                  <!--START: invoice_terms--> 
+                  <br />
+                  [invoice_terms] <br />
+                  <!--END: invoice_terms--></td>
+                <td valign="top" align="right" width="32%"   class="invoice_table"><strong>[shoppingcart_subtotal]:</strong></td>
+                <td valign="top" align="right" width="8%"   class="invoice_table">[subtotal]</td>
+              </tr>
+              <tr class="font1">
+                <td valign="top" align="right" width="32%"   class="invoice_table"><strong>[shoppingcart_discount]:</strong></td>
+                <td valign="top" align="right" width="8%"   class="invoice_table">[discounts]</td>
+              </tr>
+              <!--START: TAX-->
+              <tr class="font1">
+                <td valign="top" align="right" width="32%"   class="invoice_table"><strong>[shoppingcart_taxes]:</strong></td>
+                <td width="8%"   class="invoice_table"><div align="right">[tax]</div></td>
+              </tr>
+              <!--END: TAX--> 
+              
+              <!--START: TAX2-->
+              <tr class="font1">
+                <td valign="top" align="right" width="32%"   class="invoice_table"><strong>[shoppingcart_taxes2]:</strong></td>
+                <td width="8%"   class="invoice_table"><div align="right">[tax2]</div></td>
+              </tr>
+              <!--END: TAX2--> 
+              <!--START: TAX3-->
+              <tr class="font1">
+                <td valign="top" align="right" width="32%"   class="invoice_table"><strong>[shoppingcart_taxes3]:</strong></td>
+                <td width="8%"   class="invoice_table"><div align="right">[tax3]</div></td>
+              </tr>
+              <!--END: TAX3-->
+              
+              <tr class="font1">
+                <td valign="top" align="right" width="32%"   class="invoice_table"><strong>[shoppingcart_shipping]:</strong></td>
+                <td width="8%"   class="invoice_table"><div align="right">[shipping]</div>
+                  <hr></td>
+              </tr>
+              <tr class="font1">
+                <td valign="top" align="right" width="32%"   class="invoice_table"><strong>[shoppingcart_total]:</strong></td>
+                <td valign="top" align="right" width="8%"   class="invoice_table">[total]</td>
+              </tr>
+              
+              <!--START: GIFTCERTS-->
+              <tr class="font1">
+                <td valign="top" align="right" width="32%" class="invoice_table"><strong>[shoppingcart_giftcertificate]:</strong></td>
+                <td valign="top" align="right" width="8%" class="invoice_table">[GIFTCERTS]</td>
+              </tr>
+              <tr class="font1">
+                <td valign="top" align="right" width="32%" class="invoice_table"><strong>[shoppingcart_balance]:</strong></td>
+                <td valign="top" align="right" width="8%" class="invoice_table">[BALANCE]</td>
+              </tr>
+              <!--END: GIFTCERTS-->
+            </table></td>
+        </tr>
+      </table>
+      <br />
+      <!------ END: Confirmation ------------------------------------> 
+      <!--START: rewards-->
+      <table width="100%" cellpadding="1" border="0" cellspacing="0">
+        <tr class="invoice_title">
+          <td width="100%" align="left" class="invoice_title"><strong>Rewards</strong></td>
+        </tr>
+        <tr>
+          <td class="borders2" colspan="8"><img src="assets/templates/common/images/spacer.gif" height="1"></td>
+        </tr>
+        <tr class="invoice_table">
+          <td valign="top" align="left" colspan="8"><!--START: rwdPointsRewarded--> 
+            <strong>Points rewarded:</strong> [rwdPointsRewarded] &nbsp; <!--START: rwdPointsDetailsLink-->[<A href="reward_detail.asp">view points details</A>]<!--END: rwdPointsDetailsLink--> 
+            <!--END: rwdPointsRewarded--> 
+            <!--START: rwdPointsUsed--> 
+            <strong>Points used in this order:</strong> [rwdPointsUsed] &nbsp; <!--START: rwdPointsDetailsLink-->[<A href="reward_detail.asp">view points details</A>]<!--END: rwdPointsDetailsLink--> 
+            <!--END: rwdPointsUsed--></td>
+        </tr>
+      </table>
+      <br />
+      <!--END: rewards-->
+      <!--START: RMA-->
+      <table width="100%" cellpadding="1" border="0" cellspacing="0">
+        <tr>
+          <td class="checkout-headers" colspan="2">[account_rma-header]</td>
+        </tr>
+        <tr>
+          <td colspan="2"><a name="rma"></a>
+            <table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+              <tr class="alternative">
+                <td valign="top" class="titles2" width="15%">[rma_header-rmanum]</td>
+                <td valign="top" class="titles2" width="15%">[rma_header-rmadate]</td>
+                <td valign="top" class="titles2" width="15%">[rma_header-rmastatus]</td>
+                <td valign="top" class="titles2" width="55%">&nbsp;</td>
+              </tr>
+              <!--START: RmaItems-->
+              <tr class="alternative">
+                <td valign="top" class="item" width="15%"><a href="my_rma.asp?oid=[OrderId]&amp;r=[idRma]" class="small">[idRma]</a></td>
+                <td valign="top" class="item" width="15%"><a href="my_rma.asp?oid=[OrderId]&amp;r=[idRma]" class="small">[Date]</a></td>
+                <td valign="top" class="item" width="15%"><a href="my_rma.asp?oid=[OrderId]&amp;r=[idRma]" class="small">[RMAStatus]</a></td>
+                <td valign="top" class="item" width="55%">&nbsp;</td>
+              </tr>
+              <!--END: RmaItems-->
+            </table>
+            <br /></td>
+        </tr>
+      </table>
+      <!--END: RMA--></td>
+  </tr>
+</table>

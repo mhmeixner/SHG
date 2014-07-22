@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+<head>
+<title>[storeName]</title>
+<style type="text/css" media="screen">
+@import "jqtouch/jqtouch.min.css";
+</style>
+<style type="text/css" media="screen">
+@import "themes/jqt/theme.min.css";
+</style>
+<script src="jqtouch/jquery.1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jqtouch/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
+<script src="extensions/jqt.autotitles.js" type="application/x-javascript" charset="utf-8"></script>
+<script src="jqtouch/functions.js" type="text/javascript"></script>
+<script src="js/utilities.js" type="text/javascript" charset="utf-8"></script>
+<!--
+        <script type="text/javascript" src="js/prototype.js" ></script>        
+		<script type="text/javascript" src="js/ajax.js"></script>
+		-->
+<script type="text/javascript" charset="utf-8">
+    jQuery.noConflict();
+
+    var jQT = new jQuery.jQTouch({
+        icon: 'jqtouch.png',
+        addGlossToIcon: false,
+        startupScreen: 'jqt_startup.png',
+        useFastTouch: false,
+        slideSelector: 'body > * > ul li a',
+        statusBar: 'black',
+        preloadImages: [
+                    'themes/jqt/img/back_button.png',
+                    'themes/jqt/img/back_button_clicked.png',
+                    'themes/jqt/img/button_clicked.png',
+                    'themes/jqt/img/grayButton.png',
+                    'themes/jqt/img/whiteButton.png',
+                    'themes/jqt/img/loading.gif'
+                    ]
+    });
+    // Some sample Javascript functions:
+    jQuery(function () {
+        // Show a swipe event on swipe test
+        jQuery('#swipeme').swipe(function (evt, data) {
+            jQuery(this).html('You swiped <strong>' + data.direction + '</strong>!');
+        });
+        jQuery('a[target="_blank"]').click(function () {
+            if (confirm('This link opens in a new window.')) {
+                return true;
+            } else {
+                jQuery(this).removeClass('active');
+                return false;
+            }
+        });
+        // Page animation callback events
+        jQuery('#pageevents').
+                    bind('pageAnimationStart', function (e, info) {
+                        jQuery(this).find('.info').append('Started animating ' + info.direction + '&hellip; ');
+                    }).
+                    bind('pageAnimationEnd', function (e, info) {
+                        jQuery(this).find('.info').append(' finished animating ' + info.direction + '.<br /><br />');
+                    });
+
+        // Page animations end with AJAX callback event, example 1 (load remote HTML only first time)
+        jQuery('#callback').bind('pageAnimationEnd', function (e, info) {
+            if (!jQuery(this).data('loaded')) {                      // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
+                jQuery(this).append(jQuery('<div>Loading</div>').         // Append a placeholder in case the remote HTML takes its sweet time making it back
+                            load('ajax.html .info', function () {        // Overwrite the "Loading" placeholder text with the remote HTML
+                                jQuery(this).parent().data('loaded', true);  // Set the 'loaded' var to true so we know not to re-load the HTML next time the #callback div animation ends
+                            }));
+            }
+        });
+        // Orientation callback event
+        jQuery('body').bind('turn', function (e, data) {
+            jQuery('#orient').html('Orientation: ' + data.orientation);
+        });
+    });
+
+		</script>
+<style type="text/css" media="screen">
+body.fullscreen #home .info {
+	display: none;
+}
+#about {
+	padding: 100px 10px 40px;
+	text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;
+	font-size: 13px;
+	text-align: center;
+	background: #161618;
+}
+#about p {
+	margin-bottom: 8px;
+}
+#about a {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div class="current whiteBG"> [HEADER]
+  <div style="clear:both;"></div>
+  <div>[viewcart_header]</div>
+  <div><img src="images/icon-view-cart.png" border="0" align="absmiddle">
+    <h5>Shopping Cart</h5>
+  </div>
+  <ul>
+    <li>
+      <div class="left price-info">[ITEMSINCART] item(s)</div>
+      <div class="right price-info" style="padding: 5px 0px;">Order Subtotal: [CARTSUBTOTAL]</div>
+      <div class="clear"></div>
+      <div style="text-align:right;"> 
+        
+        <!--START: paypalexpress--><a href="/paypal_express.asp?ch=1"  target="_webapp"> <img src="templates/images/checkout04-153x33.png" border="0" align="right" style="margin-right: 0px;"></a><!--END: paypalexpress--> 
+      </div>
+    </li>
+  </ul>
+  <form action="recalculate.asp" method="post" name="recalculate" id="recalculate">
+    <!--START: SHOPPING_CART_SHIPMENT_INFO-->
+    <div> Ship To [name] [address] </div>
+    <!--END: SHOPPING_CART_SHIPMENT_INFO-->
+    <hr noshade="noshade" />
+    <ul class="metal3">
+      <!--START: SHOPPING_CART_ITEM-->
+      <li>
+        <div class="left price-info" style="padding:4px;">&nbsp;</div>
+        <div class="left" style="padding:4px;"> <a href="product.asp?itemid=[catalogid]">
+          <div class="prodName" style="white-space: normal;width: 200px;">[ITEM_NAME]</div>
+          </a> 
+          <!--START: itemoptions--> 
+          <a href='#' onClick="toggle('opt[ITEM_ID]')" class="blktxt">View/Hide options</a>
+          <div id="opt[ITEM_ID]" name="opt[ITEM_ID]" style="display: none;" class="blktxt">[OPTIONS]</div>
+          <!--END: itemoptions--> 
+          <!--START: recurring_frequency-->
+          <info>This item will Autoship every <b>[recurring_frequency]</b></info>
+          <!--END: recurring_frequency-->
+          <div style="height:4px;">&nbsp;</div>
+          <div class="blktxt">Price: [ITEM_PRICE]</div>
+          <div class="blktxt"><strong>Subtotal: [ITEM_SUBTOTAL]</strong></div>
+        </div>
+        <div class="right" style="padding:4px;">
+          <div><a href="#" onClick="document.recalculate.qtyitemnum.value=0;document.recalculate.submit();"><img src="images/btn-remove.png" border="0"></a></div>
+          <div class="left blktxt" style="padding:15px 0px 0px 0px;">qty</div>
+          <div class="left" style="padding:4px;">
+            <input type="text" name="qtyitemnum" value="[ITEM_QUANTITY]" class="qty-box" id="qtyitemnum" pattern="[0-9]*"/>
+            <input type="hidden" name="coliditemnum" value="[ITEM_ID]" id="coliditemnum">
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </li>
+      <!--END: SHOPPING_CART_ITEM-->
+    </ul>
+    <ul>
+      <li>
+        <div class="left price-info">[ITEMSINCART] item(s)</div>
+        <div class="right price-info">Order Subtotal: [CARTSUBTOTAL]</div>
+        <div class="clear"></div>
+        <!--START: DISCOUNTS-->
+        <div align="right" class="price-info"> [checkout1_discounts]: [DISCOUNTS]</div>
+        <!--END: DISCOUNTS-->
+        <div class="right">
+          <h5>Total: [CARTTOTAL]</h5>
+        </div>
+        <div class="clear"></div>
+        <br>
+        <div class="right">
+          <input type=image src="images/btn-update-cart.png" border="0" class="submit">
+        </div>
+        <!--START: BUYSAFE_CONTROL-->
+        <div><!--START: BUYSAFE_LEARNMORE--><a href="[buysafe_cartdetailsurl]" target="_buySAFE">[buysafe_cartdetailsdisplaytext]</a><br />
+          <!--END: BUYSAFE_LEARNMORE-->[buysafe_bondingsignal]<br />
+          <!--START: BUYSAFE_BONDCOST-->[buysafe_bondcostdisplaytext]<br />
+          <!--END: BUYSAFE_BONDCOST--></div>
+        <!--END: BUYSAFE_CONTROL--> 
+        
+      </li>
+    </ul>
+  </form>
+  <div class="clear"></div>
+  <ul>
+    <li style="padding:0px;margin:0px;">
+      <div class="left"><a href="home.asp"><img src="images/btn-continue-shopping.png" border="0"></a></div>
+      <div class="right"><a href="checkout.asp" target="_webapp"><img src="images/btn-proceed-to-checkout.png" border="0"></a></div>
+      <div class="clear"></div>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <div id="divTotalNote" class="prodDesc"> [viewcart_total-note] </div>
+    </li>
+  </ul>
+  <!--START: apply_coupon-->
+  <hr noshade />
+  <form action="recalculate.asp?apply_coupon=1" method="post" name="recalculate_coupon" id="Form1">
+    <div class="metal3">
+    <div id="tblCoupons">
+      <div class="prodName">[viewcart_coupon-header]</div>
+      <div class="blktxt">[viewcart_coupon-message]</div>
+      <div style="padding:5px;">
+        <div class="left" style="padding-top: 4px;"><img src="themes/jqt/img/search-left.png" /></div>
+        <div class="left" style="padding-top: 3px;">
+          <input type="text" name="coupon_code" class="plain" id="coupon_code" placeholder="coupon #">
+        </div>
+        <div class="left" style="padding-top: 4px;"><img src="themes/jqt/img/search-right.png" /></div>
+        <div class="left">&nbsp;</div>
+        <div class="left">
+          <input type=image class="submit" src="images/btn-apply.png" border="0">
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!--END: apply_coupon--> 
+<!--START: PROMOTIONS-->
+<ul class="validpromo">
+  <li>
+    <div id="divPromotions">
+      <ul>
+        <li class="validpromotitle">[viewcart_discounts-header]</li>
+        <!--START: DISPLAY_PROMOS-->
+        <hr noshade />
+        <li style="padding-left: 17px;">
+          <form method="post" action="recalculate.asp?apply_coupon=2" name="couponapply_[id]" id="couponapply_[id]">
+            <input type="hidden" name="coupon" value="[id]" id="coupon">
+            <div class="left blktxt" style="width: 120px"><b>[promotion_name]:</b>&nbsp;</div>
+            <div class="left blktxt">valid from: [promotion_start] - [promotion_end]</div>
+            <div class="clear"></div>
+          </form>
+        </li>
+        <!--END: DISPLAY_PROMOS-->
+      </ul>
+    </div>
+  </li>
+</ul>
+<!--END: PROMOTIONS--> 
+
+<!--START: ShipQuote-->
+<form action="shipquote.asp" method="post" name="shipquote" onSubmit="return submitForm();" id="shipquote">
+  <input type="hidden" name="thispage" value="" id="thispage">
+  <script language="javascript">
+		    document.getElementById('thispage').value = window.location.href;			
+		</script>
+  <div class="metal3">
+    <div id="tblShipping">
+      <div class="prodName">[viewcart_shipping-header]</div>
+      <div class="blktxt">[viewcart_shipping-message]</div>
+      <div class="clear"></div>
+      <div style="padding: 5px;">
+        <div class="left" style="padding-top: 4px;"><img src="themes/jqt/img/search-left.png" /></div>
+        <div class="left" style="padding-top: 3px;">
+          <input type="text" name="shipping_zip" size="15" value="[shipping_zip]" class="plain" id="shipping_zip" placeholder="Zip Code" pattern="[0-9]*">
+        </div>
+        <div class="left" style="padding-top: 4px;"><img src="themes/jqt/img/search-right.png" /></div>
+        <div class="left">&nbsp;</div>
+        <div class="left">
+          <input type="image" class="submit" src="images/btn-calculate-shipping.png" border="0">
+        </div>
+        <div class="clear"></div>
+        <!--START: viewcart_ship-->
+        <div class="frmtxt">[shipping_city] [shipping_state] [shipping_zip]<br />
+          <select class="txtBoxStyle" id="Select1" name="Select1">
+            <!--START: Shippers-->
+            <option><b>[OPTION-SHIPPER]</b> <i>[OPTION-DESCRIPTION]</i> [OPTION-PRICE]</option>
+            <!--END: Shippers-->
+          </select>
+        </div>
+        <!--END: viewcart_ship--> 
+      </div>
+    </div>
+  </div>
+</form>
+<!--END: ShipQuote-->
+<table width="100%" cellpadding="3" cellspacing="0" border="0" id="tblShipping">
+  <!--START: ShipQuoteInternational-->
+  <tr class="alternative">
+    <td class="item" width="150" align="right"><strong>[viewcart_shipping-header]</strong></td>
+    <td class="item"><script type="text/javascript" src="../state_countryjs.asp"></script> 
+      <script>
+				    function get_Element(i) {
+				        return document.getElementById(i) || document.getElementsByName(i).item(0);
+				    }
+				    function getInternationalQuote() {
+				        var strAction = "shipquote.asp?shipping_country=" + get_Element("shipping_country").value;
+				        strAction = strAction + "&shipping_state=" + get_Element("shipping_state").value;
+				        document.shipquote.action = strAction;
+
+				        document.shipquote.shipping_zip.value = document.recalculate.shipping_zip.value
+				        document.shipquote.submit();
+				    }
+					</script>
+      <select name="shipping_country" onChange="this.form.shipping_zip.value='';populateState('shipping_state','shipping_country');" class="txtBoxStyle" id="shipping_country">
+      </select>
+      <span>
+      <select id="shipping_state" onChange="this.form.shipping_zip.value='';" name="shipping_state" class="txtBoxStyle">
+      </select>
+      </span>
+      <input type="text" name="shipping_zip" size="14" value="[shipping_zip]" class="txtBoxStyle" id="Text4"></td>
+    <td width="15"><input type="button" value="Go!" class="btn" onClick="getInternationalQuote();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" name="Button4" id="Button6"></td>
+    <td class="item">[viewcart_shipping-message]</td>
+  </tr>
+  <!--START: viewcart_ship-->
+  <tr class="alternative">
+    <td>&nbsp;</td>
+    <td class="item" colspan="4"> [shipping_city] [shipping_state] [shipping_zip]<br />
+      <select class="txtBoxStyle" id="Select2" name="Select1">
+        <!--START: Shippers-->
+        <option><b>[OPTION-SHIPPER]</b> <i>[OPTION-DESCRIPTION]</i> [OPTION-PRICE]</option>
+        <!--END: Shippers-->
+      </select>
+      &nbsp;
+      <input type="button" class="btn" value="Clear" onClick="document.shipquote.action='shipquote.asp?action=clean';document.shipquote.submit();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="Button7" name="Button5"></td>
+  </tr>
+  <!--END: viewcart_ship--> 
+  <!--END: ShipQuoteInternational-->
+</table>
+
+<!--START: GOOGLECHECKOUT-->
+<div id="divGoogleCheckout"> <a href="/google_checkout.asp" target="_webapp"><img name="Google Checkout" alt="Google Checkout" src="https://checkout.google.com/buttons/checkout.gif?merchant_id=[gc_merchantid]&w=180&h=46&style=trans&variant=text&loc=en_US" height="46" width="180" border="0"></a> </div>
+<!--END: GOOGLECHECKOUT--> 
+
+<script language="javascript" type="text/javascript">
+	    //You should create the validator only after the definition of the HTML form
+	    var frmvalidator = new Validator("recalculate");
+
+	    frmvalidator.setAddnlValidationFunction("submitForm");
+
+	    //<!--START: apply_coupon_validation-->
+	    frmvalidator.addValidation("coupon_code", "maxlen=20", "Maximun Coupon Length is 20");
+	    //<!--END: apply_coupon_validation-->	
+	</script> 
+
+<!--START: GIFTCERTIFICATES-->
+<div id="divGiftCertificates">
+  <h2>[viewcart_giftcertificates-header]</h2>
+  <!--START: DISPLAY_GIFTCERTIFICATES-->
+  <ul class="rounded">
+    <li>
+      <form method="post" action="recalculate.asp?apply_coupon=2" name="couponapply" id="couponapply">
+        <div style="float:left;">
+          <input type="hidden" name="coupon" value="[id]" id="coupon">
+          <label>[certificate_name]: </label>
+          <br>
+          <label>Amount:</label>
+          [discount_amount] </div>
+        <div style="float:right;">
+          <input type="submit" value="Remove" class="btn" id="Submit4" name="Submit4">
+        </div>
+      </form>
+    </li>
+  </ul>
+  <!--END: DISPLAY_GIFTCERTIFICATES--> 
+</div>
+<!--END: GIFTCERTIFICATES--> 
+<!--START: FEATURE_MENU-->
+<h3>[viewcart_feature-header]</h3>
+<ul style="padding: 0px; margin: 0px;">
+  <!--START: CATEGORY_ITEMS--> 
+  <!--START: ITEM_TEMPLATE_0-->
+  <li style="border-bottom: 1px solid #bbbbbb;" class="arrow"><a href="product.asp?itemid=[catalogid]">
+    <div style="float: left;">
+      <div><img src="[THUMBNAIL]" width="90" alt="[name]" border="0"></div>
+    </div>
+    <div style="float: left;">
+      <div class="prodName" style="width: 200px; white-space: normal;padding: 3px;padding-top: 0px;">[name]</div>
+      <div class="id" style="padding: 3px;">SKU: [id]</div>
+      <!--START: product_review_average-->
+      <div class="id" style="padding: 3px;"><img src="../assets/templates/common/images/star[review_average].png" /></div>
+      <!--END: product_review_average-->
+      <div style="padding: 3px;"> 
+        <!--START: ITEMPRICE-->
+        <div class="price">[ITEMPRICE]</div>
+        <!--END: ITEMPRICtE--> 
+        <!--START: SALEPRICE-->
+        <div class="price">[ITEMPRICE]</div>
+        <div class="price">[ITEMSALEPRICE]<img src="assets/templates/common/images/on_sale.png" align="absmiddle" /></div>
+        <!--END: SALEPRICE--> 
+      </div>
+    </div>
+    </a></li>
+  <!--END: ITEM_TEMPLATE_0--> 
+  <!--END: CATEGORY_ITEMS-->
+</ul>
+<!--END: FEATURE_MENU--> 
+<!--START: CATEGORY_FOOTER-->
+<div id="divCategoryFooter" class="frmtxt"> [CONTENT] </div>
+<!--END: CATEGORY_FOOTER--> 
+<!--START: ShipQuoteInternationalScript--> 
+<script>
+	    initCountry("[shipping_country]", "[shipping_state]", "shipping_state", "shipping_country");
+		</script> 
+<!--END: ShipQuoteInternationalScript--> 
+[FOOTER]
+</div>
+</body>
+</html>

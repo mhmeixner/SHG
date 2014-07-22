@@ -1,0 +1,202 @@
+	<script>
+		var addReplyClick = 0;
+		
+	    function submitForm(strAction)
+	    {	    	
+	        document.frmForm.action.value = strAction;
+	        document.frmForm.submit();
+	    }
+	    function addReply()
+	    {
+			var strMsg = "";
+			if (document.frmForm.reply.value.trim() == "")
+				strMsg += " - [crm_response] cannot be blank.\n";
+			<!--START: captchascript-->
+			if (document.frmForm.ramdomWord.value.trim() == "")
+				strMsg += " - Verification word cannot be blank.\n";
+			<!--END: captchascript-->
+
+            if (ExistsCreditCard(jQuery('#reply').val()))
+			    strMsg += "[ccNumerNotAllowedMessage]";
+			
+			if (strMsg != ""){
+				alert(strMsg);
+				return false;
+			}
+			if (addReplyClick == 0){
+				addReplyClick = 1;
+				submitForm('addreply');
+			}
+	    }
+		String.prototype.trim = function() {
+			return this.replace(/^\s+|\s+$/g,"");
+		}
+		function isValidEmail(str) {
+
+			var at="@"
+			var dot="."
+			var lat=str.indexOf(at)
+			var lstr=str.length
+			var ldot=str.indexOf(dot)
+			
+			if (str.indexOf(at)==-1)
+			   return false
+
+			if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr)
+			   return false
+
+			if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr)
+			    return false
+		
+			 if (str.indexOf(at,(lat+1))!=-1)
+			    return false
+
+			 if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot)
+			    return false
+
+			 if (str.indexOf(dot,(lat+2))==-1)
+			    return false
+			
+			 if (str.indexOf(" ")!=-1)
+			    return false
+
+	 		 return true					
+		}
+		
+		function showSavedMessage()
+		{
+			window.setTimeout("alert('[crm_message-request-submitted]');",200);
+		}
+	</script>	
+
+<table width="98%" cellspacing="0" cellpadding="0">
+<tr><td class="page_headers" align="left">[crm_header_view_ticket] </td><!--START: myAccount--><td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td><!--END: myAccount-->
+	</tr></tr>
+ <tr><td>&nbsp;</td></tr>
+<!--START: CATEGORY_HEADER-->               
+    <tr> 
+		<td class="data" colspan="3">?[CONTENT]</td>
+    </tr>
+ <!--END: CATEGORY_HEADER-->
+ 
+ <tr><td colspan="3" class="checkout-headers"> [subject]</td></tr>
+    <tr><td colspan="3">
+    <table width="100%" border="0" cellpadding="2">
+  <tr>
+    <td class="item"><b>[crm_status]:</b> &nbsp;[status]</td>
+    
+  </tr>
+  <tr>
+    <td class="item"><b>[crm_date-opened]:</b> &nbsp;[datentime]</td>
+    
+  </tr>
+  <tr>
+    <td class="item"><b>[crm_department]:</b>&nbsp; [department]</td>
+  
+  </tr>
+  <tr>
+    <td class="item"><b>[crm_opened-by]:</b>&nbsp; [sender]</td>
+    
+  </tr>
+  <tr>
+    <td class="item"><b>[crm_last-action-date]:</b>&nbsp; [lastactiondatentime]</td>
+   
+  </tr>
+
+  </table>
+
+    
+    
+    </td></tr>
+      <tr><td class="options-titles" colspan="3"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="3"></td></tr>
+      <tr><td>&nbsp;</td></tr>
+       <tr><td colspan="3"><table width="100%" border="0"  cellspacing="0" cellpadding="0" class="alternative ">
+		<tr>
+			<td class="titles">[crm_user-date]</td>
+			<td class="titles">[crm_message]</td>
+			
+		</tr>
+		<!--START: msgDetail-->
+		<tr>
+			<td class="item" width="130" valign="top"> <b>[msgSender]</b><br />[msgDate]
+           </td>
+			<td class="item">[msgMessage]</td>
+		
+		</tr>
+         <tr><td class="options-titles" colspan="3"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="3"></td></tr>
+		<!--END: msgDetail-->		
+	</table>
+
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+ <tr><td colspan="3" class="checkout-headers"> [crm_update]</td></tr>
+    <tr><td colspan="3">
+    <form method="post" action="crm.asp" name="frmForm" id="frmForm">
+<input type="hidden" name="mk" value="[mk]">
+<input type="hidden" name="replyemail" value="[custemail]">
+<input type="hidden" name="id" value="[id]">
+<input type="hidden" name="action" value="">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="alternative">
+  <tr>
+    <td class="item"><b>[crm_subject]:</b></td>
+    <td class="item">[subject]</td>
+  </tr>
+  <tr>
+    <td class="item"><b>[crm_response]:</b></td>
+    <td ><textarea name="reply" id="reply" style="width: 366px; height: 58px"></textarea> <img src="assets/templates/common/images/error2.gif" width="12" height="12"></td>
+  </tr>
+  <!--START: captcha-->
+  <tr>
+    <td class="item"><b>Verification:</b></td>
+    <td class="item">
+		<img src="admin/image_pw.asp" border="0" width="148">
+		<br>Type the word above...<br>
+		<input type="text" name="ramdomWord" id="ramdomWord" autocomplete="off" value="" size="25" maxlength="30"> <img src="assets/templates/common/images/error2.gif" width="12" height="12">
+    </td>
+ </tr>   
+ <!--END: captcha-->
+
+<!--START: recaptcha-->
+<tr>
+	<td class="item"><b>Verification:</b></td>
+	<td class="item">
+        <script type="text/javascript">var RecaptchaOptions = { theme: '[recaptcha_theme]' };</script>
+        <script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k=[recaptcha_key]"></script>
+        <noscript>
+        <iframe src="//www.google.com/recaptcha/api/noscript?k=[recaptcha_key]" height="300" width="500" frameborder="0"></iframe><br>
+        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+        <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+        </noscript>
+	</td>
+</tr>
+<!--END: recaptcha-->
+  <tr>
+    <td class="item"></td>
+    <td class="item" align="right">
+		<input type="button" name="btnReply" id="Button1" value="Update" onClick="javascript:addReply();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" class="btn">  
+    </td>
+ </tr>   
+  </table>
+  
+</form>
+    
+    </td></tr>
+   
+<tr><td colspan="2">   <!--START: CATEGORY_FOOTER-->
+	<tr>
+		<td class="data" colspan="2">&nbsp;[CONTENT]</td>
+	</tr>
+ 
+	<!--END: CATEGORY_FOOTER--></td></tr>
+    
+    
+    </table>
+    
+    
+
+
+
+
+
+	

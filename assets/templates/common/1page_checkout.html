@@ -1,0 +1,210 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Shipping Address</title>
+</head>
+
+<body>
+
+<script language="javascript">
+<!--
+var state = 'hidden';
+
+function showhide(layer_ref) {
+
+if (state == 'block') {
+state = 'none';
+}
+else {
+state = 'block';
+}
+if (document.all) { //IS IE 4 or 5 (or 6 beta)
+eval( "document.all." + layer_ref + ".style.display = state");
+}
+if (document.layers) { //IS NETSCAPE 4 or below
+document.layers[layer_ref].display = state;
+}
+if (document.getElementById && !document.all) {
+maxwell_smart = document.getElementById(layer_ref);
+maxwell_smart.style.display = state;
+}
+}
+//-->
+</script>
+
+
+<table border="0" width="62%">
+	<tr>
+		<td width="383" valign="top">
+   <table width="350" cellpadding="3" cellspacing="0" class="alternative" id="table9">
+    <tr><td align="right" class="item" colspan="2">
+		<p align="left">Shipping Address</td>
+   	</tr>
+    <!--START: SAVE_ADDRESSES-->			
+	 <tr><td  width="41%" align="right" class="item"><strong>Previous Addresses</strong></td>
+   <td><select type="dropdown" name="save_address" onchange="javascript:filladdress(this);" class="txtBoxStyle">
+				[address_list]
+				</select></td></tr>
+				
+	<!--END: SAVE_ADDRESSES-->			
+            <tr> 
+       
+              <td width="41%" align="right" class="item"><b>[CustomerInfo_firstname]</b></td>
+              <td width="59%">
+                <input name="shipping_firstname" type="text" id="shipping_firstname" value="[shipping_firstname]" size="15" class="txtBoxStyle"> <!--START: req_shipping_firstname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_firstname-->
+              </td>
+		    </tr>
+            <tr> 
+          
+              
+            <td align="right"  class="item"><b>[CustomerInfo_lastname]</b></td>
+            <td><input name="shipping_lastname" type="text" id="shipping_lastname" value="[shipping_lastname]" size="15" class="txtBoxStyle"> <!--START: req_shipping_lastname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_lastname-->
+            </td>
+            </tr>
+            
+            <tr> 
+
+              <td align="right"  class="item"><b>[CustomerInfo_company]</b></td>
+              <td> <input name="shipping_company" type="text" id="shipping_company" value="[shipping_company]" size="25" class="txtBoxStyle"> <!--START: req_shipping_company--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_company--></td>
+            </tr>
+            
+            <tr> 
+             
+              <td align="right"  class="item"><b>[CustomerInfo_phone]</b></td>
+              <td><input name="shipping_phone" type="text" id="shipping_phone" value="[shipping_phone]" size="25" class="txtBoxStyle"> <!--START: req_shipping_phone--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_phone--></td>
+            </tr>
+            
+            <tr> 
+             
+              <td align="right"  class="item"><b>[CustomerInfo_address]</b></td>
+              <td> <input name="shipping_address" type="text" id="shipping_address" value="[shipping_address]" size="25" class="txtBoxStyle"> <!--START: req_shipping_address--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_address--></td>
+            </tr>
+            <tr> 
+
+              <td align="right"  class="item"><b>[CustomerInfo_address2]</b></td>
+              <td> <input name="shipping_address2" type="text" id="shipping_address2" value="[shipping_address2]" size="25" class="txtBoxStyle"></td>
+            </tr>
+            <tr> 
+        
+              <td align="right"  class="item"><b>[CustomerInfo_city]</b></td>
+              <td> <input name="shipping_city" type="text" id="shipping_city" value="[shipping_city]" size="25" class="txtBoxStyle"> <!--START: req_shipping_city--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_city--></td>
+            </tr>
+          
+        
+            <tr> 
+            
+              <td align="right"  class="item"><b>[CustomerInfo_country]</b></td>
+              <td><select name="shipping_country" onChange="document.checkoutform.action='checkout2.asp?step=2&return=1';document.checkoutform.submit();" class="txtBoxStyle"> <!--START: req_shipping_country-->*<!--END: req_shipping_country-->
+				[CountryDropDown]
+			     </select>
+              </td>
+            </tr>			
+
+            <tr> 
+          
+              <td align="right"  class="item"><b>[CustomerInfo_state]</b></td>
+              <td> 
+		[state] <!--START: req_shipping_state--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_state-->
+              </td>
+            </tr>
+            <tr> 
+           
+              <td align="right"  class="item"><b>[CustomerInfo_zip]</b></td>
+              <td><input name="shipping_zip" type="text" id="shipping_zip" value="[shipping_zip]" size="10" class="txtBoxStyle"> <!--START: req_shipping_zip--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_zip-->
+              </td>
+            </tr>
+
+</table>
+		</td>
+		<td class="item" valign="top">
+		<table border="0" width="98%">
+			<tr>
+				<td><b>Billing Address</b></td>
+			</tr>
+			<tr>
+				<td class="item"><input type="checkbox" name="C1" value="ON" onclick="showhide('billingl');" checked> Same as 
+				shipping</td>
+			</tr>
+		</table>
+		<div id="billingl" style="display:none;">
+
+
+<table width="350" cellpadding="0" cellspacing="3" class="alternative" id="table10">
+<tr><td align="left" class="item" valign="top" colspan="2">[checkout3_billingcomment]</td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_firstname]</strong></td>
+<td><input name="billing_firstname" type="text" id="shipping_firstname2" value="[billing_firstname]" size="15" class="txtBoxStyle"><!--START: req_billing_firstname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_firstname--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_lastname]</strong></td>
+<td><input name="billing_lastname" type="text" id="shipping_lastname3" value="[billing_lastname]" size="15" class="txtBoxStyle"><!--START: req_billing_lastname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_lastname--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_company]</strong></td>
+<td><input name="billing_company" type="text" id="shipping_company2" value="[billing_company]" size="25" class="txtBoxStyle"><!--START: req_billing_company--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_company--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_phone]</strong></td>
+<td><input name="billing_phone" type="text" id="shipping_phone2" value="[billing_phone]" size="25" class="txtBoxStyle"><!--START: req_billing_phone--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_phone--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_address]</strong></td>
+<td><input name="billing_address" type="text" id="shipping_address3" value="[billing_address]" size="25" class="txtBoxStyle"><!--START: req_billing_address--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_address--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_address2]</strong></td>
+<td><input name="billing_address2" type="text" id="shipping_address22" value="[billing_address2]" size="25" class="txtBoxStyle"><!--START: req_billing_address2--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_address2--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_city]</strong></td>
+<td><input name="billing_city" type="text" id="shipping_city2" value="[billing_city]" size="25" class="txtBoxStyle"><!--START: req_billing_city--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_city--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_country]</strong></td>
+<td><select name="billing_country" onChange="document.billing.action='checkout3.asp?step=3&action=updatecountry';document.billing.submit();" class="txtBoxStyle">
+				[CountryDropDown]
+			     </select><!--START: req_billing_country--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_country--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_state]</strong></td>
+<td>[state]<!--START: req_billing_state--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_state--></td></tr>
+<tr><td class="item" align="right"><strong>[CustomerInfo_zip]</strong></td>
+<td><input name="billing_zip" type="text" id="billing_zip" value="[billing_zip]" size="10" class="txtBoxStyle"><!--START: req_shipping_zip--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_zip--></td></tr>
+</table>
+
+		</div>
+		<p>Please enter your email below, and if you like to register with us to 
+		be able to check your order status online, enter a password for your 
+		account.</p>
+		<table border="0" width="100%" id="table8">
+			<tr>
+				<td width="197">Email:</td>
+				<td><input type="text" name="T15" size="20"></td>
+			</tr>
+			<tr>
+				<td width="197">Password:</td>
+				<td><input type="text" name="T16" size="20"></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<table border="0" width="763" id="table5">
+	<tr>
+		<td>Shipping Method</td>
+	</tr>
+	<tr>
+		<td>Select a shipping method below...</td>
+	</tr>
+	<tr>
+		<td><select size="1" name="D1"></select></td>
+	</tr>
+</table>
+<table border="0" width="763">
+	<tr>
+		<td>Checkout Questions:</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<table border="0" width="763">
+	<tr>
+		<td>Payment Method</td>
+	</tr>
+	<tr>
+		<td>Select a payment method below...</td>
+	</tr>
+	<tr>
+		<td><select size="1" name="D2"></select></td>
+	</tr>
+</table>
+
+</body>
+
+</html>

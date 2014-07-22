@@ -1,0 +1,113 @@
+<script type="text/javascript">
+function savePass(objForm) {
+	var strMsg = "";
+	if (objForm.password.value.trim() == "")
+		strMsg += " - New password cannot be blank.\n"
+	if (objForm.password2.value.trim() != objForm.password.value.trim())
+	    strMsg += " - Password confirmation doesn't match.\n"
+
+	 if (!objForm.password.value.match(/(?=^.{8,16}$)(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).*$/) && '[verifystrongpassword]' == '1')
+	    strMsg += " - [CustomerInfo_password_policy*script] does not match the password policy.\n";
+
+    //<!--START: captchascript-->
+	if (objForm.randomWord.value.trim() == "")
+        strMsg += " - Verification word cannot be blank.\n"
+    //<!--END: captchascript-->
+
+	if (strMsg != "") {
+		alert(strMsg);
+		return false;
+	}
+
+	objForm.submit();
+}
+String.prototype.trim = function () {
+	return this.replace(/^\s+|\s+$/g, "");
+}
+
+</script>
+
+<table width="98%" border="0" cellpadding="0" cellspacing="2">
+  <!--START: CATEGORY_HEADER-->
+  <tr>
+    <td id="resetpassHeader" class="data">[CONTENT]</td>
+  </tr>
+  <!--END: CATEGORY_HEADER-->
+  <tr>
+    <td><h1 class="page_headers">[resetpassword_header]</h1></td>
+  </tr>
+  <tr>
+    <td valign="top" align="center"><!--START: resetForm-->
+      <form action="resetpassword.asp?k=[k]&email=[email]&id=[id]" method="post" autocomplete="off">
+        <input type="hidden" name="doaction" value="save" />
+        <table width="400" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="checkout-headers">[resetpassword_title]</td>
+          </tr>
+          <tr>
+            <td><table width="100%" cellpadding="2" cellspacing="0" class="alternative">
+                <tr>
+                  <td class="item" colspan="2">[resetpassword_instructions]</td>
+                </tr>
+                <tr>
+                  <td class="item" align="right" width="100"><strong>[resetpassword_newpassword]</strong></td>
+                  <td>                      
+                      <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                              <td>
+                                  <input type="password" size="12" name="password" value="" class="txtBoxStyle" id="password" autocomplete="off" [CallFunctionVerifyStrongPass]/>
+                                </td>
+                              <!--START: StrongPasswordBar-->
+                              <td>
+                                  <div style="width:100px;height:10px;border:none;background-image: linear-gradient(to left, #00FF00 0%, #FF0000 100%);">
+                                    <div id="divStrong" style="width:100%;height:10px;border:none;background-color:white;float:right"></div>
+                                  </div>
+                              </td>
+                              <!--END: StrongPasswordBar-->
+                          </tr>
+                      </table>
+                  </td>
+                </tr>
+                <!--START: PasswordMSG-->
+                <tr><td></td><td class="item">[CustomerInfo_password_policy]</td></tr>
+                <!--END: PasswordMSG-->
+                <tr>
+                  <td align="right" class="item" ><strong>[resetpassword_confirmnewpassword]</strong></td>
+                  <td><input type="password" size="12" autocomplete="off" name="password2" class="txtBoxStyle" id="password2" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                  <td class="item" align="right"><strong>[registration_verification]:</strong></td>
+                  <td class="item">
+                    <!--START: captcha-->
+                    <img src="admin/image_pw.asp?p=<%=now()%>" border="0" width="148" /> <br />
+                    [registration_verification_message]<br />
+                    <input type="text" name="randomWord" id="randomWord" value="" size="25" maxlength="30"  class="txtBoxStyle" autocomplete="off" />
+                    <!--END: captcha-->
+				    <!--START: recaptcha-->
+                    <script type="text/javascript">var RecaptchaOptions = { theme: '[recaptcha_theme]' };</script>
+                    <script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k=[recaptcha_key]"></script>
+                    <noscript>
+                    <iframe src="//www.google.com/recaptcha/api/noscript?k=[recaptcha_key]" height="300" width="500" frameborder="0"></iframe><br>
+                    <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                    <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+                    </noscript>
+				    <!--END: recaptcha-->
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="left"><input type="button" onclick="javascript:savePass(this.form);" value="[resetpassword_savepassword]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" id="savePassword" name="savePassword" /></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table>
+      </form>
+      <!--END: resetForm--></td>
+  </tr>
+  <!--START: CATEGORY_FOOTER-->
+  <tr>
+    <td id="resetpassFooter" class="data">[CONTENT]</td>
+  </tr>
+  <!--END: CATEGORY_FOOTER-->
+</table>
+

@@ -1,0 +1,57 @@
+/* 
+   -----------------------------------
+     Social Marketing 
+	 Style Sheet 
+	 by Infomart2000 Corp.
+	 www.infomart2000.com
+   ----------------------------------
+   ##Default
+ */	
+
+	
+.desc {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #000000;
+	font-weight : Normal;
+	}
+	
+.price {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	color : #333333;
+	font-weight : Normal;
+	}
+
+
+A.store {
+	font-family :  Arial, Helvetica, sans-serif;
+	color : #3d240a;
+	font-size : 12px;
+	font-weight :  bold;
+	font-style: normal;
+	text-decoration: none;
+}
+	
+	 	
+A.store:hover {
+	font-family :  Arial, Helvetica, sans-serif;
+	font-weight :  bold;
+	font-style: normal;
+	color : #bc0904;
+	text-decoration: none;
+}
+
+
+A.store:visited {
+	font-family : Arial, Helvetica, sans-serif;
+	color : #3d240a;
+}
+	
+ 
+A.store:visited:hover {
+	font-family : Arial, Helvetica, sans-serif;
+	color : #bc0904;
+} 
+
+

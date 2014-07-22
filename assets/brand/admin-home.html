@@ -1,0 +1,233 @@
+
+<!--START: wizardBlock-->
+<style type="text/css"> 
+.highslide-dimming {
+	background: black;
+}
+</style> 
+
+<div style="display:none;text-align:center;">
+<form action="" name="formWiz" id="formWiz" method="post">
+<script language='javascript'>
+    document.write("<button name=\"cmdWizard\" id=\"cmdWizard\" style=\"width:0px;height:0px;\" onclick=\"this.href='wizard.asp';return hs.htmlExpand(this, {objectType: 'iframe', align: 'center', dimmingOpacity: 0.75, width: '650',  preserveContent: false} );\" class=\"scalable gray\"><span>Use Wizard</span></button>");
+	function openWizard()
+	{
+	    hs.dimmingGeckoFix = true;
+	    hs.dimmingOpacity = 0.75;
+	    hs.align = 'center';
+	    hs.htmlExpand(document.formWiz.cmdWizard, { src: 'wizard.asp', objectType: 'iframe', align: 'center', width: '650', height: '600', dimmingOpacity: 0.75, preserveContent: false });
+	}
+	
+	function initpage()
+	{
+		openWizard();
+	}
+	
+	addLoadEvent(initpage);
+</script>
+</form>
+</div>
+<!--END: wizardBlock-->
+
+<!--START: promobanner-->
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#a1a29f" style="border-collapse: collapse" ID="Table20">
+	<tr>
+		<td align="right">
+		[promobanner]
+		</td>
+	</tr>
+</table>
+<!--END: promobanner-->
+
+<!--START: salesreport-->
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#a1a29f" style="border-collapse: collapse" ID="Table1">
+	<tr> 
+		<td align="center" background="templates/images/bg_swf.gif">
+		
+			<div id="rptChart1" style="width:600px;height:220px;vertical-align: middle;"></div>
+			
+		</td>
+	</tr>
+</table>
+<br>
+<!--END: salesreport-->
+<!--START: activity-->
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="1" ID="Table2">
+	<tr>
+		<td >
+			<table width="100%" border="0" cellspacing="0" cellpadding="5" ID="Table3">
+				<tr>
+					<td align="left" class="subrow"><strong>Activity Profile / Sales History</strong></td>
+					<td align="right" class="subrow" style="text-size:8pt;">
+						Last update: [dtProfileLastDt]
+						<!--START: admin-home-settings--><button type="button" class="scalable gray" onclick="javascript:document.location.href='admin-home-settings.asp';" ID="Button2"><span>settings</span></button><!--END: admin-home-settings-->
+						<button type="button" class="scalable gray" onclick="javascript:document.location.href='admin-home.asp?refProfile=1';" ID="Button1"><span>refresh</span></button>
+					</td>
+				</tr>
+			</table>
+			<div id="actProfile" style="width:600px;height:[divProfileHeight]px;">
+			</div>
+		</td>
+	</tr>
+</table>
+<br>
+<!--END: activity-->
+
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="1" ID="Table4">
+	<tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="5" ID="Table5">
+				<tr>
+					<td width="200" align="left" class="subrow"><strong>Plan Information </strong></td>
+					<td width="378" align="left" class="subrow"><strong>News </strong></td>
+				</tr>
+			</table>
+			
+			<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#cccccc" style="border-collapse: collapse" ID="Table6">
+				<tr>
+					<td width="198" align="center" bgcolor="#FFFFFF">
+						<!--START: planInfo-->
+						<table width="150" border="0" cellspacing="0" cellpadding="0" ID="Table7">
+							<tr>
+								<td>Hard Disk Usage</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="150" border="0" cellpadding="3" cellspacing="0" bordercolor="#888888" ID="Table8">
+										<tr>
+											<td align="left"  bgcolor="#888888">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" ID="Table9">
+													<tr>
+														<td bgcolor="#555555"><div id="stat1" style="height:14px;"><img src="templates/images/bar.gif" width="40" height="14"></div></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+
+						<table width="150" border="0" cellspacing="0" cellpadding="0" ID="Table10">
+							<tr>
+								<td>Database Usage</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="150" border="0" cellpadding="3" cellspacing="0" bordercolor="#888888" ID="Table11">
+										<tr>
+											<td align="left"  bgcolor="#888888">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" ID="Table12">
+													<tr>
+														<td bgcolor="#555555"><div id="stat2" style="height:14px;"><img src="templates/images/bar.gif" width="40" height="14" /></div></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+
+						<table width="150" border="0" cellspacing="0" cellpadding="0" ID="Table13">
+							<tr>
+								<td>Bandwidth Usage </td>
+							</tr>
+							<tr>
+								<td>
+									<table width="150" border="0" cellpadding="3" cellspacing="0" bordercolor="#888888" ID="Table14">
+										<tr>
+											<td align="left"  bgcolor="#888888">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" ID="Table15">
+													<tr>
+														<td bgcolor="#555555"><div id="stat3" style="height:14px;"><img src="templates/images/bar.gif" width="40" height="14" /></div></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<br>
+						[planDetails]						
+						<!--END: planInfo-->
+						<!--START: planInfoDemo-->
+						<table width="150" border="0" cellspacing="0" cellpadding="0" ID="Table16">
+							<tr>
+								<td style="font-size:11pt;"><b>Demo Account<br><br></td>
+							</tr>
+							<tr>
+								<td>
+									<table width="150" border="0" cellpadding="3" cellspacing="0" bordercolor="#888888" ID="Table17">
+										<tr>
+											<td align="left">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" ID="Table18">
+													<tr>
+														<td align="center" style="font-size:11pt;"><b><font color="#ff0000">[demoDaysLeft]</font></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!--END: planInfoDemo-->
+					</td>
+					<td width="374" align="center" bgcolor="#FFFFFF"><div id="newsbox" style="height:150px;width:374px;overflow:auto;"></div></td>
+				</tr>
+			</table>	
+		</td>
+	</tr>
+</table>
+
+<!--START: salesgraphics-->
+<br>
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#cccccc" style="border-collapse: collapse" ID="Table19">
+	<tr>
+		<td><div id="rptChart2"></div></td>
+		<td><div id="rptChart3"></div></td>
+	</tr>
+</table>
+<!--END: salesgraphics-->
+		
+<script language="JavaScript" src="templates/js/FusionCharts.js"></script>
+<script type="text/javascript">
+    
+    //<!--START: activity_script-->
+    ajax_loadContent('actProfile','/admin/actProfile.asp?refProfile=[refProfile]&actLastProfDt=[actLastProfDt]');
+    //<!--END: activity_script-->
+
+    //<!--START: planInfo_script-->
+    ajax_loadContent('stat1','/admin/ajax_report.asp?page=stats1');
+    ajax_loadContent('stat2','/admin/ajax_report.asp?page=stats2');
+    ajax_loadContent('stat3','/admin/ajax_report.asp?page=stats3');
+    //<!--END: planInfo_script-->
+
+    ajax_loadContent('newsbox','/admin/news.asp?page=adminhome');
+
+    //<!--START: salesreport_script-->
+    //Start:Chart1::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    var rptChart1 = new FusionCharts("/admin/templates/chart/MSColumn3DLineDY.swf", "rptChart1", "600", "220", "0", "0");
+    rptChart1.setDataURL("/admin/reports/reports_chartEngine%2Easp%3FrptType%3D[rptType1]%26groupBy%3D[groupBy1]%26dtStart%3D[dtStart1]%26dtEnd%3D[dtEnd1]%26topChart%3D[topChart1]%26intDtPreset%3D[intDtPreset1][otherParams1]");
+    rptChart1.render("rptChart1");
+
+    //End:Chart1::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    //<!--END: salesreport_script-->
+    //<!--START: salesgraphics_script-->
+    //Start:Chart2::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    var rptChart2 = new FusionCharts("/admin/templates/chart/pie2d.swf", "rptChart2", "298", "220", "0", "0");
+    rptChart2.setDataURL("/admin/reports/reports_chartEngine%2Easp%3FrptType%3D[rptType2]%26groupBy%3D[groupBy2]%26dtStart%3D[dtStart2]%26dtEnd%3D[dtEnd2]%26topChart%3D[topChart2]%26intDtPreset%3D[intDtPreset2][otherParams2]");
+    rptChart2.render("rptChart2");
+    //End:Chart2::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    //Start:Chart3::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    var rptChart3 = new FusionCharts("/admin/templates/chart/area2d.swf", "rptChart3", "298", "220", "0", "0");
+    rptChart3.setDataURL("/admin/reports/reports_chartEngine%2Easp%3FrptType%3D[rptType3]%26groupBy%3D[groupBy3]%26dtStart%3D[dtStart3]%26dtEnd%3D[dtEnd3]%26topChart%3D[topChart3]%26intDtPreset%3D[intDtPreset3][otherParams3]");
+    rptChart3.render("rptChart3");
+    //End:Chart3::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    //<!--END: salesgraphics_script-->
+        
+</script>
+

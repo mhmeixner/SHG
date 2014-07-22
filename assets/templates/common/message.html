@@ -1,0 +1,17 @@
+<form method="post" action="[dberror_returnpage]">
+<table border="0" width="450" cellspacing="0" cellpadding="4" class="alternative">
+	<tr>
+		<td class="titles" width="26" align="center"><img src="assets/templates/common/images/error2.png" align="absmiddle" width="26"></td>
+		<td class="titles" align="left" width="418">[dberror_name]</td>
+	</tr>
+	<tr>
+		<td class="item" colspan="2"> [dberror]</td>
+	</tr>
+	<tr>
+		<td align="left" colspan="2"><!--START: RETURNMESSAGE-->
+			<input type="button" value='[error_returnmessage]' class="btn" onClick="location.href='[dberror_returnpage]';" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+			<!--END: RETURNMESSAGE-->
+		</td>
+	</tr>
+</table>
+</form>

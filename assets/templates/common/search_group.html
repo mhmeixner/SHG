@@ -1,0 +1,169 @@
+<table width="98%" cellspacing="0" cellpadding="2" border="0">
+    <!--START: BODY_HEADER-->
+    <tr>
+      <td class="item"> [CATEGORY_FULLLINE] </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <!--END: BODY_HEADER-->
+    <tr>
+      <td class="page_headers">[Search_header]</td>
+    </tr>
+	<!--START: MANUFACTURER_HEADER-->
+	<tr>
+		<td class="page_headers" colspan="5"><!--START: logo-->
+			<img src="[logo]" border="0">
+			<!--END: logo--></td>
+	</tr>
+	<!--START: header-->
+	<tr>
+		<td class="data" colspan="5">[header]</td> 
+	</tr>
+	<!--END: header-->
+	<!--END: MANUFACTURER_HEADER-->
+	<form action="search_groups.asp?keyword=[keyword]&manf=[manf]&byprice=[byprice]" method="post" name="frmsortby">
+	<tr>
+		<td colspan="3" class="titles">&nbsp;[category_Header-products] (Total Items: [productnumber])</td>
+		<td class="titles" colspan="2" align="right"><!--START: sortbylist-->
+			<select name="sortby" onchange="frmsortby.submit();" class="txtBoxStyle">
+			[sortbylist]
+			</select>
+			<!--END: sortbylist-->
+			</td>
+	</tr>
+	</form>
+	
+	<tr>
+		<td colspan="5"><!--START: PAGING-->
+			<table width="100%">
+				<tr align="center">
+					<td class="font2"> [category_moreresults]&nbsp;
+						<!--START: PREV-->
+						<font size="1"><a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=[prev]">[category_previouspage]</a></font>&nbsp;
+						<!--END: PREV-->
+						<!--START: PAGES-->
+						<!--START: FIRST_PAGE-->
+						<font size="1"><a href="search_groups.asp?keyword=[keyword]&manf=[manf]&byprice=[byprice]&page=PAGE"><b>[PAGE]</b></a>...</font>
+						<!--END: FIRST_PAGE-->
+						<!--START: PAGES_SELECTED-->
+						<font size="1"><b>[PAGE]</b></font>
+						<!--END: PAGES_SELECTED-->
+						<!--START: PAGES_NOTSELECTED-->
+						<a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=PAGE"><font size="1">PAGE</font></a>
+						<!--END: PAGES_NOTSELECTED-->
+						<!--START: LAST_PAGE-->
+						<font size="1">...<a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=PAGE"><b>[PAGE]</b></a></font>
+						<!--END: LAST_PAGE-->
+						<!--END: PAGES-->
+						<!--START: NEXT-->
+						&nbsp;<font size="1"><a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=[next]">[category_nextpage]</a></font>
+						<!--END: NEXT-->
+					</td>
+				</tr>
+			</table>
+			<!--END: PAGING-->
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5"><table width="98%" cellpadding="0" cellspacing="4" border="0">
+				<!--START: CATEGORY_ITEMS-->
+				<!--START: ITEM_TEMPLATE-->
+                <table cellspacing="0" cellpadding="5" border="0" width="99%" class="alternative">
+                  <tr>
+                    <td align="center" height="150"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&amp;maxx=150&amp;maxy=150" alt="[name]" border="0"></a></td>
+                  </tr>
+                  <tr>
+                    <td class="item" align="center" height="30"><a href="product.asp?itemid=[catalogid]">[name]</a></td>
+                  </tr>
+                  <!--START: product_review-->
+                  <tr>
+                    <td class="price-info" colspan="2" align="center"><!--START: product_review_average-->                      
+                      <table border="0" cellspacing="0" cellpadding="1">
+                        <tr>
+                          <td><img src="assets/templates/common/images/star[review_average].png" alt="Average Rating" border="0"></td>
+                          <td class="item">[review_count]&nbsp;Review(s)</td>
+                        </tr>
+                      </table>                      
+                      <!--END: product_review_average--></td>
+                  </tr>
+                  <!--END: product_review-->
+                  <tr>
+                    <td class="price2" valign="top" align="center"><!--START: ITEMPRICE-->[product_yourprice]&nbsp;[ITEMPRICE] 
+                      <!--END: ITEMPRICE--> 
+                      <!--START: SALEPRICE-->                      
+                      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td colspan="2" align="center" class="item" nowrap="nowrap"><s>[product_yourprice]&nbsp;[ITEMPRICE]</s></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center" class="item" nowrap="nowrap"><table border="0" cellspacing="0" cellpadding="2">
+                              <tr>
+                                <td nowrap="nowrap" class="price2">[product_onsale]:&nbsp;[ITEMSALEPRICE]</td>
+                                <td align="right"><img src="assets/templates/common/images/on_sale.png" alt="On Sale" hspace="5" border="0"></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table>                      
+                      <!--END: SALEPRICE--></td>
+                  </tr>
+                  <!--START: freeshippingblock-->
+                  <tr>
+                    <td colspan="2" align="center" valign="middle">[freeshipping]</td>
+                  </tr>
+                  <!--END: freeshippingblock-->
+                  <tr>
+                    <td class="item" align="center" valign="middle"><input  type="button" value="[category_buyitlink]" onClick="window.location='add_cart.asp?quick=1&amp;item_id=[catalogid]'" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+                  </tr>
+                </table>
+				<!--END: ITEM_TEMPLATE-->
+				<!--END: CATEGORY_ITEMS-->
+			</table></td>
+	</tr>
+	<tr>
+		<td colspan="5" align="center">&nbsp;</td>
+	</tr>
+	<tr align="center">
+		<td colspan="5"><!--START: PAGING-->
+			<table width="100%">
+				<tr align="center">
+					<td class="font2"> [category_moreresults]&nbsp;
+						<!--START: PREV-->
+						<font size="1"><a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=[prev]">[category_previouspage]</a></font>&nbsp;
+						<!--END: PREV-->
+						<!--START: PAGES-->
+						<!--START: FIRST_PAGE-->
+						<font size="1"><a href="search_groups.asp?keyword=[keyword]&manf=[manf]&byprice=[byprice]&page=PAGE"><b>[PAGE]</b></a>...</font>
+						<!--END: FIRST_PAGE-->
+						<!--START: PAGES_SELECTED-->
+						<font size="1"><b>[PAGE]</b></font>
+						<!--END: PAGES_SELECTED-->
+						<!--START: PAGES_NOTSELECTED-->
+						<a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=PAGE"><font size="1">PAGE</font></a>
+						<!--END: PAGES_NOTSELECTED-->
+						<!--START: LAST_PAGE-->
+						<font size="1">...<a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=PAGE"><b>[PAGE]</b></a></font>
+						<!--END: LAST_PAGE-->
+						<!--END: PAGES-->
+						<!--START: NEXT-->
+						&nbsp;<font size="1"><a href="search_groups.asp?keyword=[keyword]&sortby=[sortby]&manf=[manf]&byprice=[byprice]&page=[next]">[category_nextpage]</a></font>
+						<!--END: NEXT-->
+					</td>
+				</tr>
+			</table>
+			<!--END: PAGING-->
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="5"><img src="assets/spacer.gif" width="1" height="1" alt="" border="0"></td>
+	</tr>
+	<!--START: CATEGORY_FOOTER-->
+	<tr>
+		<td>[CONTENT]</td>
+	</tr>
+	<!--END: CATEGORY_FOOTER-->
+</table>
+

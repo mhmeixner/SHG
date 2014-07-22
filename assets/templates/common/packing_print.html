@@ -1,0 +1,190 @@
+<!--START: PAGEHEAD-->
+<html>
+<head>
+<title>[company]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="css/default.css" type="text/css" media="screen">
+</head>
+<body class="bod" bgcolor="#FFFFFF" text="#000000">
+<!--END: PAGEHEAD-->
+<!--START: pagebreak-->
+<p style="page-break-after: always">
+<!--END: pagebreak-->
+<!--START: Confirmation-->
+<table width="95%" border="0" cellspacing="2" cellpadding="2" align="center">
+	<tr class="framebackground">
+		<td colspan="2"><img src="templates/images/spacer.gif"></td>
+	</tr>
+	<tr class="report-font2">
+		<td width="60%" valign="top" align="left"><!--START: invoicelogo-->
+			<img src="../[invoicelogo]"><br>
+			<!--END: invoicelogo-->
+			<b>[company]<br>
+			[address1]<br>
+			<!--START: address2-->
+			[address2]<br>
+			<!--END: address2-->
+			[city], [state] [zip] </td>
+		<td width="40%" valign="top" align="left"><b>Date Ordered #</b>: [odate_month]/[odate_day]/[odate_year]<br>
+			<b>Order Number #</b>: [invoiceprefix][invoicenum]
+			<!--START: salesperson-->
+			<br>
+			<b>Sales Person</b>: [salesperson]
+			<!--END: salesperson-->
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr class="report-font2">
+		<td width="60%" align="left" valign="top"><b>BILLING ADDRESS</b><br>
+			[ofirstname] [olastname]<br>
+			<!--START: ocompany-->
+			[ocompany]<br>
+			<!--END: ocompany-->
+			[oaddress]<br>
+			<!--START: oaddress2-->
+			[oaddress2] <br>
+			<!--END: oaddress2-->
+			[ocity], [ostate] [ozip] - [ocountry]<br>
+			<!--START: ophone-->
+			[ophone]
+			<!--END: ophone-->
+			<br>
+			<!--START: oemail-->
+			[oemail]
+			<!--END: oemail--></td>
+		<td width="40%" align="left" valign="top"><b>SHIPPING ADDRESS</b><br>
+			[oshipfirstname] [oshiplastname]<br>
+			<!--START: oshipcompany-->
+			[oshipcompany]<br>
+			<!--END: oshipcompany-->
+			[oshipaddress]<br>
+			<!--START: oshipaddress2-->
+			[oshipaddress2] <br>
+			<!--END: oshipaddress2-->
+			[oshipcity], [oshipstate] [oshipzip] - [oshipcountry]</td>
+	</tr>
+	<tr>
+		<td width="60%">&nbsp;</td>
+		<td width="40%">&nbsp;</td>
+	</tr>
+</table>
+<table width="95%" border="0" cellspacing="2" cellpadding="2" align="center">
+	<tr>
+		<td colspan="8" class="report-font2"><table width="100%" cellpadding="4" cellspacing="0">
+				<tr>
+					<td class="item"><b>Shipping Method:</b> [oshipmethod] ([totalweight]lbs.) </td>
+					<td class="item" width="20%" align="right"><b>Total Items:</b> [numberofitems]</td>
+				</tr>
+				<!--START: trackingcode-->
+				<tr>
+					<td class="item" colspan="2"><b>Tracking Number:</b>[trackingcode]</td>
+				</tr>
+				<!--END: trackingcode-->
+				<!--START: oshippeddate-->
+				<tr>
+					<td class="item"  colspan="2"><b>Shipped on:</b> [oshippeddate]</td>
+				</tr>
+				<!--END: oshippeddate-->
+			</table></td>
+	</tr>
+	<tr>
+		<td colspan="8"><hr> </td>
+	</tr>
+	<tr class="report-font2">
+		<td width="15%" align="left" valign="top"><b>Item Id</b></td>
+		<td width="53%" align="left" valign="top"><b>Descriptions and Options</b></td>
+		<td width="1%">&nbsp;</td>
+		<!--				<td width="9%" align="center" valign="top"><b>Price</b></td>-->
+		<td width="1%">&nbsp;</td>
+		<td width="9%" align="center" valign="top"><b>Qty</b></td>
+		<td width="2%">&nbsp;</td>
+		<!--				<td width="10%" valign="top" align="center"><b>Total</b></td>-->
+	</tr>
+	<tr class="framebackground">
+		<td colspan="8"><hr> <img src="templates/images/spacer.gif"> </td>
+	</tr>
+	<!--START: items-->
+	<tr class="report-font1">
+		<td valign="top" align="left" width="15%">[id]</td>
+		<td valign="top" align="left" width="53%">[itemname]
+		<!--START: warehouse_location--><br />[warehouse_location] [warehouse_aisle] [warehouse_bin] [warehouse_custom]<!--END: warehouse_location-->        
+        </td>
+		<td width="1%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="9%">[unitprice]</td>-->
+		<td width="1%">&nbsp;</td>
+		<td valign="top" align="center" width="9%">[numitems]</td>
+		<td width="2%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="10%">[subtotal]</td>-->
+	</tr>
+	<!--END: items-->
+	<tr class="framebackground">
+		<td colspan="8"><img src="templates/images/spacer.gif"></td>
+	</tr>
+	<tr class="report-font1">
+		<td width="15%">&nbsp;</td>
+		<td rowspan="5" width="53%" valign="top"><!--START: ocomment-->
+			<b>Order Comments:</b><br>
+			[ocomment]<br>
+			<br>
+			<!--END: ocomment-->
+			<!--START: invoice_terms-->
+			<br>
+			[invoice_terms] <br>
+			<!--END: invoice_terms-->
+		</td>
+		<td width="1%">&nbsp;</td>
+		<td width="9%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<!--					<td valign="top" align="right" width="9%"><hr color="#FFFFFF">
+						<b>SubTotal:</b></td>-->
+		<td width="2%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="10%"><hr>
+						[subtotal]</td>-->
+	</tr>
+	<tr class="report-font1">
+		<td width="15%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<td width="9%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="9%"><b>Discount:</b></td>-->
+		<td width="2%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="10%">[discounts]</td>-->
+	</tr>
+	<tr class="report-font1">
+		<td width="15%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<td width="9%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="9%"><b>Tax:</b></td>-->
+		<td width="2%">&nbsp;</td>
+		<!--				<td width="10%">
+						<div align="right">[tax]</div>
+					</td>-->
+	</tr>
+	<tr class="report-font1">
+		<td width="15%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<td width="9%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="9%"><b>Shipping:</b></td>-->
+		<td width="2%">&nbsp;</td>
+		<!--				<td width="10%">
+						<div align="right">[shipping]</div>
+						<hr>
+					</td>-->
+	</tr>
+	<tr class="report-font1">
+		<td width="15%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<td width="9%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="9%"><b>Total</b></td>-->
+		<td width="2%">&nbsp;</td>
+		<!--				<td valign="top" align="right" width="10%">[total]</td>-->
+	</tr>
+</table>
+<!--END: Confirmation-->
+</p>
+

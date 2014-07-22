@@ -1,0 +1,213 @@
+@charset "utf-8";
+/*-------------------------------------------------------- COMMON ELEMENTS */
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:none;
+}
+body{
+	background: #e9eaea url(../images/bg.jpg) top center no-repeat;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size:12px;
+	color:#797979;
+}
+.hidden{
+	display: none;
+}
+h1{
+	font-size:28px;
+	font-weight: normal;
+	line-height:36px;
+	padding-top:40px;
+	padding-bottom:20px;
+	text-align:center;
+}
+hr{
+	width:480px:
+	height:1px;
+	margin:15px -30px;
+	border-top:1px solid #b4b4b4;
+	background: #f0f0f0;
+}
+#logo{
+	position: fixed;
+	display: block;
+	width:80px;
+	padding: 24px 133px 0 0;
+	bottom:0px;
+	right:0px;
+	height:28px;
+	background: url(../images/rate_logo.png) center right no-repeat;
+	text-align:right;
+	color:#bbb;
+	text-decoration: none;	
+	-moz-border-radius-topleft:6px;
+	-webkit-border-top-left-radius:6px;
+	border-radius-topleft:6px;
+}
+
+#rate_wrapper{
+	width:480px;
+	margin:0px auto;
+}
+	
+	.rate_body{
+		width:420px;
+		padding:15px 30px 30px;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-top-left-radius:6px;
+		
+		-moz-box-shadow:0px 2px 5px rgba(0,0,0,0.42);
+		-webkit-box-shadow:0px 2px 5px rgba(0,0,0,0.42);
+		box-shadow:0px 2px 5px rgba(0,0,0,0.42);
+		
+		background: #d1d1d1 url(../images/rate_body.jpg) no-repeat;
+	}
+		
+		.rate_body.success{
+			margin-top:70px;
+			text-align:center;
+			font-size:18px;
+			padding:30px;
+			line-height:24px;
+		}
+
+input.text{
+	padding:10px;
+	width:400px;
+	margin-bottom:20px;
+	background: #fff;
+	border:1px solid #bbb;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size:18px;
+	color:#a6a6a6;
+	
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+textarea{
+	padding:10px;
+	width:400px;
+	height:170px;
+	background: #fff;
+	border:1px solid #bbb;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size:18px;
+	color:#a6a6a6;
+	
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+label{
+	color:#818181;
+	width:auto;
+	display: block;
+	padding-bottom:5px;
+	font-size:14px;
+	line-height:20px;
+}
+button{
+	height:38px;
+	margin:20px 30px 40px 0;
+	padding:0px 12px;
+	float:right;
+	border:1px solid #007fd8;
+	color:#fff;
+	background: #007cd7 url(../images/bigbutton.png) repeat-x;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight:bold;
+	font-size:20px;
+	text-shadow:0px -1px 0px #004ec9;
+	text-decoration:none;
+	line-height:38px;
+	cursor: pointer;
+	
+}
+button:hover{
+	background-position:0px -38px;
+	color:#fff;
+}
+button:active{
+	background-position:0px -76px;
+}
+
+
+#starify{
+	width:100%;
+	height:40px;
+}
+
+div.star-rating{
+	float:left;
+	width:42px;
+	height:40px;
+	text-indent:-999em;
+	cursor:pointer;
+	display:block;
+	background:transparent;
+	overflow:hidden
+}
+div.star-rating,div.star-rating a{
+	background:url(../images/star.png) no-repeat 0 0px
+}
+div.star-rating a{
+	display:block;
+	width:42px;
+	height:100%;
+	background-position:0 0px;
+	border:0
+}
+div.star-rating-on a{
+	background-position:0 -40px!important
+}
+div.star-rating-hover a{
+	background-position:0 -40px
+}
+/* Read Only CSS */
+div.star-rating-readonly a{
+	cursor:default !important
+}
+/* Partial Star CSS */
+div.star-rating{
+	background:transparent!important;
+	overflow:hidden!important
+}
+/* END jQuery.Rating Plugin CSS */
+
+
+
+
+/*-------------------------------------------------------- ERROR */
+
+.errorSummary{
+	position: fixed;
+	top:-6px;
+	left:50%;
+	width:320px;
+	margin-left:-190px;
+	padding:15px 30px;
+	background: #c92500;
+	color:#fff;
+	font-size:18px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+	.errorSummary p{
+		display: none;
+	}
+	.errorSummary ul{
+		list-style: none;
+		width:320px;
+	}
+		.errorSummary ul li{
+			width:320px;
+			text-align: center;
+		}

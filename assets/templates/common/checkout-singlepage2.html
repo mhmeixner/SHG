@@ -1,0 +1,1405 @@
+<script type="text/javascript" src="admin/state_countryjs.asp"></script>
+<style>
+	.overlay{
+		background-image: url(assets/templates/common/images/transparent.png);
+	}
+
+	#overlay{
+		background-image: url(assets/templates/common/images/transparent.png);
+	}
+
+	* html #overlay{
+		background-image: url(assets/templates/common/images/pixel_trans.gif);
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="assets/templates/common/images/transparent.png", sizingMethod="scale");
+	}
+</style>
+
+<script src="prototype.js" language="JavaScript" type="text/javascript"></script>
+
+<script type="text/javascript" language="JavaScript">
+	var scity="";
+	var szip="";
+	var scountry="";
+	var sstate="";
+	var addrchange="";
+	var ajax_request_progress=0;
+	var selectedShipId=0;
+	
+
+	function select_shipping(shipid)
+	{
+		selectedShipId = shipid;
+		add_overlay("total_div",1);
+		add_overlay("divPayment",1);
+	
+		var url = 'ship_ajax.asp?action1=total&no-cache='+Math.random();
+		var params = 'id=' + shipid + '&action=total';
+		//document.write('ship_ajax.asp?'+params)
+		var ajax = new Ajax.Updater(
+		{success: 'total_div'},
+		url,
+		{method: 'post', evalScripts: true, parameters: params, onComplete: updateajax_total,onFailure: reportError});
+	}
+
+	function applyCoupon(strCoupon)
+	{
+		var strMsg = "";
+		
+		if (strCoupon.trim() == "")
+			strMsg += " - Coupon cannot be blank.\n"
+		
+		if (strMsg != ""){
+			alert(strMsg);
+			return false;
+		}
+		
+		add_overlay("total_div",1);
+		var url = 'ship_ajax.asp?action1=total&no-cache='+Math.random();
+		var params = 'id=' + selectedShipId + '&action=total&coupon='+encodeURIComponent(strCoupon);
+		var ajax = new Ajax.Updater(
+		{success: 'total_div'},
+		url,
+		{method: 'post', evalScripts: true, parameters: params, onComplete: updateajax_total,onFailure: reportError});
+	}
+
+	function doPayment()
+	{	
+		var params = '';
+		
+		add_overlay("divPayment",1);
+		var url = 'checkout_one.asp?action=dopayment';
+		//document.write(url+params)
+		//return false;		
+		var ajax = new Ajax.Updater(
+		{success: 'divPayment'},
+		url,
+		{method: 'post', evalScripts: true, parameters: params, onComplete: paymentSuccess,onFailure: reportError});
+		
+	}	
+	
+	function paymentSuccess()
+	{
+		controlDivPayment('');
+		remove_overlay("divPayment");
+	}
+	
+	function doCart()
+	{	
+		var params = 'action=docart';
+		
+		add_overlay("divCart",1);
+		var url = 'checkout_one.asp';
+		var ajax = new Ajax.Updater(
+		{success: 'divCart'},
+		url,
+		{method: 'post', evalScripts: true, parameters: params, onComplete: cartSuccess,onFailure: reportError});
+		
+	}	
+	
+	function cartSuccess()
+	{
+		remove_overlay("divCart");
+	}
+	
+	function doCheckout(objForm)
+	{
+		setValidation();
+		
+		//isSubmitComplete = false; //Let this line commented in production... otherwise, it will allow multiple submits.
+		
+		if (!objForm.onsubmit() || !checkotherreqfields())
+			return false;
+		
+		var params = 'action=docheckout';
+		var formArray = getValuesAsArray(objForm);
+		
+		for(var prop in formArray){
+			if(isArray(formArray[prop])){
+				for(var no=0;no<formArray[prop].length;no++){
+					var name = prop + '[' + no + ']';
+					if(prop.indexOf('[')>=0){ // The name of the form field is already indicating an array
+						name = prop.replace('[','[' + no);	
+					}
+					var value = formArray[prop][no];
+					value = encodeURIComponent(value);
+					params = params + '&' + name + '=' + value;
+				}
+			}else{
+				var value = formArray[prop];
+				value = encodeURIComponent(value);
+				params = params + '&' + prop + '=' + value;
+			}
+		}		
+		
+		document.getElementById('divCheckout').style.display = 'block';
+		
+		add_overlay("billing_div",1);
+		var url = 'checkout_one.asp';
+		
+		//document.write('checkout_one.asp?'+params)
+		//return false;
+		
+		var ajax = new Ajax.Updater(
+		{success: 'divCheckout'},
+		url,
+		{method: 'post', evalScripts: true, parameters: params, onComplete: checkoutSuccess,onFailure: reportError});
+		
+	}	
+
+	function checkoutSuccess()
+	{
+		remove_overlay("billing_div");
+		
+		var divCheckout = getInnerText('divCheckout');
+
+		if(divCheckout.indexOf('ORDER PLACED')>=0 || divCheckout.indexOf('REDIRECTING')>=0)
+		{
+			//var orderId = divCheckout.split("-");
+			//window.location.href='ordertracking.asp?op=1&action=view&id='+orderId[1];
+			//window.location.href='checkout_thankyou.asp?i=' + orderId[1] + '&t=' +orderId[2];
+			return void(0);
+		}
+		
+		isSubmitComplete = false;
+		
+		if(divCheckout.indexOf('INVALID_CART')>=0)
+		{
+			doCart();
+			check_address('InvalidCart');
+			alert(divCheckout.replace('INVALID_CART',''));
+			return void(0);
+		}
+		
+		if(divCheckout.indexOf('REDIRECT')>=0)
+		{
+			return void(0);
+		}
+				
+		alert(divCheckout.replace('<li>','\n   \- '));
+				
+	}
+
+	function checkoutFailure()
+	{
+		remove_overlay("billing_div");
+	}
+	
+	function removeCoupon(couponId)
+	{
+		var rep = confirm("Are you sure you want to remove this coupon?");
+		
+		if (!rep)
+			return void(0);
+			
+		add_overlay("total_div",1);
+		var url = 'ship_ajax.asp?action1=total&no-cache='+Math.random();
+		var params = 'id=' + selectedShipId + '&action=total&removeCoupon=1&coupon='+encodeURIComponent(couponId);
+		//document.write('ship_ajax.asp?'+params)
+		var ajax = new Ajax.Updater(
+		{success: 'total_div'},
+		url,
+		{method: 'post', evalScripts: true, parameters: params, onComplete: updateajax_total,onFailure: reportError});
+	}
+	
+	function updateajax_total(req)
+	{
+
+		var couponApplied = getInnerText('total_div');
+		
+		if(couponApplied.indexOf('divCouponApplied')>=0)
+		{
+			check_address('CouponApplied');
+			doCart();
+		}
+		else
+		{
+			doPayment();
+		}
+
+		remove_overlay("divPayment");
+		remove_overlay("total_div");		
+		
+	}
+
+	function getInnerText(div)
+	{
+		if(document.all){
+			return document.getElementById(div).innerText;
+		} else{
+			return document.getElementById(div).textContent;
+		}	
+	}
+
+	function initpage()
+	{
+		check_address('billing');
+		
+		if (document.billing.billing_zip.value == '')
+			select_shipping(-1);
+		
+		controlDivPayment('');
+	}
+
+	
+	function check_address(type)
+	{
+
+		if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+			var sameAsBilling = document.getElementById('sameAsBilling').checked;
+		else
+			var sameAsBilling = true;	
+
+		if (type == '')
+			if (sameAsBilling)
+				type = 'billing';
+			else
+				type = 'shipping';
+				
+		if ((sameAsBilling && type == 'billing') || (!sameAsBilling && type == 'shipping') || (type == 'CouponApplied') || (type == 'InvalidCart') || (type == 'refresh'))
+			check_address2(type);
+	}
+
+	function check_address2(type) 
+	{
+		var type2 = type;
+		if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+			var sameAsBilling = document.getElementById('sameAsBilling').checked;
+		else
+			var sameAsBilling = true;
+		
+		if (type2 == 'CouponApplied' || type2 == 'InvalidCart' || type2 == 'refresh')
+			if (sameAsBilling)
+				type = 'billing';
+			else
+				type = 'shipping';
+			
+		addrchange=0;
+		if (document.getElementById(type+'_state').value!=sstate){sstate=encodeURIComponent(removeHTMLTags(document.getElementById(type+'_state').value)); addrchange=1;}
+		if ($F(type+'_city')!=scity){scity=encodeURIComponent(removeHTMLTags($F(type+'_city'))); addrchange=1;}
+		if ($F(type+'_country')!=scountry){scountry=encodeURIComponent(removeHTMLTags($F(type+'_country'))); addrchange=1;}
+		if ($F(type+'_zip')!=szip){szip=encodeURIComponent(removeHTMLTags($F(type+'_zip'))); addrchange=1;}
+		if (type2 == 'CouponApplied' || type2 == 'InvalidCart' || type2 == 'refresh') {addrchange=1;}
+		
+		if ((szip.length >= 1 && sstate.length>=1 && scountry.length>=1 && addrchange==1 && ajax_request_progress==0))  {
+			
+			if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+			{
+				if (document.getElementById('sameAsBilling').checked)
+				{
+					sameAsBilling = 1;
+				}
+				else
+				{
+					add_overlay("shipping_info",0)
+					sameAsBilling = 0;
+				}
+			}
+			else
+			{
+				sameAsBilling = 1;
+			}
+			
+			if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+			{
+				var sFirstname	= encodeURIComponent(document.getElementById('shipping_firstname').value);
+				var sLastname	= encodeURIComponent(document.getElementById('shipping_lastname').value);
+				var sCompany	= encodeURIComponent(document.getElementById('shipping_company').value);
+				var sPhone		= encodeURIComponent(document.getElementById('shipping_phone').value);
+				var sAddress	= encodeURIComponent(document.getElementById('shipping_address').value);
+				var sAddress2	= encodeURIComponent(document.getElementById('shipping_address2').value);
+				var sCity		= encodeURIComponent(document.getElementById('shipping_city').value);
+				var sState		= encodeURIComponent(document.getElementById('shipping_state').value);
+				var sCountry	= encodeURIComponent(document.getElementById('shipping_country').value);
+				var sZip		= encodeURIComponent(document.getElementById('shipping_zip').value);					
+			}
+			else
+			{
+				var sFirstname	= ' ';
+				var sLastname	= ' ';
+				var sCompany	= ' ';
+				var sPhone		= ' ';
+				var sAddress	= ' ';
+				var sAddress2	= ' ';
+				var sCity		= ' ';
+				var sState		= ' ';
+				var sCountry	= ' ';
+				var sZip		= ' ';
+			}
+			var bFirstname	= encodeURIComponent(document.getElementById('billing_firstname').value);
+			var bLastname	= encodeURIComponent(document.getElementById('billing_lastname').value);
+			var bCompany	= encodeURIComponent(document.getElementById('billing_company').value);
+			var bPhone		= encodeURIComponent(document.getElementById('billing_phone').value);
+			var bAddress	= encodeURIComponent(document.getElementById('billing_address').value);
+			var bAddress2	= encodeURIComponent(document.getElementById('billing_address2').value);
+			var bCity		= encodeURIComponent(document.getElementById('billing_city').value);
+			var bState		= encodeURIComponent(document.getElementById('billing_state').value);
+			var bCountry	= encodeURIComponent(document.getElementById('billing_country').value);
+			var bZip		= encodeURIComponent(document.getElementById('billing_zip').value);
+
+			document.getElementById(type+'_state').focus();
+			$('shipResult').update('Calculating shipping rates for ' + scity + ' ' + sstate + ' ' + szip + '....'); 
+			add_overlay("billing_info",0)
+			add_overlay("shipping_div",1)
+			add_overlay("total_div",1)
+			add_overlay("divPayment",1)
+			ajax_request_progress=1;
+
+			var url = 'ship_ajax.asp?no-cache='+Math.random();
+			var params = 'shipping_zip=' + szip + '&shipping_city=' + scity + '&shipping_state=' + sstate + '&shipping_country=' + scountry;
+			params = params + '&sFirstname=' + sFirstname;
+			params = params + '&sLastname=' + sLastname;
+			params = params + '&sCompany=' + sCompany;
+			params = params + '&sPhone=' + sPhone;
+			params = params + '&sAddress=' + sAddress;
+			params = params + '&sAddress2=' + sAddress2;
+			params = params + '&sCity=' + sCity;
+			params = params + '&sState=' + sState;
+			params = params + '&sCountry=' + sCountry;
+			params = params + '&sZip=' + sZip;
+			params = params + '&bFirstname=' + bFirstname;
+			params = params + '&bLastname=' + bLastname;
+			params = params + '&bCompany=' + bCompany;
+			params = params + '&bPhone=' + bPhone;
+			params = params + '&bAddress=' + bAddress;
+			params = params + '&bAddress2=' + bAddress2;
+			params = params + '&bCity=' + bCity;
+			params = params + '&bState=' + bState;
+			params = params + '&bCountry=' + bCountry;
+			params = params + '&bZip=' + bZip;
+			params = params + '&sameAsBilling=' + sameAsBilling;
+			//document.write('ship_ajax.asp?'+params);
+			//alert('ship_ajax.asp?'+params);
+			var ajax = new Ajax.Updater(
+			{success: 'shipResult'},
+			url,
+			{method: 'post', evalScripts: true, parameters: params, onComplete: function(){updateajax(type2);},onFailure: reportError});
+		}
+	}
+	
+	function updateajax(request)
+	{
+		ajax_request_progress=0;
+		remove_overlay("billing_info");
+		
+		if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+			if (!document.billing.sameAsBilling.checked) 
+				remove_overlay("shipping_info");
+
+		remove_overlay("shipping_div");
+		remove_overlay("total_div")
+		remove_overlay("divPayment")
+			
+		if (request != 'CouponApplied')
+		{
+			if (document.getElementById('radio_ship')!=undefined)
+				select_shipping(0);
+			else
+				select_shipping(-1);
+		}
+	}
+	
+	function reportError(request) {
+		isSubmitComplete = false;
+		ajax_request_progress=0;
+		remove_overlay("billing_info");
+
+		if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+			if (!document.billing.sameAsBilling.checked) 
+				remove_overlay("shipping_info");
+				
+		alert("Error processing request " + request);			
+	}
+
+	function showHideShipping() {
+
+		if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+		{
+			if (document.billing.sameAsBilling.checked) 
+			{
+				add_overlay("shipping_info",0);
+				
+				document.getElementById('shipping_firstname').value = '';
+				document.getElementById('shipping_lastname').value = '';
+				document.getElementById('shipping_company').value = '';
+				document.getElementById('shipping_phone').value = '';
+				document.getElementById('shipping_address').value = '';
+				document.getElementById('shipping_address2').value = '';
+				document.getElementById('shipping_city').value = '';
+				document.getElementById('shipping_zip').value = '';	
+				document.getElementById('shipping_country').value	= document.getElementById('billing_country').value;
+				populateState('shipping_state','shipping_country');			
+			}
+			else 
+			{
+				remove_overlay("shipping_info");
+
+				document.getElementById('shipping_firstname').value = document.getElementById('billing_firstname').value;
+				document.getElementById('shipping_lastname').value	= document.getElementById('billing_lastname').value;
+				document.getElementById('shipping_company').value	= document.getElementById('billing_company').value;
+				document.getElementById('shipping_phone').value		= document.getElementById('billing_phone').value;
+				document.getElementById('shipping_address').value	= document.getElementById('billing_address').value;
+				document.getElementById('shipping_address2').value	= document.getElementById('billing_address2').value;
+				document.getElementById('shipping_city').value		= document.getElementById('billing_city').value;
+				document.getElementById('shipping_zip').value		= document.getElementById('billing_zip').value;	
+				document.getElementById('shipping_country').value	= document.getElementById('billing_country').value;
+				populateState('shipping_state','shipping_country');
+				document.getElementById('shipping_state').value		= document.getElementById('billing_state').value;
+			}
+		}
+		else
+		{
+			//add_overlay("shipping_info",0);
+		}
+	}
+
+	function getElementById_s(id){ 
+		var obj = null; 
+		if(document.getElementById){ 
+			/* Prefer the widely supported W3C DOM method, if 
+			available:- 
+			*/ 
+			obj = document.getElementById(id); 
+		}else if(document.all){ 
+			/* Branch to use document.all on document.all only 
+			browsers. Requires that IDs are unique to the page 
+			and do not coincide with NAME attributes on other 
+			elements:- 
+			*/ 
+			obj = document.all[id]; 
+		} 
+		/* If no appropriate element retrieval mechanism exists on 
+		this browser this function always returns null:- 
+		*/ 
+		return obj; 
+	} 
+
+	function remove_overlay(panel)
+	{
+		var objBody = getElementById_s('overlay_'+panel);
+		objBody.style.display = 'none';
+	}
+
+	function add_overlay(panel,loading)
+	{
+		var objBody = getElementById_s(panel);
+		var objOverlay = document.createElement("div");
+		
+		objOverlay.setAttribute('id','overlay_'+panel);	
+		objOverlay.className='overlay';
+		objOverlay.style.position = 'absolute';
+		objOverlay.style.textAlign = 'center';
+		objOverlay.style.verticalAlign = 'middle';
+		objOverlay.style.width = objBody.clientWidth;
+		objOverlay.style.height = objBody.clientHeight;
+		objBody.insertBefore(objOverlay, objBody.firstChild);
+		objOverlay.style.display = 'block';
+	 
+		if (loading==1)
+		{
+			document.getElementById('overlay_'+panel).innerHTML = '<table border=0 width=100% height=100%><tr><td align="center"><img src="assets/templates/common/images/loading.gif"></td></tr></table>';
+		}
+		else
+		{
+			document.getElementById('overlay_'+panel).innerHTML = '<table border=0 width=100% height=100%><tr><td align="center"></td></tr></table>';
+		}
+		DisableEnableForm(document.billing,false);
+	}
+
+	function DisableEnableForm(xForm,xHow)
+	{
+		objElems = xForm.elements;
+		for(i=0;i<objElems.length;i++)
+		{
+			objElems[i].disabled = xHow;
+		} 
+	}
+	
+	String.prototype.trim = function() {
+		return this.replace(/^\s+|\s+$/g,"");
+	}
+	
+	var giftCertDetails = "";
+	function showGiftCertDetails()
+	{
+		document.getElementById('divGiftCertDetails').style.display = giftCertDetails;
+		if (giftCertDetails == "")
+			giftCertDetails = "none";
+		else
+			giftCertDetails = "";
+	}	
+
+	var giftDiscountDetails = "";
+	function showDiscountDetails()
+	{
+		document.getElementById('divDiscountDetails').style.display = giftDiscountDetails;
+		if (giftDiscountDetails == "")
+			giftDiscountDetails = "none";
+		else
+			giftDiscountDetails = "";
+	}		
+
+	function fillEmailDiv(strValue)
+	{
+		if (document.getElementById('divEmail') != 'undefined' && document.getElementById('divEmail') != null)
+		{
+			strValue = "&nbsp;" + removeHTMLTags(strValue).trim();
+			document.getElementById('divEmail').innerHTML = strValue;
+		}	
+	}
+	
+	String.prototype.trim = function() {
+		return this.replace(/^\s+|\s+$/g,"");
+	}
+
+	function removeHTMLTags(strString)
+	{
+		var strInputCode = strString;
+ 		strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1){
+ 			return (p1 == "lt")? "<" : ">";
+ 		});
+ 		var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+ 		strTagStrippedText = strTagStrippedText.replace(/\u00a0/g,'');
+ 		strTagStrippedText = strTagStrippedText.replace(/&nbsp;/gi,'');
+ 		return strTagStrippedText;
+	}
+	
+	function clearContent(obj)
+	{
+		obj.value = removeHTMLTags(obj.value);
+	}
+	
+	function controlDivPayment(id)
+	{
+
+		var divs = document.getElementsByTagName("div");
+		for (var x = 0; x < divs.length; x++)
+		{
+			if ((divs[x].id.indexOf("divPaymentOption") >= 0))
+			{
+				obj1=document.getElementById(divs[x].id);
+								
+				if (obj1!=undefined)
+					if (id == '')
+					{
+						obj1.style.display = '';
+						break;
+					}
+					else
+					{
+						if (obj1.id == 'divPaymentOption'+id)
+							obj1.style.display = '';
+						else
+							obj1.style.display = 'none';
+					}
+			}
+		}  
+	}	
+	
+	function controlDivShipping(id)
+	{
+		var divs = document.getElementsByTagName("div");
+		for (var x = 0; x < divs.length; x++)
+		{
+			if (divs[x].id.indexOf("divShipping") >= 0 && divs[x].id != "divShipping" && divs[x].id != "divShippingCUSTOM")
+			{
+				obj1=document.getElementById(divs[x].id);
+								
+				if (obj1!=undefined)
+					if (id == '')
+					{
+						obj1.style.display = '';
+						break;
+					}
+					else
+					{
+						if (obj1.id == 'divShipping'+id)
+							obj1.style.display = '';
+						else
+							obj1.style.display = 'none';
+					}
+			}
+		}  
+	}		
+</script>
+
+<body onLoad="javascript:window.setTimeout('initpage()',200);">
+
+<form action="checkout_one.asp" method="post" name="billing" ID="billing">
+
+<div id="billing_div" style="width:90%;">
+
+	<div id="divCart" style="width:100%;">
+		<!--START: SHOPPING_CART_TEMP-->
+		<table cellpadding="0" cellspacing="0" border=0 width="100%">
+        	<tr><td colspan="6">
+            <table width="100%" cellpadding="0" cellspacing="0"><tr><td class="page_headers" align="left">One Page Checkout</td><td align="right"></td></tr>
+			</table></td></tr>
+
+			<tr><td height="10" colspan="4"><img src="assets/images/spacer.gif" height="10"></td></tr>
+
+			<tr> 
+				<td class="titles2" align="left" colspan="2" width="10%"><strong>[shoppingcart_items]</strong></td>
+				<td class="titles2" align="center"><strong>[shoppingcart_quantity]</strong></td>
+				<td class="titles2" align="right"><strong>[shoppingcart_price]</strong></td>
+				<td class="titles2" align="right"><strong>[shoppingcart_total]</strong></td>
+			</tr>
+			
+			<tr><td height="1" colspan="6" class="borders"><img src="assets/images/spacer.gif" height="1"></td></tr>
+			
+			<!--START: SHOPPING_CART_ITEM-->							
+			<tr>
+				<td width="15%" height="60" valign="middle"><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" BORDER="0" HEIGHT="55" WIDTH="55"></a></td>
+				<td class="item" valign="middle" align="left" width="55%"><a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a><!--START: itemoptions--><br><a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a><br><div id=opt[ITEM_ID] name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div><!--END: itemoptions--></td>
+				<td valign="middle" class="item" align="center">[ITEM_QUANTITY]<input  type="hidden" name="coliditemnum" value="[ITEM_ID]" size="3" maxlength="5" ID="Hidden3"></td> 
+				<td valign="middle" class="item" align="right">[ITEM_PRICE]</td>
+				<td valign="middle" class="item" align="right">[ITEM_SUBTOTAL]</td>
+			</tr>
+			
+			<tr><td height="1" colspan="6" class="borders"><img src="assets/images/spacer.gif" height="1"></td></tr>
+			<!--END: SHOPPING_CART_ITEM-->		
+		</table>
+		<!--END: SHOPPING_CART_TEMP-->
+	</div>
+
+	<br>
+	
+	<table cellpadding="1" cellspacing="1" border=0 width="100%" ID="Table1">
+	
+	
+        <!--START: paypalexpress-->
+        <tr>
+            <td colspan="2">
+                <table border="0" cellpadding="0" cellspacing="0" ID="Table23">
+                    <tr>
+                        <td width="39">
+                            <a href="paypal_express.asp?ch=0">
+                                <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" align="left"
+                                    style="margin-right: 7px;"></a></td>
+                        <td width="383" valign="top">
+                            <span style="font-size: 11px; font-family: Arial, Verdana;">Save time. Checkout securely.
+                                Pay without sharing your financial information.</span></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--END: paypalexpress-->
+        
+        	
+		<!--START: account_login1-->
+		<tr>
+			<td colspan="2">
+				<table width="100%" cellpadding="4" cellspacing="0">
+					<tr>
+						<td class="item">
+							[checkout1_loginmessage2]
+							<br>
+							<input type="button" value="[checkout1_login]" name="B3" onClick="document.location='checkout.asp?step=log-in';" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Button4">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<!--END: account_login1-->
+		<tr>
+			<td width="50%" valign="top">
+				<div id="billing_info" style="width:100%">
+					<table width="350" cellpadding="3" cellspacing="0" id="table9">
+						<tr>
+							<td align="right" colspan="2" class="checkout-headers">
+								<p align="left"><b>[account_billing-info]</b>
+							</td>
+   						</tr>
+						<!--START: SAVE_ADDRESSES-->			
+						<tr>
+							<td  width="41%" align="right" class="item"><strong>[checkout3_PreviousAddresses]</strong></td>
+							<td><select type=dropdown name=save_address onChange="javascript:filladdress_form(this,'billing','billing');check_address('billing');" ID="Select1" class="txtBoxStyle">[address_list]</select></td>
+						</tr>
+						<!--END: SAVE_ADDRESSES-->			
+						<tr>
+							<td width="41%" align="right" class="item"><b>[CustomerInfo_firstname]</b></td>
+							<td width="59%"><input name="billing_firstname" onChange="clearContent(this);" type="text" id="billing_firstname" value="[billing_firstname]" size="15" class="txtBoxStyle"> <!--START: req_billing_firstname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_firstname--></td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_lastname]</b></td>
+							<td><input name="billing_lastname" type="text" onChange="clearContent(this);" id="billing_lastname" value="[billing_lastname]" size="15" class="txtBoxStyle"> <!--START: req_billing_lastname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_lastname-->            </td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_company]</b></td>
+							<td><input name="billing_company" type="text" onChange="clearContent(this);" id="billing_company" value="[billing_company]" size="25" class="txtBoxStyle"> </td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_phone]</b></td>
+							<td><input name="billing_phone" type="text" onChange="clearContent(this);" id="billing_phone" value="[billing_phone]" size="25" class="txtBoxStyle"> <!--START: req_billing_phone--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_phone--></td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_address]</b></td>
+							<td><input name="billing_address" type="text" onChange="clearContent(this);" id="billing_address" value="[billing_address]" size="25" class="txtBoxStyle"> <!--START: req_billing_address--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_address--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_address2]</b></td>
+							<td><input name="billing_address2" type="text" onChange="clearContent(this);" id="billing_address2" value="[billing_address2]" size="25" class="txtBoxStyle"></td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_city]</b></td>
+							<td><input name="billing_city" type="text" onChange="clearContent(this);" id="billing_city" value="[billing_city]" size="25" class="txtBoxStyle"> <!--START: req_billing_city--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_city--></td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_country]</b></td>
+							<td><select name="billing_country"  onChange="this.form.billing_zip.value='';populateState('billing_state','billing_country');check_stateValidator('billing');check_address('billing');"  class="txtBoxStyle" ID="billing_country"></select> <!--START: req_billing_country--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_country--></td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_state]</b></td>
+							<td><select id="billing_state" onChange="this.form.billing_zip.value='';check_address('billing');" name="billing_state" class="txtBoxStyle"></select> <!--START: req_billing_state--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_state-->              </td>
+						</tr>
+						<tr> 
+							<td align="right"  class="item"><b>[CustomerInfo_zip]</b></td>
+							<td><input name="billing_zip" maxlength="15" type="text" id="billing_zip" value="[billing_zip]" size="10" class="txtBoxStyle" onChange="clearContent(this);check_address('billing');" > <!--START: req_billing_zip--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_billing_zip-->              </td>
+						</tr>
+						<tr>
+							<td align="right" class="item"><b>[CustomerInfo_email]</td>
+							<td>
+								<input name="billing_email" type="text" id="billing_email" maxlength="40" onBlur="fillEmailDiv(this.value);" onKeyUp="fillEmailDiv(this.value);" onChange="clearContent(this);fillEmailDiv(this.value);" value="[email]" size="25" class="txtBoxStyle"> 
+								<!--START: emailrequired-->
+								<!--START: req_email--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_email-->
+								<!--END: emailrequired-->
+							</td>
+						</tr>
+						<tr>
+							<td align="right" class="item"><input type="checkbox" value="1" name="maillist" [maillist] ID="Checkbox1"></td>
+							<td class="item">[checkout1_joinmailinglist]</td>
+						</tr>
+						<!--START: account_login2-->
+						<tr>
+							<td colspan="2">
+								<br>
+								<b>[checkout1_Header-createnewaccount]
+							</td>
+						<tr>
+							<td colspan="2">
+								<table width="100%" cellpadding="2" cellspacing="0" >
+									<tr class="item">
+										<td width="34%" align="right" class="item">
+											<strong>[CustomerInfo_email]:</strong>
+										</td>
+										<td width="66%">
+											<div id="divEmail">&nbsp;[email]</div>
+										</td>
+									</tr>
+									<tr class="item">
+										<td align="right" class="item">
+											<strong>[CustomerInfo_password]: </strong>
+										</td>
+										<td>
+											<input type="password" size="12" name="pass" class="txtBoxStyle" ID="pass">
+											<!--START: passwordrequired-->
+											<!--START: req_pass--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_pass-->
+											<!--END: passwordrequired-->
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!--END: account_login2-->
+					</table>
+				</div>
+			</td>
+			
+			<td class="item" valign="top">
+				<table border="0" id="table4">
+					<tr>
+						<td  class="checkout-headers"><b>[checkout1_Header-shippinginformation]</b></td>
+						<!--START: sameAsBilling1-->
+						<td  class="checkout-headers">&nbsp;&nbsp;&nbsp;<input type="checkbox" value="ON" name="sameAsBilling" id="sameAsBilling" onClick="showHideShipping();check_address('');" checked></td>
+						<td  class="checkout-headers"><span class="item">[checkout3_sameasbilling]</span></td>
+						<!--END: sameAsBilling1-->
+					</tr>
+				</table>
+						
+				<div id="shipping_info" style="width:100%;">
+					<!--START: sameAsBilling2-->
+					<table width="350" cellpadding="3" cellspacing="0" id="Table2">
+						<!--START: SAVE_ADDRESSES2-->			
+						<tr>
+							<td  width="41%" align="right" class="item"><strong>[checkout3_PreviousAddresses]</strong></td>
+							<td><select type=dropdown name=save_address onChange="javascript:filladdress_form(this,'billing','shipping');check_address('shipping');" ID="Select2" class="txtBoxStyle">[address_list]</select></td>
+						</tr>
+						<!--END: SAVE_ADDRESSES2-->										
+						<tr>
+							<td width="41%" align="right" class="item"><b>[CustomerInfo_firstname]</b></td>
+							<td width="59%"><input name="shipping_firstname" onChange="clearContent(this);" type="text" id="shipping_firstname" value="[shipping_firstname]" size="15" class="txtBoxStyle"> <!--START: req_shipping_firstname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_firstname--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_lastname]</b></td>
+							<td><input name="shipping_lastname" onChange="clearContent(this);" type="text" id="shipping_lastname" value="[shipping_lastname]" size="15" class="txtBoxStyle"> <!--START: req_shipping_lastname--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_lastname--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_company]</b></td>
+							<td><input name="shipping_company" onChange="clearContent(this);" type="text" id="shipping_company" value="[shipping_company]" size="25" class="txtBoxStyle"> </td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_phone]</b></td>
+							<td><input name="shipping_phone" onChange="clearContent(this);" type="text" id="shipping_phone" value="[shipping_phone]" size="25" class="txtBoxStyle"> <!--START: req_shipping_phone--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_phone--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_address]</b></td>
+							<td><input name="shipping_address" onChange="clearContent(this);" type="text" id="shipping_address" value="[shipping_address]" size="25" class="txtBoxStyle"> <!--START: req_shipping_address--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_address--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_address2]</b></td>
+							<td><input name="shipping_address2" onChange="clearContent(this);" type="text" id="shipping_address2" value="[shipping_address2]" size="25" class="txtBoxStyle"></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_city]</b></td>
+							<td><input name="shipping_city" onChange="clearContent(this);" type="text" id="shipping_city" value="[shipping_city]" size="25" class="txtBoxStyle"> <!--START: req_shipping_city--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_city--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_country]</b></td>
+							<td><select name="shipping_country" onChange="this.form.shipping_zip.value='';populateState('shipping_state','shipping_country');check_stateValidator('shipping');check_address('shipping');" class="txtBoxStyle" ID="shipping_country"></select> <!--START: req_shipping_country--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_country--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_state]</b></td>
+							<td><select id="shipping_state" onChange="this.form.shipping_zip.value='';check_address('shipping');" name="shipping_state" class="txtBoxStyle"></select> <!--START: req_shipping_state--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_state--></td>
+						</tr>
+						<tr>
+							<td align="right"  class="item"><b>[CustomerInfo_zip]</b></td>
+							<td><input name="shipping_zip" maxlength="15" type="text" id="shipping_zip" value="[shipping_zip]" size="10" class="txtBoxStyle" onChange="clearContent(this);check_address('shipping');" ><!--START: req_shipping_zip--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req_shipping_zip--></td>
+						</tr>
+					</table>
+					<!--END: sameAsBilling2-->
+					<!--START: sameAsBilling3-->
+					<table width="350" cellpadding="3" cellspacing="0" id="Table29">
+						<tr>
+							<td align="center" ><br>[checkout3_sameasbillingmessage]</strong></td>
+						</tr>
+					</table>
+					<!--END: sameAsBilling3-->
+				</div>
+			</td>
+		</tr>
+	</table>
+		
+	<br>
+
+	<table border="0" width="100%" id="table5">
+		<tr>
+			<td  valign=top>
+				<table border="0" width="350" id="Table16">
+					<tr>
+						<td><b>[checkout3_Header-shippingmethodinfo]</b></td>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<div id="shipping_div" style="width:350px;font-size:10pt;">
+								<div id="shipResult">
+									<P>[checkout3_shippinginstructions]</P>
+								</div>
+								<a href="javascript:check_address('refresh');">[checkout3_refreshRates]</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td width="50%"  valign=top>
+				<table border="0" width="100%" id="Table17">
+					<tr>
+						<td><b>[checkout3_orderTotal]</b></td>
+					</tr>
+					<tr>
+						<td width=50%>
+							<div id="total_div" name="total_div" style="width:300px;">
+								<!--START: total_template_noshipping-->
+								<table width="100%" cellpadding="0" cellspacing="2" ID="Table30" border="0">
+									<tr>
+										<td height="15" style="font-size:10pt;"><p>[checkout3_totalinstructions]</p></td>
+								  </tr>								
+								</table>
+								<!--END: total_template_noshipping-->
+								
+								<!--START: total_template-->
+								<table width="100%" cellpadding="0" cellspacing="2" ID="Table20" border="0">
+									<tr>
+										<td class="item"><strong>[itemCount] Item(s)</strong>:</td> <td class="item" style="text-align:right;">[SUBTOTAL]</td>
+									</tr>
+									<!--START: DISCOUNTS-->
+									<tr>
+										<td class="item"><strong>[shoppingcart_discount]</strong>: <a href="javascript:showDiscountDetails();">(details)</a></td> <td class="item" style="text-align:right;">- [DISCOUNT]</td>
+									</tr>
+										<!--START: PROMOTIONS-->
+										<tr> 
+											<td colspan="2" align="center">
+												<div id="divDiscountDetails" name="divDiscountDetails" style="width:100%;align:center;display:none;background:#efefef;">
+													<table width="100%" cellpadding="0" cellspacing="2" ID="Table28" border="0">
+														<tr>
+															<td class="item"><b>Promotion Name</td>
+															<td class="item"></td>
+														</tr>													
+														<!--START: DISPLAY_PROMOS-->
+														<tr>
+															<td class="item">[promotion_name]</td>
+															<td class="item" style="text-align:right;"><a href="javascript:removeCoupon('[id]');">remove</a></td>
+														</tr>												
+														<!--END: DISPLAY_PROMOS-->
+													</table>											
+												</div>
+											</td>
+										</tr>	
+										<!--END: PROMOTIONS-->																	
+									<!--END: DISCOUNTS-->
+									<!--START: BUYSAFE-->
+									<tr>
+										<td class="item" ><img src="assets/templates/common/images/buysafe.gif" border="0"></td> <td class="item" style="text-align:right;">[buysafe_totalbondcost]</td>
+									</tr>				
+									<!--END: BUYSAFE-->					
+									<tr>
+										<td class="item" ><strong>[shoppingcart_shipping]</strong>:</td> <td class="item" style="text-align:right;">[SHIPPING]</td>
+									</tr>
+									<tr>
+										<td class="item"><strong>[shoppingcart_taxes]</strong>:</td> <td class="item" style="text-align:right;">[TAX]</td>
+									</tr>
+									<tr>
+										<td class="item"><strong>[shoppingcart_total]</strong>:</td> <td class="item" style="text-align:right;">[TOTAL]</td>
+									</tr>
+									<!--START: GIFTCERTS-->
+									<tr> 
+										<td class="item" nowrap><strong>[shoppingcart_giftcertificate]</strong>: <a href="javascript:showGiftCertDetails();">(details)</a></td> <td class="item" style="text-align:right;">-[GIFTCERTS]</td>
+									</tr>
+									<tr> 
+										<td colspan="2" align="center">
+											<div id="divGiftCertDetails" name="divGiftCertDetails" style="width:100%;align:center;display:none;background:#efefef;">
+												<table width="100%" cellpadding="0" cellspacing="2" ID="Table26" border="0">
+													<tr>
+														<td class="item"><b>Gift Code</td>
+														<td class="item" style="text-align:right;"><b>Amount</td>
+														<td class="item" style="text-align:right;"><b>Balance</td>
+														<td class="item"></td>
+													</tr>													
+													<!--START: GIFTCERTS_DETAILS_ITEMS-->
+													<tr>
+														<td class="item">[certificate_name]</td>
+														<td class="item" style="text-align:right;">[discount_amount]</td>
+														<td class="item" style="text-align:right;">[discount_balance]</td>
+														<td class="item" style="text-align:right;"><a href="javascript:removeCoupon('[id]');">remove</a></td>
+													</tr>													
+													<!--END: GIFTCERTS_DETAILS_ITEMS-->
+												</table>											
+											</div>
+										</td>
+									</tr>									
+									<!--END: GIFTCERTS-->
+									<tr>
+										<td class="item" colspan="2"><hr></td>
+									</tr>
+									<tr>
+										<td class="item"><strong>[shoppingcart_balance]</strong>:</td> <td class="item" style="text-align:right;"><span class="price">[BALANCE]</span></td>
+									</tr>
+									<!--START: apply_coupon-->
+									<tr>
+										<td class="item" colspan="2">
+											<table width="100%" border="0">
+												<tr>
+													<td class="item"><strong>[viewcart_coupon-header]:</strong></td>
+													<td>
+														<input id="coupon" onChange="clearContent(this);" maxlength="30"  size="15" value="" name="coupon_code" />
+														<input type=button class="btn" onClick="applyCoupon(this.form.coupon_code.value);" value="Go!" ID="Button2" NAME="Button2">
+													</td>
+												</tr>
+												<tr>
+													<td class="item" colspan="10">[viewcart_coupon-message]</td>
+												</tr>
+												<tr>
+													<td class="item" colspan="10">
+														<div name="divInvalidCoupon" id="divInvalidCoupon" style="display:[invalidCouponDisplay];color:#f00;">[viewcart_coupon-invalid]</div>
+														[divCouponApplied]
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>								
+									<!--END: apply_coupon-->
+								</table>
+								<!--END: total_template-->
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+				
+
+	<br>
+
+	<div id="divPayment" style="width:100%">
+		<!--START: PAYMENT_BLOCK-->
+		<table border="0" width="100%" id="Table13">
+			<tr>
+				<td><b>[checkout3_methodofpaymentselect]</b></td>
+			</tr>
+			<!--START: NO_PAYMENT_BLOCK-->
+			<tr>
+				<td class="item">There's no payment options available to your address. Please check the entered address and try again.</td>
+			</tr>			
+			<!--END: NO_PAYMENT_BLOCK-->
+			<tr>
+				<td>
+					<div style="width:100%">
+						<table width="100%" cellpadding="0" cellspacing="3" class="alternative" ID="Table14">
+						
+							<!--START: PPEXPRESS-->
+							<tr><td colspan="2" class="titles" height="15">&nbsp;[payment_description]</td></tr>
+							<tr><td colspan="2" class="item">[payment_description_message]</td></tr>
+							<tr><td colspan="2" class="item"><input name="payment" onClick="window.location.href='paypal_express.asp?ch=0';" type="radio" value="online-[id]" ID="Radio5"><img src="https://www.paypal.com/en_US/i/IntegrationCenter/scr/scr_ppAcceptMark_68x43.jpg" height=35 border=0></a>  [payment_description]</td></tr>
+							<!--END: PPEXPRESS-->
+							
+							
+							<!--START: CCGATEWAY-->
+							<tr><td class="titles"><input onClick="controlDivPayment('[id]');" name="payment" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED] ID="Radio2">&nbsp;[payment_description] </td></tr>
+							<tr>
+								<td class="item">
+									<div id="divPaymentOption[id]" name="divPaymentOption" style="display:none;">
+										<table width="100%" cellpadding="0" cellspacing="3" class="alternative" >
+											<tr><td class="item" colspan="2">[payment_description_message]</td></tr>
+											<tr><td class="item" align="right"><b>[CustomerInfo_creditcardnumber]</b></td><td><input type="text" onChange="clearContent(this);" name="ff[id]_ocardno" size="30" class="txtBoxStyle" ID="Text2"><img src="assets/templates/common/images/error2.gif" width="12" height="12"></td></tr>
+											<tr><td  class="item" align="right"><b>[CustomerInfo_creditexpiration]</b></td><td><select name="ff[id]_ocardexpiresmonth" class="txtBoxStyle" ID="Select5">
+											[monthlist]
+											</select>
+											<select name="ff[id]_ocardexpiresyear" class="txtBoxStyle" ID="Select6">
+											[yearlist]
+											</select><img src="assets/templates/common/images/error2.gif" width="12" height="12"></td></tr>
+											<tr><td  class="item" align="right"><b>[CustomerInfo_cardtype]</b></td>
+											<td><select name="ff[id]_ocardtype" class="txtBoxStyle" ID="Select7">
+											[cctype]
+											</select><img src="assets/templates/common/images/error2.gif" width="12" height="12"></td></tr>
+											<tr><td  class="item" align="right"><b>CVV2</b></td><td><input type="text" name="ff[id]_ocardcvv2" size="3" class="txtBoxStyle" ID="Text3"> <a href="#" onClick="javascript:window.open('assets/templates/common/images/cvv2.gif','new','menubars=no, resizable=no, statusbar=no, titlebar=no, width=300, height=500');">What's this?</a></td></tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+							<!--END: CCGATEWAY-->
+							
+							<!--START: LINKGATEWAY-->
+							<tr><td class="titles"><input onClick="controlDivPayment('[id]');" name="payment" type="radio" value="online-[id]" [FIRSTOPTIONCHECKED] ID="Radio3">&nbsp;[payment_description]</td></tr>
+							<tr>
+								<td class="item">
+									<div id="divPaymentOption[id]" name="divPaymentOption" style="display:none;">
+										<table width="100%" cellpadding="0" cellspacing="3" class="alternative" ID="Table21">
+											<tr><td class="item">[payment_description_message]</td></tr>
+											<tr><td class="item"> Pay [payment_description]</td></tr>
+										</table>
+									</div>
+								</td>
+							</tr>							
+							<!--END: LINKGATEWAY-->
+									
+
+														
+							<!--START: CUSTOM-->
+							<tr><td class="titles"><input onClick="controlDivPayment('[id]');" name="payment" type="radio" value="offline-[id]" [FIRSTOPTIONCHECKED] ID="Radio4">&nbsp;[payment_type]</td></tr>
+							<tr>
+								<td class="item">
+									<div id="divPaymentOption[id]" name="divPaymentOption" style="display:none;">
+										<table width="100%" cellpadding="0" cellspacing="3" class="alternative" ID="Table27">
+											<tr><td class="item">[payment_description]</td></tr>
+											<tr><td> 
+											<span class="item">[payment_type]</span></tr>
+											<!--START: CUSTOM_FIELD-->
+											<tr> 
+											<td class="item"><b>[InputName]</b></span></td>
+											<td class="item" >[field]</td>
+											</tr>
+											<!--END: CUSTOM_FIELD-->
+											<tr><td colspan="2"><table cellpadding="0" cellspacing="0" width="100%" ID="Table15">
+											<tr><td class="titles2" colspan="2"><img src="assets/images/spacer.gif" width="100%" height="1"></td></tr></table></td></tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+							<!--END: CUSTOM-->  
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<!--END: PAYMENT_BLOCK-->
+	</div>
+
+	<br>
+
+	<!--START: checkout_questions-->
+	<table border="0" id="table6" width="100%">
+		<tr>
+			<td ><b>[checkout1_checkoutquestions]</b></td>
+		</tr>
+		<tr>
+			<td >
+				<table width="100%" cellpadding="2" cellspacing="0" class="alternative" ID="Table3">
+					<tr>
+						<td>
+							<!--START: questions-->
+							[questions]
+							<!--END: questions-->
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<!--END: checkout_questions-->
+	
+	<table border="0" id="Table22" width="100%">
+		<tr>
+			<td><b>[checkout3_Header-comment]</b></td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" cellpadding="4" cellspacing="0" class="alternative" ID="Table19">
+					<tr>
+						<td class="item">[checkout3_commentmessage]</td>
+					</tr>
+					<tr>
+						<td><textarea onChange="clearContent(this);" name="ocomment" class="txtBoxStyle" cols="55" rows="3" ID="Textarea2"></textarea></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<div id="divCheckout" name="divCheckout" style="width:80%;display:none;background:#ffffff;border:1px solid black;text-align:center;padding:10px;">
+					<br>
+					Processing...
+					<br><br>
+				</div>
+				<br>
+				<input type="button" value="[checkout3_submitbutton]" name="B1" class="btn" onClick="doCheckout(this.form);"/>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</form>
+
+<script>
+	initCountry('US','FL','billing_state','billing_country');
+	if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+		initCountry('US','FL','shipping_state','shipping_country');
+	
+	window.setTimeout('showHideShipping()',200);
+	
+	//Every time that there's no state for a selected country, that script deletes the state control and creates another one.
+	//That's why we need to re-create the validation for the state.
+	var billingStateType = document.billing.billing_state.type;
+	if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+		var shippingStateType = document.billing.shipping_state.type;
+	
+	function check_stateValidator(type)
+	{
+		if (type == 'billing')
+		{
+			if (document.billing.billing_state.type != billingStateType)
+			{
+				frmvalidator.addValidation("billing_state","req","Please enter/select your billing state");
+				frmvalidator.addValidation("billing_state","maxlen=50");
+				billingStateType = document.billing.billing_state.type;
+			}
+		}
+		else
+		{
+			if (document.billing.shipping_state.type != shippingStateType)
+			{
+				frmvalidator.addValidation("shipping_state","req","Please enter/select your shipping state");
+				frmvalidator.addValidation("shipping_state","maxlen=50");
+				shippingStateType = document.billing.shipping_state.type;
+			}		
+		}
+	}
+
+	function setValidation()
+	{
+		frmvalidator.clearAllValidations();
+		
+		frmvalidator.addValidation("billing_firstname","req","Please enter your billing First Name");
+		frmvalidator.addValidation("billing_firstname","maxlen=20","Max length for billing First Name is 20");
+
+		frmvalidator.addValidation("billing_lastname","req","Please enter your billing Last Name");
+		frmvalidator.addValidation("billing_lastname","maxlen=20","Max length for billing Last Name is 20");
+
+		frmvalidator.addValidation("billing_phone","maxlen=18","Max length for billing Phone is 18");
+		frmvalidator.addValidation("billing_phone","phone","Invalid phone number.");
+		frmvalidator.addValidation("billing_phone","req","Please enter your billing phone")
+
+		frmvalidator.addValidation("billing_address","maxlen=50");
+		frmvalidator.addValidation("billing_address","req","Please enter your billing address");
+
+		frmvalidator.addValidation("billing_city","maxlen=50");
+		frmvalidator.addValidation("billing_city","req","Please enter your billing city");
+
+		frmvalidator.addValidation("billing_state","req","Please enter/select your billing state");
+		frmvalidator.addValidation("billing_state","maxlen=50");
+
+		frmvalidator.addValidation("billing_zip","maxlen=15");
+		frmvalidator.addValidation("billing_zip","req","Please enter your billing zip code");
+		
+		<!--START: emailrequiredscript-->
+		frmvalidator.addValidation("billing_email","maxlen=50","Max length for Email is 50");
+		frmvalidator.addValidation("billing_email","req","Please enter your email address");
+		frmvalidator.addValidation("billing_email","email");		
+		<!--END: emailrequiredscript-->
+
+		<!--START: passwordrequiredscript-->
+		frmvalidator.addValidation("pass","maxlen=20");
+		frmvalidator.addValidation("pass","req","Please enter your new password (registration is required)");
+		<!--END: passwordrequiredscript-->
+				
+		frmvalidator.addValidation("billing_country","dontselect=0");
+				
+		if (document.getElementById('sameAsBilling') != 'undefined' && document.getElementById('sameAsBilling') != null)
+			if (!document.billing.sameAsBilling.checked)
+			{
+				frmvalidator.addValidation("shipping_firstname","req","Please enter your shipping First Name");
+				frmvalidator.addValidation("shipping_firstname","maxlen=20","Max length for shipping First Name is 20");
+
+				frmvalidator.addValidation("shipping_lastname","req","Please enter your shipping Last Name");
+				frmvalidator.addValidation("shipping_lastname","maxlen=20","Max length for shipping Last Name is 20");
+
+				frmvalidator.addValidation("shipping_phone","maxlen=18","Max length for shipping Phone is 18");
+				frmvalidator.addValidation("shipping_phone","phone","Invalid phone number.");
+				frmvalidator.addValidation("shipping_phone","req","Please enter your shipping phone")
+
+				frmvalidator.addValidation("shipping_address","maxlen=50");
+				frmvalidator.addValidation("shipping_address","req","Please enter your shipping address");
+
+				frmvalidator.addValidation("shipping_city","maxlen=50");
+				frmvalidator.addValidation("shipping_city","req","Please enter your shipping city");
+
+				frmvalidator.addValidation("shipping_state","req","Please enter/select your shipping state");
+				frmvalidator.addValidation("shipping_state","maxlen=50");
+
+				frmvalidator.addValidation("shipping_zip","maxlen=15");
+				frmvalidator.addValidation("shipping_zip","req","Please enter your shipping zip code");
+
+				frmvalidator.addValidation("shipping_country","dontselect=0");		
+			}
+			
+	}
+</script>
+
+<script language="JavaScript" type="text/javascript">
+//You should create the validator only after the definition of the HTML form
+var frmvalidator  = new Validator("billing");
+frmvalidator.EnableMsgsTogether();
+</script>
+
+</html>
+
+
+
+
+
+<!------------------------------------------------------------------------------>
+<!-- BEGIN TEMPLATES BLOCKS -->
+<!------------------------------------------------------------------------------>
+
+<!--START: CARRIER-->  
+<table width="100%" cellpadding="0" cellspacing="0" ID="Table24">
+	<!--START: displayblock-->
+	<tr>
+		<td colspan=3><div align="left"><img src="assets/templates/common/images/[OPTION-SHIPPER].gif"></div></td>
+		<td colspan=2 align="right"><a href="javascript:click_ship();" onClick="controlDivShipping('[OPTION-SHIPPER]');">Display Rates</a></td>
+	</tr>
+	<!--END: displayblock-->
+	<tr>
+		<td colspan="5">
+			<div name="divShipping[OPTION-SHIPPER]" id="divShipping[OPTION-SHIPPER]" class="ship" style="display:none;">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0" ID="Table25">  
+					<!--START: SHIPPING_OPTION-->
+					<tr>
+						<td><div align="right"></div></td>
+						<td align="left"><input type="radio" name="shipping" value="[ID]" [SELECTED] id="radio_ship" onClick="select_shipping([ID]);"></td>
+						<td class="item" align="left" width="200"><!--[OPTION-SHIPPER]--> [OPTION-DESCRIPTION]</td>
+						<td>&nbsp;</td>
+						<td class="item" align="left">[OPTION-PRICE2]</td>
+					</tr>
+					<!--END: SHIPPING_OPTION-->
+				</table>	
+			</div>
+		</td>						
+	</tr>
+	<tr><td class="borders" colspan="5"><img src="assets/images/spacer.gif" width="100%" height="1"></td></tr>
+</table>
+<!--END: CARRIER-->	
+
+
+
+
+
+<!--START: checkout_questions_templates-->
+<!--START: textarea-format-->
+	<table ID="Table7">
+		<tr>
+			<td align="right" class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--> <b>[question]</b></td>
+			<td>
+				<textarea cols="30" rows="5" name="cq[id]" class="txtBoxStyle" ID="Textarea1">[answer]</textarea>
+			</td>
+		</tr>
+	</table>
+<!--END: textarea-format-->
+
+<!--START: text-format-->
+	<table ID="Table8">
+		<tr>
+			<td align="right" class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--> <b>[question]</b></td>
+			<td><input type="text" size="30" name="cq[id]" value="[answer]" class="txtBoxStyle" ID="Text1"></td>
+		</tr>
+	</table>
+<!--END: text-format-->
+
+<!--START: file-format-->
+	<table ID="Table18">
+		<tr>
+			<td align="right" class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--> <b>[question]</b></td>
+			<td><input type="file" name="file[oname]" size="20" ID="File1"></td>
+		</tr>
+	</table>    
+<!--END: file-format-->
+
+<!--START: checkbox-format-->
+	<table ID="Table10">
+		<tr>
+			<td><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--> <input type="checkbox" name="cq[id]" class="txtBoxStyle" value="[answer]" [selected] ID="Checkbox2"></td>
+			<td align="right" class="item"><b>[question]</b></td>
+		</tr>
+	</table>
+<!--END: checkbox-format-->
+
+<!--START: radio-format-->
+	<table ID="Table11">
+		<tr>
+			<td align="right" class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--> <b>[question]</b></td>
+			<td>
+				<!--START: option-->
+				<input type="radio" name="cq[id]" value="[option]" class="txtBoxStyle" [selected] ID="Radio1"> [option]<br>
+				<!--END: option-->
+			</td>
+		</tr>
+	</table>
+<!--END: radio-format-->
+
+<!--START: dropdown-format-->
+	<table ID="Table12">
+		<tr>
+			<td align="right" class="item"><!--START: req[id]--><img src="assets/templates/common/images/error2.gif" width="12" height="12"><!--END: req[id]--> <b>[question]</b></td>
+			<td>
+				<select name="cq[id]" ID="Select4">
+					<!--START: option-->
+					<option value="[option]" [selected]>[option]</option>
+					<!--END: option-->
+				</select>
+			</td>
+		</tr>
+	</table>
+<!--END: dropdown-format-->
+<!--END: checkout_questions_templates-->

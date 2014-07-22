@@ -1,0 +1,95 @@
+<table width="98%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td class="page_headers" align="left">Address Book</td>
+		<!--START: myAccount-->
+		<td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td>
+		<!--END: myAccount-->
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td class="data" colspan="2">?[CONTENT]</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<tr>
+		<td colspan="2"><table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="checkout-headers" width="25"><img src="assets/templates/common/images/gift_edit.png" border="0" align="absbottom"></td>
+					<td class="checkout-headers">[account_addressbook] &nbsp;<a href="myaccount.asp?action=addaddresses&reqPage=[reqPage]&shipmentid=[shipmentid]">Add New Address</a></td>
+				</tr>
+			</table></td>
+	</tr>
+	<tr>
+		<td colspan="2"><!--START: myGiftRegistry-->
+			<input type="button" class="btn" onclick="window.location='giftregistry_edit.asp?action=addresschoice';" value="Return to [account_giftRegistry]"/>
+			<!--END: myGiftRegistry-->
+			<!--START: editShipment-->
+			<input type="button" class="btn" onclick="window.location='edit_shipment.asp?action=editaddresses&shipmentid=[shipmentid]';" value="Return to [checkout2_Header-shippinginfo]"/>
+			<!--END: editShipment--></td>
+	</tr>
+	<tr>
+		<td colspan="2"><!--START: address-->
+			<table border="0" cellpadding="0" cellspacing="0" class="alternative" height="150">
+				<tr>
+					<td align="left" class="titles"><strong>[address_alias]</strong></td>
+				</tr>
+				<tr>
+					<td align="left" class="font1" width="50%">[shipping_firstname] [shipping_lastname]</td>
+				</tr>
+				<tr>
+					<td align="left" class="font1">[shipping_address]</td>
+				</tr>
+				<!--START: shipping_address2-->
+				<tr>
+					<td align="left" class="font1">[shipping_address2]</td>
+				</tr>
+				<!--END: shipping_address2-->
+				<tr>
+					<td align="left" class="font1">[shipping_city], [shipping_state] [shipping_zip] [shipping_country]</td>
+				</tr>
+				<tr>
+					<td align="left" class="font1">[shipping_phone]</td>
+				</tr>
+                <!--START: addressType-->
+				<tr><td align="left" class="font1">[addressTypeText]</td></tr>
+                <!--END: addressType-->
+				<tr>
+					<td align="left" class="font1"><input type="button" class="btn" onclick="window.location='myaccount.asp?action=editaddresses&id=[id]&reqPage=[reqPage]&shipmentid=[shipmentid]';" value="[account_Change-Address]" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+						<input type="button" class="btn" onclick="window.location='myaccount.asp?action=deleteaddress&id=[id]&reqPage=[reqPage]&shipmentid=[shipmentid]&tknio=[tknio]';" value="[account_Remove-Address]" onmouseover="    this.className = 'btn_over'" onmouseout="    this.className = 'btn'" /></td>
+				</tr>
+				<!--START: myGiftRegistry-->
+				<tr>
+					<td align="left" class="font1"><input type="button" class="btn" onclick="window.location='giftregistry_edit.asp?action=addresschoice&id=[id]';" value="[account_Choose-Address]" id="Button3" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+					</td>
+				</tr>
+				<!--END: myGiftRegistry-->
+				<!--START: editShipment-->
+				<tr>
+					<td align="left" class="font1"><input type="button" class="btn" onclick="window.location='edit_shipment.asp?action=editaddresses&shipmentid=[shipmentid]&addressid=[id]';" value="[account_Choose-Address]" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+					</td>
+				</tr>
+				<!--END: editShipment-->
+			</table>
+			<!--END: address-->
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><!--START: CATEGORY_FOOTER-->
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="data">[CONTENT]</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_FOOTER-->
+		</td>
+	</tr>
+</table>
+

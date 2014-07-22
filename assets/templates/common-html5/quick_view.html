@@ -1,0 +1,606 @@
+<!doctype html>
+<html>
+<head>
+<title>Quick View</title>
+<base target="_top">
+<script type="text/javascript" src="/assets/templates/common-html5/js/utilities.js"></script>
+<link rel="stylesheet" href="/assets/templates/common-html5/css/layout.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/assets/templates/[template]/css/[stylesheet]" type="text/css" media="screen" />
+<script type="text/javascript" src="assets/templates/common-html5/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/templates/common-html5/js/listing.js"></script>
+<script type="text/javascript" src="assets/templates/common-html5/3dzoom/magiczoomplus.js"></script>
+<link href="assets/templates/common-html5/3dzoom/magiczoomplus.css" rel="stylesheet" type="text/css" media="screen"/>
+<script type="text/javascript">
+    MagicZoomPlus.options = {
+        'opacity': '65',
+        'expand-effect': 'linear',
+        'background-opacity': '50',
+        'zoom-fade': 'true',
+        'zoom-position': 'innner',
+        'zoom-distance': 5,
+        'zoom-height': 300,
+        'zoom-width': 300,
+        'fit-zoom-window': 'false',
+		'hint':'false'
+    }
+    function close_modal() {
+        parent.jQuery.modal.close();
+    }
+</script>
+</head>
+<body id="quickView">
+<section id="listing1">
+  <form enctype="multipart/form-data" method="post" action="add_cart.asp" name="add" id="add" target="_top">
+    <input type="hidden" name="item_id" value="[catalogid]" />
+    <input type="hidden" name="itemid" value="[id]" id="itemid" />
+    <input type="hidden" name="category_id" value="[catid]" />
+    <input type="hidden" name="referer" value="[referer]" />
+    <div id="qvTabs"><a href="#" class="quick-close-modal" onclick="close_modal();"></a>
+      <!--START: related_0-->
+      <div class="button right"><a href="javascript:void();" id="showRelated">[product_Header-relateditems]</a></div>
+      <!--END: related_0--> 
+      <!--START: extended_description-->
+      <div class="button right"><a href="javascript:void();" id="showprodDesc">[product_Header-description]</a></div>
+      <!--END: extended_description-->
+      <div class="button right"><a href="javascript:void();" id="showProdDetails">Product Details</a></div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="primary">
+      <div id="mediaContainer">
+        <div id="imagesBlock"> 
+          <!--START: image1-->
+          <div class="main-image"><a href="[image1]" class="[3dzoom_class]" id="listing_main_image_link"><img itemprop="image" src="thumbnail.asp?file=[image1]&maxx=300&maxy=300" align="middle" id="large" name="large" alt="[name]" /></a>
+            <div name="imagecaptiont" id="imagecaptiont" class="item">[imagecaption1]</div>
+          </div>
+          <!--END: image1--> 
+          <!--START: image2-->
+          <div class="addl-images">
+          <div class="image1"><a href="[image1]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image1]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(1);return false;"><img src="thumbnail.asp?file=[image1]&maxx=75&maxy=75" alt="" name="pimage1" /></a></div>
+          <div class="image2"><a href="[image2]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image2]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(2);return false;"><img src="thumbnail.asp?file=[image2]&maxx=75&maxy=75" alt="" name="pimage2" /></a></div>
+          <!--START: image3-->
+          <div class="image3"><a href="[image3]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image3]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(3);return false;"><img src="thumbnail.asp?file=[image3]&maxx=75&maxy=75" alt="" name="pimage3" /></a></div>
+          <!--END: image3--> 
+          <!--START: image3-->
+          <div class="image4"><a href="[image4]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image4]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(4);return false;"><img src="thumbnail.asp?file=[image4]&maxx=75&maxy=75" alt="" name="pimage4" /></a></div>
+          <!--END: image4-->
+          </div>
+          <!--END: image2-->
+          <div class="clear"></div>
+          <!--START: image5-->
+          <div class="image-gallery">
+            <input type="button" onclick="popupsimple('gallery.asp?catalogid=[catalogid]',650,550)" name="IMG" value="[product_imagegallery]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+          </div>
+          <!--END: image5--> 
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="secondary">
+      <h1 itemprop="name" class="page_headers">[name]</h1>
+      <div class="clear"></div>
+      <!--START: pricing-->
+      <div class="pricingBlock" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <link itemprop="availability" href="http://schema.org/InStock" content="[availability_itemprop]" />
+        <!--START: price2-->
+        <div class="retailprice">[product_retailprice]<span>[price2]</span></div>
+        <div class="clear"></div>
+        <!--START: SAVINGS-->
+        <div class="savings">[product_savings]<span>[savings]</span></div>
+        <div class="clear"></div>
+        <!--END: SAVINGS--> 
+        <!--END: price2--> 
+        <!--START: ITEMPRICE-->
+        <div class="yourprice price">[product_yourprice]<span itemprop="price" id="price">[price]</span></div>
+        <div class="clear"></div>
+        <!--END: ITEMPRICE--> 
+        <!--START: SALEPRICE-->
+        <div class="saleprice price">[product_yourprice]<span itemprop="price" id="price">[saleprice]</span></div>
+        <div class="clear"></div>
+        <!--END: SALEPRICE-->
+        <div class="clear"></div>
+      </div>
+      <!--END: pricing-->
+      <div class="clear"></div>
+      <div id="prodDetails">
+        <div class="availabilityInfo"> 
+          <!--START: product_availability-->
+          <div class="product_availability">
+            <h4>[product_Header-availability]</h4>
+            <div id="availability" class="font2">[availability_itemprop]</div>
+            <div class="clear"></div>
+          </div>
+          <!--START: waitinglist-->
+          <div class="waitinglist">
+            <input type="button" value="Put me on the Waiting List" class="btn" onclick="javascript:window.open('notify.asp?catalogid=[catalogid]','popup','height=535,width=540,location=no,' + 'scrollbars=no,menubars=no,toolbars=no,resizable=yes');" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+          </div>
+          <!--END: waitinglist--> 
+          <!--END: product_availability--> 
+          <!--START: freeshippingblock-->
+          <div class="freeshippingblock">[freeshipping]</div>
+          <!--END: freeshippingblock--> 
+        </div>
+        <div class="clear"></div>
+        <!--START: LOGIN_REQUIRED-->
+        <div class="loginReqBlock">[product_login-message]</div>
+        <!--END: LOGIN_REQUIRED--> 
+        <!--START: PRODUCT_OPTIONS_BLOCK-->
+        <div id="divOptionsBlock"> 
+          <!--START: divOptionsBlock--> 
+          <!--START: optionstemplate--> 
+          <!--START: textarea-format--> 
+          [value]: [oprice]
+          <textarea cols="30" rows="5" name="textarea[oname]"></textarea>
+          <!--END: textarea-format--> 
+          <!--START: text-format--> 
+          [value]: [oprice]
+          <input type="text" size="30" name="text[oname]" />
+          <!--END: text-format--> 
+          <!--START: qty-format--> 
+          [value] [oprice]
+          <input type="text" size="3" name="text[oname]" value="0" />
+          <!--END: qty-format--> 
+          <!--START: file-format--> 
+          [value]: [oprice]
+          <input type="file" name="file[oname]" size="20" />
+          <!--END: file-format--> 
+          <!--START: title-format--> 
+          [feature] 
+          <!--END: title-format--> 
+          <!--START: checkbox-format-->
+          <div class="radio-format">
+            <input type="checkbox" name="cb[oname]" value="[value]" onclick="validateValues(document.add,1);" [selected] />
+            [feature] [oprice]</div>
+          <!--END: checkbox-format--> 
+          <!--START: radio-format-->
+          <div class="radio-format">
+            <input type="radio" name="[oname]" value="[value]" onclick="validateValues(document.add,1);" [selected] />
+            [feature] [oprice]</div>
+          <!--END: radio-format--> 
+          <!--START: dropdown-format-->
+          <div class="dropdown-format">
+            <select name="[oname]" onchange="validateValues(document.add,1);">
+              <!--START: option-->
+              <option value="[value]" [selected]>[feature] [oprice]</option>
+              <!--END: option-->
+            </select>
+          </div>
+          <!--END: dropdown-format--> 
+          <!--START: dropdownimage-format-->
+          <div class="dropdownimage-format">
+            <select name="[oname]" onchange="validateValues(document.add,1);">
+              <!--START: option-->
+              <option value="[value]" [selected]>[feature] [oprice]</option>
+              <!--END: option-->
+            </select>
+            <div class="dropdown-image"><img name="img_[oname]" width="50" src="assets/templates/common/images/spacer.gif" /></div>
+          </div>
+          <!--END: dropdownimage-format--> 
+          <!--END: optionstemplate--> 
+          
+          <!--START: options--> 
+          <!--START: opt-title-->
+          <div class="opt-title">[OPTIONLABEL]<span>[OPTIONFIELD]</span></div>
+          <!--END: opt-title--> 
+          <!--START: opt-regular-->
+          <div class="opt-regular">[OPTIONLABEL] 
+            <!--START: help--> 
+            <span class="help"><a href="#" onclick="popup('optionhelp.asp?optionid=[optid]',300,200)"><img src="assets/templates/common/images/help_icon.gif" alt="help" /></a></span> 
+            <!--END: help-->
+            <div class="opt-field">[OPTIONFIELD]</div>
+            <div class="clear"></div>
+          </div>
+          <div class="clear"></div>
+          <!--END: opt-regular--> 
+          <!--END: options--> 
+          <!--END: divOptionsBlock--> 
+        </div>
+        <!--END: PRODUCT_OPTIONS_BLOCK--> 
+        <!--START: addtocart-->
+        <div class="addToCartBlock"> 
+          <!--START: qtybox-->
+          <div class="qtybox">
+            <label>[product_quantity]</label>
+            <input type="text" size="3" name="qty-0" value="1" onchange="validateValues(document.add,1);" class="txtBoxStyle" />
+          </div>
+          <!--END: qtybox--> 
+          <!--START: reminders_block-->
+          <div class="reminders_block">
+            <label>[product_reminder]</label>
+            <div class="clear"></div>
+            <select name="reminder" class="txtBoxStyle" id="reminder">
+              <!--START: reminders_frequency_option-->
+              <option value="[optionvalue]" [selected]>[optiontext]</option>
+              <!--END: reminders_frequency_option-->
+            </select>
+          </div>
+          <!--END: reminders_block-->
+          <div class="clear"></div>
+          <div class="addcart-button">
+            <input type="button" onclick="check_and_add(document.add);" id="Add" name="Add" value="[product_addtocart]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+            <input type="button" value="More Details" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" onclick="window.top.location='product.asp?itemid=[catalogid]'" />
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <!--END: addtocart--> 
+        <!--START: RECURRINGORDER-->
+        <div class="recurringorderBlock">
+          <h4>[recurringorders_addcart-question]</h4>
+          <select name="recurring_frequency" class="txtBoxStyle" id="recurring_frequency">
+            <option value="">[recurringorders_select-frequency]</option>
+            [recurring_frequency]
+            </select>
+        </div>
+        <!--END: RECURRINGORDER--> 
+      </div>
+      <div id="prodDesc" style="display:none;">
+        <div>[extended_description]</div>
+      </div>
+      <div id="prodRelated" style="display:none;">
+        <div><!--START: related_items0--> 
+          <!--START: productblockcontainer--> 
+          <!--END: productblockcontainer--> 
+          <!--START: productcontainer--> 
+          <!--END: productcontainer-->
+          <div class="product-item alternative">
+            <div class="img"><a href="product.asp?itemid=[catalogid]" target="_parent"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=0&maxy=150" alt="[name]" /></a></div>
+            <div class="name"><a href="product.asp?itemid=[catalogid]" target="_parent">[name]</a></div>
+            <!--START: product_review--> 
+            <!--START: product_review_average-->
+            <div class="stars"><img src="assets/templates/common/images/star[review_average].png" alt="Average Rating" /></div>
+            <!--END: product_review_average--> 
+            <!--END: product_review-->
+            <div class="price"><!--START: ITEMPRICE--> 
+              [product_yourprice] [ITEMPRICE] 
+              <!--END: ITEMPRICE--> 
+              <!--START: SALEPRICE--> 
+              [product_onsale] [ITEMSALEPRICE]
+              <div class="on-sale">[product_sale]</div>
+              <!--END: SALEPRICE--></div>
+            <div class="action">
+              <input type="button" value="[category_buyitlink]" onclick="window.location='add_cart.asp?quick=1&item_id=[catalogid]'" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+            </div>
+            <div class="clear"></div>
+          </div>
+          <!--START: productcontainer_close--> 
+          <!--END: productcontainer_close--> 
+          <!--START: productblockcontainer_close--> 
+          <!--END: productblockcontainer_close-->
+          <!--END: related_items0--> </div>
+          <div class="clear"></div> 
+      </div>
+    </div>
+  </form>
+</section>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('#showprodDesc').on('click', function() {
+		jQuery('#prodDetails').hide();
+		jQuery('#prodRelated').hide();
+		jQuery('#prodDesc').fadeIn();
+	});
+	jQuery('#showProdDetails').on('click', function() {
+		jQuery('#prodDesc').hide();
+		jQuery('#prodRelated').hide();
+		jQuery('#prodDetails').fadeIn();
+	});
+	jQuery('#showRelated').on('click', function() {
+		jQuery('#prodDesc').hide();
+		jQuery('#prodDetails').hide();
+		jQuery('#prodRelated').fadeIn();
+	});
+});
+</script> 
+<script type="text/javascript"><!--
+//thumbnail script
+var image1,image2,image3,image4,selectedimage;
+var imagemaxwidth, imagemaxheight
+
+imagemaxwidth=300;
+imagemaxheight=300;
+
+image1="[image1]";
+image2="[image2]";
+image3="[image3]";
+image4="[image4]";
+imagecaption1="[imagecaption1]";
+imagecaption2="[imagecaption2]";
+imagecaption3="[imagecaption3]";
+imagecaption4="[imagecaption4]";
+selectedimage='[image1]'; //pre load image1
+zoom_enable=[3dzoom_enabled]; //0 = zoomify | 1 = magiczoom
+
+function image_click(clicks)
+{
+    if (document.getElementById('listing_main_image_link')!=undefined)
+    {
+	if (zoom_enable==1)
+	{
+		selectedimage=eval('image'+clicks);
+		MagicZoomPlus.update('listing_main_image_link', selectedimage, 'thumbnail.asp?file=' + selectedimage + '&maxx='+imagemaxwidth+'&maxy='+imagemaxheight, 'show-title: false');
+		changecontent("imagecaptiont",eval('imagecaption'+clicks));
+		document.getElementById('listing_main_image_link').href=this.name;
+	}else
+	{
+		
+		selectedimage=eval('image'+clicks);
+		document.getElementById('large').src='thumbnail.asp?file=' + selectedimage + '&maxx='+imagemaxwidth+'&maxy='+imagemaxheight;
+		document.getElementById('listing_main_image_link').href='#';
+		document.getElementById('listing_main_image_link').onclick=zoomify_popup;
+		changecontent("imagecaptiont",eval('imagecaption'+clicks));
+	}}
+}
+function zoomify_popup()
+{
+popupsimple('zoomify.asp?catalogid=[catalogid]&img=' + selectedimage ,500,500);
+}
+
+function check_stock(what,partnum)
+{
+	var soption;
+	var i;
+	var product_availability='[availability]';
+	var backordermode='[allowbackorder]';
+	var avail_instock='[productAvailability-Instock]';
+	var avail_outofstock='[productAvailability-Outofstock]';
+	var avail_backorder='[productAvailability-Backorder]';
+	var optionfound=0;
+
+	if (inventoryarray[catalogid].length==0) //if there is no advanced options, don't look for stock
+	{
+		return true;
+	}
+	else
+	{
+		for(i=0;i<inventoryarray[catalogid].length;i++) 
+		{
+			soption=inventoryarray[catalogid][i];
+			field_array=soption.split("-");
+			//Dynamic Part for advanced options
+			if (typeof((idarray[catalogid])) != "undefined")
+			{
+				soptionid=idarray[catalogid][i]; 
+				aoprice=aopricearray[catalogid][i]; 
+				if (field_array[0]==partnum)
+				{
+					if (soptionid != '')
+						changeid(soptionid); 
+					if (aoprice != '0')
+						changeprice(aoprice);
+				}
+			}
+			
+			if ((field_array[0]==partnum))
+			{	
+				changecontent("product_inventory",field_array[1]);
+				if (eval(GetValue(what,"qty-0"))>field_array[1]) 
+				{
+					optionfound=optionfound+1;
+					if (backordermode==1)
+					{
+						changecontent("availability",avail_backorder); 
+						return true;
+						optionfound=optionfound+1;
+					}
+					else 
+					{
+						changecontent("availability",avail_outofstock);
+						alert("The options you selected are not currently available.");
+						optionfound=optionfound+2;
+						return false;
+					}
+				}
+
+			}
+		}
+
+		if (optionfound==0)
+		{ 
+			changecontent("availability",product_availability);
+			return true;
+		}
+		
+		if (optionfound==1)
+		{
+			changecontent("availability",avail_instock);
+			return true;
+		}
+	}
+}
+
+
+function add_wishlist()
+{
+	document.add.action = "add_cart.asp?action=addWishList";
+	document.add.submit();
+}
+
+function add_giftregistry()
+{
+	document.add.action = "add_cart.asp?action=addGiftRegistry";
+	document.add.submit();
+}
+
+function check_and_add(formx)
+{
+	var reqFields = document.getElementsByName('required_field');
+	var requiredfieldscomplete=0;
+	for(var x=0; x < reqFields.length; x++)
+	{
+requiredfieldscomplete=0;
+//var reqOption = eval(document.getElementsByName(reqFields[x].value));
+var reqOption = formx.elements[reqFields[x].value];
+var myType = reqOption.type;
+//alert(myType);
+if (myType == undefined)
+{
+reqOptionr = formx.elements[reqFields[x].value];
+reqOption = formx.elements[reqFields[x].value][0];
+myType = reqOption.type;
+}
+
+
+			if (myType != null && myType != undefined)
+			{
+			    fieldnamemod =  reqOption.name;
+				if (fieldnamemod != '')
+				{
+					var field_array;
+				
+					if (myType == 'radio') 
+					{
+                                                for(var y=0; y < reqOptionr.length; y++)
+{
+						if (reqOptionr[y].checked)
+						{
+						requiredfieldscomplete=1;
+						}
+}
+
+					}
+					if (myType == 'checkbox') 
+					{
+					
+						requiredfieldscomplete=1;
+
+
+					}
+					if (myType == 'hidden' || myType == 'password' || myType == 'text' || myType == 'textarea')
+                                        {
+
+                                         if (reqOption.value>'') 
+                                         {requiredfieldscomplete=1;}
+                                        }
+					if (myType == 'select-one' || myType == 'select-multiple')
+					{    
+
+						if (reqOption.options[reqOption.selectedIndex].value>"")
+						{
+                                                requiredfieldscomplete=1;
+						}
+					}
+				}
+
+			}
+
+if (requiredfieldscomplete==0){
+alert("Please select all required options.");
+return;
+}
+
+
+	}
+
+	if (document.add.std_price==null)
+	{
+		document.add.submit();
+	}
+	else
+	{
+		var readytoadd=validateValues(formx,1)
+		if (readytoadd==true)
+		{
+			document.add.submit();
+		}
+	}
+}
+
+// --></script> 
+<script type="text/javascript">
+var currency_symbol='[currency]';
+var prod_decimal_places='[prod_decimal_places]';
+validateValues(document.add,1);
+window.setTimeout("image_click(1)", 1000);
+</script> 
+<script type="text/javascript">
+	function selectOption(objElement) {
+
+		var strElementName = "";
+		var strElementType = "";
+		var intHasRules = "[has_rules]";
+		objElement = null;
+
+		if (intHasRules == "0" || intHasRules == "[has_rules]") {
+			return;
+		}
+		//var arrOpt = strOptId.split(":::");
+		//if (arrOpt[1].toString().length <= 0 || strOptRules.indexOf(","+arrOpt[1]+",") < 0) return;
+
+		add_overlay("divOptionsBlock", 1);
+
+		var url = 'prod_options.asp?ajax=1&action=buildOptions&strElementType=' + escape(strElementType) + '&strElementName=' + escape(strElementName) + '&no-cache=' + Math.random();
+
+		jQuery.ajax({
+		    url: url,
+		    dataType: 'html',
+		    type: 'POST',
+		    data: jQuery(add).serialize(),
+		    cache: false,
+		    success: function (strResult) {
+		        jQuery("#divOptionsBlock").html(strResult);
+		    },
+		    complete: afterOptionSelection,
+		    error: reportError
+		});
+	}
+
+	function afterOptionSelection(req) {
+		remove_overlay("divOptionsBlock");
+		return;
+	}
+
+	function getElementById_s(strId) {
+		var obj = null;
+		if (document.getElementById) {
+			obj = get_Element(strId);
+		} else if (document.all) {
+			obj = document.all[strId];
+		}
+		return obj;
+	}
+
+	function remove_overlay(panel) {
+		var objBody = getElementById_s('overlay_' + panel);
+		if (objBody != null && objBody != 'null' && objBody != undefined && objBody != 'undefined')
+			objBody.style.display = 'none';
+	}
+
+	function add_overlay(panel, loading) {
+		var objBody = getElementById_s(panel);
+		var objOverlay = document.createElement("div");
+
+		objOverlay.setAttribute('id', 'overlay_' + panel);
+		objOverlay.className = 'overlay';
+		objOverlay.style.position = 'absolute';
+		objOverlay.style.textAlign = 'center';
+		objOverlay.style.width = objBody.clientWidth + "px";
+		objOverlay.style.height = objBody.clientHeight + "px";
+		//alert(objOverlay.style.height);
+		objBody.insertBefore(objOverlay, objBody.firstChild);
+		objOverlay.style.display = 'block';
+
+		if (loading == 1) {
+			get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td style="text-align: center;"><img src="assets/templates/common/images/loading.gif"></tr></table>';
+		}
+		else {
+			get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td align="center"></tr></table>';
+		}
+	}
+
+	function get_Element(i) {
+		return document.getElementById(i) || document.getElementsByName(i).item(0);
+	}
+
+	function reportError(jqXHR, textStatus) {
+	    remove_overlay("divOptionsBlock");
+
+	    //jqXHR.responseText
+	    if (jqXHR.status > 0)
+	        alert("Error processing request " + jqXHR.status + " - " + textStatus);
+	}
+
+	selectOption(null);
+</script>
+</body>
+</html>

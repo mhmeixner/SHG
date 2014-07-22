@@ -1,0 +1,117 @@
+<table width="95%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td colspan="7"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td class="page_headers" valign="top">
+						<!--START: SINGLE_WISHLIST_TITLE-->[wishlist_my-wishlist]  <!--END: SINGLE_WISHLIST_TITLE-->
+						<!--START: MULTIPLE_WISHLIST_LIST_TITLE-->[wishlist-list-title]  <!--END: MULTIPLE_WISHLIST_LIST_TITLE-->			
+					</td>
+				</tr>
+				<!--START: WISHLIST_CREATOR_NAME-->
+				<tr>
+					<td valign="top" >Created by: [wishlist-public-creator-FirstName] [wishlist-public-creator-LastName]</td>
+				</tr>
+				<tr>
+					<td valign="top" >[product_social-bookmarking]</td>
+				</tr>
+				<!--END: WISHLIST_CREATOR_NAME-->
+			</table></td>
+	</tr>
+	<!--START: CATEGORY_HEADER-->
+	<tr>
+		<td colspan="6" valign="top"><table width="100%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data"><br>
+						[CONTENT]</td>
+				</tr>
+			</table></td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	<tr>
+		<td height="10" colspan="6"><img src="assets/images/spacer.gif" height="10"></td>
+	</tr>
+	<tr>
+		<td class="titles2" align="left" colspan="2" width="10%"><strong>[wishlist_viewwishlist-header-items]</strong></td>
+        <td class="titles2" align="center"><strong>[wishlist_viewwishlist-header-quantity]</strong></td>
+		<td class="titles2" style="text-align: right;"><strong>[wishlist_viewwishlist-header-price]</strong></td>
+		<td class="titles2" align="right"><strong>[wishlist_viewwishlist-header-total]</strong></td>
+		<td class="titles2" colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+	</tr>
+	<!--START: WSH_LIST_NO_ITEM-->
+	<tr>
+		<td height="60" valign="middle" align="center" colspan="10"> [wishlist_viewwishlist-emptylist] </td>
+	</tr>
+	<tr>
+		<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+	</tr>
+	<!--END: WSH_LIST_NO_ITEM-->
+	<!--START: WSH_LIST_ITEM-->
+	<tr>
+		<td width="60" height="60" valign="middle"><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="55" width="55"></a></td>
+		<td class="item" valign="middle" align="left" width="55%"><a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a>
+			<!--START: itemoptions-->
+			<br>
+			<a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a><br>
+			<div id=opt[ITEM_ID] name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div>
+			<!--END: itemoptions--></td>
+		<td valign="middle" class="item" style="text-align: center;">[ITEM_QUANTITY]</td>
+        <td valign="middle" class="item" align="right">[ITEM_PRICE]</td>
+        <td valign="middle" class="item" align="right">[ITEM_SUBTOTAL]</td>
+		<td width="5%" align="right">&nbsp</td>
+		<input type="hidden" name="txtQty[ITEM_ID]" id="txtQty[ITEM_ID]" value="[ITEM_QUANTITY]">
+
+
+		<td align="center" class="item"><!--START: WSH_LIST_ITEM_NOT_AVLB-->
+			[wishlist_viewwishlist-prod-not-available]
+			<!--END: WSH_LIST_ITEM_NOT_AVLB-->
+			<!--START: WSH_LIST_ITEM_ADDCART-->
+			<input type="button" value="Add to Cart" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="javascript: addToCart([ITEM_ID], [LIST_ID]);">
+			<!--END: WSH_LIST_ITEM_ADDCART-->
+		</td>
+	</tr>
+	<tr>
+		<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+	</tr>
+	<!--END: WSH_LIST_ITEM-->
+</table>
+<!--START: CATEGORY_FOOTER-->
+<table width="95%" cellspacing="0" cellpadding="2" border="0">
+	<tr>
+		<td class="data"><br>
+			[CONTENT]</td>
+	</tr>
+</table>
+<!--END: CATEGORY_FOOTER-->
+<form action="view_wishlist.asp" method="post" name="frmForm" id="frmForm">
+<input type="hidden" name="action"	id="action"	value="">
+<input type="hidden" name="wsiId"	id="wsiId"	value="">
+<input type="hidden" name="qty"	id="qty"	value="">
+	<input type="hidden" name="k"	id="intListId"	value="">
+</form><script>
+function submitForm(strAction)
+{
+	window.document.body.style.cursor = 'wait';
+	if(window.document.activeElement){window.document.activeElement.style.cursor='wait'; }
+	
+	document.frmForm.action.value = strAction;
+	document.frmForm.submit();
+}
+	 
+
+function addToCart(intWsiId, intListId)
+{
+	var rep;
+	rep = confirm("[wishlist_viewwishlist-message-addtocart]");
+	if (!rep)
+		return false;
+	
+	document.frmForm.wsiId.value = intWsiId;
+	document.frmForm.k.value = intListId;
+	submitForm('addToCart');
+}
+
+
+</script>

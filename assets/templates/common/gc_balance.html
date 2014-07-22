@@ -1,0 +1,86 @@
+
+<table width="95%" cellpadding="0" cellspacing="0" align="center" border="0">
+	<tr>
+		<td class="page_headers" align="left">[giftcertificate_balance-balance] </td>
+		<!--START: myAccount-->
+		<td valign="middle" align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a>&nbsp;<a href="myaccount.asp">back to my account</a></td>
+		<!--END: myAccount-->
+	</tr>
+	</tr>
+	
+	<tr>
+		<td colspan="3"><!--START: CATEGORY_HEADER-->
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="data">[CONTENT]</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_HEADER-->
+			<!--START: gc-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td colspan="2"><table width="100%" cellpadding="4" cellspacing="0" class="alternative" border="0">
+							<tr>
+								<td class="titles2">[giftcertificate_details-header-date]</td>
+								<td class="titles2">[giftcertificate_details-header-code]</td>
+								<td class="titles2">[giftcertificate_details-header-amount]</td>
+								<td class="titles2">[giftcertificate_details-header-balance]</td>
+							</tr>
+							<!--START: gcDetails-->
+							<tr class="alternative">
+								<td class="item" nowrap>[certificate_date]</td>
+								<td class="item" nowrap>[certificate_name]</td>
+								<td class="item" nowrap>[certificate_amount]</td>
+								<td class="item" nowrap>[certificate_balance]</td>
+							</tr>
+							<!--END: gcDetails-->
+						</table>
+						<br>
+					</td>
+				</tr>
+			</table>
+			<form action="gc_balance.asp" method="post" name="frmGC" id="frmGC">
+			<table width="100%" cellpadding="4" cellspacing="0" border="0" class="alternative" ID="Table6">
+				<tr>
+					<td class="item" width="200">[account_gift-certificate-check-balance]:</td>
+					<td class="item"><input type="text" size="20" name="gc" value="" maxlength="30" class="txtBoxStyle" ID="Text1"></td>
+				</tr>	
+				<tr>
+					<td class="item" valign="top">[registration_verification]:</td>
+					<td class="item">
+                        <!--START: captcha-->
+                        <img src="admin/image_pw.asp?cache=[now]&sessionname=randomWordGC" border="0" width="148"> <br>
+						[registration_verification_message]<br>
+						<input type="text" name="randomWord" id="randomWord" value="" size="20" maxlength="30" class="txtBoxStyle">
+                        <!--END: captcha-->
+				        <!--START: recaptcha-->
+                        <script type="text/javascript">var RecaptchaOptions = { theme: '[recaptcha_theme]' };</script>
+                        <script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k=[recaptcha_key]"></script>
+                        <noscript>
+                        <iframe src="//www.google.com/recaptcha/api/noscript?k=[recaptcha_key]" height="300" width="500" frameborder="0"></iframe><br>
+                        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                        <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+                        </noscript>
+				        <!--END: recaptcha-->
+						<input type="button" class="btn" onclick="this.form.submit();" value="[account_gift-certificate-check-balance-go]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Button1">
+					</td>
+				</tr>	
+			</table>
+			</form>
+			<!--END: gc-->
+			<!--START: CATEGORY_FOOTER-->
+			<table width="95%" cellspacing="0" cellpadding="2" border="0">
+				<tr>
+					<td class="data">[CONTENT]</td>
+				</tr>
+			</table>
+			<!--END: CATEGORY_FOOTER-->
+		</td>
+	</tr>
+</table>

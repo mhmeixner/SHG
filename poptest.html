@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<link href="widget.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1>Sample Content</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at sem vel leo placerat volutpat. Praesent in nunc ac nulla bibendum tristique at a magna. Curabitur a lobortis est. Maecenas tristique tincidunt ante. Nullam a purus rhoncus, dictum felis vulputate, accumsan orci. Pellentesque quis velit sapien. Praesent vel odio dapibus, consectetur risus semper, congue metus. Vivamus dignissim sed erat in lobortis. Aliquam non vehicula dui, vitae imperdiet orci. Cras sit amet justo ut lorem molestie tristique vitae id velit. Vivamus pellentesque semper sapien non commodo. Etiam a metus scelerisque, elementum massa sed, placerat magna. </p>
+
+<p id="P1">This is some verbiage about our awesome cheeseball!!! Try it now and come back for more!</p>
+
+<h2>Here's where my popshare button will go...</h2>
+
+<!--first try at button -->
+
+<button class="bcShare" id="Button1" type="submit" bcps-thumbnail="http://shop.homemadegourmet.com/assets/images/party-dip-trio_thumbnail.jpg" bcps-destination="http://shop.homemadegourmet.com">Share</button>
+
+<br />
+<br />
+
+
+<!--second try at button-->
+<button class="bcShare" id="Button2" type="submit" bcps-description="Seasonings & Spices from Homemade Gourmet" bcps-thumbnail="http://shop.homemadegourmet.com/assets/images/party-dip-trio_thumbnail.jpg" bcps-destination="http://shop.homemadegourmet.com">Share</button>
+
+<p>Donec vel facilisis odio. Nunc ullamcorper nibh sed massa pretium, porttitor scelerisque lectus pretium. Nunc quis nunc nec leo commodo iaculis. Morbi et pharetra massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas sem nisl, gravida nec dignissim nec, tincidunt vel justo. Cras adipiscing nisi felis, nec volutpat nulla sodales malesuada. Quisque ut purus rhoncus, rhoncus lacus quis, sollicitudin magna. Vivamus vehicula velit eu pharetra viverra. Pellentesque fermentum elit ligula, eu vulputate tortor consectetur et. Sed fermentum suscipit elit id congue. Fusce ac ligula malesuada, luctus ante a, aliquet lectus. </p>
+
+<script src="http://widget.bluecalypso.com/WidgetHandler.ashx"></script>
+<script>
+  Calyp.Widget({
+    token: '3PVPDAEOHUFWQ53QDYXANK1XZ41',
+    shareSelector: '.bcShare',
+    description: '#P1',
+    title: 'Homemade Gourmet',
+	thankyou: '<div id="_bcThank" style="height: 181px;"><img src="thankyou.png" width="242" height="181"></div>'
+  });
+</script>
+
+
+ 
+<div id="_bcWc"></div><div id="_bcMSGBox"></div><div style="display: none; position: fixed; background: none repeat scroll 0% 0% rgb(0, 0, 0); z-index: 100; left: 0px; height: 100%; width: 100%; top: 0px;" id="_bcWOverlay"></div>
+
+
+</body>
+</html>

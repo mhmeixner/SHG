@@ -1,0 +1,311 @@
+<!---------------------- BEGINNING OF CHECKOUT STEP 4 ------>
+<center>
+  <table width="98%">
+    <!--START: 3stepsCheckout-->
+    <tr>
+      <td class="steps" align="right">[checkout1_step] [checkout2_step] [checkout3_step] <span class="steps_on">[checkout4_step]</span></td>
+    </tr>
+    <!--END: 3stepsCheckout-->
+    <tr>
+      <td align="center"><!--START: CATEGORY_HEADER-->
+        
+        <table width="98%" cellspacing="0" cellpadding="2" border="0">
+          <tr>
+            <td>[CONTENT]</td>
+          </tr>
+        </table>
+        
+        <!--END: CATEGORY_HEADER-->
+        
+        <table width="98%" cellpadding="0" cellspacing="0" id="Table3">
+          <tr>
+            <td colspan="2"><table width="100%" cellpadding="0" cellspacing="0">
+                <!--START: ordercompleted--> 
+                <!--START: invoicedata-->
+                <tr class="alternative">
+                  <td class="item" align="left"><b>[checkout4_invoicemessage]</b></td>
+                </tr>
+                <!--END: invoicedata-->
+                <tr>
+                  <td class="item">[thankyoumessage]</td>
+                </tr>
+                <!--END: ordercompleted-->
+              </table></td>
+          </tr>
+          <tr>
+            <td class="borders2" colspan="3"><img src="spacer.gif" height="1" /></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="checkout-headers" align="center">Order [invoice-prefix][invoice-number]</td>
+          </tr>
+          <tr>
+            <td class="borders2" colspan="3"><img src="spacer.gif" height="1" /></td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+          </tr>
+          <tr>
+            <td colspan="3"><!------ START: Confirmation ---------------------------------->
+              
+              <table width="100%" cellpadding="0" cellspacing="0" id="Table5">
+                <tr> 
+                  <!--start customer info block-->
+                  <td width="50%" valign="top" align="left"><table width="80%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td><!--START: invoicelogo--><img src="../[invoicelogo]" /><!--END: invoicelogo--></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="item"><font size="2"><strong>[company]</strong></font></td>
+                      </tr>
+                      <tr>
+                        <td class="item">[address1]</td>
+                      </tr>
+                      <!--START: address2-->
+                      <tr>
+                        <td class="item">[address2]</td>
+                      </tr>
+                      <!--END: address2-->
+                      <tr>
+                        <td class="item">[city], [state] [zip]<br /></td>
+                      </tr>
+                    </table></td>
+                  <!-- end customer info block--> 
+                  <!--start invoice info block-->
+                  <td valign="top" align="right"><table width="80%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="item" align="left"><b>[invoice_dateordered]</b> [odate]</td>
+                      </tr>
+                      <tr>
+                        <td class="item" align="left"><b>[invoice_ordernum]</b>: [invoice-prefix][invoice-number]</td>
+                      </tr>
+                      <!--START: salesperson-->
+                      <tr>
+                        <td class="item" align="left"><b>Sales Person</b>: [salesperson]</td>
+                      </tr>
+                      <!--END: salesperson-->
+                    </table></td>
+                  <!--end invoice info block--> 
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+                <tr> 
+                  <!--start billing block-->
+                  <td width="50%" valign="top" align="left">
+                    <!--START: billing_block-->
+                    <table width="80%" cellpadding="0" cellspacing="0" id="Table8">
+                      <tr>
+                        <td class="item"><b>[invoice_billingaddress]</b></td>
+                      </tr>
+                      <tr>
+                        <td class="item">[ofirstname] [olastname]</td>
+                      </tr>
+                      <!--START: ocompany-->
+                      <tr>
+                        <td class="item">[ocompany]</td>
+                      </tr>
+                      <!--END: ocompany-->
+                      <tr>
+                        <td class="item">[oaddress]</td>
+                      </tr>
+                      <!--START: oaddress2-->
+                      <tr>
+                        <td class="item">[oaddress2]</td>
+                      </tr>
+                      <!--END: oaddress2-->
+                      <tr>
+                        <td class="item">[ocity], [ostate] [ozip] - [ocountry]</td>
+                      </tr>
+                      <!--START: ophone-->
+                      <tr>
+                        <td class="item">[ophone]</td>
+                      </tr>
+                      <!--END: ophone--> 
+                      <!--START: oemail-->
+                      <tr>
+                        <td class="item">[oemail]</td>
+                      </tr>
+                      <!--END: oemail-->
+                    </table>
+                    <!--END: billing_block-->
+                    <!--START: vme_billing_block-->
+                        <table width="80%" cellpadding="0" cellspacing="0" id="Table8">
+                          <tr>
+                            <td class="item"><div id="divVme" style="margin:5px 50px 0px 0px;"><img src="assets/templates/common/images/vme_accpt_mark.png"></div></td>
+                          </tr>
+                        </table>
+                    <!--END: vme_billing_block-->
+                  </td>
+                  <!--end billing block--> 
+                  <!--start shipping block-->
+                  <td valign="top" align="right"><table width="80%" cellpadding="0" cellspacing="0" id="Table9">
+                      <tr>
+                        <td class="item"><b>[invoice_shippingaddress]</b></td>
+                      </tr>
+                      <tr>
+                        <td class="item">[oshipfirstname] [oshiplastname]</td>
+                      </tr>
+                      <!--START: oshipcompany-->
+                      <tr>
+                        <td class="item">[oshipcompany]</td>
+                      </tr>
+                      <!--END: oshipcompany-->
+                      <tr>
+                        <td class="item">[oshipaddress]</td>
+                      </tr>
+                      <!--START: oshipaddress2-->
+                      <tr>
+                        <td class="item">[oshipaddress2]</td>
+                      </tr>
+                      <!--END: oshipaddress2-->
+                      <tr>
+                        <td class="item">[oshipcity], [oshipstate] [oshipzip]-[oshipcountry]</td>
+                      </tr>
+                    </table></td>
+                  <!--end shipping block--> 
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><table width="100%" cellpadding="4" cellspacing="0" id="Table10">
+                      <tr>
+                        <td class="item"><b>[invoice_shipmethod]</b> [oshipmethod] ([totalweight]lbs.)</td>
+                      </tr>
+                      <!--START: trackingcode-->
+                      <tr>
+                        <td class="item"><b>[invoice_trackingnum]:</b> <a href="shiptracking.asp?trackingnumber=[trackingcode]" target="new">[trackingcode]</a></td>
+                      </tr>
+                      <!--END: trackingcode--> 
+                      <!--START: oshippeddate-->
+                      <tr>
+                        <td class="item"><b>[invoice_shippeddate]</b> [oshippeddate]</td>
+                      </tr>
+                      <!--END: oshippeddate--> 
+                      <!--START: opaymethod-->
+                      <tr>
+                        <td class="item"><b>[invoice_paymenttype]</b> [opaymethod]</td>
+                      </tr>
+                      <!--END: opaymethod--> 
+                      <!--START: coupon-->
+                      <tr>
+                        <td class="item"><b>[invoice_discounts]</b></td>
+                      </tr>
+                      <tr>
+                        <td class="item">[invoice_coupon]: [coupon] - [coupondiscount]</td>
+                      </tr>
+                      <!--END: coupon-->
+                    </table></td>
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><table width="100%" cellpadding="1" border="0" cellspacing="0" id="Table11">
+                      <tr class="invoice_title">
+                        <td width="15%" height="20" align="left" class="invoice_title"><b>[shoppingcart_itemid]</b></td>
+                        <td width="53%" height="20" align="left" class="invoice_title"><b>[shoppingcart_items]</b></td>
+                        <td width="1%" class="invoice_title"></td>
+                        <td width="9%" height="20" align="center" class="invoice_title"><b>[shoppingcart_price]</b></td>
+                        <td width="1%" class="invoice_title"></td>
+                        <td width="9%" height="20" align="center"><b>[shoppingcart_quantity]</b></td>
+                        <td width="2%"></td>
+                        <td width="10%" height="20" align="center"><b>[shoppingcart_total]</b></td>
+                      </tr>
+                      <!--START: items-->
+                      <tr class="invoice_table">
+                        <td valign="top" align="left" class="item" width="15%">[id]</td>
+                        <td valign="top" align="left" class="item" width="53%">[itemname]</td>
+                        <td width="1%"></td>
+                        <td valign="top" align="right" class="item" width="9%">[unitprice]</td>
+                        <td width="1%"></td>
+                        <td valign="top" align="center" class="item" width="9%">[numitems]</td>
+                        <td width="2%"></td>
+                        <td valign="top" align="right" class="item" width="10%">[subtotal] </td>
+                      </tr>
+                      <!--END: items-->
+                    </table></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="invoice_table"><table width="100%" cellpadding="4" cellspacing="0">
+                      <tr class="font1">
+                        <td rowspan="9" width="60%" valign="middle">
+						<!--START: pmt_information-->
+						<h3>[account_creditcard-details]</h3>
+						[account_creditcard-datetime]: [pmt_datetime]
+						<br />[account_creditcard-authcode]: [pmt_authcode]
+						<br />[account_creditcard-details]: [pmt_details]
+						<!--END: pmt_information-->
+						<!--START: invoice_terms--> 
+                          <br />
+                          [invoice_terms] <br />
+                          
+                          <!--END: invoice_terms--></td>
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_subtotal]:</b></td>
+                        <td valign="top" align="right" width="8%" class="invoice_table">[subtotal]</td>
+                      </tr>
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_discount]:</b></td>
+                        <td valign="top" align="right" width="8%" class="invoice_table">[discounts]</td>
+                      </tr>
+                      <!--START: TAX-->
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_taxes]:</b></td>
+                        <td width="8%" class="invoice_table"><div align="right">[tax]</div></td>
+                      </tr>
+                      <!--END: TAX--> 
+                      <!--START: TAX2-->
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_taxes2]:</b></td>
+                        <td width="8%" class="invoice_table"><div align="right">[tax2]</div></td>
+                      </tr>
+                      <!--END: TAX2--> 
+                      <!--START: TAX3-->
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_taxes3]:</b></td>
+                        <td width="8%" class="invoice_table"><div align="right">[tax3]</div></td>
+                      </tr>
+                      <!--END: TAX3-->
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_shipping]:</b></td>
+                        <td width="8%" class="invoice_table"><div align="right">[shipping]</div>
+                          <hr /></td>
+                      </tr>
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_total]:</b></td>
+                        <td valign="top" align="right" width="8%" class="invoice_table">[ototal]</td>
+                      </tr>
+                      <!--START: GIFTCERTS-->
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_giftcertificate]:</b></td>
+                        <td valign="top" align="right" width="8%" class="invoice_table">[GIFTCERTS]</td>
+                      </tr>
+                      <tr class="font1">
+                        <td valign="top" align="right" width="32%" class="invoice_table"><b>[shoppingcart_balance]:</b></td>
+                        <td valign="top" align="right" width="8%" class="invoice_table">[BALANCE]</td>
+                      </tr>
+                      <!--END: GIFTCERTS-->
+                    </table></td>
+                </tr>
+              </table>
+              
+              <!------ END: Confirmation ------------------------------------></td>
+          </tr>
+        </table>
+        
+        <!--START: CATEGORY_FOOTER-->
+        
+        <table width="98%" cellspacing="0" cellpadding="2" border="0" id="Table13">
+          <tr>
+            <td>[CONTENT]</td>
+          </tr>
+        </table>
+        
+        <!--END: CATEGORY_FOOTER--></td>
+    </tr>
+  </table>
+</center>
+<!---------------------- END OF CHECKOUT STEP 4 ------>

@@ -1,0 +1,695 @@
+﻿/*************************************************************/
+/*          4-Tell STYLES							         */
+/*************************************************************/
+#main4TellContainer
+{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+#second4TellContainer
+{
+    margin: 0;
+    padding: 0;
+    background: none;
+    display: block;
+}
+
+.toutWrapper4T
+{
+    border: 1px solid gray;
+    background: none;
+}
+
+.product4TCaption
+{
+    padding: 0;
+    margin: 5px 0 0 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.product4TCaption2
+{
+    padding: 10px;
+    margin: 0;
+    text-align: left;
+    color: black;
+}
+
+.product4TCaptionIE
+{
+    width: 100%;
+}
+
+.product4T
+{
+    background-color: #FFFFFF;
+    margin: 5px 14px;
+    padding: 0;
+    width: 160px;
+    border: none;
+    float: left;
+    clear: none;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.product4T2
+{
+    margin: 4px 5px;
+    padding: 5px;
+}
+
+.product4T .productImage
+{
+    padding: 10px 0;
+    float: center !important;
+    clear: both !important;
+}
+
+.product4T .productImageImg
+{
+    border: none;
+    vertical-align: middle;
+    display: inline;
+}
+
+.product4T .ratingImage
+{
+    float: center !important;
+    clear: both !important;
+}
+
+.product4T .ratingImageImg
+{
+    border: none;
+    vertical-align: middle;
+    display: inline;
+    padding: 2px;
+}
+
+.product4T .productTitle
+{
+    height: 35px;
+    width: 160px;
+    overflow: hidden;
+}
+
+.product4T2 .productTitle
+{
+}
+
+
+.product4T .productTitleIE
+{
+}
+
+
+.product4T .productTitleText
+{
+}
+
+.product4T .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+    float: center !important;
+    clear: both !important;
+}
+
+.product4T2 .productPrice
+{
+}
+
+.product4T .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+    float: center !important;
+    clear: both !important;
+}
+
+.product4T2 .productSalePrice
+{
+    color: red;
+}
+
+.product4T .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+    float: center !important;
+    clear: both !important;
+}
+
+.poweredByImage4T
+{
+    width: 100%;
+    padding: 4px 10px;
+    margin: 0;
+    clear: both;
+    float: right;
+    background: none;
+    text-align: right;
+}
+
+.poweredByImage4Tie
+{
+    clear: none;
+}
+
+.poweredByImage4T .poweredByImageImg
+{
+    border: none;
+    vertical-align: bottom;
+    text-align: right;
+    display: inline;
+}
+
+/* Here follows custom classes, so as to permit each page to have its own
+ * custom CSS. */
+
+/* Tout1 on PD page. */
+.product4TPD1
+{
+    margin: 5px 50px;
+}
+
+.product4TCaptionPD1
+{
+}
+
+.product4TPD1 .productImage
+{
+}
+
+.product4TPD1 .productImageImg
+{
+}
+
+.product4TPD1 .productTitle
+{
+}
+
+.product4TPD1 .ratingImage
+{
+}
+
+.product4TPD1 .ratingImageImg
+{
+}
+
+.product4TPD1 .productTitle
+{
+}
+
+.product4TPD1 .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product4TPD1 .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.product4TPD1 .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+/* Tout2 on PD page */
+.product4TPD2
+{
+}
+
+.product4TCaptionPD2
+{
+}
+
+.product4TPD2 .productImage
+{
+}
+
+.product4TPD2 .productImageImg
+{
+}
+
+.product4TPD2 .productTitle
+{
+}
+
+.product4TPD2 .ratingImage
+{
+}
+
+.product4TPD2 .ratingImageImg
+{
+}
+
+.product4TPD2 .productTitle
+{
+}
+
+.product4TPD2 .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product4TPD2 .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4TPD2 .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+
+.product4THome
+{
+    margin: 5px 8px;
+}
+
+.product4TCaptionHome
+{
+}
+
+.product4THome .productImage
+{
+}
+
+.product4THome .productImageImg
+{
+}
+
+.product4THome .productTitle
+{
+}
+
+.product4THome .ratingImage
+{
+}
+
+.product4THome .ratingImageImg
+{
+}
+
+.product4THome .productTitle
+{
+}
+
+.product4THome .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product4THome .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4THome .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+/* Category pages */
+.product4TCat
+{
+}
+
+.product4TCaptionCat
+{
+}
+
+.product4TCat .productImage
+{
+}
+
+.product4TCat .productImageImg
+{
+}
+
+.product4TCat .productTitle
+{
+}
+
+.product4TCat .ratingImage
+{
+}
+
+.product4TCat .ratingImageImg
+{
+}
+
+.product4TCat .productTitle
+{
+}
+
+.product4TCat .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product4TCat .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4TCat .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+/* Search */
+.product4TSearch
+{
+}
+
+.product4TCaptionSearch
+{
+}
+
+.product4TSearch .productImage
+{
+}
+
+.product4TSearch .productImageImg
+{
+}
+
+.product4TSearch .productTitle
+{
+}
+
+.product4TSearch .ratingImage
+{
+}
+
+.product4TSearch .ratingImageImg
+{
+}
+
+.product4TSearch .productTitle
+{
+}
+
+.product4TSearch .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product4TSearch .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4TSearch .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+/* View Cart */
+.product4TVC
+{
+    width: 120px;
+}
+
+.product4TCaptionVC
+{
+}
+
+.product4TVC .productImage
+{
+}
+
+.product4TVC .productImageImg
+{
+}
+
+.product4TVC .productTitle
+{
+    width: 120px;
+}
+
+.product4TVC .ratingImage
+{
+}
+
+.product4TVC .ratingImageImg
+{
+}
+
+.product4TVC .productTitle
+{
+}
+
+.product4TVC .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product4TVC .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4TVC .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+/* Checkout */
+.product4TCheck
+{
+}
+
+.product4TCaptionCheck
+{
+}
+
+.product4TCheck .productImage
+{
+}
+
+.product4TCheck .productImageImg
+{
+}
+
+.product4TCheck .productTitle
+{
+}
+
+.product4TCheck .ratingImage
+{
+}
+
+.product4TCheck .ratingImageImg
+{
+}
+
+.product4TCheck .productTitle
+{
+}
+
+.product4TCheck .productSalePrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    height: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product4TCheck .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4TCheck .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+/* Quick Cart */
+.product4TQC
+{
+    margin: 4px 5px;
+    padding: 3px;
+    width: 120px;
+}
+
+.product4TCaptionQC
+{
+}
+
+.product4TQC .productImage
+{
+}
+
+.product4TQC .productImageImg
+{
+}
+
+.product4TQC .productTitle
+{
+}
+
+.product4TQC .ratingImage
+{
+}
+
+.product4TQC .ratingImageImg
+{
+}
+
+.product4TQC .productTitle
+{
+    height: 18px;
+    width: 120px;
+}
+
+.product4TQC .productSalePrice
+{
+    color: red;
+}
+
+.product4TQC .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4TQC .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}
+
+/* Quick view */
+.product4TQV
+{
+    margin: 4px 5px;
+    padding: 3px;
+    width: 120px;
+}
+
+.product4TCaptionQV
+{
+}
+
+.product4TQV .productImage
+{
+}
+
+.product4TQV .productImageImg
+{
+}
+
+.product4TQV .productTitle
+{
+    height: 18px;
+    width: 120px;
+}
+
+.product4TQV .ratingImage
+{
+}
+
+.product4TQV .ratingImageImg
+{
+}
+
+.product4TQV .productTitle
+{
+}
+
+.product4TQV .productSalePrice
+{
+    color: red;
+}
+
+.product4TQV .productPrice
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 15px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.product4TQV .productBuy
+{
+    margin: 0 0 10px;
+    text-decoration: none;
+}

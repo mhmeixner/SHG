@@ -1,0 +1,292 @@
+<!-- //3dcart v2.2//frame.html//Rev. #1 10/31/2006-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[TITLE]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.small9px {font-size: 9px}
+.style2 {font-size: 10px}
+.style3 {color: #FFFFFF}
+-->
+</style>
+[META]
+<script language="JavaScript" src="assets/templates/common/js/utilities.js" type="text/JavaScript"></script>
+<LINK REL="StyleSheet" HREF="assets/templates/[template]/css/[stylesheet]" TYPE="text/css" MEDIA="screen">
+<LINK REL="StyleSheet" HREF="assets/templates/common/js/tabs.css" TYPE="text/css" MEDIA="screen">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="[screenwidth]" border="0" align="center" cellpadding="0" cellspacing="0" class="data">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"rowspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td style="padding-left:10px" class="store-name"><!--START: global_header-->
+               <br>[storename]<br>
+                    <span class="store-slogan">[storeslogan]</span>
+                    <!--END: global_header--></td>
+      </tr>
+    </table></td>
+    <td rowspan="2" align="right" nowrap class="font3"><img src="assets/templates/[template]/images/spacer.gif" width="1" height="50"></td>
+    <td align="right" nowrap class="font3"><img src="assets/templates/[template]/images/spacer.gif" width="1" height="45"></td>
+  </tr>
+  <tr>
+    <td height="30" align="right" nowrap class="font3"><!--START: username-->
+                    [account_greeting] [username] | <a href="logout.asp" class="font3" ><strong>Logout</strong></a>
+                    <!--END: username--> 
+          </td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td background="assets/templates/[template]/images/bg2.gif" width="60%">                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td><!--START: FRAME_MENU-->
+		                <table cellspacing="0" cellpadding="5" border="0" >
+                <tr>
+                  <!--START: menuitems_view-->
+					<!--START: TOP_LINK_FORMAT-->
+                  <td class="font3"><a href="infopage.asp?page=[link_id]"
+class="menu" target="[link_target]">[link_name]</a></td><td class="font3"> <span class="white">|</span></td>
+                <!--END: TOP_LINK_FORMAT--> 
+					<!--END: menuitems_view--> 
+                </tr>
+              </table>
+             <!--END: FRAME_MENU--></td>
+                            <td align="right" background="assets/templates/[template]/images/bg_search.gif" width="40%"><table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="right"> <!--START: FRAME_SEARCH-->
+	 	<form method="get" action="search.asp" STYLE="margin: 0px; padding: 0px;" ID="Form1">
+			<table cellspacing="0" cellpadding="4" border="0" ID="Table2">
+			
+				<tr>
+				<td class="font3 white">Search Items</td>	
+				<td><input  type="text" size="30" name="keyword" class="txtBoxStyle" ID="Text1"></td><td><input type="submit" name="www" value="[mailinglist_button]" class="btn" onMouseOver="this.className='btn_over'" 
+
+onMouseOut="this.className='btn'">
+</td>
+				</tr>
+				
+			</table>
+		</form>
+			<!--END: FRAME_SEARCH--></td>
+  </tr>
+</table>
+</td>
+                          </tr>
+                        </table>
+</td>
+  </tr>
+  <tr>
+    <td align="right" style="padding:4px" class="font3">&nbsp;&nbsp;<a href="view_cart.asp"><img src="assets/templates/[template]/images/cart.gif" alt="Shopping Cart" width="14" height="13" border="0" /></a>&nbsp;Shopping Cart -<strong>&nbsp;[ITEMSINCART]</strong><span class="font4 white">&nbsp;item(s)</span></td>
+  </tr>
+  <tr>
+    <td valign="top"  ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="150" align="center" valign="top" style="background-image:url(assets/templates/[template]/images/bg_table.gif); background-repeat:repeat-y; background-color:#463e33;" ><table width="150" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+         
+            <td width="150" align="center"  ><table cellpadding="10" ><tr><td><!--START: FRAME_CATEGORY-->
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="ced5db" ID="Table5" style="border-collapse: collapse">
+                  <tr>
+                    <td align="left" class="menu-headers">[frame_categories]</td>
+                  </tr>
+                  <!--START: CATEGORIES-->
+                  <!--START: CATEGORY_FORMAT-->
+                  <tr>
+                    <td align="left" nowrap><a href="view_category.asp?cat=CATID" class="cat"><strong>CATEGORY</strong></a></td>
+                  </tr>
+                  <!--END: CATEGORY_FORMAT-->
+                  <!--START: SUB_CATEGORY_FORMAT-->
+                  <tr>
+                    <td align="left"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td align="left"><a href="view_category.asp?cat=CATID" class="cat"><img src="assets/templates/[template]/images/spacer.gif" width="4" height="1" border="0">&#8226; CATEGORY</a></td>
+                        </tr>
+                    </table></td>
+                  </tr><!--END: SUB_CATEGORY_FORMAT--> <!--END: CATEGORIES-->
+                  <tr>
+                    <td><img src="assets/templates/[template]/images/divider2.gif" ></td>
+                  </tr>
+                </table>
+              <!--END: FRAME_CATEGORY-->
+                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="ced5db" ID="Table5" style="border-collapse: collapse">
+                  <!--START: FRAME_BYPRICE-->
+                  <tr>
+                    <td align="left" class="menu-headers">[frame_byprice]</td>
+                  </tr>
+                  <!--START: byprice_format-->
+                  <tr>
+                    <td align="left">&nbsp;&nbsp;<a href="search_groups.asp?keyword=[id]&byprice=[id]" class="cat">[title]</a></td>
+                  </tr>
+                 
+                  <!--END: byprice_format--> <tr>
+                    <td align="left"><img src="assets/templates/[template]/images/divider2.gif" ></td>
+                  </tr>
+                  <!--END: FRAME_BYPRICE-->
+                  <!--START: FRAME_MANUFACTURER-->
+                  <form name="mfg" id="mfg" method="get" action="search_groups.asp" STYLE="margin: 0px; padding: 0px;">
+                    <tr>
+                      <td align="left" class="menu-headers">[frame_manufacturer]</td>
+                    </tr>
+                    <tr>
+                      <td align="left"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                          <tr>
+                            <td align="center"><select name="manf" onChange="this.form.submit();" ID="Select1"  class="txtBoxStyle" style="width:150px;">
+                                <option value=0 selected class="txtBoxStyle">Manufacturer</option>
+                                <!--START: manufacturer_format-->
+                                <option value=[mfgid] class="txtBoxStyle">[manufacturer]</option>
+                                <!--END: manufacturer_format-->
+                            </select></td>
+                          </tr>
+                          <tr>
+                            <td align="left"></td>
+                          </tr>
+                      </table><img src="assets/templates/[template]/images/divider2.gif" ></td>
+                    </tr>
+                  </form>
+                  <!--END: FRAME_MANUFACTURER-->
+                 <!--START: NEW_RELEASES_BLOCK-->
+                  <tr>
+                    <td align="left" class="menu-headers">[frame_new-releases]</td>
+                  </tr>
+                  <!--START: newreleases-->
+                  <tr>
+                    <td align="center"><a href="product.asp?itemid=[catalogid]"><img src="[thumbnail]" border="0" alt="[name]"></a><br>
+                      <a href="product.asp?itemid=[catalogid]" class="cat">[id] [name]</a></td>
+                  </tr><!--END: newreleases-->
+                  <tr>
+                    <td align="left"><img src="assets/templates/[template]/images/divider2.gif" ></td>
+                  </tr>
+                  
+                  <!--END: NEW_RELEASES_BLOCK-->
+                  <!--START: FRAME_MAILLIST-->
+                  <form STYLE="margin: 0px; padding: 0px;" method="post" name="mailing" action="mailing_list.asp?action=add" onSubmit="return mailing_list();" ID="Form2">
+                    <tr>
+                      <td colspan="2" align="left" class="menu-headers">[frame_mailinglist]</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="left" class="menu-text"><br>
+                        &nbsp; [mailinglist_text]</td>
+                    </tr>
+                    <tr>
+                      <td align="left"><input type="text" size="16" name="email" class="txtBoxStyle" id="Text2">
+                        <input type="submit" name="www" value="[mailinglist_button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" ID="Submit2"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="left"  class="menu-text">&nbsp;
+                          <input type="radio" name="subscribe" value="1" checked ID="Radio1">
+                        [mailinglist_subscribe]</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="left"  class="menu-text">&nbsp;
+                          <input type="radio" name="subscribe" value="0" ID="Radio2">
+                        [mailinglist_unsubscribe]</td>
+                    </tr>
+                    <tr>
+                      <td align="left"><img src="assets/templates/[template]/images/divider2.gif" ></td>
+                    </tr>
+                  </form> <!--END: FRAME_MAILLIST-->
+                </table>
+              <br>
+               
+                <!--START: LEFT_BANNER-->
+                <center>
+                  <span class="data">
+                    <p>[LEFT_BANNER]</p>
+                    </span>
+                </center>
+              <!--END: LEFT_BANNER--></td>
+          
+          </tr>
+        </table></td>
+          </tr>
+        </table></td>
+        <td align="center" width="3" ><img src="assets/templates/[template]/images/spacer.gif" width="3" height="1"></td>
+        <td align="center" valign="top" class="data" style="border: 10px solid; padding:8px; border-color:#bdaf8e; background-color:#FFFFFF;">MIDDLE</td>
+ 
+     <!--START: RIGHT BAR--> <!--START: RIGHT_BANNER-->  <td align="center" valign="top" class="style3">  
+           
+                   
+              [RIGHT_BANNER]</td>
+     <!--END: RIGHT_BANNER--><!--END: RIGHT BAR-->
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td align="center" background="assets/templates/[template]/images/bg_bottom.gif"><img src="assets/templates/[template]/images/spacer.gif" width="1" height="24"><img src="assets/templates/[template]/images/logo_bottom.gif" width="72" height="71"></td>
+  </tr>
+  <tr>
+    <td><table width="100%" align="center"  cellpadding="0" cellspacing="0" ID="Table11">
+        <tr>
+          <td colspan="2" align="center"><br>            <!--START: FRAME_LINKS-->
+              <table cellspacing="0" cellpadding="4" border="0" ID="Table12">
+                <tr>
+                  <!--START: LINKS-->
+                  <!--START: LINK_FORMAT-->
+                  <td align="center" class="font3"><a href="infopage.asp?page=[link_id]&extra=1" target="[link_target]"  class="link2">[link_name]</a></td>
+                  <!--END: LINK_FORMAT-->
+                  <!--END: LINKS-->
+                </tr>
+              </table>
+              <!--END: FRAME_LINKS-->
+          </td>
+        </tr>
+       <!--START: globalfooter0--> <tr>
+          <td colspan="2" align="center" bgcolor="#BDAF8E" width=100% style="padding:10px"> 
+            <span class="style2"><strong>[GLOBAL_FOOTER] </strong>
+           
+            <br>
+          [frame_copyright1]</span></td>
+        </tr> <!--END: globalfooter0-->  
+       
+      </table></td>
+  </tr>  
+</table>
+
+
+<!--START: 3dcart stats-->
+
+<p>
+  <script type="text/javascript" language="JavaScript">
+
+var file='/stats/count.asp';
+
+var stats_d=new Date(); 
+var stats_s=stats_d.getSeconds(); 
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';} 
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';} 
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; 
+
+stats_h=screen.height; 
+stats_v=navigator.appName; 
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + 
+
+'&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width=1 height=1 border=0>');
+</script>
+  </a>
+</p>
+<noscript>
+<p><img src="/stats/count.asp" width=90 height=30 border=0>
+</p>
+</noscript>
+<p>
+  <!--END: 3dcart stats-->
+
+</body>
+</html>

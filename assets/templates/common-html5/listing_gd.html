@@ -1,0 +1,1227 @@
+<script type="text/javascript" src="assets/templates/common/js/listing.js"></script>
+<script type="text/javascript" src="assets/templates/common/3dzoom/magiczoomplus.js"></script>
+<link href="assets/templates/common/3dzoom/magiczoomplus.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript">
+    if (typeof jQuery == 'undefined') {
+        document.write("<script type=\"text/javascript\" src=\"assets/templates/common/js/jquery.min.js\"></" + "script>");
+    }
+
+    MagicZoomPlus.options = {
+        'opacity':'65',
+        'expand-effect':'elastic',
+        'background-opacity':'50',
+        'zoom-fade':'true',
+        'zoom-position':'inner',
+        'fit-zoom-window':'false',
+        'hint':'false'
+    }
+</script>
+<!--START: revscript-->
+<script type="text/javascript">
+    function updateRevStats(id, spn, vote){
+
+        var url = '';
+        var params = '';
+
+        params = 'id=' + id;
+        params += '&vote=' + vote;
+		
+        url = 'reviewVote_ajax.asp?' + params + '&no-cache='+Math.random();
+
+        //window.location = url;
+		
+        jQuery.ajax({
+            url: url,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (strResult) {
+                if (strResult == '') {
+                    alert('[productqa_helpful-notupdated]');
+                }
+                else {
+                    jQuery('#spnReview' + spn).html(strResult);
+                    alert('[productqa_update-helpful]');
+                }
+			
+            },
+            error: reportRevError
+        });
+		
+    }
+
+    function reportRevError(jqXHR, textStatus) {
+        if (jqXHR.status > 0)
+        {
+            alert("Error processing request, please try again."); 
+            //alert(jqXHR.responseText);
+            //alert(jqXHR.status + " - " + jqXHR);
+        }
+    }
+</script>
+<!--END: revscript-->
+<!--START: qaScript-->
+<script type="text/javascript">
+    function updateRevStats(id, spn, vote){
+
+        var url = '';
+        var params = '';
+
+        params = 'id=' + id;
+        params += '&vote=' + vote;
+		
+        url = 'reviewVote_ajax.asp?' + params + '&no-cache='+Math.random();
+
+        //window.location = url;
+		
+        jQuery.ajax({
+            url: url,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (strResult) {
+                if (strResult == '') {
+                    alert('[productqa_helpful-notupdated]');
+                }
+                else {
+                    jQuery('#spnReview' + spn).html(strResult);
+                    alert('[productqa_update-helpful]');
+                }
+			
+            },
+            error: reportQAError
+        });
+		
+    }
+
+    function updateQAStats(id, spn, vote){
+
+        var url = '';
+        var params = '';
+
+        params = 'id=' + id;
+        params += '&vote=' + vote;
+		
+        url = 'productqaVote_ajax.asp?' + params + '&no-cache='+Math.random();
+
+        //window.location = url;
+		
+        jQuery.ajax({
+            url: url,
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (strResult) {
+                if (strResult == '') {
+                    alert('[productqa_helpful-notupdated]');
+                }
+                else {
+                    jQuery('#spn' + spn).html(strResult);
+                    alert('[productqa_update-helpful]');
+                }
+			
+            },
+            error: reportQAError
+        });
+		
+    }
+
+    function reportQAError(jqXHR, textStatus) {
+        if (jqXHR.status > 0)
+        {
+            alert("Error processing request, please try again."); 
+            //alert(jqXHR.responseText);
+            //alert(jqXHR.status + " - " + jqXHR);
+        }
+    }
+
+</script>
+<!--END: qaScript-->
+
+<section id="listing0" itemscope itemtype="http://schema.org/Product">
+<div id="listingGd">
+  <form enctype="multipart/form-data" method="post" action="add_cart.asp" name="add" id="add">
+    <input type="hidden" name="item_id" value="[catalogid]" />
+    <input type="hidden" name="itemid" value="[id]" id="itemid" />
+    <input type="hidden" name="category_id" value="[catid]" />
+    <!--START: CATEGORY_FULLINE-->
+    <div class="breadcrumbs">[CATEGORY_FULLLINE]</div>
+    <!--END: CATEGORY_FULLINE--> 
+    <!--START: CATEGORY_HEADER-->
+<div class="category-header" id="listingHeader">[CONTENT]</div>
+    <!--END: CATEGORY_HEADER--> 
+    <!--START: PREV_PROD-->
+    <div class="prev-prod"><a href="[prevprodlink]"><img src="thumbnail.asp?file=[prevprodthumb]&maxx=30&maxy=30" width="30" height="30" alt="" /><br />
+      Prev</a></div>
+    <!--END: PREV_PROD--> 
+    <!--START: NEXT_PROD-->
+    <div class="next-prod"><a href="[nextprodlink]"><img src="thumbnail.asp?file=[nextprodthumb]&maxx=30&maxy=30" width="30" height="30" alt="" /><br />
+      Next</a></div>
+    <!--END: NEXT_PROD-->
+    <div class="clear"></div>
+    <h1 itemprop="name" class="page_headers">[name]</h1>
+    <div class="clear"></div>
+    <!--START: id-->
+    <div class="product-id">[product_id]:<span id="product_id">[id]</span></div>
+    <!--END: id--> 
+    <!--START: totalrating-->
+    <div class="totalrating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+      <div class="stars">[totalrating]</div>
+      <div class="review-count" itemprop="reviewCount">[review_count]</div>
+      Review(s)
+      <div class="review_average" itemprop="ratingValue">[review_average]</div>
+    </div>
+    <!--END: totalrating-->
+    <div class="clear"></div>
+    <div class="primary">
+      <div id="mediaContainer">
+        <!--START: savings_percentage-->
+        <div class="savings-percentage">[savings_percentage]% OFF</div>
+        <!--END: savings_percentage-->
+        <div id="imagesBlock"> 
+          <!--START: image1-->
+          <div class="main-image"><a href="[image1]" class="[3dzoom_class]" id="listing_main_image_link"><img itemprop="image" src="thumbnail.asp?file=[image1]&maxx=[image_medium_w]&maxy=0" align="middle" id="large" name="large" alt="[name]" /></a>
+            <div name="imagecaptiont" id="imagecaptiont" class="item">[imagecaption1]</div>
+          </div>
+          <!--END: image1--> 
+          <!--START: image2-->
+          <div class="addl-images">
+          <div class="image1"><a href="[image1]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image1]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(1);return false;"><img src="thumbnail.asp?file=[image1]&maxx=75&maxy=0" alt="" name="pimage1" /></a></div>
+          <div class="image2"><a href="[image2]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image2]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(2);return false;"><img src="thumbnail.asp?file=[image2]&maxx=75&maxy=0" alt="" name="pimage2" /></a></div>
+          <!--START: image3-->
+          <div class="image3"><a href="[image3]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image3]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(3);return false;"><img src="thumbnail.asp?file=[image3]&maxx=75&maxy=0" alt="" name="pimage3" /></a></div>
+          <!--END: image3--> 
+          <!--START: image3-->
+          <div class="image4"><a href="[image4]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image4]&maxx=[image_medium_w]&maxy=0" onclick="javascript:image_click(4);return false;"><img src="thumbnail.asp?file=[image4]&maxx=75&maxy=0" alt="" name="pimage4" /></a></div>
+          <!--END: image4-->
+          </div>
+          <!--END: image2-->
+          <div class="clear"></div>
+          <!--START: image5-->
+          <div class="image-gallery">
+            <input type="button" onclick="popupsimple('gallery.asp?catalogid=[catalogid]',650,550)" name="IMG" value="[product_imagegallery]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+          </div>
+          <!--END: image5--> 
+        </div>
+        <!--START: realmedia-->
+        <div id="realmediaBlock">
+          <object type="application/x-shockwave-flash" data="[realmedia]" wmode="transparent" id="realmedia">
+            <param name="movie" value="[realmedia]" />
+            <param name="wmode" value="transparent" />
+          </object>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $( "#tabProdVideo" ).show();
+                $( "#tabProdImage" ).show();
+            });
+        </script> 
+        <!--END: realmedia--> 
+      </div>
+      <a href="javascript:void();" id="tabProdImage">Product Images</a> <a href="javascript:void();" id="tabProdVideo">Product Video</a>
+      <div class="clear"></div>
+      <div class="center"> 
+        <!--START: email_friend-->
+        <div class="email_friend button"><a href="#" rel="nofollow" onclick="javascript:window.open('recommendafriend.asp?url=[friendurl]','popup','height=460,width=550,location=no,' + 'scrollbars=no,menubars=no,toolbars=no,resizable=yes');" class="icon-btn icon-btn-loud">[product_emailtofriend]</a></div>
+        <!--END: email_friend--> 
+        <!--START: create_first_review-->
+        <div class="create_first_review button"><a href='#' rel="nofollow" onclick="javascript:popup('review.asp?action=newReview&catalogid=[catalogid]',510,500,false);" class="icon-btn icon-btn-star">[reviews_first]</a></div>
+        <!--END: create_first_review--> 
+        <!--START: create_review_link-->
+        <div class="create_review_link button"><a href='#' onclick="javascript:popup('review.asp?action=newReview&catalogid=[catalogid]',510,500,false);" class="icon-btn icon-btn-star" rel="nofollow">[reviews_new]</a></div>
+        <!--END: create_review_link--> 
+        <!--START: qaLinkFirst-->
+        <div class="qaLinkFirst button"><a href='#' rel="nofollow" class="icon-btn icon-btn-bubble" onclick="javascript:popup('productqa.asp?action=newQA&catalogid=[catalogid]',650,550,false);">[productqa_firstquestion]</a></div>
+        <!--END: qaLinkFirst--> 
+        <!--START: qaLinkNew-->
+        <div class="qaLinkNew button"><a href='#' rel="nofollow" onclick="javascript:popup('productqa.asp?action=newQA&catalogid=[catalogid]',650,550,false);" class="icon-btn icon-btn-bubble">[productqa_newquestion]</a></div>
+        <div class="qaLinkNew button"><a href="#qa" class="icon-btn icon-btn-down">(<i>[productqa_jump-to-qa]</i>)</a></div>
+        <!--END: qaLinkNew--> 
+      </div>
+      <div class="clear"></div>
+      <!--START: giftcertificate_block-->
+      <div id="giftcertificate_block" class="pad10 boxShadow">
+        <div class="header">
+          <h3>Gift Certificate Information</h3>
+          <div class="clear"></div>
+        </div>
+        <div class="gc_container">
+          <div class="input-from">
+            <label>From</label>
+            <input type="text" size="23" name="gc_fromname" class="txtBoxStyle" />
+            <div id="gc_fromname" class="info-tip">
+              <div class="tri-left">
+                <div class="tri-inner"></div>
+              </div>
+              Sender's name</div>
+          </div>
+          <div class="clear"></div>
+          <div class="input-to">
+            <label>To</label>
+            <input type="text" size="23" name="gc_toname" class="txtBoxStyle" />
+            <div id="gc_toname" class="info-tip">
+              <div class="tri-left">
+                <div class="tri-inner"></div>
+              </div>
+              Recipient's name</div>
+          </div>
+          <div class="clear"></div>
+          <div class="input-email">
+            <label>Email</label>
+            <input type="text" size="23" name="gc_toemail" class="txtBoxStyle" />
+            <div id="gc_toemail" class="info-tip">
+              <div class="tri-left">
+                <div class="tri-inner"></div>
+              </div>
+              Recipient's email address</div>
+          </div>
+          <div class="clear"></div>
+          <div class="input-message">
+            <label>Message</label>
+            <textarea rows="5" name="gc_tomessage" onclick="this.value='';" class="txtAreaStyle"></textarea>
+            <div id="gc_tomessage" class="info-tip">
+              <div class="tri-left">
+                <div class="tri-inner"></div>
+              </div>
+              Optional, max. length 500 characters</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!--END: giftcertificate_block-->
+      <div class="clear"></div>
+    </div>
+    <div class="secondary">
+      <!--START: groupdeal--> 
+      <!--START: group_deals-->
+      <input type="hidden" name="gd_id" value="[enc_gd_id]" />
+      <input type="hidden" name="gd_exp" value="[enc_gd_expires]" />
+      <div class="gdTimer"> 
+        <script type="text/javascript">
+            TargetDate = "[gd_expires]";
+            var targetsecs = "[gd_secs]";
+            BackColor = "";
+            ForeColor = "#FFFFFF";
+            CountActive = true;
+            CountStepper = -1;
+            LeadingZero = true;
+            DisplayFormat = "%%D%%d : %%H%%h : %%M%%m : %%S%%s";
+            FinishMessage = "The Deal is Over!";
+        </script> 
+        <script type="text/javascript" src="assets/templates/common/js/countdown.js"></script>
+        <div class="arrow-down"></div>
+      </div>
+      <div class="gdInfo">
+        <div id="gdItemsSold"><!--START: gdItemsSold-->
+          <div>[gd_itemssold] <span>SOLD</span></div>
+          <div id="gdItemsToSell">[gd_itemstosell] <span>TO GO</span></div>
+          <!--END: gdItemsSold-->
+          <div class="clear"></div>
+        </div>
+          <!--START: savings_percentage-->
+          <div class="savings-percentage">[savings_percentage]% <span>SAVINGS</span></div>
+          <!--END: savings_percentage-->
+          <div class="clear"></div>
+      </div>
+      <script type="text/javascript">
+          var myGdInterval = self.setInterval("updateItemsSold()", 10000);
+          function updateItemsSold() {
+              add_overlay("gdItemsSold", 0);
+              var gdurl = "/product.asp";
+              var gdparams = "itemid=[catalogid]&groupdealid=[gd_id]";
+              jQuery.ajax({
+                  url: gdurl,
+                  dataType: 'html',
+                  type: 'GET',
+                  data: gdparams,
+                  cache: false,
+                  success: function (strResult) {
+                      jQuery("#gdItemsSold").html(strResult);
+                  },
+                  complete: afterUpdateItemsSold,
+                  error: reportErrorGD
+              });
+          }
+          function afterUpdateItemsSold(req) {
+              remove_overlay("gdItemsSold");
+              return;
+          }
+          function reportErrorGD(jqXHR, textStatus) {
+              var i = window.clearInterval(myGdInterval);
+              remove_overlay("gdItemsSold");
+              //jqXHR.responseText
+              if (jqXHR.status > 0)
+                  alert("Error processing request " + jqXHR.status + " - " + textStatus);
+          }
+          function get_Element(i) {
+              return document.getElementById(i) || document.getElementsByName(i).item(0);
+          }
+          function add_overlay(panel, loading) {
+              var objBody = getElementById_s(panel);
+              var objOverlay = document.createElement("div");
+		
+              objOverlay.setAttribute('id', 'overlay_' + panel);
+              objOverlay.className = 'overlay';
+              objOverlay.style.position = 'absolute';
+              objOverlay.style.textAlign = 'center';
+              objOverlay.style.width = objBody.clientWidth + "px";
+              objOverlay.style.height = objBody.clientHeight + "px";
+              //alert(objOverlay.style.height);
+              objBody.insertBefore(objOverlay, objBody.firstChild);
+              objOverlay.style.display = 'block';
+		
+              if (loading == 1) {
+                  get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td style="text-align: center;"><img src="assets/templates/common/images/loading.gif"></td></tr></table>';
+              }
+              else {
+                  get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td align="center"></td></tr></table>';
+              }
+          }
+          function getElementById_s(strId) {
+              var obj = null;
+              if (document.getElementById) {
+                  obj = get_Element(strId);
+              } else if (document.all) {
+                  obj = document.all[strId];
+              }
+              return obj;
+          }
+          function remove_overlay(panel) {
+              var objBody = getElementById_s('overlay_' + panel);
+              if (objBody != null && objBody != 'null' && objBody != undefined && objBody != 'undefined')
+                  objBody.style.display = 'none';
+          }
+          updateItemsSold();
+		</script> 
+      <!--END: group_deals--> 
+      <!--END: groupdeal-->
+      <!--START: LOGIN_REQUIRED-->
+      <div class="loginReqBlock">[product_login-message]</div>
+      <!--END: LOGIN_REQUIRED--> 
+      <!--START: PRODUCT_OPTIONS_BLOCK-->
+      <div id="divOptionsBlock" class="pad10 boxShadow"> 
+        <!--START: divOptionsBlock-->
+        <div class="header">
+          <h3>[product_optionheader]</h3>
+          <div class="clear"></div>
+        </div>
+        <div class="container"> 
+          <!--START: optionstemplate--> 
+          <!--START: textarea-format--> 
+          [value]: [oprice]
+          <textarea cols="30" rows="5" name="textarea[oname]"></textarea>
+          <!--END: textarea-format--> 
+          <!--START: text-format--> 
+          [value]: [oprice]
+          <input type="text" size="30" name="text[oname]" />
+          <!--END: text-format--> 
+          <!--START: qty-format--> 
+          [value] [oprice]
+          <input type="text" size="3" name="text[oname]" value="0" />
+          <!--END: qty-format--> 
+          <!--START: file-format--> 
+          [value]: [oprice]
+          <input type="file" name="file[oname]" size="20" />
+          <!--END: file-format--> 
+          <!--START: title-format--> 
+          [feature] 
+          <!--END: title-format--> 
+          <!--START: checkbox-format-->
+          <div class="radio-format">
+            <input type="checkbox" name="cb[oname]" value="[value]" onclick="validateValues(document.add,1);" [selected] />
+            [feature] [oprice]</div>
+          <!--END: checkbox-format--> 
+          <!--START: radio-format-->
+          <div class="radio-format">
+            <input type="radio" name="[oname]" value="[value]" onclick="validateValues(document.add,1);" [selected] />
+            [feature] [oprice]</div>
+          <!--END: radio-format--> 
+          <!--START: dropdown-format-->
+          <div class="dropdown-format">
+            <select name="[oname]" onchange="validateValues(document.add,1);">
+              <!--START: option-->
+              <option value="[value]" [selected]>[feature] [oprice]</option>
+              <!--END: option-->
+            </select>
+          </div>
+          <!--END: dropdown-format--> 
+          <!--START: dropdownimage-format-->
+          <div class="dropdownimage-format">
+            <select name="[oname]" onchange="validateValues(document.add,1);">
+              <!--START: option-->
+              <option value="[value]" [selected]>[feature] [oprice]</option>
+              <!--END: option-->
+            </select>
+            <div class="dropdown-image"><img name="img_[oname]" width="50" src="assets/templates/common/images/spacer.gif" /></div>
+          </div>
+          <!--END: dropdownimage-format--> 
+          <!--END: optionstemplate--> 
+          
+          <!--START: options--> 
+          <!--START: opt-title-->
+          <div class="opt-title">[OPTIONLABEL]<span>[OPTIONFIELD]</span></div>
+          <!--END: opt-title--> 
+          <!--START: opt-regular-->
+          <div class="opt-regular">[OPTIONLABEL] 
+            <!--START: help--> 
+            <span class="help"><a href="#" onclick="popup('optionhelp.asp?optionid=[optid]',300,200)"><img src="assets/templates/common/images/help_icon.gif" alt="help" /></a></span> 
+            <!--END: help-->
+            <div class="opt-field">[OPTIONFIELD]</div>
+            <div class="clear"></div>
+          </div>
+          <div class="clear"></div>
+          <!--END: opt-regular--> 
+          <!--END: options--> 
+        </div>
+        <!--END: divOptionsBlock--> 
+      </div>
+      <!--END: PRODUCT_OPTIONS_BLOCK--> 
+      <!--START: MULTIPLESHIPTO-->
+      <div class="multipleShipToBlock">
+        <div class="send-to">
+          <label>[product_multiple-send-to]</label>
+          <select name="recipientselect" class="txtBoxStyle">
+            <!--beginFixup-->
+            <option value="select" selected>[product_multiple-select-name]</option>
+            <option value="myself">[product_multiple-myself]</option>
+            [shiptolist]
+            <option value="selectother">[product_multiple-other]</option>
+            <!--endFixup-->
+          </select>
+        </div>
+        <div class="add-name">
+          <label>[product_multiple-add-name]</label>
+          <input type="text" name="add_name"class="txtBoxStyle" />
+        </div>
+        <div class="help"><a href="#" onclick="popup('optionhelp.asp?help=multiple',300,200)"><img src="assets/templates/common/images/help_icon.gif" alt="help" /></a></div>
+        <div class="clear"></div>
+        <div class="note">*[product_multiple-note]</div>
+      </div>
+      <!--END: MULTIPLESHIPTO--> 
+      <!--START: pricing-->
+      <div class="pricingBlock" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <link itemprop="availability" href="http://schema.org/InStock" content="[availability_itemprop]" />
+        <h3>[product_Header-price]</h3>
+        <div class="clear"></div>
+        <!--START: price2-->
+        <div class="retailprice">[product_retailprice]<span>[price2]</span></div>
+        <div class="clear"></div>
+        <!--START: SAVINGS-->
+        <div class="savings">[product_savings]<span>[savings]</span></div>
+        <div class="clear"></div>
+        <!--END: SAVINGS--> 
+        <!--END: price2--> 
+        <!--START: ITEMPRICE-->
+        <div class="yourprice price">[product_yourprice]<span itemprop="price" id="price">[price]</span></div>
+        <div class="clear"></div>
+        <!--END: ITEMPRICE--> 
+        <!--START: SALEPRICE-->
+        <div class="saleprice price">[product_yourprice]<span itemprop="price" id="Span1">[saleprice]</span></div>
+        <div class="clear"></div>
+        <!--END: SALEPRICE-->
+        <div class="clear"></div>
+      </div>
+      <!--END: pricing-->
+      <div class="availabilityInfo"> 
+        <!--START: product_availability-->
+        <div class="product_availability">
+          <h4>[product_Header-availability]</h4>
+          <div id="availability" class="font2">[availability_itemprop]</div>
+          <div class="clear"></div>
+        </div>
+        <!--START: waitinglist-->
+        <div class="waitinglist">
+          <input type="button" value="Put me on the Waiting List" class="btn" onclick="javascript:window.open('notify.asp?catalogid=[catalogid]','popup','height=535,width=540,location=no,' + 'scrollbars=no,menubars=no,toolbars=no,resizable=yes');" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+        </div>
+        <!--END: waitinglist--> 
+        <!--END: product_availability--> 
+        <!--START: freeshippingblock-->
+        <div class="freeshippingblock">[freeshipping]</div>
+        <!--END: freeshippingblock-->
+        <div class="social-mediaBlock"> 
+          <!--START: product_social-bookmarking-->
+          <div class="social-bookmarking">[product_social-bookmarking]</div>
+          <!--END: product_social-bookmarking--> 
+          <!--START: frame_likebutton-->
+          <div class="likebutton">[frame_likebutton]</div>
+          <!--END: frame_likebutton-->
+          <div class="clear"></div>
+        </div>
+      </div>
+      <!--START: RECURRINGORDER-->
+      <div class="recurringorderBlock">
+        <h4>[recurringorders_addcart-question]</h4>
+        <select name="recurring_frequency" class="txtBoxStyle" id="recurring_frequency">
+          <option value="">[recurringorders_select-frequency]</option>
+          [recurring_frequency]
+        </select>
+      </div>
+      <!--END: RECURRINGORDER--> 
+      <!--START: addtocart--> 
+      <!--START: quantity-->
+      <div class="quantityBlock">
+        <h3>[product_Header-quantitypricing]</h3>
+        <div class="clear"></div>
+        <div class="title-header">[product_quantitypricing-quantity]</div>
+        <div class="title-header">[product_quantitypricing-price]</div>
+        <div class="clear"></div>
+        <ul>
+          <!--START: quantity_items-->
+          <li>[lowbound][highbound]</li>
+          <li>[PRICE]</li>
+          <!--END: quantity_items-->
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <script type="text/javascript">
+          $(document).resize(function() {
+              if( $(window).width() >= 480 ) {
+                  $('.addToCartBlock').css('float', 'none');
+                  $('#listing0 .addToCartBlock').css('width', '100%');
+              }
+              else {
+                  $('.addToCartBlock').css('float', 'left');
+                  $('#listing0 .addToCartBlock').css('width', '50%');
+              }
+          });
+	  </script> 
+      <!--END: quantity-->
+      <div class="addToCartBlock"> 
+        <!--START: qtybox-->
+        <div class="qtybox">
+          <label>[product_quantity]</label>
+          <input type="text" size="3" name="qty-0" value="1" onchange="validateValues(document.add,1);" class="txtBoxStyle" />
+        </div>
+        <!--END: qtybox--> 
+        <!--START: reminders_block-->
+        <div class="reminders_block">
+          <label>[product_reminder]</label>
+          <div class="clear"></div>
+          <select name="reminder" class="txtBoxStyle" id="reminder">
+            <!--START: reminders_frequency_option-->
+            <option value="[optionvalue]" [selected]>[optiontext]</option>
+            <!--END: reminders_frequency_option-->
+          </select>
+        </div>
+        <!--END: reminders_block-->
+        <div class="addcart-button">
+          <input type="button" onclick="check_and_add(document.add);" id="Button1" name="Add" value="[product_addtocart]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+          <!--START: reward_redeem-->
+          <div class="reward_redeem">
+            <div class="item">- or -</div>
+            <div id="divRewardRedeem">
+              <input type="hidden" name="hdnRewardRedeemItem" id="hdnRewardRedeemItem" value="0" />
+              <input type="button" onclick="rewardRedeemItem(document.add);" name="redeem" value="[product_redeem-item]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+            </div>
+            <script type="text/javascript">
+                function rewardRedeemItem(formx)
+                {
+                    formx.hdnRewardRedeemItem.value = "1";
+                    check_and_add(formx);
+                }
+            </script> 
+          </div>
+          <!--END: reward_redeem--> 
+          <!--START: make_an_offer-->
+          <div class="make_an_offer">
+            <div class="item">- or -</div>
+            <a href="#" onclick="javascript:popup('makeanoffer.asp?action=newOffer&catalogid=[catalogid]',640,410,false);">[product_make-an-offer]</a> </div>
+          <!--END: make_an_offer--> 
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+      <div class="center"> 
+        <!--START: addGiftRegistry-->
+        <div class="addGiftRegistry button"><a href="javascript:add_giftregistry();" class="icon-btn icon-btn-gift">[product_addtogiftregistry]</a></div>
+        <!--END: addGiftRegistry--> 
+        <!--START: addWishlist-->
+        <div class="addWishlist button"><a href="javascript:add_wishlist();" class="icon-btn icon-btn-heart">[product_addtowishlist]</a></div>
+        <input type="hidden" name="wishListCustomType" id="wishListCustomType" value="" />
+        <input type="hidden" name="wishListCustomId" id="wishListCustomId" value="" />
+        <input type="hidden" name="wishListCustomname" id="wishListCustomname" value="" />
+        <!--END: addWishlist--> 
+      </div>
+      <div class="clear"></div>
+      <!--END: addtocart--> 
+    </div>
+    <div class="clear"></div>
+    <!--START: extended_description-->
+    <div class="extended_descriptionBlock">
+      <div class="header">
+        <h3>[product_Header-description]</h3>
+        <div class="clear"></div>
+      </div>
+      <div class="item" itemprop="description">[extended_description]</div>
+    </div>
+    <div class="clear"></div>
+    <!--END: extended_description--> 
+    <!--START: rewardsPoints-->
+    <div class="rewardsPointsBlock">
+      <div class="header">
+        <h3>[product_Header-rewards]</h3>
+        <div class="clear"></div>
+      </div>
+      <div class="item">[product_rewardsDescription]</div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <!--END: rewardsPoints--> 
+    <!--START: extrafields-->
+    <div class="extrafieldsBlock"> 
+      <!--START: extra_field_1-->
+      <div class="extra_field">
+        <h4>[product_extrafield1]</h4>
+        <div class="info">[extra_field_1]</div>
+        <div class="clear"></div>
+      </div>
+      <!--END: extra_field_1--> 
+      <!--START: extra_field_2-->
+      <div class="extra_field">
+        <h4>[product_extrafield2]</h4>
+        <div class="info">[extra_field_2]</div>
+        <div class="clear"></div>
+      </div>
+      <!--END: extra_field_2--> 
+      <!--START: extra_field_3-->
+      <div class="extra_field">
+        <h4>[product_extrafield3]</h4>
+        <div class="info">[extra_field_3]</div>
+        <div class="clear"></div>
+      </div>
+      <!--END: extra_field_3--> 
+      <!--START: extra_field_4-->
+      <div class="extra_field">
+        <h4>[product_extrafield4]</h4>
+        <div class="info">[extra_field_4]</div>
+        <div class="clear"></div>
+      </div>
+      <!--END: extra_field_4--> 
+      <!--START: extra_field_5-->
+      <div class="extra_field">
+        <h4>[product_extrafield5]</h4>
+        <div class="info">[extra_field_5]</div>
+        <div class="clear"></div>
+      </div>
+      <!--END: extra_field_5--> 
+      <!--START: extra_field_6-->
+      <h4>[product_extrafield6]</h4>
+      <div class="info">[extra_field_6]</div>
+      <!--END: extra_field_6--> 
+      <!--START: extra_field_7-->
+      <h4>[product_extrafield7]</h4>
+      <div class="info">[extra_field_7]</div>
+      <!--END: extra_field_7--> 
+      <!--START: extra_field_8-->
+      <h4>[product_extrafield8]</h4>
+      <div class="info">[extra_field_8]</div>
+      <!--END: extra_field_8--> 
+      <!--START: extra_field_9-->
+      <h4>[product_extrafield9]</h4>
+      <div class="info">[extra_field_9]</div>
+      <!--END: extra_field_9--> 
+      <!--START: extra_field_10-->
+      <h4>[product_extrafield10]</h4>
+      <div class="info">[extra_field_10]</div>
+      <!--END: extra_field_10--> 
+      <!--START: extra_field_11-->
+      <h4>[product_extrafield11]</h4>
+      <div class="info">[extra_field_11]</div>
+      <!--END: extra_field_11--> 
+      <!--START: extra_field_12-->
+      <h4>[product_extrafield12]</h4>
+      <div class="info">[extra_field_12]</div>
+      <!--END: extra_field_12--> 
+      <!--START: extra_field_13-->
+      <h4>[product_extrafield13]</h4>
+      <div class="info">[extra_field_13]</div>
+      <!--END: extra_field_13--> 
+    </div>
+    <!--END: extrafields--> 
+    <!--START: reviews-->
+    <div class="reviewsBlock">
+      <div class="header">
+        <h3>[reviews_header]</h3>
+        <div class="button right">[review_link]</div>
+        <div class="clear"></div>
+      </div>
+      <div itemprop="review" itemscope itemtype="http://schema.org/Review"> 
+        <!--START: user_reviews-->
+        <div class="user_reviews">
+          <div class="star-rating"><img src="assets/templates/common/images/star[rating].png" alt="[rating] Stars" /></div>
+          <div class="review-info"> <strong itemprop="name">[short_review]</strong>
+            <div itemprop="description">[long_review]</div>
+            <!--START: rev_allowratings-->
+            <div class="rev_allowratings"> <strong>[reviews_helpful]</strong>&nbsp;
+              <input type="button" value="[reviews_helpyes]" onclick="updateRevStats('[r_id]',[rev_id], 1)" />
+              <input type="button" value="[reviews_helpno]" onclick="updateRevStats('[r_id]',[rev_id],-1)" />
+              <span id="spnReview[rev_id]"><!--START: rev_helpcount--><strong>[rev_helpful]&nbsp;[reviews_of]&nbsp;[rev_votes]</strong>&nbsp;<em>[reviews_found-helpful]</em><!--END: rev_helpcount--></span> </div>
+            <!--END: rev_allowratings--> 
+            <em>Reviewed by:&nbsp;<!--START: review_verified--><span class="verified-buyer">[reviews_verified-buyer]</span>&nbsp;<!--END: review_verified--><span itemprop="author">[user_name]</span> from [user_city]. 
+            <!--START: user_email--> 
+            <a href="mailto:[user_email]">[user_email]</a> 
+            <!--END: user_email--> 
+            on [review_date]</em>
+            <div style="display: none;" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"> <span itemprop="ratingValue">[rating]</span>/<span itemprop="bestRating">5</span> </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!--END: user_reviews--> 
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!--END: reviews--> 
+    <!--START: qa--> 
+    <a name="qa"></a>
+    <div class="qaBlock" itemprop="qa" itemscope itemtype="http://schema.org/QA">
+      <div class="header">
+        <h3>[productqa_header]</h3>
+        <div class="qa_link button right">[qa_link]</div>
+        <div class="clear"></div>
+      </div>
+      <!--START: qa_list-->
+      <div class="qa_list"> <span class="q">[productqa_q]</span>&nbsp;<strong itemprop="name">[question]</strong>
+        <div class="q-author"> <em>[productqa_question-submit-by]:&nbsp;<span itemprop="author">[q_user_name]</span> 
+          <!--START: q_user_email--> 
+          <a href="mailto:[q_user_email]">[q_user_email]</a> 
+          <!--END: q_user_email--> 
+          - [q_date_added]</em> 
+          <!--START: qa_answers-->
+          <div class="qa_answers"> <span class="a">[productqa_a]</span>&nbsp;[answer] 
+            <!--START: qa_allowratings-->
+            <div class="qa_allowratings"> <strong>[productqa_answer-helpful]</strong>&nbsp;
+              <input type="button" id="btnYes" value="[productqa_helpyes]" onclick="updateQAStats('[ans_id]',[a_id],1)" />
+              <input type="button" id="btnNo" value="[productqa_helpno]" onclick="	updateQAStats('[ans_id]',[a_id],-1)" />
+              <em><strong><span id="spn[a_id]">[a_helpful]&nbsp;[productqa_of]&nbsp;[a_votes]</span></strong>&nbsp;[productqa_found-helpful]</em> </div>
+            <!--END: qa_allowratings--> 
+            <em>[productqa_answer-submit-by]: &nbsp;<span itemprop="author">[a_user_name] ([a_date_added])</span></em> </div>
+          <!--END: qa_answers--> 
+          <!--START: qa_noanswers-->
+          <div class="qa_noanswers">[productqa_no-answers]</div>
+          <!--END: qa_noanswers-->
+          <div class="clear"></div>
+          <!--START: qa_allowuserresponse--> 
+          <div class="button right"><a rel="nofollow" onclick="javascript:popup('productqa.asp?action=newAns&catalogid=[catalogid]&qa_id=[qa_id]',650,550,false);" class="icon-btn icon-btn-edit">([productqa_submit-answer])</a></div>
+          <!--END: qa_allowuserresponse--> 
+        </div>
+        <div class="clear"></div>
+        <!--END: qa_list--> 
+      </div>
+    </div>
+    <!--END: qa--> 
+    <!--START: related_0-->
+    <div class="relatedBlock">
+      <div class="header">
+        <h3>[product_Header-relateditems]</h3>
+        <div class="clear"></div>
+      </div>
+      <!--START: related_items0-->
+      <div class="product-item alternative">
+        <div class="img"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=0&maxy=150" alt="[name]" /></a></div>
+        <div class="name"><a href="product.asp?itemid=[catalogid]">[name]</a></div>
+        <!--START: product_review--> 
+        <!--START: product_review_average-->
+        <div class="stars"><img src="assets/templates/common/images/star[review_average].png" alt="Average Rating" /></div>
+        <!--END: product_review_average--> 
+        <!--END: product_review-->
+        <div class="price"><!--START: ITEMPRICE--> 
+          [product_yourprice]&nbsp;[ITEMPRICE] 
+          <!--END: ITEMPRICE--> 
+          <!--START: SALEPRICE--> 
+          [product_onsale]&nbsp;[ITEMSALEPRICE]
+          <div class="on-sale">[product_sale]</div>
+          <!--END: SALEPRICE--></div>
+        <div class="action">
+          <input type="button" value="[category_buyitlink]" onclick="window.location='add_cart.asp?quick=1&item_id=[catalogid]'" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!--END: related_items0--> 
+    </div>
+    <div class="clear"></div>
+    <!--END: related_0--> 
+    <!--START: accessories_0-->
+    <div class="accessoriesBlock">
+      <div class="header">
+        <h3>[product_Header-accessories]</h3>
+        <div class="clear"></div>
+      </div>
+      <!--START: accessories_items0-->
+      <div class="product-item alternative">
+        <div class="img"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=0&maxy=150" alt="[name]" /></a></div>
+        <div class="name"><a href="product.asp?itemid=[catalogid]">[name]</a></div>
+        <!--START: product_review--> 
+        <!--START: product_review_average-->
+        <div class="stars"><img src="assets/templates/common/images/star[review_average].png" alt="Average Rating" /></div>
+        <!--END: product_review_average--> 
+        <!--END: product_review-->
+        <div class="price"><!--START: ITEMPRICE--> 
+          [product_yourprice]&nbsp;[ITEMPRICE] 
+          <!--END: ITEMPRICE--> 
+          <!--START: SALEPRICE--> 
+          [product_onsale]&nbsp;[ITEMSALEPRICE]
+          <div class="on-sale">[product_sale]</div>
+          <!--END: SALEPRICE--></div>
+        <div class="action">
+          <input type="button" onclick="window.location='add_cart.asp?quick=1&item_id=[catalogid]'" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" value="[category_buyitlink]" />
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!--END: accessories_items0--> 
+    </div>
+    <div class="clear"></div>
+    <!--END: accessories_0--> 
+    <!--START: browsing_history-->
+    <div class="browsing_historyBlock">
+      <div class="header">
+        <h3>[product_browsing-history-header]</h3>
+        <div class="clear"></div>
+      </div>
+      <div class="history-disable-btn">
+        <input type="button" onclick="window.location.href='product.asp?itemid=[catalogid]&delhist=0';" name="" value="<!--START: browsing_history_enable-->[product_browsing-history-disable]<!--END: browsing_history_enable-->" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+      </div>
+      <div class="clear"></div>
+      <!--START: browsing_history_items-->
+      <div class="product-item alternative">
+        <div class="img"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=0&maxy=150" alt="[name]" /></a></div>
+        <div class="name"><a href="product.asp?itemid=[catalogid]">[name]</a></div>
+        <div class="price"><!--START: ITEMPRICE--> 
+          [product_yourprice]&nbsp;[ITEMPRICE] 
+          <!--END: ITEMPRICE--> 
+          <!--START: SALEPRICE--> 
+          [product_onsale]&nbsp;[ITEMSALEPRICE]
+          <div class="on-sale">[product_sale]</div>
+          <!--END: SALEPRICE--></div>
+        <div class="action">
+          <input type="button" onclick="window.location.href='product.asp?itemid=[item_id]&delhist=[catalogid]';" name="" value="Clear" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!--END: browsing_history_items--> 
+    </div>
+    <div class="clear"></div>
+    <!--END: browsing_history--> 
+    <!--START: BREADCRUMBS-->
+    <div class="breadcrumbsBlock">
+      <div class="header">
+        <h3>[product_Header-breadcrumbs]</h3>
+        <div class="clear"></div>
+      </div>
+      <ul>
+        <!--START: CATEGORY_BREADCRUMBS-->
+        <li>[CATEGORY_BREADCRUMBS]</li>
+        <!--END: CATEGORY_BREADCRUMBS-->
+      </ul>
+    </div>
+    <!--END: BREADCRUMBS--> 
+    <!--START: CATEGORY_FOOTER-->
+<div class="category-footer" id="listingFooter">[CONTENT]</div>
+    <!--END: CATEGORY_FOOTER-->
+  </form>
+</div>
+</section>
+<script type="text/javascript">
+    $(function() {
+        $('#giftcertificate_block input').focusin(function () {
+            $(this).next('div.info-tip').animate({
+                right: '0px',
+                opacity: 1.0
+            }, 250);
+        });
+        $('#giftcertificate_block input').focusout(function () {
+            $(this).next('div.info-tip').animate({
+                right: '-50px',
+                opacity: 0
+            }, 250);
+        });
+        $('#giftcertificate_block textarea').focusin(function () {
+            $(this).next('div.info-tip').animate({
+                top: '-25px',
+                width: '125px',
+                right: '0px',
+                opacity: 1.0
+            }, 250);
+        });
+        $('#giftcertificate_block textarea').focusout(function () {
+            $(this).next('div.info-tip').animate({
+                top: '-25px',
+                width: '125px',
+                right: '-50px',
+                opacity: 0
+            }, 250);
+        });
+
+        $('#tabProdVideo').on('click', function() {
+            $('div#realmediaBlock').show();
+            $('div#imagesBlock').hide();
+        });
+  
+        $('#tabProdImage').on('click', function() {
+            $('div#realmediaBlock').hide();
+            $('div#imagesBlock').show();
+        });
+  
+        $('#listing0 .reviewsBlock .button a').addClass('icon-btn icon-btn-down');
+  
+        $('#listing0 .qa_link a').addClass('icon-btn icon-btn-down');
+  
+    });
+</script> 
+<script type="text/javascript"><!--
+    //thumbnail script
+    var image1,image2,image3,image4,selectedimage;
+    var imagemaxwidth, imagemaxheight
+
+    imagemaxwidth=[image_medium_w];
+    imagemaxheight=0;
+
+    image1="[image1]";
+    image2="[image2]";
+    image3="[image3]";
+    image4="[image4]";
+    imagecaption1="[imagecaption1]";
+    imagecaption2="[imagecaption2]";
+    imagecaption3="[imagecaption3]";
+    imagecaption4="[imagecaption4]";
+    selectedimage='[image1]'; //pre load image1
+    zoom_enable=[3dzoom_enabled]; //0 = zoomify | 1 = magiczoom
+
+    function image_click(clicks)
+    {
+        if (document.getElementById('listing_main_image_link')!=undefined)
+        {
+            if (zoom_enable==1)
+            {
+                selectedimage=eval('image'+clicks);
+                MagicZoomPlus.update('listing_main_image_link', selectedimage, 'thumbnail.asp?file=' + selectedimage + '&maxx='+imagemaxwidth+'&maxy='+imagemaxheight, 'show-title: false');
+                changecontent("imagecaptiont",eval('imagecaption'+clicks));
+                document.getElementById('listing_main_image_link').href=this.name;
+            }else
+            {
+		
+                selectedimage=eval('image'+clicks);
+                document.getElementById('large').src='thumbnail.asp?file=' + selectedimage + '&maxx='+imagemaxwidth+'&maxy='+imagemaxheight;
+                document.getElementById('listing_main_image_link').href='#';
+                document.getElementById('listing_main_image_link').onclick=zoomify_popup;
+                changecontent("imagecaptiont",eval('imagecaption'+clicks));
+            }}
+    }
+    function zoomify_popup()
+    {
+        popupsimple('zoomify.asp?catalogid=[catalogid]&img=' + selectedimage ,500,500);
+    }
+
+    function check_stock(what,partnum)
+    {
+        var soption;
+        var i;
+        var product_availability='[availability]';
+        var backordermode='[allowbackorder]';
+        var avail_instock='[productAvailability-Instock]';
+        var avail_outofstock='[productAvailability-Outofstock]';
+        var avail_backorder='[productAvailability-Backorder]';
+        var optionfound=0;
+
+        if (inventoryarray[catalogid].length==0) //if there is no advanced options, don't look for stock
+        {
+            return true;
+        }
+        else
+        {
+            for(i=0;i<inventoryarray[catalogid].length;i++) 
+            {
+                soption=inventoryarray[catalogid][i];
+                field_array=soption.split("-");
+                //Dynamic Part for advanced options
+                if (typeof((idarray[catalogid])) != "undefined")
+                {
+                    soptionid=idarray[catalogid][i]; 
+                    aoprice=aopricearray[catalogid][i]; 
+                    if (field_array[0]==partnum)
+                    {
+                        if (soptionid != '')
+                            changeid(soptionid); 
+                        if (aoprice != '0')
+                            changeprice(aoprice);
+                    }
+                }
+			
+                if ((field_array[0]==partnum))
+                {	
+                    changecontent("product_inventory",field_array[1]);
+                    if (eval(GetValue(what,"qty-0"))>field_array[1]) 
+                    {
+                        optionfound=optionfound+1;
+                        if (backordermode==1)
+                        {
+                            changecontent("availability",avail_backorder); 
+                            return true;
+                            optionfound=optionfound+1;
+                        }
+                        else 
+                        {
+                            changecontent("availability",avail_outofstock);
+                            alert("The options you selected are not currently available.");
+                            optionfound=optionfound+2;
+                            return false;
+                        }
+                    }
+
+                }
+            }
+
+            if (optionfound==0)
+            { 
+                changecontent("availability",product_availability);
+                return true;
+            }
+		
+            if (optionfound==1)
+            {
+                changecontent("availability",avail_instock);
+                return true;
+            }
+        }
+    }
+
+
+    function add_wishlist()
+    {
+        if ('[Enabled_Multiple_WishList]' == '1')
+        {
+            window.open('[link_addtolist]','popup','height=300,width=550,location=no,scrollbars=no,menubars=no,toolbars=no,resizable=yes');
+			
+		 
+        }
+        else
+        {
+            document.add.action = "add_cart.asp?action=addWishList";
+            document.add.submit();
+        }
+    }
+
+    function add_giftregistry()
+    {
+        document.add.action = "add_cart.asp?action=addGiftRegistry";
+        document.add.submit();
+    }
+
+    function check_and_add(formx)
+    {
+
+        if (document.add.std_price==null)
+        {
+            document.add.submit();
+        }
+        else
+        {
+            var readytoadd=validateValues(formx,1)
+            if (readytoadd==true)
+            {
+                document.add.submit();
+            }
+        }
+    }
+
+    function add_wishlistcustom(strListType, intListId, strListName)
+    {
+        document.add.wishListCustomType.value = strListType;
+        document.add.wishListCustomId.value = intListId;
+        document.add.wishListCustomname.value = strListName;
+        document.add.action = "add_cart.asp?action=addWishList";
+        document.add.submit();
+    }
+    // --></script> 
+<script type="text/javascript">
+    var currency_symbol='[currency]';
+    var prod_decimal_places='[prod_decimal_places]';
+    validateValues(document.add,1);
+    window.setTimeout("image_click(1)", 1000);
+</script> 
+<script type="text/javascript">
+    function selectOption(objElement) {
+
+        var strElementName = "";
+        var strElementType = "";
+        var intHasRules = "[has_rules]";
+        objElement = null;
+
+        if (intHasRules != "1") {
+            return;
+        }
+
+        add_overlay("divOptionsBlock", 1);
+        var url = 'prod_options.asp?ajax=1&action=buildOptions&strElementType=' + escape(strElementType) + '&strElementName=' + escape(strElementName) + '&no-cache=' + Math.random();
+
+        jQuery.ajax({
+            url: url,
+            dataType: 'html',
+            type: 'POST',
+            data: jQuery(add).serialize(),
+            cache: false,
+            success: function (strResult) {
+                jQuery("#divOptionsBlock").html(strResult);
+            },
+            complete: afterOptionSelection,
+            error: reportError
+        });
+    }
+
+    function afterOptionSelection(req) {
+        remove_overlay("divOptionsBlock");
+        return;
+    }
+
+    function getElementById_s(strId) {
+        var obj = null;
+        if (document.getElementById) {
+            obj = get_Element(strId);
+        } else if (document.all) {
+            obj = document.all[strId];
+        }
+        return obj;
+    }
+
+    function remove_overlay(panel) {
+        var objBody = getElementById_s('overlay_' + panel);
+        if (objBody != null && objBody != 'null' && objBody != undefined && objBody != 'undefined')
+            objBody.style.display = 'none';
+    }
+
+    function add_overlay(panel, loading) {
+        var objBody = getElementById_s(panel);
+        var objOverlay = document.createElement("div");
+
+        objOverlay.setAttribute('id', 'overlay_' + panel);
+        objOverlay.className = 'overlay';
+        objOverlay.style.position = 'absolute';
+        objOverlay.style.textAlign = 'center';
+        objOverlay.style.width = objBody.clientWidth + "px";
+        objOverlay.style.height = objBody.clientHeight + "px";
+        //alert(objOverlay.style.height);
+        objBody.insertBefore(objOverlay, objBody.firstChild);
+        objOverlay.style.display = 'block';
+
+        if (loading == 1) {
+            get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td style="text-align: center;"><img src="assets/templates/common/images/loading.gif"></td></tr></table>';
+        }
+        else {
+            get_Element('overlay_' + panel).innerHTML = '<table border=0 width=100% height=100%><tr><td align="center"></td></tr></table>';
+        }
+    }
+
+    function get_Element(i) {
+        return document.getElementById(i) || document.getElementsByName(i).item(0);
+    }
+
+    function reportError(jqXHR, textStatus) {
+        remove_overlay("divOptionsBlock");
+
+        //jqXHR.responseText
+        if (jqXHR.status > 0)
+            alert("Error processing request " + jqXHR.status + " - " + textStatus);	
+    }
+
+    selectOption(null);
+</script>

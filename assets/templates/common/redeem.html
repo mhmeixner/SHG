@@ -1,0 +1,61 @@
+<table width="95%" cellspacing="0" cellpadding="2" border="0">
+ <tr><td class="page_headers" align="left">[rewards_details-detail] </td><!--START: myAccount--><td valign="middle" align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a>&nbsp;<a href="myaccount.asp">back to my account</a></td><!--END: myAccount-->
+	</tr>
+    <tr><td colspan="2">&nbsp;</td></tr>
+
+
+<!--START: CATEGORY_HEADER-->              
+
+	<tr> 
+		<td class="data" colspan="2">[CONTENT]</td>
+	</tr>
+    <tr><td>&nbsp;</td></tr>
+
+<!--END: CATEGORY_HEADER-->
+
+
+	<tr> 
+		<td class="checkout-headers" colspan="2">[rewards_redeem-redeemItem]</td>
+	</tr>
+
+
+	<tr><td colspan="2"><table width="100%" cellpadding="0" cellspacing="0" class="alternative"><tr> 
+		<td width="100%" colspan="2" class="item">
+			<b>You are about to redeem:</b> <br />
+			<br>
+			[name]
+			<br><br />
+			<strong>for
+		
+			[points] points.</strong>			<br>
+			<br>
+			Your current point balance is [user_points]
+			<br><br></td></tr>
+			<!--START: redeem_true-->
+             <tr><td class="options-titles" colspan="2"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="3"></td></tr>
+             <tr><td colspan="2" class="item">
+			<b>Your balance  after this purchase will be [user_pointsafter].</b>
+        <tr><td class="options-titles" colspan="2"><img src="assets/templates/common/images/spacer.gif" border="0" alt="" height="3"></td></tr>
+               <tr><td>
+			<br>
+			<input type=button value="Click here to redeem" onClick="location.href='redeem.asp?action=redeemitem&item_id=[catalogid]';" class="btn"  onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+			<br><br>
+			<!--END: redeem_true-->
+		
+			<!--START: redeem_false-->
+			Currently you do not  have enough points to redeem this item.
+			<!--END: redeem_false-->
+		</td>
+  </tr></table></td></tr>
+
+
+
+<!--START: CATEGORY_FOOTER-->              
+<tr><td>&nbsp;</td></tr>
+	<tr> 
+		<td  class="data" colspan="2">[CONTENT]</td>
+	</tr>
+
+<!--END: CATEGORY_FOOTER-->
+
+</table> 

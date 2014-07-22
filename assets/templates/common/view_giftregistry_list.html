@@ -1,0 +1,205 @@
+
+<table width="95%" cellpadding="0" cellspacing="0" border="0">
+	<form action="view_giftregistry.asp?id=[custid]" method="post" name="frmForm">
+		<input type="hidden" name="action"	id="action"	value="">
+		<input type="hidden" name="wsiId"	id="wsiId"	value="">
+		<tr>
+			<td class="page_headers"colspan="8" valign="top">[giftregistry_view-title]</td>
+		</tr>
+        <!--START: GFT_REG_INFO-->
+		<tr>
+			<td class="data"colspan="8" valign="top">[regName]</td>
+		</tr>
+		<tr>
+			<td class="data"colspan="8" valign="top">[regMessage]</td>
+		</tr>
+        <!--END: GFT_REG_INFO-->
+		<!--START: CATEGORY_HEADER-->
+		<tr>
+			<td colspan="8" valign="top"><table width="100%" cellspacing="0" cellpadding="2" border="0">
+					<tr>
+						<td class="data"><br>[CONTENT]</td>
+					</tr>
+				</table></td>
+		</tr>
+		<!--END: CATEGORY_HEADER-->
+
+        <!--START: GFT_REG_ITEM_ADDED_TO_CART-->
+		    <tr>
+			    <td colspan="10">&nbsp;</td>
+		    </tr>
+		    <tr>
+			    <td colspan="10" align="center" class="titles2">
+                    [giftregistry_view-item-added-to-the-cart]
+                </td>
+		    </tr>
+        <!--END: GFT_REG_ITEM_ADDED_TO_CART-->
+
+		<tr>
+			<td colspan="10">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="titles2" align="left" colspan="2"><strong>[giftregistry_view-header-items]</strong></td>
+			<td width="8%" class="titles2" style="text-align:left;"><strong>[giftregistry_view-header-desired]</strong></td>
+			<td width="8%" class="titles2" align="center"><strong>[giftregistry_view-header-received]</strong></td>
+			<td width="8%" class="titles2" align="right"><strong>[giftregistry_view-header-price]</strong></td>
+			<td width="8%" class="titles2" align="right"><strong>[giftregistry_view-header-subtotal]</strong></td>
+			<td class="titles2" colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--START: GFT_REG_NO_ITEM-->
+		<tr>
+			<td height="60" valign="middle" align="center" colspan="10" class="item"> [giftregistry_view-emptylist] </td>
+		</tr>
+		<tr>
+			<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--END: GFT_REG_NO_ITEM-->
+		<!--START: GFT_REG_ITEM-->
+		<tr>
+			<td width="8%" height="60" valign="middle"><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="55" width="55"></a></td>
+			<td width="45%" class="item" valign="middle" align="left">&nbsp;<a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a>
+				<!--START: itemoptions-->
+				<br>
+				<a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a><br>
+				<div id=opt[ITEM_ID] name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div>
+				<!--END: itemoptions--></td>
+			<td valign="middle" class="item" style="text-align:left;" nowrap><!--START: GFT_REG_ITEM_QUANTITY_FIXED-->
+				[ITEM_QUANTITY]
+				<!--END: GFT_REG_ITEM_QUANTITY_FIXED-->
+				<!--START: GFT_REG_ITEM_QUANTITY_EDITABLE-->
+				<input type="text" name="txtQty[ITEM_ID]" id="txtQty[ITEM_ID]" size="2" maxlength="4" value="[ITEM_QUANTITY]">
+				<!--END: GFT_REG_ITEM_QUANTITY_EDITABLE-->
+				<!--START: GFT_REG_REMOVE-->
+				<input type="button" value=" X " height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="javascript:removeItem([ITEM_ID]);">
+				<!--END: GFT_REG_REMOVE-->
+			</td>
+			<td valign="middle" class="item" align="center">[ITEM_RECEIVED]</td>
+			<td valign="middle" class="item" align="right">[ITEM_PRICE]</td>
+			<td valign="middle" class="item" align="right">[ITEM_SUBTOTAL]</td>
+			<td align="right" class="item"><!--START: GFT_REG_ITEM_NOT_AVLB-->
+				[giftregistry_view-prod-not-available] <br>
+				<!--END: GFT_REG_ITEM_NOT_AVLB-->
+				<!--START: GFT_REG_ITEM_PURCHASED-->
+				[giftregistry_view-prod-purchased]
+				<!--END: GFT_REG_ITEM_PURCHASED-->
+				<!--START: GFT_REG_ITEM_ADDCART-->
+				Qty:
+				<select id="drpItems[ITEM_ID]" name="drpItems[ITEM_ID]">
+					<!--START: GFT_REG_DRPITEMS-->
+					<option value="[j]">[j]</option>
+					<!--END: GFT_REG_DRPITEMS-->
+				</select>
+				&nbsp;&nbsp; <br>
+				<input type="button" value="[product_addtocart]" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="javascript:addToCart([ITEM_ID]);">
+				<br>
+				<!--END: GFT_REG_ITEM_ADDCART-->
+				<!--START: GFT_REG_SAVE-->
+				<input type="button" value="Save" height="5" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="javascript:saveItem([ITEM_ID]);">
+				<!--END: GFT_REG_SAVE-->
+			</td>
+		</tr>
+		<tr>
+			<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--END: GFT_REG_ITEM-->
+		<!--START: GFT_REG_PURCHASED_ITEM-->
+		<tr>
+			<td height="10" colspan="10"><br>
+				<br>
+				<br></td>
+		</tr>
+		<tr>
+			<td height="10" colspan="10" class="checkout-headers"><b>[giftregistry_view-header-purchaseditems]</td>
+		</tr>
+		<tr>
+			<td class="titles2" align="left" colspan="5"><strong>[giftregistry_view-header-items]</strong></td>
+			<td class="titles2" align="center"><strong>[giftregistry_view-header-desired]</strong></td>
+			<td class="titles2" align="center"><strong>[giftregistry_view-header-received]</strong></td>
+		</tr>
+		<tr>
+			<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--START: GFT_REG_NO_PURCHASED_ITEM-->
+		<tr>
+			<td height="60" valign="middle" align="center" colspan="10" class="item"> [giftregistry_view-emptypurchasedlist] </td>
+		</tr>
+		<tr>
+			<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--END: GFT_REG_NO_PURCHASED_ITEM-->
+		<!--START: GFT_REG_PURCHASED_ITEM_DETAIL-->
+		<tr>
+			<td height="60" valign="middle"><a href="product.asp?itemid=[ITEM_CATALOGID]"><img src="thumbnail.asp?file=[THUMBNAIL]" border="0" height="55" width="55"></a></td>
+			<td class="item" valign="middle" align="left" colspan="4">&nbsp;<a href="product.asp?itemid=[ITEM_CATALOGID]">[ITEM_NAME]</a>
+				<!--START: itemoptions-->
+				<br>
+				<a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a><br>
+				<div id="Div1" name=opt[ITEM_ID] style="display:none;">[OPTIONS]</div>
+				<!--END: itemoptions--></td>
+			<td valign="middle" class="item" align="center">[ITEM_QUANTITY]</td>
+			<td valign="middle" class="item" align="center">[ITEM_RECEIVED]</td>
+		</tr>
+		<tr>
+			<td height="1" colspan="7" class="borders2"><img src="assets/images/spacer.gif" height="1"></td>
+		</tr>
+		<!--END: GFT_REG_PURCHASED_ITEM_DETAIL-->
+		<!--END: GFT_REG_PURCHASED_ITEM-->
+		<!--START: GFT_REG_BACK-->
+		<tr>
+			<td colspan="7" align="center"><br>
+				<input type="button" value="Back to My Gift Registry" height="5" class="btn" onclick="javascript:location.href='giftregistry_edit.asp?action=view';" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+			</td>
+		</tr>
+		<!--END: GFT_REG_BACK-->
+	</form>
+</table>
+<!--START: CATEGORY_FOOTER-->
+<table width="95%" cellspacing="0" cellpadding="2" border="0">
+	<tr>
+		<td class="data"><br>
+			[CONTENT]</td>
+	</tr>
+</table>
+<!--END: CATEGORY_FOOTER-->
+<script>
+function submitForm(strAction)
+{
+	window.document.body.style.cursor = 'wait';
+	if(window.document.activeElement){window.document.activeElement.style.cursor='wait'; }
+	
+	document.frmForm.action.value = strAction;
+	document.frmForm.submit();
+}
+	  
+function removeItem(intWsiId)
+{
+	var rep;
+	rep = confirm("[giftregistry_view-message-removeitem]");
+	if (!rep)
+		return false;
+	
+	document.frmForm.wsiId.value = intWsiId;
+	submitForm('removeItem');
+}
+
+function saveItem(intWsiId)
+{
+	document.frmForm.wsiId.value = intWsiId;
+	submitForm('saveItem');
+}
+
+function addToCart(intWsiId)
+{
+	var rep;
+	rep = confirm("[wishlist_viewwishlist-message-addtocart]");
+	if (!rep)
+		return false;
+	
+	document.frmForm.wsiId.value = intWsiId;
+	submitForm('addToCart');
+}
+</script>
+

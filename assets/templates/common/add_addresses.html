@@ -1,0 +1,166 @@
+<script type="text/javascript" src="state_countryjs.asp"></script>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="0">
+	<tr>
+		<td class="page_headers" align="left">[account_Update-Address]</td>
+		<!--START: myAccount-->
+		<td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td>
+		<!--END: myAccount-->
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<form action="myaccount.asp?action=updateaddress&reqPage=[reqPage]&shipmentid=[shipmentid]" method="post" name="checkoutform">
+        <input type="hidden" name="tknio" value="[tknio]">
+		<input type="hidden" name="id" value="[id]">
+		<input type="hidden" name="update" value="1">
+		<tr>
+			<td colspan="2" align="center"><table cellpadding="0" cellspacing="3" class="alternative">
+					<!--START: SAVE_ADDRESSES-->
+					<tr>
+						<td width="41%" align="right" class="item"><strong>[account_Address-Alias]</strong></td>
+						<td><input name="address_alias" type="text" id="address_alias" value="[address_alias]" size="25" class="txtBoxStyle" />
+							<!--START: req_shipping_alias-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_alias-->
+						</td>
+					</tr>
+					<!--END: SAVE_ADDRESSES-->
+					<tr>
+						<td width="41%" align="right" class="item"><b>[CustomerInfo_firstname]</b></td>
+						<td width="59%"><input name="shipping_firstname" type="text" id="shipping_firstname" value="[shipping_firstname]" size="15" class="txtBoxStyle" />
+							<!--START: req_shipping_firstname-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_firstname-->
+						</td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_lastname]</b></td>
+						<td><input name="shipping_lastname" type="text" id="shipping_lastname" value="[shipping_lastname]" size="15" class="txtBoxStyle" />
+							<!--START: req_shipping_lastname-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_lastname-->
+						</td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_company]</b></td>
+						<td><input name="shipping_company" type="text" id="shipping_company" value="[shipping_company]" size="25" class="txtBoxStyle" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_phone]</b></td>
+						<td><input name="shipping_phone" type="text" id="shipping_phone" value="[shipping_phone]" size="25" class="txtBoxStyle" />
+							<!--START: req_shipping_phone-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_phone--></td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_address]</b></td>
+						<td><input name="shipping_address" type="text" id="shipping_address" value="[shipping_address]" size="25" class="txtBoxStyle" />
+							<!--START: req_shipping_address-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_address--></td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_address2]</b></td>
+						<td><input name="shipping_address2" type="text" id="shipping_address2" value="[shipping_address2]" size="25" class="txtBoxStyle" /></td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_city]</b></td>
+						<td><input name="shipping_city" type="text" id="shipping_city" value="[shipping_city]" size="25" class="txtBoxStyle" />
+							<!--START: req_shipping_city-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_city--></td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_country]</b></td>
+						<td><select id='shipping_country' name='shipping_country' onchange="populateState('shipping_state','shipping_country')" class="txtBoxStyle" />
+							</select>
+							<!--START: req_shipping_country-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_country-->
+						</td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_state]</b></td>
+						<td><select id='shipping_state' name='shipping_state' class="txtBoxStyle" />
+							
+							</select>
+							<!--START: req_shipping_state-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_state-->
+						</td>
+					</tr>
+					<tr>
+						<td align="right" class="item"><b>[CustomerInfo_zip]</b></td>
+						<td><input name="shipping_zip" type="text" id="shipping_zip" value="[shipping_zip]" size="10" class="txtBoxStyle" />
+							<!--START: req_shipping_zip-->
+							<img src="assets/templates/common/images/error2.gif" width="12" height="12" />
+							<!--END: req_shipping_zip-->
+						</td>
+					</tr>
+                      <!--START: addressType-->
+                        <tr>
+                          <td align="right"  class="item" nowrap><b>[CustomerInfo_address_type]</b>&nbsp;</td>
+                          <td><select name="shipping_addresstype" id="shipping_addresstype" class="txtBoxStyle">
+				                    [addressTypeDropDown]
+                            </select></td>
+                        </tr>
+                      <!--END: addressType--> 
+					<tr>
+						<td align="right" class="item">&nbsp;</td>
+						<td><input type="button" name="back" onclick="javascript:history.back(1);" value="Back" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" id="Submit1"/>
+							<input type="submit" name="Submit" value="[account_Update-Address]" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" />
+						</td>
+					</tr>
+				</table></td>
+		</tr>
+	</form>
+</table>
+<script type="text/javascript">
+initCountry('[shipping_country]','[shipping_state]','shipping_state','shipping_country'); 
+</script>
+<script language="javascript" type="text/javascript">
+//You should create the validator only after the definition of the HTML form
+var frmvalidator = new Validator("checkoutform");
+
+frmvalidator.setAddnlValidationFunction("submitForm");
+
+
+
+frmvalidator.addValidation("address_alias","req","Please enter a address alias. Example: My address");
+frmvalidator.addValidation("address_alias","maxlen=25","Max length for Shipping Alias is 25");
+
+
+frmvalidator.addValidation("shipping_firstname","req","Please enter your First Name");
+frmvalidator.addValidation("shipping_firstname","maxlen=20","Max length for First Name is 20");
+
+
+frmvalidator.addValidation("shipping_lastname","req","Please enter your Last Name");
+frmvalidator.addValidation("shipping_lastname","maxlen=20","Max length for Last Name is 20");
+
+
+frmvalidator.addValidation("shipping_phone","maxlen=18","Max length for Phone is 18");
+frmvalidator.addValidation("shipping_phone","req","Please enter your phone");
+
+frmvalidator.addValidation("shipping_address","maxlen=50","Max length for Address is 50");
+frmvalidator.addValidation("shipping_address","req","Please enter your address");
+
+frmvalidator.addValidation("shipping_address2","maxlen=40","Max length for Suite/Apt# is 40");
+
+frmvalidator.addValidation("shipping_city","maxlen=50","Max length for City is 50");
+frmvalidator.addValidation("shipping_city","req","Please enter your City");
+
+frmvalidator.addValidation("shipping_country","maxlen=50");
+frmvalidator.addValidation("shipping_country","req",0);
+
+frmvalidator.addValidation("shipping_state","maxlen=50","Max length for State is 50");
+frmvalidator.addValidation("shipping_state","req",0);
+
+frmvalidator.addValidation("shipping_zip","maxlen=15","Max length for Zip is 15");
+frmvalidator.addValidation("shipping_zip","req","Please enter your zip code");
+
+
+       
+</script>
+</body></html>

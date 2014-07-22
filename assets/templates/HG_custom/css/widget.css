@@ -1,0 +1,484 @@
+#_bcWc html, #_bcWc body, #_bcWc div, #_bcWc span, #_bcWc applet, #_bcWc object, #_bcWc iframe, #_bcWc h1, #_bcWc h2, #_bcWc h3, #_bcWc h4, #_bcWc h5, #_bcWc h6, #_bcWc p, #_bcWc blockquote, #_bcWc pre, #_bcWc a, #_bcWc abbr, #_bcWc acronym, #_bcWc address, #_bcWc big, #_bcWc cite, #_bcWc code, #_bcWc del, #_bcWc dfn, #_bcWc em, #_bcWc img, #_bcWc ins, #_bcWc kbd, #_bcWc q, #_bcWc s, #_bcWc samp, #_bcWc small, #_bcWc strike, #_bcWc strong, #_bcWc sub, #_bcWc sup, #_bcWc tt, #_bcWc var, #_bcWc b, #_bcWc u, #_bcWc i, #_bcWc center, #_bcWc dl, #_bcWc dt, #_bcWc dd, #_bcWc ol, #_bcWc ul, #_bcWc li, #_bcWc fieldset, #_bcWc form, #_bcWc label, #_bcWc legend, #_bcWc table, #_bcWc caption, #_bcWc tbody, #_bcWc tfoot, #_bcWc thead, #_bcWc tr, #_bcWc th, #_bcWc td, #_bcWc article, #_bcWc aside, #_bcWc canvas, #_bcWc details, #_bcWc embed, #_bcWc figure, #_bcWc figcaption, #_bcWc footer, #_bcWc header, #_bcWc hgroup, #_bcWc menu, #_bcWc nav, #_bcWc output, #_bcWc ruby, #_bcWc section, #_bcWc summary, #_bcWc time, #_bcWc mark, #_bcWc audio, #_bcWc video {background-attachment:scroll;background-color:transparent;background-image:none;background-position:0 0;background-repeat:repeat;border-color:black;border-color:currentColor;border-radius:0;border-style:none;border-width:medium;bottom:auto;clear:none;clip:auto;color:inherit;counter-increment:none;counter-reset:none;cursor:auto;direction:inherit;display:block;float:none;font-family: inherit;font-size: inherit;font-style:inherit;font-variant:normal;font-weight:inherit;height:auto;left:auto;letter-spacing:normal;line-height:inherit;list-style-type: inherit;list-style-position: outside;list-style-image: none;margin:0;max-height:none;max-width:none;min-height:0;min-width:0;opacity:1;outline:invert none medium;overflow:visible;padding:0;position:static;quotes: "" "";table-layout:auto;text-align:inherit;text-decoration:inherit;text-indent:0;text-transform:none;top:auto;unicode-bidi:normal;vertical-align:baseline;visibility:inherit;white-space:normal;width:auto;word-spacing:normal;z-index:auto;text-shadow: none;-moz-border-radius:0;-webkit-border-radius:0;border-radius:0;-moz-box-sizing: content-box;-webkit-box-sizing: content-box;box-sizing: content-box;}
+#_bcWc article,#_bcWc aside,#_bcWc details,#_bcWc figcaption,#_bcWc figure,#_bcWc footer,#_bcWc header,#_bcWc hgroup,#_bcWc menu,#_bcWc nav,#_bcWc section{display:block}
+#_bcWc{
+    width:480px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+	background-color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+	display:none;
+}
+#_bcWc ._bcESc input{width: 100%;}
+#_bcWc ._bcESc label{text-align: left;}
+@media only screen and (min-width: 320px) {
+	#_bcWc{width:320px;}
+	#_bcWc ._bcESc input{width: 100%;}
+	#_bcWc ._bcESc label{text-align: left;}
+	#_bcWc ._bcCc ._bcCDc{width: 160px;}
+}
+@media only screen and (min-width: 480px) {
+	#_bcWc{width:480px;}
+	#_bcWc ._bcESc input{width: 100%;}
+	#_bcWc ._bcESc label{text-align: left;}
+	#_bcWc ._bcCc ._bcCDc{width: 320px;}
+}
+@media only screen and (min-width: 600px) {
+	#_bcWc{width:525px;}
+	#_bcWc ._bcESc input{width: 87%;}
+	#_bcWc ._bcESc label{text-align: right;}
+	#_bcWc ._bcCc ._bcCDc{width: 366px;}
+}
+@media only screen and (min-width: 768px) {
+	#_bcWc{width:525px;}
+	#_bcWc ._bcESc input{width: 87%;}
+	#_bcWc ._bcESc label{text-align: right;}
+	#_bcWc ._bcCc ._bcCDc{width: 366px;}
+}
+@media only screen and (min-width: 992px) {
+	#_bcWc{width:525px;}
+	#_bcWc ._bcESc input{width: 87%;}
+	#_bcWc ._bcESc label{text-align: right;}
+	#_bcWc ._bcCc ._bcCDc{width: 366px;}
+}
+@media only screen and (min-width: 1382px) {
+	#_bcWc{width:525px;}
+	#_bcWc ._bcESc input{width: 87%;}
+	#_bcWc ._bcESc label{text-align: right;}
+	#_bcWc ._bcCc ._bcCDc{width: 366px;}
+}
+
+#_bcWc h1, h2, h3{
+	font-family:Arial, Helvetica, sans-serif;
+}
+#_bcWc a{
+    color: #FFF;
+    text-decoration: none;
+    cursor:pointer;
+}
+#_bcWc textarea:focus, #_bcWc button:focus, #_bcWc input:focus, #_bcWc a:focus{
+	outline: 0 none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+    border-radius:3px;
+}
+#_bcWc button::-moz-focus-inner {
+  border: 0;
+}
+
+ #_bcWc input, #_bcWc textarea{
+	border-radius:3px;
+	border: solid 1px #ccc;
+	resize: none;
+ }
+#_bcWc ._bcClr{
+	zoom:1;
+    background-color: transparent;
+    display: block;
+}
+#_bcWc ._bcClr:after{
+	clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+#_bcWc ._bcHc 
+{
+    display:block;
+	border-radius: 5px 5px 0 0;
+	padding:4px 0 8px 10px;
+	color:#07568B;
+	position:relative;
+}
+#_bcWc ._bcHc h1{
+	display: inline-block;
+	font-size:21px;
+	font-weight: bold;
+    line-height: 100%;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	max-width: 90%;
+	overflow: hidden;
+    color: #07568B;
+}
+#_bcWc ._bcHc ._bcBC{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll 0 30px transparent;
+	cursor:pointer;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    width: 30px;
+    border-radius:20px;
+}
+#_bcWc ._bcHc ._bcBC:hover{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -30px 30px transparent;
+}
+#_bcWc ._bcSNc, #_bcWc ._bcFc{
+    display:block;
+    background-image: url();
+	background-color: #435361;
+    color: white;
+	padding: 10px 20px;
+    width: 485px;
+}
+#_bcWc ._bcSNc{
+
+}
+#_bcWc ._bcFc{
+    border-radius: 0 0 5px 5px;
+}
+#_bcWc ._bcFc > span{
+    display: inline-block;
+    height: 20px;
+}
+#_bcWc ._bcFc ._bcFPc {
+    float:left;
+}
+#_bcWc ._bcFc ._bcFPc, #_bcWc ._bcFc ._bcFPPc
+{
+	font-size: x-small;
+}
+#_bcWc ._bcFc ._bcFPc a span {
+    display:inline-block;
+    cursor:pointer;
+}
+#_bcWc ._bcFc ._bcFPc ._bcLC{
+    background: url("{{APPLICATION_PATH}}widgetImages/calyplogo.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 13px;
+    margin: 1px 0 0 5px;
+    width: 100px;
+}
+#_bcWc ._bcFc ._bcFPPc
+{
+	float:right;
+}
+#_bcWc ._bcFc ._bcFPPc #_bcSpnr {
+    display:none;
+    width:31px;
+    height:31px;
+    background: url("{{APPLICATION_PATH}}widgetImages/BC-ajax-loader.gif") repeat scroll 0 0 transparent;
+}
+#_bcWc ._bcSNc h3{
+    display:block;
+	font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+}
+#_bcWc ._bcSNc _bcUIc {
+    display:none;
+}
+#_bcWc ._bcSNc span{
+    display:inline;
+    font-size: 12px;
+    font-weight: bold;
+}
+#_bcWc ._bcSNc span a#_bcNYa{
+    display:inline;
+    text-decoration:underline;
+}
+#_bcWc ._bcSNc div{
+    display:block;
+	list-style-type: none;
+	margin: 5px 0 0 0;
+}
+#_bcWc ._bcSNc button{
+	cursor:pointer;
+	height: 40px;
+    width: 40px;
+	border: 0 none;
+	margin: 5px 5px 0 0;
+	display:inline-block;
+}
+#_bcWc ._bcSNc button#_bcBFn{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll 0 -80px transparent;
+}
+#_bcWc ._bcSNc button#_bcBFn.active{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll 0 -40px transparent;
+}
+#_bcWc ._bcSNc button#_bcBFn.selected{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll 0 0 transparent;
+}
+#_bcWc ._bcSNc button#_bcBTn{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -40px -80px transparent;
+}
+#_bcWc ._bcSNc button#_bcBTn.active{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -40px -40px transparent;
+}
+#_bcWc ._bcSNc button#_bcBTn.selected{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -40px 0 transparent;
+}
+#_bcWc ._bcSNc button#_bcBLn{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -80px -80px transparent;
+}
+#_bcWc ._bcSNc button#_bcBLn.active{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -80px -40px transparent;
+}
+#_bcWc ._bcSNc button#_bcBLn.selected{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -80px 0 transparent;
+}
+#_bcWc ._bcSNc button#_bcBEn{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -120px -80px transparent;
+}
+#_bcWc ._bcSNc button#_bcBEn.active{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -120px -40px transparent;
+}
+#_bcWc ._bcSNc button#_bcBEn.selected{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -120px 0 transparent;
+}
+#_bcWc ._bcSNc button#_bcBWn{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -160px -80px transparent;
+}
+#_bcWc ._bcSNc button#_bcBWn.active{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -160px -40px transparent;
+}
+#_bcWc ._bcSNc button#_bcBWn.selected{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -160px 0 transparent;
+}
+#_bcWc ._bcSNc button#_bcBBn{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -200px -80px transparent;
+}
+#_bcWc ._bcSNc button#_bcBBn.active{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -200px -40px transparent;
+}
+#_bcWc ._bcSNc button#_bcBBn.selected{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -200px 0 transparent;
+}
+#_bcWc #_bcMCIc{    
+    background-color: #fff;
+}
+#_bcWc ._bcCc, #_bcWc ._bcESc, #_bcWc ._bcMc{
+	display:block;
+    color: #333333;
+	padding: 10px 0 0;
+}
+#_bcWc ._bcCc ._bcCIc{
+    display: inline;
+    float: left;
+    height: 100px;
+	margin:0 20px;
+    min-width: 100px;
+}
+#_bcWc ._bcCc ._bcCIc img{
+  /*  max-width: 100px;
+    max-height: 100px;*/
+	/*height: 100px;*/
+    /*width: 100px;*/
+    /*background: url("https://shop.homemadegourmet.com/thumbnail.asp?file=[image1]&maxx=100&maxy=100");*/
+}
+#_bcWc ._bcCc ._bcCDc{
+	height: 100px;
+    overflow-x: auto;
+}
+#_bcWc ._bcCc ._bcCDc h3{
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+}
+#_bcWc ._bcCc ._bcCDc p{
+	font-size: 14px;
+}
+#_bcWc ._bcSPl{
+    display: block;
+    border-top: 1px solid #CCCCCC;
+    height: 0;
+    margin: 10px 20px;
+}
+#_bcWc ._bcESc, #_bcWc ._bcMc{
+	padding: 0 20px;
+}
+#_bcWc ._bcESc ._bcSPl{
+	margin: 5px auto;
+}
+#_bcWc ._bcESc h2, #_bcWc ._bcMc h2{
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 5px 0;
+}
+#_bcWc ._bcESc label, #_bcWc ._bcESc input{
+	margin:0 0 10px 0;
+}
+#_bcWc ._bcESc label{
+    clear: left;
+    display: inline;
+    float: left;
+    margin: 0;
+    width: 10%;
+	height:24px;
+	padding:0 10px 0 0;
+}
+#_bcWc ._bcESc input{
+	height:24px;
+}
+#_bcWc ._bcMc{
+	position:relative;
+}
+#_bcWc ._bcMc textarea, #_bcWc ._bcMc div, #_bcWc ._bcMc ._bcBtsc{
+	width:100%;
+	text-align:right;
+	margin:0 0 5px 0;
+}
+#_bcWc ._bcMc ._bcCM{
+	font-size:10px;
+}
+#_bcWc ._bcMc textarea{
+	height:70px;
+	text-align:left;
+}
+#_bcWc ._bcMc div._bcCM.warning{
+	color:red;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcShare{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll 0 -120px transparent;
+	border:none;
+	width:100px;
+	height:30px;
+	cursor:pointer;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcShare:hover{
+	background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -100px -120px transparent;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcShare:disabled, #_bcWc ._bcMc ._bcBtsc #_bcShare:disabled:hover{
+    background: url(/assets/images/popshare/BtsSprite.png) repeat scroll -200px -120px transparent;
+    cursor:default;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcImLoading {
+    vertical-align: bottom;
+    height: 30px;
+    display:none;
+    margin-right: 5px;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcWCmes {
+    float: left;
+    max-height: 65px;
+    overflow-y: auto;
+    text-align: left;
+    width: 70%;
+    display:none;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcWCmes > ul {
+    list-style:none;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcWCmes > ul li {
+    color:red;
+}
+#_bcWc ._bcMc ._bcBtsc #_bcWCmes > ul li:before {
+    content: "- ";
+}
+
+#_bcWOverlay {
+    position: fixed;z-index:100;top: 0px;left: 0px;height:100%;width:100%;background: #000;display: none;
+}
+#_bcWc ._bcTIc{
+	width:100%;
+}
+#_bcWc ._bcTIc img{
+    display: block;
+    margin: 0 auto;
+    max-height: 100px;
+    max-width: 100%;
+}
+#_bcWc ._bcTM, #_bcWc  ._bcTFc{
+	float:left;
+	width:50%;
+}
+#_bcWc ._bcTM h1, #_bcWc ._bcTM p {
+	color:#07568B;
+	text-align:center;
+}
+#_bcWc ._bcTM h1{
+	font-size:22px;
+	font-weight: bold;
+	margin: 10px 0 10px 0;
+    background-color:#fff;
+}
+#_bcWc ._bcTM p {
+    font-size: 14px;
+    padding: 0 20px;
+	margin:0 0 10px 0;
+}
+#_bcWc  ._bcTFc{
+	font-size:12px;
+	padding: 20px 0 0;
+}
+#_bcWc  ._bcTFc span._bcReq{
+	color:red;
+}
+#_bcWc  ._bcTFc a{
+	color:#07568B;
+	font-size: 10px;
+	text-decoration:underline;
+	cursor:help;
+}
+#_bcWc  ._bcTFc input, #_bcWc  ._bcTFc select{
+	height:24px;
+	margin: 0 0 5px 0;
+}
+#_bcWc  ._bcTFc div._bcFromSub{
+	padding: 0 20px;
+    text-align: right;
+}
+#_bcWc  ._bcTFc div._bcFromSub input[type='submit']{
+	color:white;
+	background-color:#003059;
+	height:35px;
+	width:70px;
+}
+
+#_bcMSGBox
+{
+	overflow: hidden;
+    padding: 0;	
+    border: 1px solid #333333!important;
+    box-shadow: 0 1px 10px #000000;
+	background-color:#fff;
+    z-index: 1000;
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: 120px;
+}
+#_bcMSGBox ._bcMSGBoxTitle {
+    background-color: #435361;
+    border-bottom: 1px solid #333333;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    height: 20px;
+    margin-bottom: 5px;
+    padding-top: 3px;
+    text-align: center;
+    vertical-align: top;
+    width: 100%;
+}
+#_bcMSGBox p._bcMSGBoxMessage {
+    color: #333333;
+    overflow: hidden;
+    overflow-y: auto;
+    display: block;
+    height: 60px;
+    padding: 0 10px;
+}
+#_bcMSGBox input#_bcMSGBoxOk{
+    border: 1px solid #999999;
+    bottom: 5px;
+    color: #333333;
+    cursor: pointer;
+    height: 25px;
+    left: 50%;
+    margin-left: -25px;
+    padding: 0;
+    position: absolute;
+    width: 50px;
+}.bcShare {
+}
+
+
+#popsharebutton {
+  background: url("http://shop.homemadegourmet.com/assets/images/popshare/buttons-v32.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border: medium none;
+  height: 27px;
+  width: 117px;
+}

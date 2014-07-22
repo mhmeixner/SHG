@@ -1,0 +1,97 @@
+
+
+	<form action="register_affiliate.asp" method="post" name="frmForm">
+	<input type="hidden" name="action" id="action" value="">
+
+		<table width="95%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td class="page_headers">[affiliate_register]</td></tr>
+                        
+                     
+					
+						<!--START: CATEGORY_HEADER-->              
+					
+						   <tr> 
+								<td class="data">&nbsp;[CONTENT]<br /><br /></td>
+						   </tr>
+						
+						<!--END: CATEGORY_HEADER-->						
+				
+                    <tr><td>
+						
+									<table width="85%" cellpadding="5" cellspacing="0" border="0">
+										<tr>
+											
+											<td class="item"><b>Website Address:</b><br />
+												<input name="txtWebsite" type="text" id="txtWebsite" size="45" class="txtBoxStyle" value="[strWebsite]"  maxlength="100"> <img src="assets/templates/common/images/error2.gif" width="12" height="12">
+											</td>
+										</tr>
+										<tr>
+											
+											<td class="item"><b>Tax ID#:</b><br /><input name="txtTaxId" type="text" id="txtTaxId" size="15" class="txtBoxStyle" value="[strTaxId]" maxlength=12> <img src="assets/templates/common/images/error2.gif" width="12" height="12"> (SSN# or EIN#)</td>
+										</tr>
+										<tr>
+										
+											<td class="item"><b>Terms and Conditions:</b><br />
+												<textarea rows=12 cols=40 id="txtTerms" name="txtTerms" readonly="readonly">[affiliate_register-terms-condition]</textarea>
+												<br>
+												<input type="checkbox" id="chkAcceptTerms" name="chkAcceptTerms" value="1" [bolAccept]> I accept the terms and conditions
+												<img src="assets/templates/common/images/error2.gif" width="12" height="12">
+											</td>
+										</tr>
+                                        <tr><td>
+                                           <tr><td>
+						<span class="error"><img src="assets/templates/common/images/error2.gif"> = Required</span></td></tr>
+                        <tr><td align="left"><input type="button" name="cmdProceed" value="Proceed" onclick="javascript:proceed();" class="btn"></td></tr>
+									</table>
+								</td>
+							</tr>
+						
+					
+		
+	
+	<!--START: CATEGORY_FOOTER-->              
+    
+       <tr> 
+   		<td  class="data">[CONTENT]</td>
+       </tr>
+
+<!--END: CATEGORY_FOOTER--> 
+</table>
+</form>
+
+	 
+<script language="javascript" type="text/javascript">
+		var addReplyClick = 0;
+		
+	    function submitForm(strAction)
+	    {
+		    window.document.body.style.cursor = 'wait';
+		    if(window.document.activeElement){window.document.activeElement.style.cursor='wait'; }
+	    	
+	        document.frmForm.action.value = strAction;
+	        document.frmForm.submit();
+	    }
+	    function proceed()
+	    {
+			var strMsg = "";
+			if (document.frmForm.txtWebsite.value.trim() == "")
+				strMsg += " - Website address cannot be blank.\n"
+			if (document.frmForm.txtTaxId.value.trim() == "")
+				strMsg += " - Tax ID cannot be blank.\n"
+			if (!document.frmForm.chkAcceptTerms.checked)
+				strMsg += " - You must read and accept Terms and Conditions before proceed.\n"
+			if (strMsg != ""){
+				alert(strMsg);
+				return false;
+			}
+			if (addReplyClick == 0){
+				addReplyClick = 1;
+				submitForm('register');
+			}
+	    }
+		String.prototype.trim = function() {
+			return this.replace(/^\s+|\s+$/g,"");
+		}
+</script>
+

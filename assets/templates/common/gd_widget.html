@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Group Deal</title>
+<style type="text/css">
+#countdown {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 18px;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+	white-space: nowrap;
+	letter-spacing: -1px;
+}
+.notopen {
+	font-weight: bold;
+	font-size: 12px;
+}
+.item {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #353535;
+	font-weight: normal;
+}
+.priceText {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 14px;
+	color: #353535;
+	font-weight: bold;
+}
+.salePrice {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 26px;
+	color: #d31111;
+	font-weight: bold;
+}
+.itemName {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #353535;
+	line-height: 15px;
+}
+.widgetBG {
+	background: #e8e7e7;
+}
+.countdownBG {
+	background: #353535;
+}
+.countdown-text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	font-weight: normal;
+	text-align: center;
+}
+.dd-text {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 16px;
+	color: #FFF;
+	font-weight: normal;
+	text-align: center;
+	line-height: 27px;
+	background: #d31111;
+}
+#widget-wrap {
+	position: relative;
+}
+#discount-amt {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 18px;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+	width: 60px;
+	line-height: 18px;
+	height: 50px;
+	background: url(assets/templates/common/group-deal/gd1-percentBG.png) no-repeat;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	padding: 10px 0px 0px 0px;
+}
+.noDealText {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 26px;
+	color: #d31111;
+	font-weight: bold;
+}
+.noDealText2 {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 14px;
+	color: #353535;
+	font-weight: bold;
+}
+a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #353535;
+	font-weight: normal;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #353535;
+	font-weight: normal;
+	text-decoration: none;
+}
+a:visited:hover {
+	text-decoration: underline;
+}
+</style>
+<script type="text/javascript">
+    function SelectAll(id) {
+        document.getElementById(id).focus();
+        document.getElementById(id).select();
+    }
+</script>
+</head>
+<body marginheight="0" leftmargin="0" marginwidth="0" topmargin="0">
+<center>
+  <!--START: groupdeal-->
+  <table width="220" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center"><img src="assets/templates/common/group-deal/gd1-title.png" width="213" height="39" alt="Group Deal"></td>
+    </tr>
+    <tr>
+      <td class="dd-text">group discount on now!</td>
+    </tr>
+    <tr>
+      <td align="center" class="widgetBG"><div id="widget-wrap">
+          <!--START: savings_percentage--><div id="discount-amt">[savings_percentage]% OFF</div><!--END: savings_percentage-->
+          <table width="100%" border="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="center" valign="top"><a href="product.asp?itemid=[catalogid]" target="_parent"><img src="thumbnail.asp?file=[image1]&amp;maxx=150&amp;maxy=150" alt="[name]" vspace="10" border="0" align="middle"></a></td>
+            </tr>
+            <tr>
+              <td align="center" valign="top" class="itemName">[name]</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top" style="padding: 5px 10px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="50%" align="left" class="salePrice"><!--START: ITEMPRICE-->                      
+                      <div class="priceText">Price:</div>
+                      [price] 
+                      <!--END: ITEMPRICE--> 
+                      <!--START: SALEPRICE-->                      
+                      <div class="priceText">Price:</div>
+                      [saleprice] 
+                      <!--END: SALEPRICE--></td>
+                    <td width="50%" align="right"><a href="product.asp?itemid=[catalogid]" target="_parent"><img src="assets/templates/common/group-deal/gd1-GetNow_btn.png" alt="Get It Now!" width="81" height="39" border="0"></a></td>
+                  </tr>
+                </table></td>
+            </tr>
+            <!--START: price2-->
+            <tr>
+              <td align="center" style="padding: 5px 10px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="left" class="item"><s>Retail:&nbsp;[price2]</s></td>
+                    <td align="right" class="item"><!--START: SAVINGS--> 
+                      <strong>Savings:&nbsp;[savings]</strong> 
+                      <!--END: SAVINGS--></td>
+                  </tr>
+                </table></td>
+            </tr>
+            <!--END: price2-->
+            <tr>
+              <td align="center"><table width="50%" border="0" cellpadding="5" cellspacing="0">
+                  <tr>
+                    <td><div class="addthis_toolbox addthis_default_style ">
+                        <a class="addthis_button_twitter at300b"></a>
+                        <a class="addthis_button_facebook at300b"></a>
+                        <a class="addthis_button_mailto at300b"></a>
+                        <a class="addthis_button_print at300b"></a>
+                        </div>
+                        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1b0cf42ddc7e71"></script></td>
+                  </tr>
+              </table></td>
+            </tr>
+          </table>
+        </div></td>
+    </tr>
+    <tr>
+      <td class="countdownBG"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="37"><img src="assets/templates/common/group-deal/gd1-clockImg.png" width="37" height="40" alt="Countdown"></td>
+            <td><div class="countdown-text">Hurry! deal ends in:</div>
+              <div id="countdown"> 
+                <script type="text/javascript">
+                    TargetDate_dd = "[gd_expires]";
+                    targetsecs	= "[gd_secs]";
+                    BackColor = "transparent";
+                    ForeColor = "#FFFFFF";
+                    CountActive = true;
+                    CountStepper = -1;
+                    LeadingZero = true;
+                    DisplayFormat = "%%D%%d: %%H%%h: %%M%%m: %%S%%s";
+                    FinishMessage = "The deal is over!";
+					</script> 
+                <script type="text/javascript" src="assets/templates/common/js/countdown.js"></script> 
+              </div></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <!--END: groupdeal--> 
+  <!--START: nodeal-->
+  <table width="220" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center"><img src="assets/templates/common/group-deal/gd1-title.png" width="213" height="39" alt="Group Deal"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" class="noDealText">No Deals Available<br><span class="noDealText2">at this Moment</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="countdownBG"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="37"><img src="assets/templates/common/daily-deal/dd1-clockImg.png" width="37" height="40" alt="Countdown"></td>
+            <td><div class="countdown-text">Check back for Great Deals!</div></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <!--END: nodeal-->
+</center>
+</body>
+</html>

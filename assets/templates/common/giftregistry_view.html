@@ -1,0 +1,240 @@
+<table width="95%" cellpadding="0" cellspacing="0">
+	
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr><td class="page_headers" align="left">[giftregistry_create]</td><!--START: myAccount--><td align="right"><a href="myaccount.asp"><img src="assets/templates/common/images/arrow_back.png" border="0" align="absmiddle"></a> <a href="myaccount.asp">back to my account</a></td><!--END: myAccount--></tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	
+	<!--START: CATEGORY_HEADER-->
+	<tr> 
+		<td class="data" colspan="2">&nbsp;[CONTENT]</td>
+	</tr>
+	<!--END: CATEGORY_HEADER-->
+	
+	<tr><td colspan="2">&nbsp;</td></tr>
+	
+	<tr><td class="checkout-headers" colspan="2">[giftregistry_create-giftinfo]&nbsp; <a href="giftregistry_edit.asp">Edit</a>&nbsp; <a href="giftregistry_edit.asp?action=delete">Delete</a></td></tr>
+	<tr>
+		<td align="left" colspan="2">
+			<table border="0" cellpadding="2" cellspacing="0" width="100%">			
+				<tr>
+					<td width="20%" class="item"><b>[giftregistry_create-name]</b></td>
+					<td width="80%" class="item">[regname]</td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_create-eventdate]</b></td>
+					<td class="item">
+						[month]/[day]/[year]
+					</td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_create-password]</b></td>
+					<td class="item">[regpassword]</td>
+				</tr>				
+				<tr>
+					<td class="item"><b>[giftregistry_create-message]</b></td>
+					<td class="item">
+						[regmessage]
+					</td>
+				</tr>
+				<tr>
+					<td class="item" colspan="2"><br></td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_url]</b></td>
+					<td class="item">
+						[regurl]
+					</td>
+				</tr>													
+			</table>
+		</td>
+	</tr>
+	
+	<tr><td colspan="2">&nbsp;</td></tr>
+	
+	<tr><td class="checkout-headers" colspan="2">[giftregistry_create-yourinfo]</td></tr>
+	<tr>
+		<td align="left" colspan="2">
+			<table border="0" cellpadding="2" cellspacing="0" width="100%">
+				<tr>
+					<td width="20%" class="item"><b>[giftregistry_create-firstname]</b></td>
+					<td width="80%" class="item">[firstname]</td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_create-lastname]</b></td>
+					<td class="item">[lastname]</td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_create-email]</b></td>
+					<td class="item">[email]</td>
+				</tr>					
+			</table>
+		</td>
+	</tr>
+	
+	<tr><td colspan="2">&nbsp;</td></tr>
+	
+	<tr><td class="checkout-headers" colspan="2">[giftregistry_create-shippingoptions]</td></tr>
+	<tr>
+		<td align="left" colspan="2">
+			<table border="0" cellpadding="4" cellspacing="0" width="100%">			
+				<tr>
+					<td width="5%" class="item"><input type="checkbox" id="regShipMyAddress" name="regShipMyAddress" disabled onclick="javascript:controlAddressBtn(this);" value="1" [regShipMyAddressChecked]></td>
+					<td width="95%" class="item"><b>[giftregistry_create-shiptomyaddress]</b><br>[giftregistry_create-shiptomyaddressinstructions]</td>
+				</tr>
+				<!--START: selectedAddress-->
+				<tr>
+					<td width="5%"></td>
+					<td width="95%" class="item">
+						<div id="divSelectedAddress" name="divSelectedAddress" style="display:[divSelectedAddressStyle];">
+							<table border="0" cellpadding="4" cellspacing="0" width="100%" class="alternative" id="Table3">
+								<tr><td class="item"><b>[giftregistry_create-selected-address]</b></td></tr>
+								<tr><td class="item">[address_alias]</td></tr>
+								<tr><td class="item">[shipping_firstname] [shipping_lastname]</td></tr>
+								<tr><td class="item">[shipping_address]</td></tr>
+								<!--START: shipping_address2-->
+								<tr><td class="item">[shipping_address2]</td></tr>
+								<!--END: shipping_address2-->
+								<tr><td class="item">[shipping_city], [shipping_state] [shipping_zip] [shipping_country]</td></tr>
+								<tr><td class="item">[shipping_phone]</td></tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<!--END: selectedAddress-->
+			</table>			
+		</td>
+	</tr>
+
+	<tr><td colspan="2">&nbsp;</td></tr>
+
+	<tr><td class="checkout-headers" colspan="2">[giftregistry_header-products]</td></tr>
+	<tr>
+		<td align="left" colspan="2">
+			<table border="0" cellpadding="2" cellspacing="0" width="100%">			
+				<tr>
+					<td class="item" width="200"><b>[giftregistry_header-productsdesired]</b>:&nbsp; [regDesired]</td>
+					<td rowspan="2" align="right"><input type="button" name="cmdViewList" onclick="javascript:location.href='view_giftregistry.asp?id=[custid]';" class="btn" value="[giftregistry_view-productlist]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_header-productspurchased]</b>:&nbsp;[regPurchased]</td>
+					
+				</tr>
+			
+			</table>			
+		</td>
+	</tr>
+
+	<tr><td colspan="2">&nbsp;</td></tr>
+
+	<form action="giftregistry_edit.asp?action=view" name="frmForm" id="frmForm" method="post">
+	<input type="hidden" id="action2" name="action2" value="sendemail">
+
+	<tr><td class="checkout-headers" colspan="2">[giftregistry_header-invitation-emails]</td></tr>
+	<tr>
+		<td align="left" colspan="2">
+			<table border="0" cellpadding="4" cellspacing="0" width="100%" class="alternative" id="Table5">			
+				<tr>
+					<td class="item" colspan="3">[giftregistry_header-invitation-emailsinstructions]</td>
+				</tr>
+				<tr>
+					<td class="item" ><b>[giftregistry_header-invitation-emailaddress]</b></td>
+					<td class="item" ><input type="text" id="txtEmail1" name="txtEmail1" maxlength="100" size="50" value=""></td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_header-invitation-emailaddress]</b></td>
+					<td class="item"><input type="text" id="txtEmail2" name="txtEmail2" maxlength="100" size="50" value=""></td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_header-invitation-emailaddress]</b></td>
+					<td class="item"><input type="text" id="txtEmail3" name="txtEmail3" maxlength="100" size="50" value=""></td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_header-invitation-emailaddress]</b></td>
+					<td class="item"><input type="text" id="txtEmail4" name="txtEmail4" maxlength="100" size="50" value=""></td>
+				</tr>
+				<tr>
+					<td class="item"><b>[giftregistry_header-invitation-emailaddress]</b></td>
+					<td class="item"><input type="text" id="txtEmail5" name="txtEmail5" maxlength="100" size="50" value=""></td>
+				</tr>
+				<tr>
+					<td class="item" colspan="3" align="right">
+						<input type="button" name="cmdViewList" onclick="javascript:previewMessage();" class="btn" value="[giftregistry_header-invitation-previewmessage]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+						&nbsp;&nbsp;
+						<input type="button" id="Button3" name="cmdViewList" onclick="javascript:sendEmail();" class="btn" value="[giftregistry_header-invitation-sendemail]" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">
+					</td>
+				</tr>
+			</table>			
+		</td>
+	</tr>
+	
+	</form>
+	
+	<tr><td colspan="2">&nbsp;</td></tr>
+	
+
+	
+	<!--START: CATEGORY_FOOTER-->
+	<tr> 
+		<td class="data" colspan="2">&nbsp;[CONTENT]</td>
+	</tr>
+	<!--END: CATEGORY_FOOTER-->
+	
+</table>
+
+<script>
+var addReplyClick=0;
+function submitForm(strAction)
+{
+	window.document.body.style.cursor = 'wait';
+	if(window.document.activeElement){window.document.activeElement.style.cursor='wait'; }
+	
+	document.frmForm.action2.value = strAction;
+	document.frmForm.submit();
+}
+
+function sendEmail()
+{
+	var strMsg = "";
+	var strEmail1 = document.frmForm.txtEmail1.value.trim();
+	var strEmail2 = document.frmForm.txtEmail2.value.trim();
+	var strEmail3 = document.frmForm.txtEmail3.value.trim();
+	var strEmail4 = document.frmForm.txtEmail4.value.trim();
+	var strEmail5 = document.frmForm.txtEmail5.value.trim();
+	
+	//Empty
+	if (strEmail1 == "" && strEmail2 == "" && strEmail3 == "" && strEmail4 == "" && strEmail5 == "")
+		strMsg += " - You need to fill at least one [giftregistry_header-invitation-emailaddress].\n"
+	
+	//Valid E-mail
+	if (strEmail1 != "" && !isValidEmail(strEmail1))
+		strMsg += " - The 1st [giftregistry_header-invitation-emailaddress] is invalid.\n"
+	if (strEmail2 != "" && !isValidEmail(strEmail2))
+		strMsg += " - The 2nd [giftregistry_header-invitation-emailaddress] is invalid.\n"
+	if (strEmail3 != "" && !isValidEmail(strEmail3))
+		strMsg += " - The 3rd [giftregistry_header-invitation-emailaddress] is invalid.\n"
+	if (strEmail4 != "" && !isValidEmail(strEmail4))
+		strMsg += " - The 4th [giftregistry_header-invitation-emailaddress] is invalid.\n"
+	if (strEmail5 != "" && !isValidEmail(strEmail5))
+		strMsg += " - The 5th [giftregistry_header-invitation-emailaddress] is invalid.\n"
+
+			
+	if (strMsg != ""){
+		alert(strMsg);
+		return false;
+	}
+	if (addReplyClick == 0){
+		addReplyClick = 1;
+		submitForm('sendEmail');
+	}
+}
+String.prototype.trim = function() {
+	return this.replace(/^\s+|\s+$/g,"");
+}
+function isValidEmail(str) {
+   return (str.indexOf(".") > 2) && (str.indexOf("@") > 0);
+}
+function previewMessage()
+{
+	window.open('giftregistry_edit.asp?action=previewemail','PreviewMessage','width=730px, location=no, menubar=no, status=no, toolbar=no, scrollbars=yes, resizable=yes');
+}
+</script>

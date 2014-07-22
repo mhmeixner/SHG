@@ -1,0 +1,406 @@
+<!-- //3dcart v2.2//frame.html//Rev. #1 10/31/2006-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>[TITLE]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+[META]
+<script language="JavaScript" src="assets/templates/common/js/utilities.js" type="text/JavaScript"></script>
+<LINK REL="StyleSheet" HREF="assets/templates/[template]/css/[stylesheet]" TYPE="text/css" MEDIA="screen">
+<LINK REL="StyleSheet" HREF="assets/templates/common/js/tabs.css" TYPE="text/css" MEDIA="screen">
+</head>
+
+<body>
+<center> 
+<table width="[screenwidth]" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="top" height="90">
+<!--START: global_header-->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td><span class="store-name">[storename]</span></td><td><span class="store-slogan">[storeslogan]</span>&nbsp;</td></tr>
+</table>
+<!--END: global_header-->
+</td></tr>
+<tr><td align="center" class="menu_col">
+ <!--START: FRAME_MENU-->
+			 <table cellspacing="0" cellpadding="0" border="0">
+           
+			  <tr>
+                <td>
+					<table cellspacing="0" cellpadding="0" width="100%">	<tr>
+				
+			        <!--START: menuitems_view-->
+					<!--START: TOP_LINK_FORMAT-->
+			<td width="100" align="center"><a href="infopage.asp?page=[link_id]" class="menu">[link_name]</a></td>	<td><span class="icon">|</span></td>
+					<!--END: TOP_LINK_FORMAT--> 
+					<!--END: menuitems_view--> 
+					</tr></table>	
+				</td>
+			</tr>
+		
+          	 </table>
+			 <!--END: FRAME_MENU-->
+			 
+
+
+</td></tr>
+<tr><td align="center" class="cat_col">	 <!--START: FRAME_CATEGORY-->
+			 <table cellspacing="0" cellpadding="0" border="0">
+	          <tr>
+	          
+					<!--START: CATEGORIES-->
+								
+					<!--START: CATEGORY_FORMAT-->
+						<td align="center"><a href="view_category.asp?cat=CATID" class="cat">&nbsp;&nbsp;CATEGORY&nbsp;&nbsp;</a></td><td><span class="icon">|</span></td>
+					<!--END: CATEGORY_FORMAT-->
+				
+			 
+					<!--END: CATEGORIES--> 
+			
+				</tr>
+			
+           </table>
+	 <!--END: FRAME_CATEGORY-->
+</td></tr>
+<tr><td>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+ <!--START: LEFT BAR-->
+<td width="160" class="frame" valign="top">
+<!--START: username--> 
+<TABLE width="160" cellspacing="0" cellpadding="0" border="0">
+
+			<tr>
+	                <td class="menu-text" align="center">&nbsp;[account_greeting] [username]</td>
+	              </tr>
+
+</table>
+<!--END: username-->
+	 <!--START: FRAME_SEARCH-->
+		<form method="get" action="search.asp" STYLE="margin: 0px; padding: 0px;">
+			<table width="160" cellspacing="0" cellpadding="4" border="0">
+				
+				<tr>
+					<td class="menu-headers" colspan="2">[frame_search]</td>
+				</tr>
+				
+				<tr>
+					<td width="78"><input  type="text" size="13" name="keyword" class="txtBoxStyle"></td>
+					<td width="66"><input  type="submit" name="search" value="GO" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+				
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+			</form>
+			<!--END: FRAME_SEARCH-->
+			
+			
+			
+			 <!--START: FRAME_MANUFACTURER-->	
+		 
+<!--		<form name=mfg id=mfg method=post action=search_groups.asp?manf=1>-->
+
+		<TABLE width="160" cellspacing="0" cellpadding="4" border="0">
+			<tr>
+	                <td class="menu-headers">[frame_manufacturer]</td>
+	              </tr>
+			
+				<!--START: manufacturer_format-->
+				<tr><td><a href="search_groups.asp?manf=[mfgid]" class="menu_left">[manufacturer]</a></td></tr>
+				<!--END: manufacturer_format--> 
+	
+
+
+<!--			<select name="manufacturer" onchange="this.form.submit();">
+				<option value=0 selected>Manufacturer</option>
+			<!-START: manufacturer_format->
+				<option>[manufacturer]</option>
+			<!-END: manufacturer_format->
+			-->
+
+			
+		</TABLE>
+<!--		</form>-->
+			 <!--END: FRAME_MANUFACTURER-->	
+
+
+  <!--START: FRAME_BYPRICE-->	 
+		<TABLE width="160" cellspacing="0" cellpadding="4" border="0">
+			<tr>
+	                <td class="menu-headers">[frame_byprice]</td>
+	              </tr>
+			
+				<!--START: byprice_format-->
+				<tr><td><a href="search_groups.asp?keyword=[id]&byprice=[id]" class="menu_left">[title]</a></td></tr>
+				<!--END: byprice_format--> 
+	
+
+		</TABLE>
+			 <!--END: FRAME_BYPRICE-->			 
+
+		
+		
+			
+			 
+	
+
+
+			 
+			 
+	<!--START: FRAME_LINKS-->
+		    <table width="160"  cellspacing="0" cellpadding="4" border="0">
+              <tr>
+                <td class="menu-headers">[frame_links]</td>
+              </tr>
+             
+			
+				<!--START: LINKS-->
+					
+				<!--START: LINK_FORMAT-->
+				<tr><td><a href="infopage.asp?page=[link_id]&extra=1" class="menu_left" target="[link_target]">[link_name]</a></td></tr>
+				<!--END: LINK_FORMAT--> 
+					
+				<!--END: LINKS--> 
+			
+			</table>
+	<!--END: FRAME_LINKS-->		
+
+	<!--START: FRAME_MAILLIST-->
+		       <form method=post name=mailing action="mailing_list.asp?action=add" onSubmit="return mailing_list();"> 
+			    <table width="160" cellspacing="0" cellpadding="4" border="0">
+        	     
+				
+    	          	
+					<tr>
+                  		<td class="menu-headers" colspan="2">[frame_mailinglist]</td>
+    	        	</tr>
+    	         	 <tr>
+					 <td class="menu-text" colspan="2">[mailinglist_text]</td>
+				    </tr>  
+					
+					<tr>
+					<td width="68"><input type="text" size="16" name="email" class="txtBoxStyle"></td><td align="left" width="76"><input type="submit" name="www" value="[mailinglist_button]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				    </tr>  
+		
+					<tr>
+					<td  class="menu-text" colspan="2"><input type="radio" name="subscribe" value="1" checked>[mailinglist_subscribe]</td>
+					</tr>
+	
+					<tr>
+					<td  class="menu-text" colspan="2"><input type="radio" name="subscribe" value="0">[mailinglist_unsubscribe]</td>
+				    </tr>        	
+           	
+				</table>
+					</form>
+	<!--END: FRAME_MAILLIST-->
+
+
+	<!--START: LEFT_BANNER-->
+		 <table width="100%"  cellspacing="0" cellpadding="4" border="0">
+	              <tr>
+        	        <td class="menu-headers">[LEFT_BANNER]</td>
+	              </tr>
+		</table>
+
+	<!--END: LEFT_BANNER-->	
+
+</td>
+ <!--END: LEFT BAR-->
+
+<td valign="top" width="100%" class="data" align="center">
+
+
+	   
+				
+					MIDDLE
+				
+		</td>
+	
+	<td valign="top" width="168" class="frame">
+	<!--START: RIGHT BAR-->
+
+
+			
+	<!--START: shopping_cart-->
+			<table width="160" cellspacing="0" cellpadding="4" border="0" class="cart-text">
+			
+              			<tr> 
+			                <td class="menu-headers" colspan="2" align="center">[frame_shoppingcart]</td>
+		              </tr>             
+        <!--START: shopping_cart_full-->
+		<form action="recalculate.asp" method="POST" name="recalculate">
+				<tr>    
+	<td  class="cart-text" align="center"><input  type="submit" name="www" value="[shoppingcart_updatecart]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+     <td  class="cart-text" align="center"><input type="submit" name="clearcart" value="[shoppingcart_clearcart]" onClick="javascript:document.recalculate.action='recalculate.asp?clearcart=1';document.recalculate.submit();" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+				</tr>
+<tr><td class="cart-text" colspan="2">
+				
+	<!--START: SHOPPING_CART_ITEM-->				
+								<table width="100%" border=0 cellspacing="0" cellpadding="0">
+									<tr>
+										<td class="cart-text" colspan="2">[ITEM_NAME]</a>
+										<!--START: itemoptions--><br><a href='#' onClick="toggle('opt[ITEM_ID]')">View/Hide options</a>
+										<br><div id="opt[ITEM_ID]" name="opt[ITEM_ID]" style="display:none;">[OPTIONS]</div><!--END: itemoptions-->
+										</td>
+									</tr>
+									<tr>				
+										<td  valign="top" align="left" class="cart-text"><input class="input1" type="text" name="qtyitemnum" value="[ITEM_QUANTITY]" size="3" maxlength="5"><input type="hidden" name="coliditemnum" value="[ITEM_ID]"></td>
+										<td class="cart-text" valign="top" align="right"><strong>[ITEM_PRICE]</strong></td>
+									</tr>
+									<tr><td colspan="2" class="top" height="1"><img src="spacer.gif" width="95" height="1" alt="" border="0"></td></tr>
+									
+								</table>
+	<!--END: SHOPPING_CART_ITEM-->
+						</td></tr>
+						</form>	
+						<tr><td colspan="2" valign="top">
+						<!--START: SubTotal-->
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	
+								<form action="checkout.asp?step=1" method=post>			
+									<tr><td  align="center"  class="cart-text"> 
+            				                   
+	<!--START: DISCOUNTS-->
+							<strong>[shoppingcart_subtotal]</strong> [CARTSUBTOTAL]<br>
+							<strong> <a href="view_cart.asp">[shoppingcart_discount]</a></strong> [DISCOUNTS]<br>
+	<!--END: DISCOUNTS-->
+							<strong>Total:</strong> [CARTTOTAL]<br>
+          						      
+						                &nbsp;<input  type="submit" name="www" value="[shoppingcart_checkout]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"> <br>
+										<br>
+										
+										</td>
+													
+									</tr>
+									</form>	
+								
+			<tr><td class="borders"><img src="spacer.gif" width="95" height="1" alt="" border="0"></td></tr>
+	<!--START: apply_coupon-->
+		<tr><td class="data">
+			<table width=100% border=0 cellspacing=0 cellpadding=0>
+				<form name="frmcoupon" method="post" action="recalculate.asp?apply_coupon=1">
+				<tr><td class="cart-text" colspan=2 align="center"><strong>Apply Coupon</strong></td>
+				</tr> 
+				<tr><td class="cart-text" align="right"><input type="text" name="coupon_code" class="txtBoxStyle" size="10">&nbsp;&nbsp;</td><td class="cart-text"><input type=submit value="GO" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td></tr>
+				</form>
+			</table>
+		</td></tr>
+	<!--END: apply_coupon-->
+<tr><td class="borders"><img src="spacer.gif" width="95" height="1" alt="" border="0"></td></tr>
+
+	</table>
+	<!--   END: SubTotal -->	
+
+	<!--START: quick_ship-->
+		<!--START: ShipQuote-->									
+								<table width=100% border=0 cellspacing=0 cellpadding=0 ID="Table1" bgcolor="#FFFFFF">
+										<form action="shipquote.asp" method=post name="shipquote">
+										<input type=hidden name="thispage" value>
+									<tr>		
+										<td  align="center"  class="cart-text"> 
+            				                   		 <p align=center><b>Calculate Shipping</b> <br>
+						                <b>Zip</b> <input  type="text" name="shipping_zip" size=4 value="[shipping_zip]" class="txtBoxStyle">&nbsp;<input  type="submit" value="GO!" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'">&nbsp;<input type="button" class="btn" value="Clear" onClick="document.shipquote.action='shipquote.asp?action=clean';document.shipquote.submit();" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></p>
+								[shipping_city] [shipping_state] [shipping_zip]
+										</td>			
+									</tr>
+											</form>
+								</table>
+								
+								<script language="javascript">document.shipquote.thispage.value = window.location.href;</script>
+	<!--END: ShipQuote-->	
+	
+	
+	<table width=100% border=0 cellspacing=4 cellpadding=0 >
+	<!--START: Shippers-->
+								
+									<tr>
+										<td class="cart-text" colspan=2 align=center><b>[OPTION-SHIPPER]</b>&nbsp;<i>[OPTION-DESCRIPTION]</i>&nbsp;[OPTION-PRICE]</td>
+									</tr>
+									
+	<!--END: Shippers-->	
+	</table>				
+	<!--END: quick_ship-->					
+							
+								
+	<!--END: shopping_cart_full-->
+					
+	<!--START: shopping_cart_empty-->
+					<tr>
+						<td class="cart-text" align="center" colspan="2"> 
+						  CART IS EMPTY
+						</td>
+					</tr>
+	<!--END: shopping_cart_empty-->
+					
+								
+				</table>
+						
+
+		
+	<!--END: shopping_cart-->
+ 
+        <!--START: TOP_SELLERS_BLOCK-->
+		 <table width="168" cellpadding="4" cellspacing="0" border="0">
+	       <tr><td class="menu-headers" colspan="2">Best Sellers</td></tr>
+			<!--START: topsellers--> 
+			<tr><td align="left" class="item"><a href="product.asp?itemid=[catalogid]" class="menu_left">[name]</a></td></tr>
+			<!--END: topsellers-->								
+		</table>
+        <!--END: TOP_SELLERS_BLOCK-->
+	
+	<!--START: RIGHT_BANNER-->
+		 <table width="168"  cellspacing="0" cellpadding="4" border="0">
+	              <tr>
+        	        <td class="menu-headers" align="center">[RIGHT_BANNER]</td>
+	              </tr>
+		</table>
+
+	<!--END: RIGHT_BANNER-->
+	
+	<!--END: RIGHT BAR-->
+	</td>
+
+</tr>
+</table>
+</td></tr>
+<tr><td class="line"><img src="spacer.gif" width="1" height="2" alt="" border="0"></td></tr>
+<tr><td class="cat_col" align="center"><span class="footer">[GLOBAL_FOOTER]</span>  </td></tr>
+</table>
+
+<div class="font2">[frame_copyright1]</div>
+
+<!--START: 3dcart stats-->
+
+<script type="text/javascript" language="JavaScript">
+
+var file='/stats/count.asp';
+
+var stats_d=new Date(); 
+var stats_s=stats_d.getSeconds(); 
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';} 
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';} 
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; stats_h=screen.height; 
+stats_v=navigator.appName; 
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width=1 height=1 border=0>');
+</script>
+</a>
+<noscript>
+<img src="/stats/count.asp" width=90 height=30 border=0>
+</noscript>
+<!--END: 3dcart stats-->							
+</center>					
+</body>
+</html>

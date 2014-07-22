@@ -1,0 +1,525 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base target="_top">
+<script language="JavaScript" src="/assets/templates/common/js/utilities.js" type="text/JavaScript"></script>
+<link rel="StyleSheet" href="/assets/templates/[template]/css/[stylesheet]" type="text/css" media="screen">
+<style type="text/css">
+body {
+	background: #FFF;
+}
+</style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#FFFFFF">
+<script language="javascript" src="assets/templates/common/js/listing.js" type="text/javascript"></script> 
+<script language="javascript" src="assets/templates/common/3dzoom/magiczoomplus.js" type="text/javascript"></script>
+<link href="assets/templates/common/3dzoom/magiczoomplus.css" rel="stylesheet" type="text/css" media="screen"/>
+<script type="text/javascript">
+    MagicZoomPlus.options = {
+        'opacity': '65',
+        'expand-effect': 'linear',
+        'background-opacity': '50',
+        'zoom-fade': 'true',
+        'zoom-position': 'right',
+        'zoom-distance': 5,
+        'zoom-height': 250,
+        'zoom-width': 225,
+        'fit-zoom-window': 'false'
+    }
+    function close_modal() {
+        parent.jQuery.modal.close();
+    }
+</script> 
+<script language="javascript" src="assets/templates/common/js/quick_view_tabs.js" type="text/javascript"></script>
+<link href="assets/templates/common/js/quick_view_tabs.css" rel="stylesheet" type="text/css" media="screen"/>
+<div style="width: 500px; height: 520px; background: #FFF;">
+<form enctype="multipart/form-data" method="post" action="add_cart.asp" name="add" id="add" target="_top" style="padding: 0px; margin: 0px;">
+  <input type="hidden" name="item_id" value="[catalogid]">
+  <input type="hidden" name="itemid" value="[id]" id="itemid">
+  <input type="hidden" name="category_id" value="[catid]">
+  <input type="hidden" name="referer" value="[referer]">
+  <table width="500" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="2"><table cellpadding="0" cellspacing="0" border="0" width="500">
+          <tr>
+            <td class="page_headers" colspan="2">[name]</td>
+            <td align="right"><a href="#" onClick="close_modal();"><img src="assets/templates/common/images/close.png" border="0"></a></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td width="250" valign="top"><table width="250" border="0" cellpadding="4" cellspacing="0">
+          <tr>
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td colspan="2" align="center" valign="top"><!--START: image1--> 
+                    <a href="[image1]" class="[3dzoom_class]" id="listing_main_image_link"><img src="thumbnail.asp?file=[image1]&maxx=250&maxy=250" align="middle" border="0" id="large" name="large" alt="[name]"></a> 
+                    <!--END: image1--></td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center" valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <!--START: image2-->
+                  <td><table border="0" cellpadding="2" cellspacing="0">
+                      <tr>
+                        <td align="center"><a href="[image1]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image1]&maxx=[image_medium_w]&maxy=0" onClick="javascript:image_click(1);return false;"><img style="border: 1px solid #c1c1c1;" src="thumbnail.asp?file=[image1]&maxx=15&maxy=0" border="0" name="pimage1"></a></td>
+                        <td align="center"><a href="[image2]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image2]&maxx=[image_medium_w]&maxy=0" onClick="javascript:image_click(2);return false;"><img style="border: 1px solid #c1c1c1;" src="thumbnail.asp?file=[image2]&maxx=15&maxy=0" border="0" name="pimage2"></a></td>
+                        <!--START: image3-->
+                        <td align="center"><a href="[image3]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image3]&maxx=[image_medium_w]&maxy=[image_medium_h]" onClick="javascript:image_click(3);return false;"><img style="border: 1px solid #c1c1c1;" border="0" src="thumbnail.asp?file=[image3]&maxx=15&maxy=0" name="pimage3"></a></td>
+                        <!--END: image3--> 
+                        <!--START: image4-->
+                        <td align="center"><a href="[image4]" rel="thumb-id:listing_main_image_link" rev="thumbnail.asp?file=[image4]&maxx=[image_medium_w]&maxy=[image_medium_h]"  onClick="javascript:image_click(4);return false;"><img style="border: 1px solid #c1c1c1;"  border="0" src="thumbnail.asp?file=[image4]&maxx=15&maxy=0" name="pimage4"></a></td>
+                        <!--END: image4--> 
+                      </tr>
+                    </table></td>
+                  <!--END: image2--> 
+                  <!--START: totalrating-->
+                  <td align="right"><table border="0" cellspacing="0" cellpadding="2">
+                      <tr>
+                        <td style="padding-left: 0px;">[totalrating]</td>
+                        <td><a href="product.asp?itemid=[catalogid]" target="_parent">[reviews_view-all]</a></td>
+                      </tr>
+                    </table></td>
+                  <!--END: totalrating--> 
+                </tr>
+                  </table></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table></td>
+      <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><table border="0" cellspacing="0" cellpadding="2" width="100%">
+                <tr>
+                  <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr> 
+                        <!--START: pricing-->
+                        <td valign="bottom"><table width="100%" cellpadding="3" cellspacing="0">
+                            <tr>
+                              <td align="left" class="price-info" valign="top"><!--START: ITEMPRICE-->
+                                <span class="price"><strong>[product_yourprice]</strong></span>
+                                <div id="price" style="display:inline" class="price">[price]</div>                                
+                                <!--END: ITEMPRICE--> 
+                                <!--START: SALEPRICE-->
+                                [product_yourprice]?
+                                <div style="display:inline; text-decoration:line-through;" class="price-info">[price]</div>
+                                <br>
+                                <span class="price"><strong>[product_onsale]:</strong></span>
+                                <div id="price" style="display:inline" class="price">[saleprice]</div>                                
+                                <!--END: SALEPRICE-->
+                            </tr>
+                          </table></td>
+                        <!--END: pricing-->
+                      </tr>
+                    </table></td>
+                </tr>
+                <!--START: product_availability-->
+                <tr>
+                  <td><table border="0" cellspacing="0" cellpadding="2">
+                      <tr>
+                        <td class="price-info" width="45%" nowrap="nowrap"><strong>[product_Header-availability]</strong></td>
+                        <td class="price-info"><div id="availability">[availability]</div></td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <!--END: product_availability--> 
+                <!--START: id-->
+                <tr>
+                  <td class="item"><strong>[product_id] <span style="display: inline;" id="product_id">[id]</span></strong></td>
+                </tr>
+                <!--END: id--> 
+                <!--START: PRODUCT_OPTIONS_BLOCK-->
+                <tr>
+                  <td><div style="overflow:auto;height: 98px;width:240px;overflow: auto;">
+                      <table cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td align="center"><!--START: optionstemplate--> 
+                            <!--START: textarea-format--> 
+                            [value]: [oprice]<br>
+                            <textarea style="width: 200px;" rows="5" name="textarea[oname]" class="txtareaStyle"></textarea>
+                            <br>                            
+                            <!--END: textarea-format--> 
+                            <!--START: text-format--> 
+                            [value]: [oprice]<br>
+                            <input type="text" size="30" name="text[oname]" class="txtBoxStyle">
+                            <br>                            
+                            <!--END: text-format--> 
+                            <!--START: qty-format-->                            
+                            <table cellpadding="2" cellspacing="0" border="0" width="100%">
+                              <tr>
+                                <td class="item"><strong>[value]</strong><br />
+                                  [oprice]</td>
+                                <td align="center" width="120"><input type="text" size="3" name="text[oname]" value="0" class="txtBoxStyle" id="Text5"/></td>
+                              </tr>
+                            </table>                            
+                            <!--END: qty-format--> 
+                            <!--START: file-format--> 
+                            [value]: [oprice]<br>
+                            <input type="file" name="file[oname]" size="20" class="txtBoxStyle">
+                            <br>                            
+                            <!--END: file-format--> 
+                            <!--START: title-format--> 
+                            [feature] 
+                            <!--END: title-format--> 
+                            <!--START: checkbox-format-->                            
+                            <div style="padding: 0px;margin:0px;">
+                              <input type="checkbox" name="cb[oname]" value="[value]" onClick="validateValues(document.add,1);" [selected]>
+                              [feature] [oprice]</div>                            
+                            <!--END: checkbox-format--> 
+                            <!--START: radio-format-->                            
+                            <div style="padding: 0px;margin:0px;">
+                              <input type="radio" name="[oname]" value="[value]" onClick="validateValues(document.add,1);" [selected]>
+                              [feature] [oprice]</div>                            
+                            <!--END: radio-format--> 
+                            <!--START: dropdown-format-->                            
+                            <select name="[oname]" onChange="validateValues(document.add,1);" class="txtBoxStyle">
+                              <!--START: option-->
+                              <option value="[value]" [selected]>[feature] [oprice]</option>
+                              <!--END: option-->
+                            </select>                            
+                            <!--END: dropdown-format--></td>
+                        </tr>
+                        <tr>
+                          <td align="center"><!--START: dropdownimage-format-->                            
+                            <table border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td valign="middle"><select name="[oname]" onChange="validateValues(document.add,1);" class="txtBoxStyle">
+                                    <!--START: option-->
+                                    <option value="[value]" [selected]>[feature] [oprice]</option>
+                                    <!--END: option-->
+                                  </select></td>
+                                <td>?</td>
+                                <td><img name="img_[oname]" width="30" src="assets/templates/common/images/spacer.gif" alt=""></td>
+                              </tr>
+                            </table>                            
+                            <!--END: dropdownimage-format--> 
+                            <!--END: optionstemplate--></td>
+                        </tr>
+                        <tr>
+                          <td><!--START: options--> 
+                            <!--START: opt-title-->                            
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td class="options-titles" align="center" valign="top">[OPTIONLABEL]??[OPTIONFIELD]</td>
+                              </tr>
+                              <tr>
+                                <td class="borders2"><img src="assets/templates/common/images/spacer.gif" height="1" alt=""></td>
+                              </tr>
+                            </table>                            
+                            <!--END: opt-title--></td>
+                        </tr>
+                        <tr>
+                          <td valign="middle"><!--START: opt-regular-->
+                            
+                            <table cellspacing="0" cellpadding="2" border="0">
+                              <tr>
+                                <td class="item" colspan="2" style="padding-left: 0px;"><strong>[OPTIONLABEL]</strong></td>
+                              </tr>
+                              <tr>
+                                <td style="padding-left: 0px;">[OPTIONFIELD]</td>
+                                <!--START: help-->
+                                <td><a href="#" onClick="popup('optionhelp.asp?optionid=[optid]',300,200)"><img src="assets/templates/common/images/help_icon.gif" border="0" alt="help"></a></td>
+                                <!--END: help--> 
+                              </tr>
+                            </table>                            
+                            <!--END: opt-regular--> 
+                            <!--END: options--></td>
+                        </tr>
+                      </table>
+                    </div></td>
+                </tr>
+                <!--END: PRODUCT_OPTIONS_BLOCK--> 
+                <!--START: freeshippingblock-->
+                <tr>
+                  <td class="price-info" colspan="2">[freeshipping]</td>
+                </tr>
+                <!--END: freeshippingblock-->
+                <!--START: addtocart-->
+                <tr>
+                  <td><table border="0" cellpadding="3" cellspacing="0">
+                      <tr>
+                        <td align="right" class="price-info" style="padding-left:0px;"><strong>[product_quantity]</strong></td>
+                        <td align="center" class="price-info"><!--START: qtybox-->
+                          <input type="text" size="3" name="qty-0" value="1" onChange="validateValues(document.add,1);" class="txtBoxStyle">
+                          <!--END: qtybox--></td>
+                        <!--START: reminders_block-->
+                        <td align="center" width="70" class="price-info"><strong>[product_reminder]</strong><br />
+                          <select name="reminder" class="txtBoxStyle" id="Select1">
+                            <!--START: reminders_frequency_option-->
+                            <option value="[optionvalue]" [selected]>[optiontext]</option>
+                            <!--END: reminders_frequency_option-->
+                          </select></td>
+                        <!--END: reminders_block-->
+                        <td align="left" class="price-info">?</td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td><table border="0" cellspacing="0" cellpadding="3">
+                      <tr>
+                        <td class="price-info" style="padding-left: 0px;"><input type="button" style="width: 100px;height: 25px;line-height: 21px;padding:0px;margin:0px;" onClick="check_and_add(document.add);" name="Add" value="[product_addtocart]" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'"></td>
+                        <td class="price-info"><input type="button" value="More Details" style="width: 100px;height: 25px;line-height: 21px;padding:0px;margin:0px;" class="btn" onMouseOver="this.className='btn_over'" onMouseOut="this.className='btn'" onClick="window.top.location='product.asp?itemid=[catalogid]'"></td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <!--END: addtocart-->
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td colspan="2"><!--START: Tabs-->        
+        <ul id="tablist">
+          <!--START: extended_description-->
+          <li id="li1"><a href="javascript: void(0)" onclick="expandcontent('sc1', this)">Description</a></li>
+          <!--END: extended_description--> 
+          <!--START: related_0-->
+          <li id="li2"><a href="javascript: void(0)" onclick="expandcontent('sc2', this)">[product_Header-relateditems]</a></li>
+          <!--END: related_0--> 
+          <!--START: accessories_0-->
+          <li id="li3"><a href="javascript: void(0)" onclick="expandcontent('sc3', this)">[product_Header-accessories]</a></li>
+          <!--END: accessories_0-->          
+        </ul>
+        <div id="sc1" class="tabcontent">[extended_description]</div>
+        <div id="sc2" class="tabcontent" style="overflow: hidden;">
+          <div style="width:1000px;"> 
+            <!--START: related_items0--> 
+            <!--START: productblockcontainer--> 
+            <!--END: productblockcontainer--> 
+            <!--START: productcontainer-->
+            <div class="accessoryCell"> 
+              <!--END: productcontainer-->
+              <table width="100%" cellspacing="0" cellpadding="0" border="0" class="alternative">
+                <tr>
+                  <td align="center"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=80&maxy=80" alt="[name]" border="0"></a></td>
+                </tr>
+                <tr>
+                  <td class="item" align="center" height="30"><a href="product.asp?itemid=[catalogid]" target="_parent">[name]</a></td>
+                </tr>
+                <tr>
+                  <td class="price-info" valign="top" align="center" height="40"><!--START: ITEMPRICE--> 
+                    <strong>[product_yourprice]?</strong><span class="price">[ITEMPRICE]</span> 
+                    <!--END: ITEMPRICE--> 
+                    <!--START: SALEPRICE-->                    
+                    <table cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="price-info" nowrap="nowrap"><strong>[product_yourprice]?</strong><s>[ITEMPRICE]</s></td>
+                      </tr>
+                      <tr>
+                        <td valign="top" nowrap="nowrap" class="price-info"><strong>[product_onsale]:?</strong><span class="price">[ITEMSALEPRICE]</span></td>
+                      </tr>
+                    </table>                    
+                    <!--END: SALEPRICE--></td>
+                </tr>
+              </table>
+              <!--START: productcontainer_close--> 
+            </div>
+            <!--END: productcontainer_close--> 
+            <!--START: productblockcontainer_close--> 
+            <!--END: productblockcontainer_close--> 
+            <!--END: related_items0--> 
+          </div>
+        </div>
+        <div id="sc3" class="tabcontent" style="overflow: hidden;">
+          <div style="width:1000px;"> 
+            <!--START: accessories_items0--> 
+            <!--START: productblockcontainer--> 
+            <!--END: productblockcontainer--> 
+            <!--START: productcontainer-->
+            <div class="accessoryCell"> 
+              <!--END: productcontainer-->
+              <table cellspacing="0" cellpadding="0" border="0" class="alternative" width="100%">
+                <tr>
+                  <td align="center"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=80&maxy=80" alt="[name]" border="0"></a></td>
+                </tr>
+                <tr>
+                  <td class="item" align="center" height="30"><a href="product.asp?itemid=[catalogid]" target="_parent">[name]</a></td>
+                </tr>
+                <tr>
+                  <td class="price-info" valign="top" align="center" height="40"><!--START: ITEMPRICE--> 
+                    <strong>[product_yourprice]?</strong><span class="price">[ITEMPRICE]</span> 
+                    <!--END: ITEMPRICE--> 
+                    <!--START: SALEPRICE-->
+                    <table cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="price-info" nowrap="nowrap"><strong>[product_yourprice]?</strong><s>[ITEMPRICE]</s></td>
+                      </tr>
+                      <tr>
+                        <td valign="top" nowrap="nowrap" class="price-info"><strong>[product_onsale]:?</strong><span class="price">[ITEMSALEPRICE]</span></td>
+                      </tr>
+                    </table>                    
+                    <!--END: SALEPRICE--></td>
+                </tr>
+              </table>
+              <!--START: productcontainer_close--> 
+            </div>
+            <!--END: productcontainer_close--> 
+            <!--START: productblockcontainer_close--> 
+            <!--END: productblockcontainer_close--> 
+            <!--END: accessories_items0--></div>
+        </div>
+        <!--END: Tabs-->
+      </td>    
+      </tr>    
+  </table>
+</form>
+<script language="javascript"><!--
+//thumbnail script
+var image1,image2,image3,image4,selectedimage;
+var imagemaxwidth, imagemaxheight
+
+imagemaxwidth=250;
+imagemaxheight=250;
+
+image1="[image1]";
+image2="[image2]";
+image3="[image3]";
+image4="[image4]";
+imagecaption1="[imagecaption1]";
+imagecaption2="[imagecaption2]";
+imagecaption3="[imagecaption3]";
+imagecaption4="[imagecaption4]";
+selectedimage='[image1]'; //pre load image1
+zoom_enable=[3dzoom_enabled]; //0 = zoomify | 1 = magiczoom
+
+function image_click(clicks)
+{
+    if (document.getElementById('listing_main_image_link')!=undefined)
+    {
+	if (zoom_enable==1)
+	{
+		selectedimage=eval('image'+clicks);
+		MagicZoomPlus.update('listing_main_image_link', selectedimage, 'thumbnail.asp?file=' + selectedimage + '&maxx='+imagemaxwidth+'&maxy='+imagemaxheight, 'show-title: false');
+		changecontent("imagecaptiont",eval('imagecaption'+clicks));
+		document.getElementById('listing_main_image_link').href=this.name;
+	}else
+	{
+		
+		selectedimage=eval('image'+clicks);
+		document.getElementById('large').src='thumbnail.asp?file=' + selectedimage + '&maxx='+imagemaxwidth+'&maxy='+imagemaxheight;
+		document.getElementById('listing_main_image_link').href='#';
+		document.getElementById('listing_main_image_link').onclick=zoomify_popup;
+		changecontent("imagecaptiont",eval('imagecaption'+clicks));
+	}}
+}
+function zoomify_popup()
+{
+popupsimple('zoomify.asp?catalogid=[catalogid]&img=' + selectedimage ,500,500);
+}
+
+function check_stock(what,partnum)
+{
+	var soption;
+	var i;
+	var product_availability='[availability]';
+	var backordermode='[allowbackorder]';
+	var avail_instock='[productAvailability-Instock]';
+	var avail_outofstock='[productAvailability-Outofstock]';
+	var avail_backorder='[productAvailability-Backorder]';
+	var optionfound=0;
+
+	if (inventoryarray[catalogid].length==0) //if there is no advanced options, don't look for stock
+	{
+		return true;
+	}
+	else
+	{
+		for(i=0;i<inventoryarray[catalogid].length;i++) 
+		{
+			soption=inventoryarray[catalogid][i];
+			field_array=soption.split("-");
+			//Dynamic Part for advanced options
+			if (typeof((idarray[catalogid])) != "undefined")
+			{
+				soptionid=idarray[catalogid][i]; 
+				aoprice=aopricearray[catalogid][i]; 
+				if (field_array[0]==partnum)
+				{
+					if (soptionid != '')
+						changeid(soptionid); 
+					if (aoprice != '0')
+						changeprice(aoprice);
+				}
+			}
+			
+			if ((field_array[0]==partnum))
+			{	
+				changecontent("product_inventory",field_array[1]);
+				if (eval(GetValue(what,"qty-0"))>field_array[1]) 
+				{
+					optionfound=optionfound+1;
+					if (backordermode==1)
+					{
+						changecontent("availability",avail_backorder); 
+						return true;
+						optionfound=optionfound+1;
+					}
+					else 
+					{
+						changecontent("availability",avail_outofstock);
+						alert("The options you selected are not currently available.");
+						optionfound=optionfound+2;
+						return false;
+					}
+				}
+
+			}
+		}
+
+		if (optionfound==0)
+		{ 
+			changecontent("availability",product_availability);
+			return true;
+		}
+		
+		if (optionfound==1)
+		{
+			changecontent("availability",avail_instock);
+			return true;
+		}
+	}
+}
+
+
+function add_wishlist()
+{
+	document.add.action = "add_cart.asp?action=addWishList";
+	document.add.submit();
+}
+
+function add_giftregistry()
+{
+	document.add.action = "add_cart.asp?action=addGiftRegistry";
+	document.add.submit();
+}
+
+function check_and_add(formx)
+{
+
+	if (document.add.std_price==null)
+	{
+		document.add.submit();
+	}
+	else
+	{
+		var readytoadd=validateValues(formx,1)
+		if (readytoadd==true)
+		{
+			document.add.submit();
+		}
+	}
+}
+
+// --></script> 
+<script language="javascript">
+	    var currency_symbol = '[currency]';
+	    var prod_decimal_places = '[prod_decimal_places]';
+	    validateValues(document.add, 1);
+	    window.setTimeout("image_click(1)", 1000);
+
+	    collecttablinks()
+	    expandcontent(initialt = ab[1], tabobjlinks[initialt = ab[0] - 1])
+
+
+</script>
+</div>

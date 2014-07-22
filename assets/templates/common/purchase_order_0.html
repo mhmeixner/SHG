@@ -1,0 +1,117 @@
+
+<html>
+<head>
+<title>[company]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="css/default.css" type="text/css" media="screen">
+</head>
+<body class="bod" bgcolor="#FFFFFF" text="#000000">
+
+
+<table border=0 width="80%" align="center">
+	<tr>
+		<td width=400><img src="[store_url]/[invoicelogo]"></td>
+		<td width=40% valign=top>
+			<b>Purchase Order:</b>: [po_number1]<br>
+			<b>Order Date</b>: [po_date]<br>
+
+		</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>From / Vendor:</b><br>
+			[company]<br>
+			[address1]<br>
+			[address2]<br>
+			[city], [state] [zip] [country]<br>
+			[phone1]
+		</td>
+		<td valign="top"><b>Ship To:</b><br>
+			[shipping_info]
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<b>Due Date</b>: [due_date]<br>
+			<b>Signed By</b>: [po_signed_by]<br>
+		</td>
+		<td valign="top"><b>Payment Info:</b><br>
+			[payment_info]
+		</td>
+	</tr>
+</table>
+	
+<br><br>
+<table width="80%" border="0" cellspacing="2" cellpadding="2" align="center" bgcolor=#F0F0F0  >
+		<tr class="report-font2">
+		<td width="15%" align="left" valign="top"><b>Item Id</b></td>
+		<td width="23%" align="left" valign="top"><b>Description</b></td>
+		<!--START: BLK_WAREHOUSE_HEADER-->
+		<td width="10%" align="left" valign="top"><b>Warehouse<br> Location</b></td>
+		<td width="10%" align="left" valign="top"><b>Warehouse<br> Aisle</b></td>
+		<td width="10%" align="left" valign="top"><b>Warehouse<br> Bin</b></td>
+		<td width="10%" align="left" valign="top"><b>Warehouse<br> Custom</b></td>
+		<!--END: BLK_WAREHOUSE_HEADER-->
+		<td width="1%">&nbsp;</td>
+		<td width="9%" align="center" valign="top"><b>Cost</b></td>
+		<td width="1%">&nbsp;</td>
+		<td width="9%" align="center" valign="top"><b>Qty</b></td>
+		<td width="2%">&nbsp;</td>
+		<td width="10%" valign="top" align="center"><b>Total</b></td>
+	</tr>
+	
+	<!--START: PO_ITEMS3-->
+	<tr class="report-font1">
+		<td valign="top" align="left" width="15%">[PO_itemid]</td>
+		<td valign="top" align="left" width="53%">[PO_name]</td>
+		<!--START: BLK_WAREHOUSE_ROWS-->
+		<td>[PO_warehouse_location]</td>
+		<td>[PO_warehouse_aisle]</td>
+		<td>[PO_warehouse_bin]</td>
+		<td>[PO_warehouse_custom]</td>
+		<!--END: BLK_WAREHOUSE_ROWS-->
+		<td width="1%">&nbsp;</td>
+		<td valign="top" align="right" width="9%">$[PO_cost_price]</td>
+		<td width="1%">&nbsp;</td>
+		<td valign="top" align="center" width="9%">[PO_qty_ordered]</td>
+		<td width="2%">&nbsp;</td>
+		<td valign="top" align="right" width="10%">$[PO_subtotal_row]</td>
+	</tr>
+	<!--END: PO_ITEMS3-->
+	<tr class="report-font1">
+		<td width="15%">&nbsp;</td>
+		<td rowspan="7" width="53%" valign=top>&nbsp</td>
+		<!--START: BLK_WAREHOUSE_FOOTER-->
+		<td colspan="4">&nbsp</td>
+		<!--END: BLK_WAREHOUSE_FOOTER-->
+		<td width="1%">&nbsp;</td>
+		<td width="9%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<td valign="top" align="right" width="9%"><hr color="#FFFFFF"> <b>SubTotal:</b></td>
+		<td width="2%">&nbsp;</td>
+		<td valign="top" align="right" width="10%"><hr> $[PO_subtotal]</td>
+	</tr>
+	<tr class="report-font1">
+		<td width="15%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<!--START: BLK_WAREHOUSE_FOOTER-->
+		<td colspan="4">&nbsp</td>
+		<!--END: BLK_WAREHOUSE_FOOTER-->
+		<td width="9%">&nbsp;</td>
+		<td width="1%">&nbsp;</td>
+		<td valign="top" align="right" width="9%"><b>Total</b></td>
+		<td width="2%">&nbsp;</td>
+		<td valign="top" align="right" width="10%">$[PO_total]</td>
+	</tr>
+</table>
+
+
+<table width="80%" border="0" cellspacing="2" cellpadding="2" align="center">
+	<tr class="framebackground">
+		<td colspan="8"><b>Notes:</b> [additional_notes]</td>
+	</tr>
+</table>
+
+</body>
+</html>
+
+

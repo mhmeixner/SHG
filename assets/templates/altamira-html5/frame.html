@@ -1,0 +1,263 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>[TITLE]</title>
+<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+[META]
+<script type="text/javascript" src="assets/templates/common-html5/js/modernizr.min.js"></script>
+<script type="text/javascript" src="assets/templates/common-html5/js/utilities.js"></script>
+<link rel="stylesheet" href="assets/templates/common-html5/css/layout.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="assets/templates/common-html5/css/responsive.css" type="text/css" media="screen" />
+<link rel="StyleSheet" href="assets/templates/[template]/css/[stylesheet]" type="text/css" media="screen" />
+<link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="assets/templates/[template]/css/fontello.css" />
+<!--[if IE 7]>
+<link rel="stylesheet" href="assets/templates/[template]/css/fontello-ie7.css" />
+<![endif]-->
+<!--START: FRAME_RSSFEEDS -->
+<link rel="alternate" type="application/rss+xml" title="Featured Items (RSS 2.0)" href="[store_url]/rss.asp?type=home" />
+<link rel="alternate" type="application/rss+xml" title="Products On Sale (RSS 2.0)" href="[store_url]/rss.asp?type=onsale" />
+<link rel="alternate" type="application/rss+xml" title="New Releases (RSS 2.0)" href="[store_url]/rss.asp?type=newreleases" />
+<link rel="alternate" type="application/rss+xml" title="Best Sellers (RSS 2.0)" href="[store_url]/rss.asp?type=bestsellers" />
+<link rel="alternate" type="application/rss+xml" title="Latest Blog Posts (RSS 2.0)" href="[store_url]/rss.asp?type=blog" />
+<!--END: FRAME_RSSFEEDS -->
+<link rel="stylesheet" href="assets/templates/common-html5/quicksearch/quicksearch.css" />
+<script type="text/javascript">
+    if (typeof jQuery == 'undefined') {
+        document.write("<script type=\"text/javascript\" src=\"/assets/templates/common-html5/js/jquery.min.js\"></" + "script>");
+    }
+</script>
+</head><body>
+<div id="mainContainer">
+  <header> <a id="mobileMenu"><i class="icon-menu"></i></a> <a href="view_cart.asp" id="mobileCart"><i class="icon-basket"></i></a>
+    <div id="logo"><a href="/" title="[store_name]"><!--START: global_header-->
+      <h1 class="store-name">[storename]</h1>
+      <h3 class="store-slogan">[storeslogan]</h3>
+      <!--END: global_header--></a></div>
+    <a href="#" id="search" onclick="javascript:searchModal();"></a>
+    <div id="cart" onclick="window.location.href='view_cart.asp';"> [ITEMSINCART] ITEMS <span>[SUBTOTAL]</span> </div>
+  </header>
+  <nav>
+    <ul class="mobile">
+      <li class="search">
+        <form method="get" name="mSearchForm" action="search.asp">
+          <input type="text" name="keyword" value="" placeholder="[frame_search]" />
+          <input type="submit" name="search" value="" />
+          <div class="clear"></div>
+        </form>
+      </li>
+      <!--START: FRAME_CATEGORY-->
+      <li><a href="/" class="cat">HOME</a></li>
+      <!--START: CATEGORIES--> 
+      <!--START: CATEGORY_FORMAT-->
+      <li><a href="view_category.asp?cat=CATID" class="cat">CATEGORY</a></li>
+      <!--END: CATEGORY_FORMAT--> 
+      <!--END: CATEGORIES--> 
+      <!--END: FRAME_CATEGORY--> 
+      <!--START: FRAME_MENU-->
+      <!--START: menuitems_view--> 
+      <!--START: TOP_LINK_FORMAT-->
+      <li><a href="infopage.asp?page=[link_id]" class="cat" target="[link_target]">[link_name]</a></li>
+      <!--END: TOP_LINK_FORMAT--> 
+      <!--END: menuitems_view-->
+      <!--END: FRAME_MENU--> 
+    </ul>
+  </nav>
+  <!--START: LEFT BAR-->
+  <aside id="leftBar" class="leftBar">
+    <div class="column" id="column1"> 
+      <!--START: LEFT_BAR_BLOCKS--> 
+      <!--START: FRAME_MANUFACTURER-->
+      <div id="modManufacturer" class="module">
+        <span class="menu-headers">[frame_manufacturer]</span>
+        <!--
+        <form name="mfg" id="mfg" method="get" action="search_groups.asp">
+        <div class="manf-select">
+          <select name="manf" onchange="this.form.submit();">
+            <option value="0" selected="selected">Manufacturer</option>
+            <!-START: manufacturer_format->
+            <option value="[mfgid]">[manufacturer]</option>
+            <!-END: manufacturer_format->
+          </select>
+        </div>
+        </form>
+        --> 
+        <ul>
+          <!--START: manufacturer_format-->
+          <li><a href="search_groups.asp?manf=[mfgid]" class="link">[manufacturer]</a></li>
+          <!--END: manufacturer_format-->
+        </ul>
+      </div>
+      <!--END: FRAME_MANUFACTURER-->
+      <!--START: FRAME_BYPRICE-->
+      <div id="modPrice" class="module">
+        <span class="menu-headers">[frame_byprice]</span>
+        <ul>
+          <!--START: byprice_format-->
+          <li><a href="search_groups.asp?keyword=[id]&byprice=[id]" class="link">[title]</a></li>
+          <!--END: byprice_format-->
+        </ul>
+      </div>
+      <!--END: FRAME_BYPRICE--> 
+      <!--START: NEW_RELEASES_BLOCK-->
+      <div id="modNewReleases" class="module">
+        <span class="menu-headers">[frame_new-releases]</span>
+        <div class="clear"></div>
+        <!--START: newreleases--> 
+        
+        <!--START: newreleases_topitem-->
+        <div class="ranking">[ranking]</div>
+        <div class="info">
+          <div class="name"><a href="product.asp?itemid=[catalogid]" class="link">[name]</a></div>
+          <div class="price2"><!--START: ITEMPRICE--> 
+            [ITEMPRICE] 
+            <!--END: ITEMPRICE--> 
+            <!--START: SALEPRICE--> 
+            [ITEMSALEPRICE] 
+            <!--END: SALEPRICE--></div>
+        </div>
+        <div class="clear"></div>
+        <!--END: newreleases_topitem--> 
+        
+        <!--START: newreleases_item-->
+        <div class="div"></div>
+        <div class="ranking">[ranking]</div>
+        <div class="info">
+          <div class="name"><a href="product.asp?itemid=[catalogid]" class="link">[name]</a></div>
+          <div class="price2"><!--START: ITEMPRICE--> 
+            [ITEMPRICE] 
+            <!--END: ITEMPRICE--> 
+            <!--START: SALEPRICE--> 
+            [ITEMSALEPRICE] 
+            <!--END: SALEPRICE--></div>
+        </div>
+        <div class="clear"></div>
+        <!--END: newreleases_item--> 
+        
+        <!--END: newreleases--> 
+      </div>
+      <!--END: NEW_RELEASES_BLOCK--> 
+      <!--START: TOP_SELLERS_BLOCK-->
+      <div id="modTopSellers" class="module">
+        <span class="menu-headers">[frame_top-sellers]</span>
+        <div class="clear"></div>
+        <!--START: topsellers--> 
+        
+        <!--START: topsellers_topitem-->
+        <div class="ranking">[ranking]</div>
+        <div class="info">
+          <div class="name"><a href="product.asp?itemid=[catalogid]" class="link">[name]</a></div>
+          <div class="price2"><!--START: ITEMPRICE--> 
+            [ITEMPRICE] 
+            <!--END: ITEMPRICE--> 
+            <!--START: SALEPRICE--> 
+            [ITEMSALEPRICE] 
+            <!--END: SALEPRICE--></div>
+        </div>
+        <div class="clear"></div>
+        <!--END: topsellers_topitem--> 
+        
+        <!--START: topsellers_item-->
+        <div class="div"></div>
+        <div class="ranking">[ranking]</div>
+        <div class="info">
+          <div class="name"><a href="product.asp?itemid=[catalogid]" class="link">[name]</a></div>
+          <div class="price2"><!--START: ITEMPRICE--> 
+            [ITEMPRICE] 
+            <!--END: ITEMPRICE--> 
+            <!--START: SALEPRICE--> 
+            [ITEMSALEPRICE] 
+            <!--END: SALEPRICE--></div>
+        </div>
+        <div class="clear"></div>
+        <!--END: topsellers_item--> 
+        
+        <!--END: topsellers--> 
+      </div>
+      <!--END: TOP_SELLERS_BLOCK-->
+      <!--START: LEFT_BANNER-->
+      <div id="leftBanner">[LEFT_BANNER]</div>
+      <!--END: LEFT_BANNER-->
+      <!--END: LEFT_BAR_BLOCKS--> 
+    </div>
+  </aside>
+  <!--END: LEFT BAR-->
+  <div id="mainContent">MIDDLE</div>
+  <div class="clear"></div>
+  <footer>
+    <ul>
+      <!--START: LINKS--> 
+      <!--START: LINK_FORMAT-->
+      <li><a href="infopage.asp?page=[link_id]&extra=1" target="[link_target]" class="menu-bottom">[link_name]</a></li>
+      <li class="div"></li>
+      <!--END: LINK_FORMAT--> 
+      <!--END: LINKS-->
+    </ul>
+    <div class="clear"></div>
+    <div class="social-icons"> <a href="#" class="pinterest" title="Follow Us on Pinterest"></a> <a href="#" class="twitter" title="Follos Us on Twitter"></a> <a href="#" class="facebook" title="Like Us on Facebook"></a>
+      <div class="clear"></div>
+    </div>
+    <div id="copyright" class="footer">[frame_copyright1]</div>
+    <div class="clear"></div>
+    <div id="globalFooter" class="footer">[GLOBAL_FOOTER]</div>
+    <div class="clear"></div>
+  </footer>
+</div>
+<!--START: FRAME_SEARCH-->
+<div id="searchBox">
+  <form method="get" name="searchForm" action="search.asp">
+    <input type="text" name="keyword" class="search-text" value="" placeholder="[frame_search]" />
+    <input type="submit" name="search" value="" class="search-btn" />
+  </form>
+  <div class="clear"></div>
+</div>
+<!--END: FRAME_SEARCH-->
+<script type="text/javascript" src="assets/templates/common-html5/js/jquery.simplemodal.min.js"></script> 
+<!--START: quicksearch--> 
+<script type="text/javascript" src="assets/templates/common-html5/quicksearch/jquery.quicksearch.js"></script> 
+<script type="text/javascript">
+jQuery(function() {
+	jQuery('#searchlight').searchlight('/search_quick.asp');
+});
+</script> 
+<!--END: quicksearch--> 
+<script type="text/javascript" src="assets/templates/[template]/js/functions.js"></script>
+<div class="stats"> 
+  <!--START: 3dcart stats--> 
+  <script type="text/javascript">
+//<![CDATA[
+var file='/stats/count.asp';
+
+var stats_d=new Date();
+var stats_s=stats_d.getSeconds();
+var stats_m=stats_d.getMinutes();
+var stats_x=stats_s*stats_m;
+var prdID = '[catalogid]';
+var catID = '[catid]';
+
+stats_f='' + escape(document.referrer); stats_f=stats_f.replace('_','----');
+if (navigator.appName=='Netscape'){stats_b='NS';}
+if (navigator.appName=='Microsoft Internet Explorer'){stats_b='MSIE';}
+if (navigator.appVersion.indexOf('MSIE 3')>0) {stats_b='MSIE';}
+stats_u='' + escape(document.URL); stats_u=stats_u.replace('_','----'); stats_w=screen.width; stats_h=screen.height;
+stats_v=navigator.appName;
+stats_fs = window.screen.fontSmoothingEnabled;
+if (stats_v != 'Netscape') {stats_c=screen.colorDepth;}
+else {stats_c=screen.pixelDepth;}
+stats_j=navigator.javaEnabled();
+info='w=' + stats_w + '&h=' + stats_h + '&c=' + stats_c + '&r=' + stats_f + '&u='+ stats_u + '&fs=' + stats_fs + '&b=' + stats_b + '&x=' + stats_x + '&cat=' + catID + '&prd=' + prdID;
+document.write('<img src="' + file + '?'+info+ '" width="1" height="1" border="0" alt="stats" />');
+//]]>
+</script>
+  <noscript>
+  <img src="/stats/count.asp" width="90" height="30" alt="" />
+  </noscript>
+  <!--END: 3dcart stats--> 
+</div>
+</body>
+</html>

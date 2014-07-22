@@ -1,0 +1,93 @@
+
+ <!--START: home_carousel-->
+    <script type="text/javascript" src="/assets/templates/common/js/jquery.nivo.slider.pack.js"></script>
+    <link rel="stylesheet" href="/assets/templates/common/css/nivo.css" type="text/css" media="screen" />
+
+    <div class="slider-wrapper theme-default">
+    <div class="ribbon"></div>
+
+    <div id="homeCarousel" class="nivoSlider"><!--START: carousel--><a href="[link]"><img src="[image]" alt="" width="[hc_width]" height="[hc_height]" title="[caption]"/></a><!--END: carousel--></div>
+    
+     </div>
+    <style>
+        #homeCarousel {height: [hc_height]px;width: [hc_width]px;}
+    </style>
+    <script type="text/javascript">
+        jQuery(window).load(function () {
+            jQuery('#homeCarousel').nivoSlider({ effect: '[hc_effect]', pauseTime: [hc_delay], keyboardNav: false });
+        });
+    </script>
+    <!--END: home_carousel-->
+
+
+<table width="98%" cellspacing="0" cellpadding="2" border="0">
+  <!--START: CATEGORY_HEADER-->
+  <tr>
+    <td class="data">[CONTENT]</td>
+  </tr>
+  <!--END: CATEGORY_HEADER--> 
+  <!--START: FEATURE_MENU-->
+  <tr>
+    <td class="titles" height="30">[category_Header-specials]</td>
+  </tr>
+  <tr>
+    <td align="center"><table border="0" cellspacing="0" cellpadding="5" width="100%" align="center">
+        <!--START: CATEGORY_ITEMS--> 
+        <!--START: ITEM_TEMPLATE_0-->
+        <table cellspacing="0" cellpadding="5" border="0" width="99%" class="alternative">
+          <tr>
+            <td align="center" height="150"><div style="overflow: hidden; height: 150px;"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&amp;maxx=150&amp;maxy=0" alt="[name]" border="0" /></a></div></td>
+          </tr>
+          <tr>
+            <td class="item" align="center" height="30"><a href="product.asp?itemid=[catalogid]">[name]</a></td>
+          </tr>
+          <!--START: product_review-->
+          <tr>
+            <td class="price-info" colspan="2" align="center"><!--START: product_review_average-->
+              
+              <table border="0" cellspacing="0" cellpadding="1">
+                <tr>
+                  <td><img src="assets/templates/common/images/star[review_average].png" alt="Average Rating" border="0" /></td>
+                  <td class="item">[review_count]&nbsp;Review(s)</td>
+                </tr>
+              </table>              
+              <!--END: product_review_average--></td>
+          </tr>
+          <!--END: product_review-->
+          <tr>
+            <td class="price2" valign="top" align="center"><!--START: ITEMPRICE-->[product_yourprice]&nbsp;[ITEMPRICE] 
+              <!--END: ITEMPRICE--> 
+              <!--START: SALEPRICE-->              
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td colspan="2" align="center" class="item" nowrap="nowrap"><s>[product_yourprice]&nbsp;[ITEMPRICE]</s></td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center" class="item" nowrap="nowrap"><table border="0" cellspacing="0" cellpadding="2">
+                <tr>
+                  <td nowrap="nowrap" class="price2">[product_onsale]:&nbsp;[ITEMSALEPRICE]</td>
+                  <td align="right"><img src="assets/templates/common/images/on_sale.png" alt="On Sale" hspace="5" border="0" /></td>
+                </tr>
+                  </table></td>
+                </tr>
+              </table>              
+              <!--END: SALEPRICE--></td>
+          </tr>
+          <tr>
+            <td class="item" align="center" valign="middle"><input type="button" value="[category_buyitlink]" onclick="window.location='add_cart.asp?quick=1&amp;item_id=[catalogid]'" class="btn" onmouseover="this.className='btn_over'" onmouseout="this.className='btn'" /></td>
+          </tr>
+        </table>
+        <!--END: ITEM_TEMPLATE_0--> 
+        <!--END: CATEGORY_ITEMS-->
+      </table></td>
+  </tr>
+  <!--END: FEATURE_MENU--> 
+  <!--START: CATEGORY_FOOTER-->
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="data">[CONTENT]</td>
+  </tr>
+  <!--END: CATEGORY_FOOTER-->
+</table>

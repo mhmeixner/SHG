@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+<meta name="robots" content="none" />
+<title>3dFeedback</title>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link type="text/css" href="/assets/templates/common/3dfeedback/css/feedback.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/assets/templates/common/3dfeedback/js/jquery.rating.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#accordion").accordion();
+	});
+</script>
+<script type="text/javascript">
+	function feedback(id, feedback_name, feedbackid, action) {
+	
+		ff = "feedback" + id;
+		ff2 = "comment" + id;
+		ff3 = "feedback_name" + id;
+		ff4 = "commentcat" + id;
+	
+		document.getElementById("feedbackid").value = feedbackid;
+		document.getElementById("feedbackcatid").value = id;
+	
+		if (action == 0) {
+			document.getElementById(ff).style.display = 'none';
+			document.getElementById(ff4).innerHTML = feedback_name;
+			document.getElementById(ff2).style.display = 'block';
+	
+		}
+	
+	
+		if (action == 1) {
+			document.getElementsByName("comment" + id)[0].value = '';
+			document.getElementById(ff2).style.display = 'none';
+			document.getElementById(ff).style.display = 'block';
+	
+		}
+	
+	
+	
+	}
+	
+	function void1() { }
+</script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form action="feedback.asp?action=send" method="post">
+  <input type=hidden value="" name="feedbackid" id="feedbackid">
+  <input type=hidden value="" name="feedbackcatid" id="feedbackcatid">
+  <input type=hidden value="[url]" name="url" id="url">
+  <table cellpadding="0" cellspacing="0" border="0" width="456" align="center">
+    <tr>
+      <td width="30" height="25"><img src="/assets/templates/common/3dfeedback/images/form_t-l.png" border="0" width="30" height="25" alt=""></td>
+      <td style="background: url(/assets/templates/common/3dfeedback/images/form_t.png) repeat-x;"><img src="/assets/templates/common/3dfeedback/images/form_t.png" border="0" width="10" height="25" alt=""></td>
+      <td width="30" height="25"><img src="/assets/templates/common/3dfeedback/images/form_t-r.png" border="0" width="30" height="25" alt=""></td>
+    </tr>
+    <tr>
+      <td style="background: url(/assets/templates/common/3dfeedback/images/form_l.png) repeat-y;" width="30"><img src="/assets/templates/common/3dfeedback/images/form_l.png" border="0" width="30" height="25" alt=""></td>
+      <td style="background: #f6f6f6;"><!--START: feedback_logo-->        
+        <div><img src="[feedback_logo]"></div>        
+        <!--END: feedback_logo-->        
+        <h1>[feedback_question]</h1>
+        <div id="rate_it">
+          <div id="starify" style="padding:12px;" align="center">
+            <input name="rating" type="radio" value="0" checked="checked" style="display:none;"/>
+            <input name="rating" type="radio" class="star" value="1"  />
+            <input name="rating" type="radio" class="star" value="2"  />
+            <input name="rating" type="radio" class="star" value="3"  />
+            <input name="rating" type="radio" class="star" value="4"  />
+            <input name="rating" type="radio" class="star" value="5"  />
+          </div>
+          <div style="padding-left:22px;">
+            <div class="rating_desc">[feedback_rating-1]</div>
+            <div class="rating_desc">[feedback_rating-2]</div>
+            <div class="rating_desc">[feedback_rating-3]</div>
+            <div class="rating_desc">[feedback_rating-4]</div>
+            <div class="rating_desc">[feedback_rating-5]</div>
+          </div>
+          <div style="clear:both;"></div>
+        </div>
+        <h1>[feedback_title]</h1>
+        <div style="padding: 0px 12px 0px 12px;">
+          <div id="accordion"> 
+            <!--START: feedback_format-->
+            <h3><a href="#"><img src="/assets/templates/common/3dfeedback/images/icon_content.png" border="0" align="left" alt="" class="form_icon">[feedback_name]</a></h3>
+            <div>
+              <div id="feedback[id]" style="height:150px;">
+                <div class="font1">
+                  <div align="left">
+                    <!--START: feedback_sub-->
+                    <li><a href="javascript:void1();" onClick="feedback('[id]','[feedback_name]','[fid]',0);" class="link">[feedback_name]</a></li>
+                    <!--END: feedback_sub-->                    
+                  </div>
+                </div>
+              </div>
+              <div id="comment[id]" style="display:none">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                  <tr>
+                    <td width="50%" valign="bottom"><b style="font-size:11px;">
+                      <div id="commentcat[id]">Type your message below:</div>
+                      </b></td>
+                    <td width="50%" align="right" valign="bottom"><a href="javascript:void1();" onclick="feedback('[id]','','',1);">Clear</a></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="padding-top:4px;"><textarea class="feedback" id="comment[id]" name="comment[id]"></textarea></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!--END: feedback_format-->
+            </div>
+        </div>
+        <div align="right" style="padding: 8px 8px 0px 0px;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+              <td align=left><a href="http://www.3dcart.com/website-feedback-form.html"><img src="/assets/templates/common/3dfeedback/images/3dfeedback.png" border="0" style="margin-left:12px;"></a></td>
+              <td align=right width="200"><input type="submit" class="send_feedback" value=""></td>
+              <td align=right width="85"><input type="button" onClick="self.close();" class="cancel_feedback" value=""></td>
+            </tr>
+          </table>
+        </div></td>
+      <td style="background: url(/assets/templates/common/3dfeedback/images/form_r.png) repeat-y;" width="30"><img src="/assets/templates/common/3dfeedback/images/form_r.png" border="0" width="30" height="25" alt=""></td>
+    </tr>
+    <tr>
+      <td width="30" height="25"><img src="/assets/templates/common/3dfeedback/images/form_b-l.png" border="0" width="30" height="25" alt=""></td>
+      <td style="background: url(/assets/templates/common/3dfeedback/images/form_b.png) repeat-x;"><img src="/assets/templates/common/3dfeedback/images/form_b.png" border="0" width="10" height="25" alt=""></td>
+      <td width="30" height="25"><img src="/assets/templates/common/3dfeedback/images/form_b-r.png" border="0" width="30" height="25" alt=""></td>
+    </tr>
+  </table>
+</form>
+<script>
+    self.resizeTo(472, 695)
+</script>
+</div>
+</body>
+</html>

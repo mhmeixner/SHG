@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Online Store Manager - Login</title>
+<script src="templates/js/prototype.js" type="text/javascript"></script>
+<script src="templates/js/scriptaculous.js" type="text/javascript"></script>
+<script src="templates/js/unittest.js" type="text/javascript"></script>
+<script type="text/javascript" src="templates/js/ajax.js"></script>
+<script type="text/javascript" src="templates/js/ajax-dynamic-content.js"></script>
+<script type="text/javascript" charset="utf-8">
+Position.includeScrollOffsets = true;
+</script>
+<script language="javascript">
+var doLogin = 0;
+
+function handleKey(e,strFormName)
+{
+	try
+	{
+		var KeyID = (window.event) ? event.keyCode : e.keyCode;
+		
+		if (KeyID == 13)
+		{
+			if (strFormName == 'login')
+			{
+				ajaxlogin();
+			}
+			else
+			{
+				ajaxfp();
+			}
+		}
+	}
+	catch(err)
+	{
+		//alert('An error has occured. Please, refresh the page and try again.');
+		//ajaxlogin();
+	}
+}
+
+function forgotpassdisplay()
+{
+	document.getElementById("loginbox").style.display="none";
+	var t=setTimeout("Effect.Appear('forgotpass');",500)
+	doLogin = 0;
+}
+
+function forgotpasshide()
+{
+	document.getElementById("forgotpass").style.display="none";
+	var t=setTimeout("Effect.Appear('loginbox');",500)
+	doLogin = 0;
+}
+
+
+function ajaxlogin()
+{
+	var strLogin = document.getElementById("username").value.trim();
+	var strPassword = document.getElementById("password").value.trim();
+	
+	if (strLogin == "" || strPassword == "")
+	{
+		alert('Username and Password cannot be blank');
+		return false;
+	}
+	
+	if(doLogin == 0)
+	{
+		ajax_adminlogin(strLogin, strPassword);
+		doLogin = 1;
+	}
+}
+
+function ajaxfp()
+{
+	ajax_adminfp(document.getElementById("fpusername").value,document.getElementById("randomword").value);
+	doLogin = 0;
+}
+
+String.prototype.trim = function() {
+	return this.replace(/^\s+|\s+$/g,"");
+}
+
+</script>
+<!--[if IE]>
+<style type="text/css">
+p.iepara{ /*Conditional CSS- For IE (inc IE7), create 1em spacing between menu and paragraph that follows*/
+padding-top: 1em;
+}
+</style>
+<![endif]-->
+<link href="templates/css/styles.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {
+	background: #e9e9e9 url(templates/images/bg_login.jpg) repeat-x;
+}
+-->
+</style>
+</head>
+<body>
+<div id="bgLogin">
+  <table width=607 border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="365" valign="top"><img src="templates/images/main_welcome.png" style="padding: 215px 0px 0px 0px;" /></td>
+      <td valign="bottom" style="padding-top:160px;"><div id="errorbox" style="display:none;">
+          <table width="242" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td background="templates/images/yellowbg.gif"><table width="242" border="0" cellspacing="0" cellpadding="10">
+                  <tr>
+                    <td valign="top"><div id="error" class="errorbox"></div></td>
+                  </tr>
+                </table></td>
+            </tr>
+            <tr>
+              <td><img src="templates/images/yellowbottom.gif" width="242" height="29" /></td>
+            </tr>
+          </table>
+        </div>
+        <div id="forgotpass" style="display:none">
+          <table width="160" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td><!--START: LOGIN-->
+                <!--form action="forgot_password.asp?action=forgot" method="post" name="login2" id="login2" class="nomargin"-->
+                <form action="javascript:ajaxfp();" method="post" name="login2" id="Form1" class="nomargin">
+                  <table width="100%" cellpadding="2" cellspacing="0" border="0">
+                    <tr>
+                      <td align="right">Username:</td>
+                      <td><input style="background: url(templates/images/BG_field.gif) repeat-x; border: #e3e3e3 solid 1px; height:12px; width: 140px; color: #COCOCO; font-size: 11px; font-family: Arial, Helvetica, Sans-Serif; padding:4px;" id="fpusername" name="fpusername"  type="text" onkeypress="handleKey(event,'login2');"  /></td>
+                    </tr>
+                    <tr>
+                      <td align="right" style="padding-bottom: 0px;" nowrap>Auth. Code:</td>
+                      <td style="padding-bottom:0px;"><input style="background: url(templates/images/BG_field.gif) repeat-x; border: #e3e3e3 solid 1px; height:12px; width: 140px; color: #COCOCO; font-size: 11px; font-family: Arial, Helvetica, Sans-Serif; padding:4px;" id="randomword" name="randomword" onclick="if (document.getElementById('randomword').value=='Type word above...');document.getElementById('randomword').value='';" onkeypress="handleKey(event,'login2');" type="text" value="Type word below..." /></td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0px;">&nbsp;</td>
+                      <td align="center" style="padding:0px;"><img src="image_pw.asp" border="0" width="148"/></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="right"><button type="button" onclick="window.location.href='login.asp';" name="Submit" value="Back" size="20" maxlength="20" class="scalable gray"  style="border:0px"/>
+                        <span>Back</span>
+                        </button>
+                        <button type="button" name="Submit" value="Request Password" size="10" maxlength="20" class="scalable gray" style="border:0px" onclick="ajaxfp();"/>
+                        <span>Request Password</span>
+                        </button>
+                        <br/>
+                        &nbsp; </td>
+                    </tr>
+                  </table>
+                </form>
+                <!--END: LOGIN--></td>
+            </tr>
+          </table>
+        </div>
+        <div id="loginbox">
+          <table width="160" border="0" cellspacing="4" cellpadding="0">
+            <form name="login" id="login" action="javascript:ajaxlogin();">
+              <tr>
+                <td align="right">Username:</td>
+                <td><input style="background: #FFF url(templates/images/BG_field.gif) repeat-x; border: #e3e3e3 solid 1px; height:12px; width: 140px; color: #COCOCO; font-size: 11px; font-family: Arial, Helvetica, Sans-Serif; padding:4px;" id="username" name="username" onenter="ajaxlogin()" type="text" value="" onkeypress="handleKey(event,'login');" /></td>
+              </tr>
+              <tr>
+                <td align="right">Password:</td>
+                <td><input style="background: #FFF url(templates/images/BG_field.gif) repeat-x; border: #e3e3e3 solid 1px; height:12px; width: 140px; color: #COCOCO; font-size: 11px; font-family: Arial, Helvetica, Sans-Serif; padding:4px;" id="password" name="password" onenter="ajaxlogin()" type="password" value="" onkeypress="handleKey(event,'login');" /></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="right"><a href="#" onClick="javascript:forgotpassdisplay();" class="fpassword"><strong>Forgot Password?</strong></a></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="right"><a href="#" onClick="ajaxlogin();"><img src="templates/images/login.png" border="0" vspace="5" /></a></td>
+              </tr>
+            </form>
+          </table>
+        </div></td>
+    </tr>
+  </table>
+  <table width="600" border="0" align="center" cellpadding="5" cellspacing="0">
+    <tr>
+      <td height="35" align="center">&nbsp;</td>
+    </tr>
+  </table>
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="footer">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="40" align="center" valign="bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="75%" align="left" valign="middle" style="padding: 0px 0px 3px 15px;"><table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><img src="templates/images/3d-storemgr.png" width="143" height="21" /></td>
+                </tr>
+              </table></td>
+            <td width="25%" align="right" valign="middle">&nbsp;</td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+

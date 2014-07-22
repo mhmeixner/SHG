@@ -1,0 +1,153 @@
+<!--START: CATEGORY_HEADER-->[CONTENT]<!--END: CATEGORY_HEADER-->
+<script language="javascript">
+	function printThis(rma){
+		document.formu.action = "my_rma.asp?p=1";
+		document.formu.target = "_blank";
+		document.formu.submit(); 
+	}
+	
+	
+	<!--START: printing-->
+		onload = function(){print();}
+	<!--END: printing-->
+	
+</script>
+<form name="formu" id="formu" action="" method="post">
+					<input type="hidden" name="oid" id="oid" value="[oNumber]">
+					<input type="hidden" name="r" id="r" value="[RmaNumber]">
+				</form>
+<table width="95%" cellpadding="0" cellspacing="0" border="0">
+	<tr><td>&nbsp;</td></tr>
+	<tr><td class="page_headers" align="left">[rma_header-rmatitle]</td></tr>
+	
+	<!--START: RMA-->
+	<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td width="100%">
+				
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tablenooutline">
+					<tr>
+						<td nowrap="nowrap" align="left" class="searchheader">
+							<img src="./admin/templates/images/return_arrow.jpg" width="14" height="14" />&nbsp;[rma_header-rmanumber]&nbsp;<font color="red">[RmaNumber]</font>
+							<input type="hidden" name="r" id="r" value="[RmaNumber]">
+						</td>
+						<td align="right" class="item"><!--START: print--><a href="javascript:printThis();"><img src="./assets/templates/common/images/print.gif" width="25" height="25" border="0">&nbsp;[rma_header-rmaprint]</a><!--END: print--></td>
+					</tr>
+					<tr>
+						<td colspan="2" background="./admin/templates/images/hr.gif"><img src="./admin/templates/images/hr.gif"/></td>
+					</tr>
+					<tr>
+						<td align="left" width="20%" class="item">[rma_header-rmacustomername]&nbsp;</td>
+						<td align="left" width="80%" align="left" class="item">:&nbsp;<a href="customer_edit.asp?contactid=[CustId]" class="searchheader">[Customer]</a></td>
+					</tr>
+					<tr>
+						<td align="left" width="20%" class="item">[rma_header-rmaordernumber]&nbsp;</td>
+						<td align="left" width="80%" align="left" class="item">:&nbsp;<a href="order_details.asp?orderid=[oNumber]">[oid2]</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" background="./admin/templates/images/hr.gif"><img src="./admin/templates/images/hr.gif"/></td>
+					</tr>
+				</table>
+				
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablegray">
+					<tr>  
+						<td>
+							<table width="100%" cellpadding="4" cellspacing="0" border="0">
+								<tr class="mainrow">
+									<td>[rma_header-rmaorderitems]</td>
+								</tr>
+							</table>
+				 
+							<table width="100%" cellspacing="0" cellpadding="4" border="1"  class="invoice_table">
+								<tr class="item"> 
+									<td width="80" align="center">[rma_header-rmaorder-item-id]</td>
+									<td align="center" class="subrow">[rma_header-rmaorder-item-description]</td>
+									<td width="80" align="center">[rma_header-rmaorder-item-unitprice]</td>
+									<td width="80" align="center">[rma_header-rmaorder-item-qty]</td>
+									<td width="80" align="center">[rma_header-rmaorder-item-qtyrtn]</td>
+									<td width="80" align="center">[rma_header-rmaorder-item-qtyrcvd]</td>
+								</tr>
+								<!--START: items-->
+								<tr  class="item" bgcolor="#ffffff">
+									<td width="80" valign="top">[Id]<input type="hidden" name="Item[idx]" id="Item[idx]" value="[IdItem]" class="txtBoxStyle4"></td>
+									<td valign="top">[Description]</td>
+									<td width="80" align="right" valign="top">[uPrice]</td>
+									<td width="80" align="center" valign="top">[Qty]</td>
+									<td width="80" align="center" valign="top">[qr]</td>
+									<td width="80" align="center" valign="top">[qre]</td>
+								</tr>
+								<!--END: items-->
+							</table>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tablegray">
+					<tr>
+						<td>
+							
+							<table width="100%" cellpadding="4" cellspacing="0" border="0">
+								<tr class="mainrow">
+									<td>[rma_header-rmaorder-rtn-option]</td>
+								</tr>
+							</table>
+							
+							<table width="100%" cellspacing="0" cellpadding="4" border="1"  class="invoice_table">
+								<tr> 
+									<td class="item" align="center" width="140" class="subrow">[rma_header-rmaorder-rtn-reason]</td>
+									<td class="item" align="center" width="240" class="subrow">[rma_header-rmaorder-rtn-method]</td>
+									<td class="item" align="center" class="subrow">[rma_header-rmaorder-rtn-status]</td>
+								</tr>
+								<!--START: options-->
+								<tr  class="item" bgcolor="#ffffff">
+									<td width="33%" valign="top">[Reason]</td>
+									<td width="33%" valign="top">[Method]</td>
+									<td width="34%" valign="top">[Status]</td>
+								</tr>
+								<!--END: options-->
+							</table>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tablegray">
+					<tr>
+						<td>
+							<table width="100%" cellpadding="4" cellspacing="0" border="0"><tr class="mainrow"><td>[rma_header-rmacomments]</td></tr></table>
+							
+							<table width="100%" cellspacing="0" cellpadding="4" border="1"  class="tablegray">
+								<!--START: comments-->
+								<tr class=cellselected2 bgcolor="#ffffff"><td valign="top" class="item">[comments]</td></tr>
+								<!--END: comments-->
+							</table>
+						</td>
+					</tr>
+				</table>
+				<br>
+										<!--START: return-->
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tablegray" >
+					<tr>
+						<td>
+							<table width="100%" cellspacing="0" cellpadding="4" border="1"  class="invoice_table">
+								<tr class="item">
+									<td align="center" valign="top">
+										<input type="button" value="[rma_header-rma-btn-returntomyacc]" class="item" onclick="window.location.href='myaccount.asp'">
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+										<!--END: return-->
+		
+		</td>
+	</tr>
+	<!--END: RMA-->
+
+		
+</table>
+<br><br>
+<!--START: CATEGORY_FOOTER-->
+	[CONTENT]
+<!--END: CATEGORY_FOOTER-->
+<br><Br>

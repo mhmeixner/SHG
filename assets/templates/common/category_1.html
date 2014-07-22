@@ -1,0 +1,287 @@
+<table width="98%" cellspacing="0" cellpadding="2" border="0">
+  <!--START: BODY_HEADER-->
+  <tr>
+    <td class="data">[CATEGORY_FULLLINE]</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <!--END: BODY_HEADER-->
+  <tr>
+    <td><h1 class="page_headers">[categoryname]</h1></td>
+  </tr>
+  <!--START: CATEGORY_HEADER-->
+  <tr>
+    <td id="categoryHeader" class="data">[CONTENT]</td>
+  </tr>
+  <!--END: CATEGORY_HEADER--> 
+  <!--START: SUB_CATEGORIES-->
+  <tr>
+    <td><table width="100%" cellspacing="0" cellpadding="2" border="0">
+        <tr>
+          <td class="titles" colspan="5">&nbsp;[category_Header-subcategories]</td>
+        </tr>
+        <!--START: SUB_CATEGORIES_FORMAT-->
+          <td><table border="0" cellspacing="4" cellpadding="0" width="100%">
+              <tr>
+                <td align="center"><!--START: SUB_CATEGORY_IMAGE--> 
+                  <a href="view_category.asp?cat=[CATID]"><img src="[SUB_CATEGORY_IMAGE]" alt="[SUB_CATEGORY_NAME]" border="0" /></a> 
+                  <!--END: SUB_CATEGORY_IMAGE--></td>
+              </tr>
+              <tr>
+                <td class="item" align="center"><!--START: SUB_CATEGORY_NAME--> 
+                  <a href="view_category.asp?cat=[CATID]">[SUB_CATEGORY_NAME]</a><br />
+                  <!--START: SUB_CATEGORY_NAME--> 
+                  [SUB_CATEGORY_DESCRIPTION]</td>
+              </tr>
+            </table></td>
+          <!--END: SUB_CATEGORIES_FORMAT-->
+      </table></td>
+  </tr>
+  <!--END: SUB_CATEGORIES--> 
+  <!--START: FEATURE_MENU-->
+  <tr>
+    <td class="titles">&nbsp;[category_Header-specials]</td>
+  </tr>
+  <tr>
+    <td><table border="0" cellspacing="0" cellpadding="5" width="100%">
+        <!--START: FEATURE_ITEMS--> 
+        <!--START: FEATURE_ITEM_TEMPLATE_0-->
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center" valign="top"><div style="overflow: hidden; height: 150px;"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&amp;maxx=150&amp;maxy=0" alt="[name]" border="0" /></a></div></td>
+          </tr>
+          <tr>
+            <td align="center"><a href="product.asp?itemid=[catalogid]&amp;catid=[catid]">[name]</a></td>
+          </tr>
+          <tr>
+            <td align="center" class="item">[description]</td>
+          </tr>
+          <tr>
+            <td align="center"><p class="price">[ITEMPRICE]</p></td>
+          </tr>
+          <tr>
+            <td align="center"><a href="add_cart.asp?quick=1&amp;item_id=[catalogid]">[category_buyitlink]</a></td>
+          </tr>
+        </table>
+        <!--END: FEATURE_ITEM_TEMPLATE_0--> 
+        <!--START: FEATURE_ITEM_TEMPLATE_1-->
+        <table border="0" cellspacing="0" cellpadding="0" width="95%">
+          <tr>
+            <td class="item" width="70%" align="left" valign="middle"><a href="product.asp?itemid=[catalogid]&amp;catid=[catid]">[name]</a></td>
+            <td class="price" width="15%" align="left" valign="middle">[ITEMPRICE]</td>
+            <td class="item" width="15%" align="right" valign="middle"><a href="add_cart.asp?quick=1&amp;item_id=[catalogid]">[category_buyitlink]</a>&nbsp;&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3">&nbsp;</td>
+          </tr>
+        </table>
+        <!--END: FEATURE_ITEM_TEMPLATE_1--> 
+        <!--START: FEATURE_ITEM_TEMPLATE_2-->
+        <table border="0" cellspacing="0" cellpadding="3" width="100%">
+          <tr>
+            <td align="left" valign="top" width="20%"><a href="product.asp?itemid=[catalogid]&amp;catid=[catid]"><img src="thumbnail.asp?file=[THUMBNAIL]&maxx=150&maxy=0" border="0" alt="[name]" /></a></td>
+            <td class="item" align="left" valign="top"><table>
+                <tr>
+                  <td align="left"><a href="product.asp?itemid=[catalogid]&amp;catid=[catid]">[name]</a></td>
+                </tr>
+                <tr>
+                  <td align="left" class="item">[description]</td>
+                </tr>
+                <tr>
+                  <td align="left"><p class="price">[ITEMPRICE]</p></td>
+                </tr>
+                <tr>
+                  <td align="left"><a href="add_cart.asp?quick=1&amp;item_id=[catalogid]">[category_buyitlink]</a></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table>
+        <!--END: FEATURE_ITEM_TEMPLATE_2--> 
+        <!--END: FEATURE_ITEMS-->
+      </table></td>
+  </tr>
+  <!--END: FEATURE_MENU-->
+  <tr>
+    <td><!--START: ITEMS-->
+      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td colspan="3" class="titles">&nbsp;[category_Header-products] (Total Items: [productnumber])</td>
+          <td colspan="2" class="titles" align="right"><!--START: sortbylist-->
+            <form action="view_category.asp?cat=[catid]" method="post" name="frmsortby">
+              <select name="sortby" onchange="frmsortby.submit();" class="txtBoxStyle">
+              [sortbylist]
+              </select>
+            </form>
+            <!--END: sortbylist--></td>
+        </tr>
+        <tr>
+          <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="5">
+          <!--START: PAGING-->              
+          <table width="100%" border="0" cellpadding="3" cellspacing="0">
+            <tr align="center">
+              <td align="right" class="font2">[category_moreresults]&nbsp; 
+                <!--START: PREV--> 
+                <a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=[prev]">[category_previouspage]</a>&nbsp; 
+                <!--END: PREV--> 
+                <!--START: PAGES--> 
+                <!--START: FIRST_PAGE--> 
+                <a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=PAGE"><strong>[PAGE]</strong></a>... 
+                <!--END: FIRST_PAGE--> 
+                <!--START: PAGES_SELECTED--> 
+                <strong>[PAGE]</strong> 
+                <!--END: PAGES_SELECTED--> 
+                <!--START: PAGES_NOTSELECTED--> 
+                <a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=PAGE">PAGE</a> 
+                <!--END: PAGES_NOTSELECTED--> 
+                <!--START: LAST_PAGE--> 
+                ...<a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=PAGE"><strong>[PAGE]</strong></a> 
+                <!--END: LAST_PAGE--> 
+                <!--END: PAGES--> 
+                <!--START: NEXT--> 
+                &nbsp;<a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=[next]">[category_nextpage]</a>
+                &nbsp;<a href="view_category.asp?viewall=1&cat=[catid]">View All</a>&nbsp;&nbsp; 
+                <!--END: NEXT--></td>
+            </tr>
+          </table>              
+          <!--END: PAGING-->
+          <!--START: UNDOVIEWALL-->
+          <table width="100%" border="0" cellpadding="3" cellspacing="0">
+            <tr align="center">
+              <td align="right"><a href="view_category.asp?viewall=0&cat=[catid]">Exit View All</a>&nbsp;&nbsp;</td>
+            </tr>
+          </table>
+          <!--END: UNDOVIEWALL--></td>
+        </tr>
+        <tr>
+          <td colspan="5"><form enctype="multipart/form-data" method="post" action="add_cart.asp" name="add">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td colspan="5" align="right"><input type="submit" name="Add" value="[product_addtocart]" class="btn" />
+                    &nbsp;&nbsp;</td>
+                </tr>
+                <tr>
+                  <td colspan="5"><table border="0" cellspacing="0" cellpadding="5" width="100%" align="center">
+                      <!--START: CATEGORY_ITEMS--> 
+                      <!--START: ITEM_TEMPLATE_0-->
+                      <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                          <td colspan="2" align="center" valign="middle"><div style="overflow: hidden; height: 150px;"><a href="product.asp?itemid=[catalogid]"><img src="thumbnail.asp?file=[THUMBNAIL]&amp;maxx=150&amp;maxy=0" alt="[name]" border="0" /></a></div></td>
+                        </tr>
+                        <tr valign="middle">
+                          <td colspan="2" class="item" align="center"><a href="product.asp?itemid=[catalogid]&catid=[catid]">[name]</a></td>
+                        </tr>
+                        <tr>
+                          <td class="price" align="center" valign="middle" colspan="2"><!--START: ITEMPRICE--> 
+                            [ITEMPRICE] 
+                            <!--END: ITEMPRICE--> 
+                            <!--START: SALEPRICE--> 
+                            <s>[ITEMPRICE]</s><br />
+                            [ITEMSALEPRICE] 
+                            <!--END: SALEPRICE--></td>
+                        </tr>
+                        <!--START: product_review_average-->
+                        <tr>
+                          <td class="price-info" valign="top" colspan="2" align="center"><img src="assets/templates/common/images/star[review_average].png" align="absmiddle">&nbsp;<strong>([review_count])</strong></td>
+                        </tr>
+                        <!--END: product_review_average-->
+                        <tr>
+                          <td class="item" colspan="2" align="center" valign="middle">[product_quantity]
+                            <input type="hidden" name="item_id" value="[catalogid]" />
+                            <input type="text" size="2" name="qty-[counter]" value="0" class="txtBoxStyle" /></td>
+                        </tr>
+                      </table>
+                      <!--END: ITEM_TEMPLATE_0--> 
+                      <!--START: ITEM_TEMPLATE_1-->
+                      <table border="0" cellspacing="4" cellpadding="0" width="100%">
+                        <tr>
+                          <td class="item" width="65%" align="left" valign="middle"><a href="product.asp?itemid=[catalogid]&catid=[catid]"><span class="item">[name]</span></a></td>
+                          <td class="price" width="25%" align="left" valign="middle">&nbsp;[ITEMPRICE]</td>
+                          <td class="item" width="10%" align="right" valign="middle"><input type="hidden" name="item_id" value="[catalogid]" />
+                            <input type="text" size="2" name="qty-[counter]" value="0" class="txtBoxStyle" /></td>
+                        </tr>
+                      </table>
+                      <!--END: ITEM_TEMPLATE_1--> 
+                      <!--START: ITEM_TEMPLATE_2-->
+                      <table border="0" cellspacing="0" cellpadding="4" width="100%">
+                        <tr>
+                          <td rowspan="3" align="left" valign="top" class="item"><a href="product.asp?itemid=[catalogid]&catid=[catid]"><img src="[THUMBNAIL]" alt="[name]" border="0" /></a></td>
+                          <td class="item" align="left"><a href="product.asp?itemid=[catalogid]&catid=[catid]">[name]</a><br />
+                            <span class="item">[description]</span></td>
+                        </tr>
+                        <tr>
+                          <td class="item"><span class="price">[ITEMPRICE]</span></td>
+                        </tr>
+                        <tr>
+                          <td class="item">[product_quantity]
+                            <input type="hidden" name="item_id" value="[catalogid]" />
+                            <input type="text" size="2" name="qty-[counter]" value="0" class="txtBoxStyle" /></td>
+                        </tr>
+                      </table>
+                      <!--END: ITEM_TEMPLATE_2--> 
+                      <!--END: CATEGORY_ITEMS-->
+                    </table></td>
+                </tr>
+                <tr>
+                  <td colspan="5" align="right"><input type="submit" name="Add" value="[product_addtocart]" class="btn" />
+                    &nbsp;&nbsp;</td>
+                </tr>
+              </table>
+            </form></td>
+        </tr>
+        <tr align="center">
+          <td colspan="5">
+          <!--START: PAGING-->              
+          <table width="100%" border="0" cellpadding="3" cellspacing="0">
+            <tr align="center">
+              <td align="right" class="font2">[category_moreresults]&nbsp; 
+                <!--START: PREV--> 
+                <a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=[prev]">[category_previouspage]</a>&nbsp; 
+                <!--END: PREV--> 
+                <!--START: PAGES--> 
+                <!--START: FIRST_PAGE--> 
+                <a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=PAGE"><strong>[PAGE]</strong></a>... 
+                <!--END: FIRST_PAGE--> 
+                <!--START: PAGES_SELECTED--> 
+                <strong>[PAGE]</strong> 
+                <!--END: PAGES_SELECTED--> 
+                <!--START: PAGES_NOTSELECTED--> 
+                <a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=PAGE">PAGE</a> 
+                <!--END: PAGES_NOTSELECTED--> 
+                <!--START: LAST_PAGE--> 
+                ...<a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=PAGE"><strong>[PAGE]</strong></a> 
+                <!--END: LAST_PAGE--> 
+                <!--END: PAGES--> 
+                <!--START: NEXT--> 
+                &nbsp;<a href="view_category.asp?cat=[cat]&amp;sortby=[sortby]&amp;page=[next]">[category_nextpage]</a>
+                &nbsp;<a href="view_category.asp?viewall=1&cat=[catid]">View All</a>&nbsp;&nbsp; 
+                <!--END: NEXT--></td>
+            </tr>
+          </table>              
+          <!--END: PAGING-->
+          <!--START: UNDOVIEWALL-->
+          <table width="100%" border="0" cellpadding="3" cellspacing="0">
+            <tr align="center">
+              <td align="right"><a href="view_category.asp?viewall=0&cat=[catid]">Exit View All</a>&nbsp;&nbsp;</td>
+            </tr>
+          </table>
+          <!--END: UNDOVIEWALL--></td>
+        </tr>
+        <tr>
+          <td colspan="5">&nbsp;</td>
+        </tr>
+      </table>
+      <!--END: ITEMS--></td>
+  </tr>
+  <!--START: CATEGORY_FOOTER-->
+  <tr>
+    <td id="categoryFooter" class="data">[CONTENT]</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <!--END: CATEGORY_FOOTER-->
+</table>
